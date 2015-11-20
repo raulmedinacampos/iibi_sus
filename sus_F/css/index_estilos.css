@@ -1,0 +1,53 @@
+p.alerta{border:1px solid gold;width:660px;margin:10px auto;padding:10px;text-align:center;font-family:Arial;font-size:13px}
+
+form {
+	width: 380px;
+	font-size: 1em;
+	color: #333;
+	padding:0;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-bottom: 50px;
+	margin-left: auto;
+	font-family:Verdana;
+	font-size:12px;
+}
+legend {background:#f90;padding:10px;font-size:13px;font-weight:bold}
+fieldset {border: 1px dotted #ccc;padding:10px}
+form legend, form label {color: #333;}
+
+
+fieldset p {padding: 5px 10px 7px;}
+input,button,textarea{
+	border:1px solid #ccc;
+	padding:5px;
+	font-size:11px;
+}
+
+form label.error, label.error {color: red;font-style: italic}
+div.error { display: none; }
+
+
+input:focus,textarea:focus { /*border: 1px dotted black;*/ }
+input.error,textarea.error { /*border: 1px dotted red;*/ }
+form .submit {
+	background-color:#F90;
+	color: #333;
+	width:150px;
+	font-weight:bold;
+}
+
+form .regresar {
+	background-color:#CCC;
+	color: #333;
+	width:150px;
+	font-weight:bold;
+}
+
+
+#mensaje{
+	width:700px;
+	margin:3em auto;
+	text-align:center;
+	color:#900;
+	font-weight:bold;}

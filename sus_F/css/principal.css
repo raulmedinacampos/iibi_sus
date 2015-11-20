@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+Esta hoja de estilos tiene las reglas para
+
+body				contenedor			encabezado
+img.imgunam			img.imgiibi			navegacion
+navegacion-fecha	contenido			menu
+pie					derechos
+administrado		creditos			EstiloTit
+a
+
+*/
+*{font-family:Verdana;}
+
+
+body {
+	margin-top: 0px;}
+
+/*Contenedor general centra la página*/
+.contenedor {
+	margin: 0 auto;
+	width: 980px;}
+
+
+/*Encabezado*/
+.encabezado{
+	width: 980px;
+}
+
+img.imgunam {
+        width:340px;
+        height:103px;
+        background:url(../images/banner/encabezado.jpg) 0;
+}
+
+img.imgiibi {
+        width:639px;
+        height:103px;
+        margin-left:-5px;
+        background:url(../images/banner/encabezado.jpg) -340px 0;
+}
+/*Fin de encabezado*/
+
+
+/*Navegacion*/
+.navegacion {
+	height: 22px;
+	width: 980px;
+	background-color: #000000;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #f8ebb9;
+	float: left;
+	top:0;}
+
+.navegacion-fecha {
+	height: 19px;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding-top: 3px;
+	float: right;
+	padding-right:1em;
+}
+/*Fin de navegación*/
+
+.amarillo{
+	height: 22px;
+	width: 980px;
+	background-color: #f90;
+	float: left;
+	top:0;}
+
+.restablecer{
+}
+
+
+.contenido {
+    width: 980px;
+	float: left;}
+
+/*Menú de opciones*/
+.menu{
+	height: 22px;
+	width: 980px;
+	float: left;
+	top:0;}
+/*Fin de menu*/
+
+/* pie de pagina */
+.pie {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	margin-top: 3em;
+	padding-top: 14px;
+	float: left;
+	width: 978px;
+	background-image: url(../images/banner/pie-bg.png);
+	background-repeat: no-repeat;
+	height: 99px;
+}
+
+.derechos{
+	text-align:	center;
+	margin-top: 18px auto;
+}
+.pie a,visited {
+	font-size: 11px;
+	color: #034279;
+}
+
+.administrado{
+	margin-top: 15px; 
+	width: 920px;
+	color: #1b5799;
+	text-align: center;
+}
+/*Fin de pie de pagina*/
+
+/*Div principal*/
+miDiv {
+	width: 99%;
+}
+
+/*Estilos para el área de creditos*/
+.creditos {
+	text-align:justify;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;}
+
+.EstiloTit {
+	color: #F90;
+	font-weight: bold;}
+/*fin de créditos*/
+
+
+a {
+	font-weight:bold;
+	color: #630;
+	outline: none;
+	text-decoration: none;}
+
+a:hover {
+	color: #630;}
+
+.nota{
+	font-size:12px;
+	color:#f60;
+	}
+
+
+.nota2{
+	font-size:20px;
+	color:#f90;
+	font-weight:bold;
+	padding-top:40px;
+	}
+
+table{
+	border-spacing:5px;
+	font-size:13px;}
