@@ -7,22 +7,41 @@ function evaluarSUS(folio){
 	$('#myModal .modal-dialog').removeClass('modal-sm');
 	$('#myModal .modal-title').html('Cancelar solicitud');
 	$('#myModal .modal-body').load('evaluacion/evaSolicitud');
+	$('#myModal .modal-footer .btn-primary').html("Evaluar servicio");
+	
 	$('#myModal').modal('show');
+	
+	$('#myModal .modal-footer .btn-primary').click(function() {
+		$.post(
+				'evaSolicitud',
+				{folio: folio},
+				function(data) {
+					alert("Enviando");
+				}
+		);
+	});
 	/*
   var tamanio="resizable=1,left=60,top=60,width=780,height=550,scrollbars=1";
   window.open("./evaluacion/evaSolicitud.php?folio="+folio+"","",tamanio);
 	}*/
 }
 
-function cancelarSUS(folio){
+function cancelarSUS(folio) {
 	$('#myModal .modal-dialog').addClass('modal-sm');
 	$('#myModal .modal-title').html('Cancelar solicitud');
 	$('#myModal .modal-body').html('<p>¿Realmente desea cancelar esta solicitud?</p>');
+	$('#myModal .modal-footer .btn-primary').html("Aceptar");
 	
 	$('#myModal').modal('show');
 	
 	$('#myModal .modal-footer .btn-primary').click(function() {
-		alert('Cancelado');
+		$.post(
+				'cambioEdoSUS',
+				{folio: folio},
+				function(data) {
+					alert("Cancelado");
+				}
+		);
 	});
    /*confirmar=confirm("¿Realmente desea cancelar esta solicitud?");
     if (!confirmar)
