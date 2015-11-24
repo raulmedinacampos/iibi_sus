@@ -181,11 +181,11 @@ Flight::route('/estadoSUS/', function() {
 			case 13:
 			case 15:
 				$datos_aux['acciones'] = 'Modificar<br>';
-				$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS('.$row['folio'].')">';
+				$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">';
 				break;
 					
 			case 110:
-				$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS('.$row['folio'].')">';
+				$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS(\''.$row['folio'].'\')">';
 				break;
 					
 			case 21:
@@ -220,7 +220,8 @@ Flight::route('/estadoSUS/', function() {
 					
 			case 311:
 				$datos_aux['acciones'] = "Archivar"; //archivar(12)
-				//$actualizar = actualizar('servicioSUS','visible = 0','folio = "'.$row['folio'].'"'); break;
+				//$actualizar = actualizar('servicioSUS','visible = 0','folio = "'.$row['folio'].'"');
+				break;
 				
 			case 44:
 				$datos_aux['acciones'] = "Con suficiencia presupuestal<br>";
@@ -228,12 +229,15 @@ Flight::route('/estadoSUS/', function() {
 					
 				/*	darSuf(6)
 				 negarSuf(7)*/
+				break;
 			case 55:
 				$datos_aux['acciones'] = 'Validar'; //
+				break;
 				
 			case 57:
 				$datos_aux['acciones'] = 'Con suficiencia prespuestal'; //	darSuf(6)
 				break;
+				
 			default:
 				$datos_aux['acciones'] = $_SESSION['tipoUsuario'].$row['estado'];
 				break;
