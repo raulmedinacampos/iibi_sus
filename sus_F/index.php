@@ -1,6 +1,4 @@
 <?php
-/*Agregando comment */
-
 require 'flight/Flight.php';
 require 'inc/consultas.inc.php';
 
@@ -123,21 +121,11 @@ Flight::route('/estadoSUS/', function() {
 		$seleccion = seleccionarTodo("*","servicioSUS"," estatus<8 and estatus>2");
 	}
 	
-	$columnas = "folio, descripcion, idUSolicitante,
-				case left(idTipoServicio,1)
-					 when 1 then 'Servicios diversos'
-					 when 2 then 'Correspondencia'
-					 when 3 then 'Mantenimiento a<br>equipo y vehículos'
-					 when 4 then 'Reproducción y engargolado'
-					 when 5 then 'Transporte'
-					 when 6 then 'A inmueble'
-					 when 7 then 'Vigilancia'
-				end as servicio,
-				DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha,
-				servicioSUS.estatus as estado,
-				cEstatusSUS.estatus";
 	
-	$tablas = "servicioSUS, cEstatusSUS";
+	$columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha,
+				servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
+	
+	$tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 	
 	if ( $_SESSION['tipoUsuario'] == 1 ) {
 		$condicion= "idUSolicitante=".$_SESSION['idUsuario'];
@@ -147,7 +135,9 @@ Flight::route('/estadoSUS/', function() {
 		$condicion= "servicioSUS.estatus<9 ";
 	}	
 	
-	$condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus order by consecutivo asc";
+	$condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
+							  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
+							  order by consecutivo asc";
 	$datos = seleccionarTodoSM($columnas,$tablas,$condicion);
 	
 	$datos_aux = array();
