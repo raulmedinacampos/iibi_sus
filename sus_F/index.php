@@ -1,4 +1,6 @@
 <?php
+/*Agregando comment */
+
 require 'flight/Flight.php';
 require 'inc/consultas.inc.php';
 
