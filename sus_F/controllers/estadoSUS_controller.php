@@ -11,7 +11,7 @@
 	}
 	
 	
-	$columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha,
+	$columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 				servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
 	
 	$tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
