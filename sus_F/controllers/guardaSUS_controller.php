@@ -38,6 +38,6 @@ $valores = "'".$folio."',".$consecutivo.",".$servicio.",'".$otro."','".$desc."',
 $insertar = insertar($tabla,$valores);
 
 if ( $insertar[0] == 1 ) {
-	echo "<p>Su solicitud fue enviada. Puede darle seguimiento en el apartado \"Estado de solicitudes\"</p>";
+	echo "<p>&nbsp;</p><p>Su solicitud fue enviada. Puede darle seguimiento en el apartado \"Estado de solicitudes\"</p>";
 }
 ?>
