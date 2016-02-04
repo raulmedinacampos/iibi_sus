@@ -14,7 +14,7 @@
 	</div> <!-- Fin .form-group -->
 	
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Nombre del usuario</label>
+		<label class="col-sm-2 control-label obligatorio">Nombre del usuario</label>
 		<div class="col-sm-4">
 			<input id="nomSol" name="nomSol" class="form-control" value="<?=$nomUsuario?>" />
 		</div>
@@ -206,11 +206,11 @@
 		</div>
 	</div> <!-- Fin .row -->
 	
-	<label>Escribir la descripción del servicio, los días, horario y lugar dónde se requerirá</label>
+	<label class="obligatorio">Escribir la descripción del servicio, los días, horario y lugar dónde se requerirá</label>
 	<textarea id="descripcion" name="descripcion" rows="3" class="form-control"></textarea>
 	<br />
 	
-	<label>Detalles del servicio</label>
+	<label class="obligatorio">Detalles del servicio</label>
 	<textarea id="detalle" name="detalle" rows="3" class="form-control"></textarea>
 	
 	<div id="instrucciones"></div>
