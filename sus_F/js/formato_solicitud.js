@@ -95,22 +95,56 @@ function desplegarMensajes() {
 	});
 }
 
+function validar() {
+	$("#formSolicitud").validate({
+		errorPlacement: function(error, element) {
+		    if (element.attr("name") == "servicio" )
+		        error.insertAfter(".nota");
+		    else
+		        error.insertAfter(element);
+		},
+		rules: {
+			nomSol: {
+				required: true
+			},
+			servicio: {
+				required: true
+			},
+			descripcion: {
+				required: true
+			},
+			detalle: {
+				required: true
+			}
+		},
+		messages: {
+			nomSol: "Este campo es requerido",
+			servicio: "Seleccione un servicio",
+			descripcion: "Este campo es requerido",
+			detalle: "Este campo es requerido"
+		}
+	});
+}
+
 function guardar() {
 	$('#btn_enviar').click(function(e) {
         e.preventDefault();
-
-        $.post(
-                'guardaSUS',
-                $('#formSolicitud').serialize(),
-                function(data) {
-                	$('#miDiv').html(data);
-                }
-        );
+        
+        if( $("#formSolicitud").valid() ) {
+	        $.post(
+	                'guardaSUS',
+	                $('#formSolicitud').serialize(),
+	                function(data) {
+	                	$('#miDiv').html(data);
+	                }
+	        );
+        }
     });
 }
 
 $(function() {
 	agregarOtro();
 	desplegarMensajes();
+	validar();
 	guardar();
 });

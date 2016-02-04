@@ -129,6 +129,10 @@ miDiv {
 	width: 99%;
 }
 
+.obligatorio:before {
+	content: '*'
+}
+
 /*Estilos para el área de creditos*/
 .creditos {
 	text-align:justify;
