@@ -5,14 +5,14 @@
 <?php
 if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 ?>
-<table border=1>
+<table class="table table-condensed table-striped">
 	<tr>
-		<td align="center"><strong>Folio</strong></td>
-		<td align="center"><strong>Fecha</strong></td>
-		<td align="center"><strong>Tipo</strong></td>
-		<td align="center"><strong>Descripción</strong></td>
-		<td align="center"><strong>Estado</strong></td>
-		<td align="center"><strong>Acción</strong></td>
+		<th>Folio</th>
+		<th>Fecha</th>
+		<th>Tipo</th>
+		<th>Descripción</th>
+		<th>Estado</th>
+		<th>Acción</th>
 	</tr>
     <?php
     foreach ( $datos as $dato ) {
@@ -23,7 +23,7 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 		<td><span onclick="detalleSUS('<?=$dato['folio']?>')"><?=$dato['fecha']?></span></td>
         <td><span onclick="detalleSUS('<?=$dato['folio']?>')"><?= $dato['servicio']?></span></td>
         <td><span onclick="detalleSUS('<?=$dato['folio']?>')"><?= $dato['descripcion']?></span></td>
-        <td align="center"><?=$dato['estatus']?></td>
+        <td><?=$dato['estatus']?></td>
 		<td align="center"><?=$dato['acciones']?></td>
 	</tr>
     <?php

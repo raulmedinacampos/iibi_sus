@@ -133,6 +133,15 @@ miDiv {
 	content: '*'
 }
 
+.table-striped > tbody > tr:first-of-type {
+    background-color: #337ab7 !important;
+    color: #FFFFFF;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #d9edf7;
+}
+
 /*Estilos para el área de creditos*/
 .creditos {
 	text-align:justify;
