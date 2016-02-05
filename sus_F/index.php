@@ -70,6 +70,14 @@ Flight::route('/reportes/infoMes/', function() {
 	Flight::render('reportes/infoMes');
 });
 
+Flight::route('/administracion/alta-de-empleado/', function() {
+	require_once 'controllers/empleado_controller.php';
+});
+
+Flight::route('/administracion/alta-de-usuario/', function() {
+	require_once 'controllers/usuario_controller.php';
+});
+
 Flight::route('/salir/', function() {
 	session_start();
 

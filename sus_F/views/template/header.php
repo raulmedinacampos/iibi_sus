@@ -68,7 +68,12 @@
 					<li><a href="#" class="cbp-tm-icon-mail" target="_self">Informe 2</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Suficiencia presupuestal</a></li>
+			<li><a href="#">Administración</a>
+				<ul class="cbp-tm-submenu">
+					<li><a href="administracion/alta-de-empleado" class="cbp-tm-icon-archive" target="_self">Alta de empleado</a></li>
+					<li><a href="administracion/alta-de-usuario" class="cbp-tm-icon-archive" target="_self">Alta de usuario</a></li>
+				</ul>
+			</li>
 			<li><a href="#">Ayuda</a>
 				<ul class="cbp-tm-submenu">
 					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Normatividad</a></li>
