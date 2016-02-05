@@ -1,14 +1,18 @@
 <?php
 
+/*Aunque el script se llama completo hay funciones que faltan implementar como suficiencia presupuestal y visto bueno jefe por lo menos*/
+
 	session_start();
 	
 	/*Tipo usuario
 	 * 
 	 * 1 - Usuario
+	 * 2 - Autorizador
 	 * 3 - SG 
-	 * 5 - SA
+	 * 4 - Presupuesto
+	 * 5 - SA 
 	 * 6 - Auditor este no hace nada mas que mirar el estado de las sus y el detalle
-	 Los demás perfiles se habilitarán luego*/
+	 */
 	
 	
 	if ( $_SESSION['tipoUsuario'] == 1 ) {
@@ -50,41 +54,77 @@
 		$datos_aux['estatus'] = $row['estatus'];
 		
 		
-		/*Para el arranque del sistema se usarán sólo
-		 * 
-		 * Validada por todos				(6) //en este caso solo será aceptada por SG para la fecha de validación
+		/*
+		 * Haciendose o modificandose 		(0) 
+		 * Solicitada para V.B. jefe  		(1)
+		 * Con V.B.J. para validar SG 		(2)
+		 * Sin C.B.J.                 		(3)
+		 * Validada por SG. Para SufPresup  (4)
+		 * No validada por SG         		(5)
+		 * Con SufPresup Validada por todos (6)
+		 * Sin SufPresup                    (7)
 		 * En proceso						(8)
 		 * Cancelada						(9)
 		 * Terminada. Para eva usuario		(10)
 		 * Evaluada							(11)
-		 * Archivada						(12) */
+		 * Archivada						(12)
+		 * */
+		
+		
+		/*Para el arranque del sistema se usaron sólo
+		 * 
+		 * Haciéndose o modificándose		(0)
+		 * En proceso						(8)
+		 * Cancelada						(9)
+		 * Terminada. Para eva usuario		(10)
+		 * Evaluada							(11)
+		 * Archivada						(12)
+		 
+		 *
+		 *Para que funcionen las demás es necesario cambiar los updates 
+		 *en la modificación de los estados de cada solicitud
+		 */
 		
 		switch ( $_SESSION['tipoUsuario'].$row['estado'] ) {
-					
 			case 11:
-				$datos_aux['acciones'] = 'Esperar validación de <br\>Servicios Generales';
+			case 13:
+			case 15:
+				$datos_aux['acciones'] = 'Modificar<br>';
+				$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">';
 				break;
-				
+					
 			case 110:
 				$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS(\''.$row['folio'].'\')">';
 				break;
 					
-				/*	
+			case 21:
+				$datos_aux['acciones'] = 'Autorizar<br>'; //daVB(2)
+				$datos_aux['acciones'] .= 'No autorizar<br>'; //noDaVb(3)
+				$datos_aux['acciones'] .= "Cancelar"; //cancelar(9)
+				break;
+					
+			case 32:
+				$datos_aux['acciones'] = 'Solicitar suficiencia<br>presupuestal';
+				$datos_aux['acciones'] .= 'No validar<br>';
+				$datos_aux['acciones'] .= 'Atender';
+				break;
+				/*	solicitaSF(4)
 				 noValidar(5)
 				 Comenzar(8)*/
-			case 36:
-			case 58:
+			case 36: case 58:
 				$datos_aux['acciones'] = 'Atender';
 				break;
 				//	Comenzar(8)
 				
+			case 37:
+			case 54:
 			case 58:
-				$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //cancelar(9)
+				$datos_aux['acciones'] = "Cancelar"; //cancelar(9)
 				break;
 					
 			case 38:
 				$datos_aux['acciones'] = "Terminar<br>"; //	terminar(10)
-				$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //cancelar(9)
+				$datos_aux['acciones'] .= "Cancelar"; //cancelar(9)
 				break;
 					
 			case 311:
@@ -92,6 +132,20 @@
 				//$actualizar = actualizar('servicioSUS','visible = 0','folio = "'.$row['folio'].'"');
 				break;
 				
+			case 44:
+				$datos_aux['acciones'] = "Con suficiencia presupuestal<br>";
+				$datos_aux['acciones'] .= "Sin suficiencia presupuestal";
+					
+				/*	darSuf(6)
+				 negarSuf(7)*/
+				break;
+			case 55:
+				$datos_aux['acciones'] = 'Validar'; //
+				break;
+				
+			case 57:
+				$datos_aux['acciones'] = 'Con suficiencia prespuestal'; //	darSuf(6)
+				break;
 				
 			default:
 				$datos_aux['acciones'] = $_SESSION['tipoUsuario'].$row['estado'];
