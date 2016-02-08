@@ -3,7 +3,7 @@ session_start();
  
 $columnas= "count(*)";
 $tablas = "servicioSUS";
-
+ 
 $mes = $_POST["mes"];
 $anio = $_POST["anio"];
 
