@@ -1,11 +1,9 @@
 <?php
-session_start();
- 
-$columnas= "count(*)";
 $tablas = "servicioSUS";
+$columnas= "count(*)";
  
-$mes = $_POST["mes"];
-$anio = $_POST["anio"];
+$mes = (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "";
+$anio = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "";
 
 $condicion = "idTipoServicio like '2%' and month(fechaSolicitud)=".$mes." and year(fechaSolitud)=".$anio;
 $correspS= seleccionar($columnas, $tablas, $condicion);
