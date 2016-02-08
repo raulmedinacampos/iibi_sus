@@ -269,6 +269,54 @@ function borrar($tabla,$condicion){
 			echo $GLOBALS['err_select'];}}
 	return $regreso;}
 	
+function iUsuario($valsEmpleado,$valsPuesto){
+	$sql = "SET AUTOCOMMIT=0;";
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	
+	$sql = "BEGIN;";
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	
+	$sql = "INSERT INTO empleado (
+			gradoAcad,
+			nombre,
+			apellidoP,
+			apellidoM,
+			iniciales,
+			noTrabajador,
+			noCuenta,
+			telFijo,
+			telMovil,
+			telOficina,
+			eMailPers,
+			eMailOf,
+			fechaIngreso,
+			RFC,
+			CURP,
+			estatus)
+		VALUES (".$valsEmpleado.",1)";
+
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
+
+
+	/*El if de René =D*/
+	if(($newEmp=!0)&&($newEmp=!NULL)){
+		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+	else{
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+			
+	if ($resultado) {
+		$sql = "COMMIT";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+		$regreso[0] = 1;
+		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
+	else{
+		$sql = "ROLLBACK;";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+		$regreso[1];
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+	
+return $regreso;}
 	
 ?>
