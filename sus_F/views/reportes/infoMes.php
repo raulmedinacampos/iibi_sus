@@ -1,5 +1,7 @@
+<script src="js/informe_mensual.js" type="text/javascript"></script>
+
 <h2>Informe Mensual de Servicios</h2>
-<form action="http://iibi.ferozo.com/" id="formSolicitud" name="formSolicitud" class="form-horizontal" method="post" accept-charset="utf-8">
+<form action="" id="formInforme" name="formInforme" class="form-horizontal" method="post" accept-charset="utf-8">
 	<div class="form-group">
 		<label class="col-sm-1 control-label">Mes</label>
 		<div class="col-sm-3">
@@ -25,9 +27,9 @@
 			<select id="anio" name="anio" class="form-control">
 				<option value="">Seleccione</option>
 				<?php
-					for ($i=date('Y')-5; $i<=date('Y'); $i++) {
+					for ($i=2016; $i<=date('Y'); $i++) {
 				?>
-				<option value=""><?php echo $i; ?></option>
+				<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 				<?php
 					}
 				?>
@@ -46,65 +48,101 @@
 		<tr>
 			<td>1</td>
 			<td>Correspondencia</td>
-			<td class="text-center">19</td>
-			<td class="text-center">19</td>
+			<td class="text-center">19
+				<input type="hidden" name="hCorrespS" value="19" id="hCorrespS" />
+			</td>
+			<td class="text-center">19
+				<input type="hidden" name="hCorrespR" value="19" id="hCorrespR" />
+			</td>
 			<td><input type="text" name="obsCorresp" value="" id="obsCorresp" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>2</td>
 			<td>Fotocopiado</td>
-			<td class="text-center">4</td>
-			<td class="text-center">4</td>
+			<td class="text-center">4
+				<input type="hidden" name="hFotocS" value="" id="hCorrespS" />
+			</td>
+			<td class="text-center">4
+				<input type="hidden" name="hFotocR" value="" id="hCorrespR" />
+			</td>
 			<td><input type="text" name="obsFotoc" value="" id="obsFotoc" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>3</td>
 			<td>Engargolado</td>
-			<td class="text-center">1</td>
-			<td class="text-center">1</td>
+			<td class="text-center">1
+				<input type="hidden" name="hEngarS" value="" id="hEngarS" />
+			</td>
+			<td class="text-center">1
+				<input type="hidden" name="hEngarR" value="" id="hEngarR" />
+			</td>
 			<td><input type="text" name="obsEngar" value="" id="obsEngar" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>4</td>
 			<td>Mantenimiento a equipo</td>
-			<td class="text-center">5</td>
-			<td class="text-center">5</td>
+			<td class="text-center">5
+				<input type="hidden" name="hMtoEqS" value="" id="hMtoEqS" />
+			</td>
+			<td class="text-center">5
+				<input type="hidden" name="hMtoEqR" value="" id="hMtoEqR" />
+			</td>
 			<td><input type="text" name="obsMtoEq" value="" id="obsMtoEq" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>5</td>
 			<td>Mantenimiento a inmueble</td>
-			<td class="text-center">1</td>
-			<td class="text-center">1</td>
+			<td class="text-center">1
+				<input type="hidden" name="hMtoInmS" value="" id="hMtoInmS" />
+			</td>
+			<td class="text-center">1
+				<input type="hidden" name="hMtoInmR" value="" id="hMtoInmR" />
+			</td>
 			<td><input type="text" name="obsMtoInm" value="" id="obsMtoInm" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>6</td>
 			<td>Mantenimiento a vehículos</td>
-			<td class="text-center">2</td>
-			<td class="text-center">2</td>
+			<td class="text-center">2
+				<input type="hidden" name="hMtoVehS" value="" id="hMtoVehS" />
+			</td>
+			<td class="text-center">2
+				<input type="hidden" name="hMtoVehR" value="" id="hMtoVehR" />
+			</td>
 			<td><input type="text" name="obsMtoVeh" value="" id="obsMtoVeh" class="form-control" />
 	</td>
 		</tr>
 		<tr>
 			<td>7</td>
 			<td>Transporte</td>
-			<td class="text-center">2</td>
-			<td class="text-center">2</td>
+			<td class="text-center">2
+				<input type="hidden" name="hTranspS" value="" id="hTranspS" />
+			</td>
+			<td class="text-center">2
+				<input type="hidden" name="hTranspR" value="" id="hTranspR" />
+			</td>
 			<td><input type="text" name="obsTransp" value="" id="obsTransp" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>8</td>
 			<td>Limpieza</td>
-			<td class="text-center">2</td>
-			<td class="text-center">2</td>
+			<td class="text-center">2
+				<input type="hidden" name="hLimpS" value="" id="hLimpS" />
+			</td>
+			<td class="text-center">2
+				<input type="hidden" name="hLimpR" value="" id="hLimpR" />
+			</td>
 			<td><input type="text" name="obsLimp" value="" id="obsLimp" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>9</td>
 			<td>Seguridad</td>
-			<td class="text-center">0</td>
-			<td class="text-center">0</td>
+			<td class="text-center">0
+				<input type="hidden" name="hSegS" value="" id="hSegS" />
+			</td>
+			<td class="text-center">0
+				<input type="hidden" name="hSegR" value="" id="hSegR" />
+			</td>
 			<td><input type="text" name="obsSeg" value="" id="obsSeg" class="form-control" /></td>
 		</tr>
 	</table>
@@ -117,12 +155,16 @@
 		</tr>
 		<tr>
 			<td>Servicios realizados</td>
-			<td class="text-center">36</td>
+			<td class="text-center">36
+				<input type="hidden" name="hTotalR" value="" id="hTotalR" />
+			</td>
 			<td><input type="text" name="obsTotalR" value="" id="obsTotalR" class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>Servicios solicitados</td>
-			<td class="text-center">36</td>
+			<td class="text-center">36
+				<input type="hidden" name="hTotalS" value="" id="hTotalS" />
+			</td>
 			<td><input type="text" name="obsTotalS" value="" id="obsTotalS" class="form-control" /></td>
 		</tr>
 		<tr>
@@ -174,6 +216,6 @@
 	</div>
 	
 	<div class="text-center">
-		<button name="btnEnviar" type="button" id="btnEnviar" class="btn btn-primary" >Enviar</button>
+		<button name="btnEnviar" type="button" id="btnEnviar" class="btn btn-primary">Enviar</button>
 	</div>
 </form>
