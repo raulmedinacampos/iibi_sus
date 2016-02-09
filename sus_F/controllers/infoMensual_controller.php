@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $tablas = "servicioSUS";
 $columnas= "count(*)";
  
@@ -74,30 +76,30 @@ $sadm= seleccionar("concat(nombre,' ',apellidoP,' ',apellidoM) as nombre","puest
 /*Las variables que terminan con Sol son las solicitadas, las que terminan con Real son las realizadas*/
 
 $data = array(
-		'correspS'  => $correspS[0],
-		'fotocS'	=> $fotocS[0],
-		'engarS'	=> $engarS[0], 
-		'mtoEqS'	=> $mtoEqS[0],
-		'mtoInmS'	=>  $mtoInmS[0],
-		'mtoVehiS'	=> $mtoVehiS[0],
-		'transpS'	=> $transpS[0],
-		'limpS'		=> $limpS[0],
-		'segS'		=> $segS[0],
+		'correspS'  => $correspS,
+		'fotocS'	=> $fotocS,
+		'engarS'	=> $engarS, 
+		'mtoEqS'	=> $mtoEqS,
+		'mtoInmS'	=>  $mtoInmS,
+		'mtoVehiS'	=> $mtoVehiS,
+		'transpS'	=> $transpS,
+		'limpS'		=> $limpS,
+		'segS'		=> $segS,
 		
-		'correspR' 	=> $correspR[0],
-		'fotocR'	=> $fotocR[0],
-		'engarR'	=> $engarR[0],
-		'mtoEqR'	=> $mtoEqR[0],
-		'mtoInmR'	=>  $mtoInmR[0],
-		'mtoVehR'	=> $mtoVehiR[0],
-		'transpR'	=> $transpR[0],
-		'limpR'		=> $limpR[0],
-		'segR'		=> $segR[0],
+		'correspR' 	=> $correspR,
+		'fotocR'	=> $fotocR,
+		'engarR'	=> $engarR,
+		'mtoEqR'	=> $mtoEqR,
+		'mtoInmR'	=>  $mtoInmR,
+		'mtoVehR'	=> $mtoVehiR,
+		'transpR'	=> $transpR,
+		'limpR'		=> $limpR,
+		'segR'		=> $segR,
 		
-		'totalR' 	=> $totalR[0],
-		'totalS' 	=> $totalS[0],
-		'sg' 		=> $sg[0],
-		'sadm' 		=> $sadm[0],
+		'totalR' 	=> $totalR,
+		'totalS' 	=> $totalS,
+		'sg' 		=> $sg,
+		'sadm' 		=> $sadm,
 );
 
 echo json_encode($data);
