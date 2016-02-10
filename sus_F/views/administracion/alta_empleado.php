@@ -1,3 +1,9 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
+
+<script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
+<script src="js/alta_empleado.js" type="text/javascript"></script>
+
 <h4>Escriba los datos del nuevo empleado</h4>
 
 <form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
@@ -37,7 +43,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Teléfono</label>
 				<div class="col-sm-4">
 					<input id="telefono" name="telefono" class="form-control" />
@@ -49,7 +55,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Correo personal</label>
 				<div class="col-sm-4">
 					<input id="correo" name="correo" class="form-control" />
@@ -61,7 +67,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">RFC</label>
 				<div class="col-sm-4">
 					<input id="rfc" name="rfc" class="form-control" />
@@ -75,7 +81,7 @@
 		</div>
 	</div>
 	
-	<div class="panel panel-primary">
+	<div class="panel panel-primary datos-adicionales">
 		<div class="panel-heading">Datos laborales</div>
 		<div class="panel-body">
 			<div class="form-group">
@@ -149,7 +155,11 @@
 		</div>
 	</div>
 	
-	<div class="form-group text-right">
+	<div class="form-group text-right buscar" style="display:none;">
+		<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
+	</div>
+	
+	<div class="form-group text-right datos-adicionales">
 		<button id="btnCancelar" name="btnCancelar" class="btn btn-default">Cancelar</button>
 		<button id="btnGuardar" name="btnGuardar" class="btn btn-primary">Guardar</button>
 	</div>
@@ -157,7 +167,7 @@
 
 <!-- Ventana modal para avisos -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

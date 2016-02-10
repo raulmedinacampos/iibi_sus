@@ -217,7 +217,7 @@
 	
 	<div class="row">
 		<div class="col-sm-12 text-right">
-			<button id="btn_enviar" name="btn_enviar" class="btn btn-primary">Solicitar autorización del servicio</button>
+			<button id="btn_enviar" name="btn_enviar" class="btn btn-primary">Solicitar servicio</button>
 		</div>
 	</div> <!-- Fin .row -->
 </form>
