@@ -74,14 +74,26 @@ Flight::route('/reportes/cargar-informe-mensual/', function() {
 	require_once 'controllers/infoMensual_controller.php';
 });
 
+Flight::route('/reportes/guarda-informe-mensual/', function() {
+	require_once 'controllers/guardaInfoMensual_controller.php';
+});
+	
 Flight::route('/administracion/alta-de-empleado/', function() {
 	require_once 'controllers/empleado_controller.php';
 });
 
+Flight::route('/administracion/guarda-empleado/', function() {
+	require_once 'controllers/guardaEmpleado_controller.php';
+});
+	
 Flight::route('/administracion/alta-de-usuario/', function() {
 	require_once 'controllers/usuario_controller.php';
 });
 
+Flight::route('/administracion/guarda-usuario/', function() {
+	require_once 'controllers/guardaUsuario_controller.php';
+});
+	
 Flight::route('/salir/', function() {
 	session_start();
 
