@@ -13,6 +13,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Grado</label>
 				<div class="col-sm-4">
+					<input type="hidden" id="hdnId" name="hdnId" value="" />
 					<select id="grado" name="grado" class="form-control">
 						<option value="">Seleccione</option>
 						<?php
@@ -155,13 +156,11 @@
 		</div>
 	</div>
 	
-	<div class="form-group text-right buscar" style="display:none;">
-		<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
-	</div>
-	
 	<div class="form-group text-right datos-adicionales">
-		<button id="btnCancelar" name="btnCancelar" class="btn btn-default">Cancelar</button>
-		<button id="btnGuardar" name="btnGuardar" class="btn btn-primary">Guardar</button>
+		<div class="col-sm-12">
+			<button id="btnCancelar" name="btnCancelar" class="btn btn-default">Cancelar</button>
+			<button id="btnGuardar" name="btnGuardar" class="btn btn-primary">Guardar</button>
+		</div>
 	</div>
 </form>
 
@@ -175,6 +174,7 @@
       </div>
       <div class="modal-body"></div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Aceptar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
