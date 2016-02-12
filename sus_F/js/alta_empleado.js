@@ -57,7 +57,7 @@ function buscarEmpleado() {
 					});
 					
 					$(".btn-primary").click(function() {
-						if ( $('input[type="radio"]').is(":checked") ) {
+						if ( $('input[type="radio"]').is(":checked") && idEmp ) {
 							$.post(
 									'administracion/buscar-info',
 									{'id': idEmp},
