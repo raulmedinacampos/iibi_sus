@@ -74,7 +74,7 @@ $valores = $maxID.",'Mantenimiento a inmueble','".$obsMtoInm."',".$hMtoInmS.",".
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Mantenimiento a vehículos','".$obsMtoVeh."',".$hMtoVehS.",".$hMtoVehR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Mantenimiento a vehï¿½culos','".$obsMtoVeh."',".$hMtoVehS.",".$hMtoVehR.",'".date('Y')."-".date('mm')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;

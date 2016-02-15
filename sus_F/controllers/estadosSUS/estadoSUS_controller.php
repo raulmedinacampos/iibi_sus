@@ -63,24 +63,21 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 		*/			
 		case 110://Terminada
-			$datos_aux['acciones'] = $_SESSION['tipoUsuario'].$row['estado'];
 			$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS(\''.$row['folio'].'\')">';//Evaluar(11)
-			
 			break;
 		
 		case 31://Solicitada
 			$datos_aux['acciones'] = '<input type="button" value="Validar" onclick="validarSUS(\''.$row['folio'].'\')">'; //Validar(8)
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //cancelar(9)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
 			break;
 		
 		case 38://En proceso
 			$datos_aux['acciones'] = '<input type="button" value="Terminar" onclick="terminarSUS(\''.$row['folio'].'\')">'; //Terminar(10)
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //cancelar(9)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
 			break;
 			
 		case 311://Evaluada
-			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //ARchivar(12)
-			//$actualizar = actualizar('servicioSUS','visible = 0','folio = "'.$row['folio'].'"');
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //Archivar(12)
 			break;
 			
 		case 51://Solicitada
@@ -88,7 +85,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 			
 		case 58://En proceso
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //cancelar(9)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
 			break;
 		
 		case 59://Cancelada

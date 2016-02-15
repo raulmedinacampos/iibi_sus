@@ -20,10 +20,6 @@ function evaluarSUS(folio){
 				}
 		);
 	});
-	/*
-  var tamanio="resizable=1,left=60,top=60,width=780,height=550,scrollbars=1";
-  window.open("./evaluacion/evaSolicitud.php?folio="+folio+"","",tamanio);
-	}*/
 }
 
 function cancelarSUS(folio) {
@@ -43,12 +39,8 @@ function cancelarSUS(folio) {
 				}
 		);
 	});
-   /*confirmar=confirm("¿Realmente desea cancelar esta solicitud?");
-    if (!confirmar)
-	  return false
-    else
-      location.href="cambioEdoSUS.php?folio="+folio+"&funcion=3&ruta=estadoSUS.jsp";}*/
 }
+
 
 /* Carga inicial de contenido en el div */
 function inicializar() {
