@@ -5,12 +5,10 @@ require 'inc/consultas.inc.php';
 /* Definición de las rutas */
 Flight::route('/', function() {
 	$header = array(
-			'menu' => 'no'
-	);
+			'menu' => 'no');
 	
 	$data = array(
-			'verifica' => (isset($_GET['verifica'])) ? $_GET['verifica'] : ""
-	);
+			'verifica' => (isset($_GET['verifica'])) ? $_GET['verifica'] : "");
 	
 	Flight::render('template/header', $header);
     Flight::render('login', $data);
@@ -38,7 +36,7 @@ Flight::route('POST /verifica/', function() {
 			if ( $_SESSION['tipoUsuario'] == 1 ) {
 				Flight::redirect('principal');
 			} else {
-				Flight::redirect('servicios/estado-de-solicitudes');
+				Flight::redirect('principal');
 			}
 		} else {
 			Flight::redirect('/?verifica=10');
