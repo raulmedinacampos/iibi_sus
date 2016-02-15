@@ -31,7 +31,11 @@ Flight::route('POST /verifica/', function() {
 			$_SESSION['tipoUsuario'] = $usuario['tipoUsuario']; 
 			$_SESSION['idUsuario']= $usuario['idUsuario'];
 			$_SESSION['idEmpleado']=$usuario['idEmpleado'];
-			$_SESSION['idUAutoriza']=$usuario['idUsuAutoriza'];
+			
+			if($usuario['idUsuAutoriza']==0)
+				$_SESSION['idUAutoriza']=$usuario['idEmpleado'];
+			else
+				$_SESSION['idUAutoriza']=$usuario['idUsuAutoriza'];
 			
 			if ( $_SESSION['tipoUsuario'] == 1 ) {
 				Flight::redirect('principal');
