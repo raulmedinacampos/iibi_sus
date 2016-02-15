@@ -83,6 +83,14 @@ Flight::route('/administracion/alta-de-empleado/', function() {
 Flight::route('/administracion/guarda-empleado/', function() {
 	require_once 'controllers/guardaEmpleado_controller.php';
 });
+
+Flight::route('/administracion/buscar-empleado/', function() {
+	require_once 'controllers/buscarEmpleado_controller.php';
+});
+
+Flight::route('/administracion/buscar-info/', function() {
+	require_once 'controllers/buscarInfoEmpleado_controller.php';
+});
 	
 Flight::route('/administracion/alta-de-usuario/', function() {
 	require_once 'controllers/usuario_controller.php';
