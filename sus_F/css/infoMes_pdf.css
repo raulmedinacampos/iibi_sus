@@ -1,0 +1,79 @@
+body, html {
+	margin: 0;
+	font-family: Calibri, Helvetica, Arial, sans-serif;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table th {
+	padding: 5pt 2pt; 
+	background-color: #c0e6f8;
+	border: 0.5pt solid #080808;
+	font-size: 7pt;
+	font-weight: normal;
+	text-align: center;
+}
+
+table td {
+	padding: 3pt 2pt;
+	border: 0.5pt solid #080808;
+	font-size: 9pt;
+	text-align: center;
+}
+
+table td.izq {
+	text-align: left;
+}
+
+.header {
+	position: relative;
+	font-size: 10pt;
+}
+
+.header table td {
+	text-align: center;
+	border: none;
+}
+
+.header td p {
+	margin: 0;
+}
+
+.firma {
+	width: 48%;
+	font-size: 10pt;
+	text-align: center;
+}
+
+.firma p {
+	margin: 0;
+}
+
+.firma .nombre {
+	margin-top: 30pt;
+	margin-bottom: 0;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.firma1 {
+	float: left;
+}
+
+.firma2 {
+	float: right;
+}
+
+.footer {
+	font-size: 8pt;
+	text-align: right;
+}
+
+.mes {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: right;
+}

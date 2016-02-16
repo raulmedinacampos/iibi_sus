@@ -57,6 +57,10 @@ Flight::route('/sus/', function() {
 	require_once 'controllers/sus_controller.php';
 });
 
+Flight::route('/sus-pdf/', function() {
+	require_once 'controllers/susPDF_controller.php';
+});
+
 Flight::route('/guardaSUS/', function() {
 	require 'controllers/guardaSUS_controller.php';});
 
@@ -78,6 +82,10 @@ Flight::route('/reportes/cargar-informe-mensual/', function() {
 
 Flight::route('/reportes/guarda-informe-mensual/', function() {
 	require_once 'controllers/guardaInfoMensual_controller.php';
+});
+
+Flight::route('/reportes/informe-mensual-pdf/', function() {
+	require_once 'controllers/infoMesPDF_controller.php';
 });
 	
 Flight::route('/administracion/alta-de-empleado/', function() {
