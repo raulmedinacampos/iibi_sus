@@ -11,8 +11,8 @@
 		<div class="panel-heading">Datos personales</div>
 		<div class="panel-body">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Grado</label>
-				<div class="col-sm-4">
+				<label class="col-sm-2 control-label datos-adicionales">Grado</label>
+				<div class="col-sm-4 datos-adicionales">
 					<input type="hidden" id="hdnId" name="hdnId" value="" />
 					<select id="grado" name="grado" class="form-control">
 						<option value="">Seleccione</option>
