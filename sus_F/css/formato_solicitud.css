@@ -1,6 +1,14 @@
 #instrucciones {
-	margin: 10px 20px 0;
+	margin: 10px 0;
+	padding: 10px;
 	color: #808080;
+	border: 1px #337AB7 solid;
+	border-radius: 5px;
+}
+
+#instrucciones p strong {
+    color: #337ab7;
+    font-size: 14px;
 }
 	
 .nota {

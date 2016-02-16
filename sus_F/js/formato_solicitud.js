@@ -1,3 +1,7 @@
+function inicializar() {
+	$('#instrucciones').css("display", "none");
+}
+
 function agregarOtro() {
 	$('input:radio').click(function() {
 		if ( $(this).prop("id") == "rdb_diversos_otro" ) {
@@ -92,6 +96,12 @@ function desplegarMensajes() {
 		}
 		
 		$('#instrucciones').html(instrucciones);
+		
+		if ( instrucciones ) {
+			$('#instrucciones').css("display", "block");
+		} else {
+			$('#instrucciones').css("display", "none");
+		}
 	});
 }
 
@@ -135,7 +145,7 @@ function guardar() {
 	                'guardaSUS',
 	                $('#formSolicitud').serialize(),
 	                function(data) {
-	                	$('#miDiv').html(data);
+	                	$('#miDiv').load('estadoSUS');
 	                }
 	        );
         }
@@ -143,6 +153,7 @@ function guardar() {
 }
 
 $(function() {
+	inicializar();
 	agregarOtro();
 	desplegarMensajes();
 	validar();

@@ -206,6 +206,8 @@
 		</div>
 	</div> <!-- Fin .row -->
 	
+	<div id="instrucciones"></div>
+	
 	<label class="obligatorio">Escribir la descripción del servicio, los días, horario y lugar dónde se requerirá</label>
 	<textarea id="descripcion" name="descripcion" rows="3" class="form-control"></textarea>
 	<br />
@@ -213,7 +215,7 @@
 	<label class="obligatorio">Detalles del servicio</label>
 	<textarea id="detalle" name="detalle" rows="3" class="form-control"></textarea>
 	
-	<div id="instrucciones"></div>
+	<br />
 	
 	<div class="row">
 		<div class="col-sm-12 text-right">
