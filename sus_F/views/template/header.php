@@ -65,7 +65,10 @@
 			<li><a href="#">Reportes</a>
 				<ul class="cbp-tm-submenu">
 					<li><a href="reportes/infoMes" target="myDiv">Informe mensual</a></li>
-					<li><a href="#" class="cbp-tm-icon-mail" target="_self">Informe 2</a></li>
+					<li><a href="#" target="_self">Mantenimientos realizados</a></li>
+					<li><a href="#" target="_self">Servicios eléctricos</a></li>
+					<li><a href="#" target="_self">Servicios con duraciones</a></li>
+					<li><a href="#" target="_self">Estadísticas de cancelación de servicios</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Administración</a>
@@ -76,7 +79,18 @@
 			</li>
 			<li><a href="#">Ayuda</a>
 				<ul class="cbp-tm-submenu">
-					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Normatividad</a></li>
+				<?php
+				$normatividad = "";
+				
+				if ( $_SESSION['tipoUsuario'] == 1 ) {
+					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';
+				}
+				
+				if ( $_SESSION['tipoUsuario'] == 3 ) {
+					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';
+				}
+				?>
+					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
 					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li>
 					<li><a href="#" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
 					<li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li>

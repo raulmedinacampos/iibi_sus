@@ -54,10 +54,16 @@ function inicializarMenu() {
 	    e.preventDefault();
 	
 	    var ruta = $(this).prop('href');
+	    var destino = $(this).prop('target');
 	    var segmentos = ruta.split("/");
 	    
 	    if ( ruta[ruta.length - 1] != "#" ) {
 	    	$('#miDiv').load(ruta);
+	    }
+	    
+	    if ( destino == "_blank" ) {
+	    	window.open(ruta, "_blank");
+	    	return false;
 	    }
 	    
 	    if ( segmentos[segmentos.length - 1] == "salir" ) {

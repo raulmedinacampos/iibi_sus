@@ -212,11 +212,6 @@
 	<textarea id="descripcion" name="descripcion" rows="3" class="form-control"></textarea>
 	<br />
 	
-	<label class="obligatorio">Detalles del servicio</label>
-	<textarea id="detalle" name="detalle" rows="3" class="form-control"></textarea>
-	
-	<br />
-	
 	<div class="row">
 		<div class="col-sm-12 text-right">
 			<button id="btn_enviar" name="btn_enviar" class="btn btn-primary">Solicitar servicio</button>
