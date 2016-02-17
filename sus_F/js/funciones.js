@@ -57,17 +57,19 @@ function inicializarMenu() {
 	    var destino = $(this).prop('target');
 	    var segmentos = ruta.split("/");
 	    
-	    if ( ruta[ruta.length - 1] != "#" ) {
-	    	$('#miDiv').load(ruta);
-	    }
-	    
 	    if ( destino == "_blank" ) {
 	    	window.open(ruta, "_blank");
-	    	return false;
+	    	return;
 	    }
+	    
+	    if ( ruta[ruta.length - 1] != "#" ) {
+	    	$('#miDiv').load(ruta);
+	    	return;
+	    }	    
 	    
 	    if ( segmentos[segmentos.length - 1] == "salir" ) {
 	    	window.location = "salir";
+	    	return;
 	    }
 	});
 }
