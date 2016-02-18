@@ -31,7 +31,9 @@
 	</div> <!-- Fin .form-group -->
 	
 	<h4>Tipo de servicio:</h4>
-	<p class="nota">Nota: Es necesario elaborar una solcitud por cada servicio requerido</p>
+	<div class="nota">
+		<p>Nota: Es necesario elaborar una solcitud por cada servicio requerido</p>
+	</div>
 	
 	<div class="row row-eq-height">
 		<div class="col-sm-3">
@@ -109,7 +111,7 @@
 				<div class="panel-heading">Mantenimiento a equipo y vehículos</div>
 				<div class="panel-body">
 					<div class="radio">
-						<label><input type="radio" id="rdb_7" name="servicio" value="31" />Mecánica</label>
+						<label><input type="radio" id="rdb_31" name="servicio" value="31" />Mecánica</label>
 					</div>
 		
 					<div class="radio">

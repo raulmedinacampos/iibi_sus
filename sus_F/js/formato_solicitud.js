@@ -58,14 +58,6 @@ function desplegarMensajes() {
 			break;
 		// Mantenimiento a equipo y vehículos
 		case "rdb_31":
-			instrucciones = '<p><strong>Información adicional:</strong></p>';
-			instrucciones += '<p>- Descripción del equipo<br />';
-			instrucciones += '- Marca<br />';
-			instrucciones += '- Modelo<br />';
-			instrucciones += '- Número de serie<br />';
-			instrucciones += '- Número de inventario<br />';
-			instrucciones += '- Placas</p>';
-			break;
 		case "rdb_32":
 		case "rdb_33":
 		case "rdb_34":
@@ -121,17 +113,17 @@ function validar() {
 				required: true
 			},
 			descripcion: {
-				required: true
-			},
-			detalle: {
-				required: true
+				required: true,
+				maxlength: 250
 			}
 		},
 		messages: {
 			nomSol: "Este campo es requerido",
 			servicio: "Seleccione un servicio",
-			descripcion: "Este campo es requerido",
-			detalle: "Este campo es requerido"
+			descripcion: {
+				required: "Este campo es requerido",
+				maxlength: "La descripción es muy larga, favor de resumirla"
+			}
 		}
 	});
 }
