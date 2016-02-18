@@ -220,3 +220,7 @@
 		</div>
 	</div> <!-- Fin .row -->
 </form>
+
+<form method="post" id="formPDF" name="formPDF" class="form-horizontal" action="sus-pdf" target="_blank">
+	<input type="hidden" id="hNuevaSolicitud" name="hNuevaSolicitud" value="">
+</form>

@@ -138,6 +138,8 @@ function guardar() {
 	                $('#formSolicitud').serialize(),
 	                function(data) {
 	                	$('#miDiv').load('estadoSUS');
+	                	
+	                	$("#formPDF").submit();
 	                }
 	        );
         }
