@@ -60,15 +60,15 @@
 				<div class="panel-heading">Mensajería</div>
 				<div class="panel-body">
 					<div class="radio">
-						<label><input type="radio" id="rdb_21" name="servicio" value="21" />Con propio</label>
+						<label><input type="radio" id="rdb_21" name="servicio" value="21" />Mensajería</label>
 					</div>
 		
 					<div class="radio">
-						<label><input type="radio" id="rdb_22" name="servicio" value="22" />Correo ordinario</label>
+						<label><input type="radio" id="rdb_22" name="servicio" value="22" />Paquetería</label>
 					</div>
 					
 					<div class="radio">
-						<label><input type="radio" id="rdb_23" name="servicio" value="23" />Mensajería especializada</label>
+						<label><input type="radio" id="rdb_23" name="servicio" value="23" />Otro</label>
 					</div>
 				</div>
 			</div>
