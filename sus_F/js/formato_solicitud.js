@@ -169,9 +169,10 @@ function guardar() {
 	                'guardaSUS',
 	                $('#formSolicitud').serialize(),
 	                function(data) {
-	                	$('#miDiv').load('estadoSUS');
-	                	
+	                	$("#hNuevaSolicitud").val(data);
 	                	$("#formPDF").submit();
+	                	
+	                	$('#miDiv').load('estadoSUS');
 	                }
 	        );
         }
