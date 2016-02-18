@@ -58,6 +58,14 @@ function desplegarMensajes() {
 			break;
 		// Mantenimiento a equipo y vehículos
 		case "rdb_31":
+			instrucciones = '<p><strong>Información adicional:</strong></p>';
+			instrucciones += '<p>- Descripción del equipo<br />';
+			instrucciones += '- Marca<br />';
+			instrucciones += '- Modelo<br />';
+			instrucciones += '- Número de serie<br />';
+			instrucciones += '- Número de inventario<br />';
+			instrucciones += '- Placas</p>';
+			break;
 		case "rdb_32":
 		case "rdb_33":
 		case "rdb_34":
