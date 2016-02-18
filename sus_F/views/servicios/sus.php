@@ -131,7 +131,7 @@
 					</div>
 					
 					<div class="radio">
-						<label><input type="radio" id="rdb_36" name="servicio" value="36" />Otro</label>
+						<label><input type="radio" id="rdb_mto_otro" name="servicio" value="36" />Otro</label>
 					</div>
 				</div>
 			</div>
@@ -177,7 +177,7 @@
 						</div>
 						
 						<div class="radio">
-							<label><input type="radio" id="rdb" name="servicio" value="69" />Otro</label>
+							<label><input type="radio" id="rdb_servicio_otro" name="servicio" value="69" />Otro</label>
 						</div>
 					</div>
 				</div>

@@ -7,13 +7,37 @@ function agregarOtro() {
 		if ( $(this).prop("id") == "rdb_diversos_otro" ) {
 			if ( $('#txt_otro_diversos').length == 0 ) {
 				var div = $(this).parents(".radio");
-				var txt = '<div class="txt-otro col-sm-12">';
-				txt += '<input id="txt_otro_diversos" class="form-control" placeholder="Describe el servicio" />';
+				var txt = '<div class="txt-otro-d col-sm-12">';
+				txt += '<input id="txt_otro_diversos" name="txt_otro_diversos" class="form-control" placeholder="Describe el servicio" />';
 				txt += '</div>';
 				div.after(txt);
 			}
 		} else {
-			$('.txt-otro').remove();
+			$('.txt-otro-d').remove();
+		}
+		
+		if ( $(this).prop("id") == "rdb_mto_otro" ) {
+			if ( $('#txt_otro_mto').length == 0 ) {
+				var div = $(this).parents(".radio");
+				var txt = '<div class="txt-otro-m col-sm-12">';
+				txt += '<input id="txt_otro_mto" name="txt_otro_mto" class="form-control" placeholder="Describe el servicio" />';
+				txt += '</div>';
+				div.after(txt);
+			}
+		} else {
+			$('.txt-otro-m').remove();
+		}
+		
+		if ( $(this).prop("id") == "rdb_servicio_otro" ) {
+			if ( $('#txt_otro_servicio').length == 0 ) {
+				var div = $(this).parents(".radio");
+				var txt = '<div class="txt-otro-s col-sm-12">';
+				txt += '<input id="txt_otro_servicio" name="txt_otro_servicio" class="form-control" placeholder="Describe el servicio" />';
+				txt += '</div>';
+				div.after(txt);
+			}
+		} else {
+			$('.txt-otro-s').remove();
 		}
 	});
 }
@@ -70,7 +94,7 @@ function desplegarMensajes() {
 		case "rdb_33":
 		case "rdb_34":
 		case "rdb_35":
-		case "rdb_36":
+		case "rdb_mto_otro":
 			instrucciones = '<p><strong>Información adicional:</strong></p>';
 			instrucciones += '<p>- Descripción del equipo<br />';
 			instrucciones += '- Marca<br />';
