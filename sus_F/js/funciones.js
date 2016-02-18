@@ -78,13 +78,13 @@ function inicializarMenu() {
 	    	return;
 	    }
 	    
-	    if ( ruta[ruta.length - 1] != "#" ) {
-	    	$('#miDiv').load(ruta);
-	    	return;
-	    }	    
-	    
 	    if ( segmentos[segmentos.length - 1] == "salir" ) {
 	    	window.location = "salir";
+	    	return;
+	    }
+	    
+	    if ( ruta[ruta.length - 1] != "#" ) {
+	    	$('#miDiv').load(ruta);
 	    	return;
 	    }
 	});
