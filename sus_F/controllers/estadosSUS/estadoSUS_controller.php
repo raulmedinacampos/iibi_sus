@@ -19,11 +19,13 @@ session_start();
  * Evaluada							(11)
  * Archivada						(12) */
 
+$mes =  ;
+
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
 
-if ( $_SESSION['tipoUsuario'] == 3 ) 
+if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
 	$seleccion = seleccionarTodo("*","servicioSUS"," estatus<12");
 		
 
@@ -76,6 +78,10 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
 			break;
 			
+		case 39://Cancelada
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //Archivar(12)
+			break;
+					
 		case 311://Evaluada
 			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //Archivar(12)
 			break;
