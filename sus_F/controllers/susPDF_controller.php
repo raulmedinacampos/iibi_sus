@@ -20,6 +20,8 @@ $grupoServicio = $solicitud['tipo'];
 $servicio = $solicitud['idTipoServicio'];
 $descripcion = $solicitud['descripcion'];
 $left=0;
+$top=0;
+$top2=0;
 
 if($grupoServicio==1||$grupoServicio==5) //diversos o transporte
 	$left = 155;
@@ -118,6 +120,7 @@ $html .= '</div>';
 
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
+$html .= '<div style="position:absolute; top:'.$top2.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
