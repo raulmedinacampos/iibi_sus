@@ -3,7 +3,7 @@
 session_start();
 
 $folio= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
-$folio = "25/2016";
+$folio = "3/2016";
 
 $responsable = (isset($_SESSION['idUAutoriza'])) ? seleccionar('*','empleado',"idEmpleado=".$_SESSION['idUAutoriza']) : "";
 $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$responsable['apellidoP']." ".$responsable['apellidoM'];
@@ -19,73 +19,76 @@ $fechaS = $solicitud['fechaS'];
 $grupoServicio = $solicitud['tipo'];
 $servicio = $solicitud['idTipoServicio'];
 $descripcion = $solicitud['descripcion'];
-$left=0;
-$top=0;
-$top2=0;
+$left = 0;
+$top = -20;
+$top2 = -20;
 
-if($grupoServicio==1||$grupoServicio==5) //diversos o transporte
+if($grupoServicio==1) //diversos
 	$left = 155;
 if($grupoServicio==2)//correspondencia
-	$left = ;
+	$left = 278;
 if($grupoServicio==3)//mantenimiento
-	$left = ;
+	$left = 404;
 if($grupoServicio==4||$grupoServicio==7)//reproducción o vigilancia
-	$left = ;
+	$left = 528;
+if($grupoServicio==5)//transporte
+	$left = 154;
 if($grupoServicio==6&&$servicio<65)//servicio a inmueble primera columna
-	$left = ;
+	$left = 286;
 if($grupoServicio==6&&$servicio>64)//servicio a inmueble primera columna
-	$left = ;
+	$left = 404;
 
 if($servicio==11) 	//limpieza
-	$top = ;
+	$top = 282;
 if($servicio==12||$servicio==13)
-   	$top= ;			//bocadillos y otro
+   	$top = 299;			//bocadillos y otro
 
 if($servicio==21)//mensajería
-	$top = ;
+	$top = 215;
 if($servicio==22)//paqueteria
-	$top = ;
+	$top = 248;
 if($servicio==23)//otro de correspondencia
-	$top = ;
+	$top = 282;
 
 if($servicio==31)//mecanica
-	$top = ;
+	$top = 198;
 if($servicio==32)//aire
-	$top = ;
+	$top = 232;
 if($servicio==33)//eq de comp
-	$top = ;
+	$top = 249;
 if($servicio==34)//equipo
-	$top = ;
-if($servicio==35||$servicio=36)//inmueble u otro
-	$top = ;
+	$top = 265;
+if($servicio==35||$servicio==36)//inmueble u otro
+	$top = 299;
 
 if($servicio==41)//fotocopiado
-	$top = ;
+	$top = 219;
 if($servicio==42)//engargolado
-	$top = ;
+	$top = 253;
 if($servicio==43)//enmicado
-	$top = ;
+	$top = 286;
 
 if($servicio==51){//local pasajeros
-	$top = 	;	$top2 = ;}
+	$top = 351;	$top2 = 384;}
 if($servicio==52){//foraneo pasajeros
-	$top = ;	$top2= ;}
+	$top = 368;	$top2 = 384;}
 if($servicio==53){//local carga
-	$top = ;	$top2 = ;}
+	$top = 351;	$top2 = 401;}
 if($servicio==54){//foraneo carga
-	$top = ;	$top2 =;}
+	$top = 368;	$top2 = 401;}
 	
 
 if($servicio==61||$servicio==65)//albañilería y electricidad
-	$top = ;
+	$top = 351;
 if($servicio==62||$servicio==66)//carpintería
-	$top = ;
+	$top = 368;
 if($servicio==63||$servicio==67)//herrería y pintura
-	$top = ;
+	$top = 385;
 if($servicio==64||$servicio==69)//cerrajería y otro
-	$top = ;
+	$top = 401;
+	
 if($servicio==71)//vigilancia
-	$top = ;
+	$top = 380;
 
 $telefono = "123 456 78";
 $header = "";
@@ -117,6 +120,8 @@ $html .= '<p>Folio: '.$folio.' </p>';
 $html .= '<p>Fecha de solicitud: '.$fechaS.' </p>';
 $html .= '<p>Teléfono: '.$telefono.' </p>';
 $html .= '</div>';
+
+$html .= '<div style="clear:both;"></div>';
 
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
@@ -170,7 +175,7 @@ $html .= '<tr>';
 $html .= '<th>CORRESPONDENCIA</th>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td height="139.7pt">';
+$html .= '<td height="127.2pt">';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td>MENSAJERÍA</td>';
@@ -244,7 +249,7 @@ $html .= '<tr>';
 $html .= '<th>REPRODUCCIÓN Y ENGARGOLADO</th>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td height="131.5pt">';
+$html .= '<td height="118.4pt">';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td>FOTOCOPIADO</td>';
@@ -273,8 +278,6 @@ $html .= '</table>';
 $html .= '</td>';
 $html .= '</tr>';
 $html .= '</table>';
-
-$html .= '<br />';
 
 $html .= '<table>';
 $html .= '<tr>';
@@ -350,7 +353,7 @@ $html .= '<tr>';
 $html .= '<th>VIGILANCIA PARA EVENTOS ESPECIALES</th>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td height="75.5pt">';
+$html .= '<td height="68.4pt">';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td>VIGILANCIA</td>';
