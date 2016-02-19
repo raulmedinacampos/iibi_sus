@@ -1,4 +1,91 @@
 <?php
+
+session_start();
+
+$folio= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
+$folio = "25/2016";
+
+$responsable = (isset($_SESSION['idUAutoriza'])) ? seleccionar('*','empleado',"idEmpleado=".$_SESSION['idUAutoriza']) : "";
+$nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$responsable['apellidoP']." ".$responsable['apellidoM'];
+
+$area = (isset($_SESSION['idUAutoriza'])) ? seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado=empleado.idEmpleado and empleado.idEmpleado = '.$_SESSION['idUAutoriza']) : "";
+$area = $area['area'];
+
+$columnas="nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo";
+$solicitud=seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
+
+$nomUsuario = $solicitud['nomSolicitante'];
+$fechaS = $solicitud['fechaS'];
+$grupoServicio = $solicitud['tipo'];
+$servicio = $solicitud['idTipoServicio'];
+$descripcion = $solicitud['descripcion'];
+$left=0;
+
+if($grupoServicio==1||$grupoServicio==5) //diversos o transporte
+	$left = 155;
+if($grupoServicio==2)//correspondencia
+	$left = ;
+if($grupoServicio==3)//mantenimiento
+	$left = ;
+if($grupoServicio==4||$grupoServicio==7)//reproducción o vigilancia
+	$left = ;
+if($grupoServicio==6&&$servicio<65)//servicio a inmueble primera columna
+	$left = ;
+if($grupoServicio==6&&$servicio>64)//servicio a inmueble primera columna
+	$left = ;
+
+if($servicio==11) 	//limpieza
+	$top = ;
+if($servicio==12||$servicio==13)
+   	$top= ;			//bocadillos y otro
+
+if($servicio==21)//mensajería
+	$top = ;
+if($servicio==22)//paqueteria
+	$top = ;
+if($servicio==23)//otro de correspondencia
+	$top = ;
+
+if($servicio==31)//mecanica
+	$top = ;
+if($servicio==32)//aire
+	$top = ;
+if($servicio==33)//eq de comp
+	$top = ;
+if($servicio==34)//equipo
+	$top = ;
+if($servicio==35||$servicio=36)//inmueble u otro
+	$top = ;
+
+if($servicio==41)//fotocopiado
+	$top = ;
+if($servicio==42)//engargolado
+	$top = ;
+if($servicio==43)//enmicado
+	$top = ;
+
+if($servicio==51){//local pasajeros
+	$top = 	;	$top2 = ;}
+if($servicio==52){//foraneo pasajeros
+	$top = ;	$top2= ;}
+if($servicio==53){//local carga
+	$top = ;	$top2 = ;}
+if($servicio==54){//foraneo carga
+	$top = ;	$top2 =;}
+	
+
+if($servicio==61||$servicio==65)//albañilería y electricidad
+	$top = ;
+if($servicio==62||$servicio==66)//carpintería
+	$top = ;
+if($servicio==63||$servicio==67)//herrería y pintura
+	$top = ;
+if($servicio==64||$servicio==69)//cerrajería y otro
+	$top = ;
+if($servicio==71)//vigilancia
+	$top = ;
+
+$telefono = "123 456 78";
 $header = "";
 $footer = "";
 $html = "";
@@ -8,7 +95,7 @@ $header .= '<table>';
 $header .= '<tr>';
 $header .= '<td><img src="images/unam_pdf.jpg" alt="" width="55pt" /></td>';
 $header .= '<td><p><strong>UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</strong></p>';
-$header .= '<p>SECRETARÍAS Y UNIDADES ADMINISTRATIVAS</p>';
+$header .= '<p>INSTITUTO DE INVESTIGACIONES BIBLIOTECOLÓGICAS Y DE LA INFORMACIÓN</p>';
 $header .= '<p>SERVICIOS GENERALES</p>';
 $header .= '<p><strong>SOLICITUD ÚNICA DE SERVICIOS</strong></p></td>';
 $header .= '<td><img src="images/iibi_pdf.png" alt="" width="50pt" /></td>';
@@ -16,20 +103,21 @@ $header .= '</tr>';
 $header .= '</table>';
 $header .= '</div>';
 
-$footer = '<p class="footer">F01 PSG Rev. 1</p>';
+$footer = '<p class="footer">F01 PSG Rev. 01</p>';
 
 $html .= '<div class="columna-1">';
-$html .= '<p>ÁREA SOLICITANTE: </p>';
-$html .= '<p>RESPONSABLE DEL ÁREA SOLICITANTE: </p>';
-$html .= '<p>NOMBRE DEL USUARIO: </p>';
+$html .= '<p>Área solicitante: '.$area.'</p>';
+$html .= '<p>Responsable del área solicitante: '.$nomResponsable.' </p>';
+$html .= '<p>Nombre del usuario: '.$nomUsuario.'</p>';
 $html .= '</div>';
 $html .= '<div class="columna-2">';
-$html .= '<p>FOLIO: </p>';
-$html .= '<p>FECHA DE SOLICITUD: </p>';
-$html .= '<p>TELÉFONO: </p>';
+$html .= '<p>Folio: '.$folio.' </p>';
+$html .= '<p>Fecha de solicitud: '.$fechaS.' </p>';
+$html .= '<p>Teléfono: '.$telefono.' </p>';
 $html .= '</div>';
 
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
+$html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
@@ -274,7 +362,7 @@ $html .= '</tr>';
 $html .= '</table>';
 
 $html .= '<p class="subtitulo">DESCRIPCIÓN DEL SERVICIO (Especificar claramente fecha y hora del servicio requerido)</p>';
-$html .= '<div class="descripcion"><p>DEVOLUCIÓN DE P.I.</p><p>FAVOR DE DEVOLVER UN LIBRO A LA BIBLIOTECA CENTRAL.<br />DESPUÉS ENTREGAR PAPELETA CON SELLO DE DEVUELTO A LA BIBLIOTECA DEL IIBI.</p><p>Z675 S3D87 LA BIBLIOTECA ESCOLAR, HOY: UN RECURSO ELECTRÓNICO</p><p>GRACIAS</p></td>';
+$html .= '<div class="descripcion">'.$descripcion.'</td>';
 $html .= '</div>';
 
 $html .= '<br />';
@@ -284,7 +372,7 @@ $html .= '<p>FECHA COMPROMISO DE ENTREGA:</p>';
 $html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO:</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';
-$html .= '<p class="nombre">NOMBRE Y FIRMA<br />RESPONSABLE DE SERVICIOS</p>';
+$html .= '<p class="nombre">Lic. Lucero Urbina Hdz.<br />RESPONSABLE DE SERVICIOS</p>';
 $html .= '</div>';  //.firma1
 
 $html .= '<div class="firma firma2">';
