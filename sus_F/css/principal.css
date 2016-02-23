@@ -156,12 +156,9 @@ miDiv {
 
 a {
 	font-weight:bold;
-	color: #630;
 	outline: none;
 	text-decoration: none;}
 
-a:hover {
-	color: #630;}
 
 .nota{
 	font-size:12px;

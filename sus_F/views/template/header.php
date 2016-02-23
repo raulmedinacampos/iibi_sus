@@ -73,6 +73,7 @@
 			</li>
 			<li><a href="#">Administración</a>
 				<ul class="cbp-tm-submenu">
+					<li><a href="administracion/lista-de-usuarios" class="cbp-tm-icon-archive" target="_self">Lista de usuarios</a></li>
 					<li><a href="administracion/alta-de-empleado" class="cbp-tm-icon-archive" target="_self">Alta de empleado</a></li>
 					<li><a href="administracion/alta-de-usuario" class="cbp-tm-icon-archive" target="_self">Alta de usuario</a></li>
 				</ul>

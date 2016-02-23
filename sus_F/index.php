@@ -62,10 +62,19 @@ Flight::route('/sus-pdf/', function() {
 });
 
 Flight::route('/guardaSUS/', function() {
-	require 'controllers/guardaSUS_controller.php';});
+	require 'controllers/guardaSUS_controller.php';
+});
 
 Flight::route('/estadoSUS/', function() {
 	require_once 'controllers/estadosSUS/estadoSUS_controller.php';
+});
+
+Flight::route('/detalleSUS/', function() {
+	require_once 'controllers/estadosSUS/detalleSUS_controller.php';
+});
+
+Flight::route('/listado-empleados/', function() {
+	require_once 'controllers/lista_empleados_controller.php';
 });
 
 Flight::route('/evaluacion/evaSolicitud/', function() {
@@ -103,6 +112,10 @@ Flight::route('/administracion/buscar-empleado/', function() {
 Flight::route('/administracion/buscar-info/', function() {
 	require_once 'controllers/administracion/buscarInfoEmpleado_controller.php';
 });
+
+Flight::route('/administracion/lista-de-usuarios/', function() {
+	require_once 'controllers/administracion/lista_usuarios_controller.php';
+});
 	
 Flight::route('/administracion/alta-de-usuario/', function() {
 	require_once 'controllers/administracion/usuario_controller.php';
@@ -110,6 +123,10 @@ Flight::route('/administracion/alta-de-usuario/', function() {
 
 Flight::route('/administracion/guarda-usuario/', function() {
 	require_once 'controllers/administracion/guardaUsuario_controller.php';
+});
+
+Flight::route('/administracion/editar-empleado/', function() {
+	require_once 'controllers/administracion/editar_empleado_controller.php';
 });
 	
 Flight::route('/salir/', function() {

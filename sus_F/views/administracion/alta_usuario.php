@@ -1,5 +1,7 @@
-<h4>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h4>
+<script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+<script src="js/alta_usuario.js" type="text/javascript"></script>
 
+<h4>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h4>
 
 <form method="post" id="formUsuario" name="formUsuario" class="form-horizontal" action="">
 	<div class="form-group">
@@ -7,6 +9,10 @@
 			<label>Escriba el nombre del trabajador que será dado de alta como usuario:</label>
 			<input type="hidden" id="hdn_id" name="hdn_id" />
 			<input type="text" id="trabajador" name="trabajador" class="form-control typeahead" />
+		</div>
+		<div class="col-sm-2">
+			<label>&nbsp;</label>
+			<button id="btnNuevoEmpleado" class="btn btn-info">Agregar nuevo empleado</button>
 		</div>
 	</div>
 	
