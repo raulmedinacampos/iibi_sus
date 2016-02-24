@@ -8,8 +8,8 @@ $valores = "fechaVerific = now(), idUsuVerific=".$_SESSION['idUsuario'].", estat
 $actualizar = actualizar("servicioSUS", $valores, "folio='".$folio."'");
 
 if ( $actualizar[0] == 0 ) {
-	/*Actualizar la lista de estados de solicitudes*/
+	echo "<p>La solicitud ha sido validada</p>";
 } else {
-	echo "Ocurió un problema con la evaluación, favor de comunicarse con el adminsitrador.";
+	echo "<p>Ocurió un problema con la evaluación, favor de comunicarse con el adminsitrador.</p>";
 }
 ?>

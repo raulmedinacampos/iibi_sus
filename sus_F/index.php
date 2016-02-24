@@ -73,6 +73,22 @@ Flight::route('/detalleSUS/', function() {
 	require_once 'controllers/estadosSUS/detalleSUS_controller.php';
 });
 
+Flight::route('/sus/evaluar-solicitud/', function() {
+	require_once 'controllers/estadosSUS/evaSolicitud_controller.php';
+});
+
+Flight::route('/sus/validar-solicitud/', function() {
+	require_once 'controllers/estadosSUS/validarSol_controller.php';
+});
+
+Flight::route('/sus/terminar-solicitud/', function() {
+	require_once 'controllers/estadosSUS/terminarSol_controller.php';
+});
+
+Flight::route('/sus/archivar-solicitud/', function() {
+	require_once 'controllers/estadosSUS/archivarSol_controller.php';
+});
+
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });

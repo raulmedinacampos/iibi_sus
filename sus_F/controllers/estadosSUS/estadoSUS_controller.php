@@ -19,8 +19,6 @@ session_start();
  * Evaluada							(11)
  * Archivada						(12) */
 
-$mes =  ;
-
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
@@ -65,37 +63,37 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 		*/			
 		case 110://Terminada
-			$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS(\''.$row['folio'].'\')">';//Evaluar(11)
+			$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn-evaluar">';//Evaluar(11)
 			break;
 		
 		case 31://Solicitada
-			$datos_aux['acciones'] = '<input type="button" value="Validar" onclick="validarSUS(\''.$row['folio'].'\')">'; //Validar(8)
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
+			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn-validar">'; //Validar(8)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" data-id="'.$row['folio'].'" class="btn-cancelar">'; //Cancelar(9)
 			break;
 		
 		case 38://En proceso
-			$datos_aux['acciones'] = '<input type="button" value="Terminar" onclick="terminarSUS(\''.$row['folio'].'\')">'; //Terminar(10)
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
+			$datos_aux['acciones'] = '<input type="button" value="Terminar" data-id="'.$row['folio'].'" class="btn-terminar">'; //Terminar(10)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" data-id="'.$row['folio'].'" class="btn-cancelar">'; //Cancelar(9)
 			break;
 			
 		case 39://Cancelada
-			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //Archivar(12)
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(12)
 			break;
 					
 		case 311://Evaluada
-			$datos_aux['acciones'] = '<input type="button" value="Archivar" onclick="archivarSUS(\''.$row['folio'].'\')">'; //Archivar(12)
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(12)
 			break;
 			
 		case 51://Solicitada
-			$datos_aux['acciones'] = '<input type="button" value="Validar" onclick="validarSUS(\''.$row['folio'].'\')">'; //Validar(8)
+			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn-validar">'; //Validar(8)
 			break;
 			
 		case 58://En proceso
-			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" onclick="cancelarSUS(\''.$row['folio'].'\')">'; //Cancelar(9)
+			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" data-id="'.$row['folio'].'" class="btn-cancelar">'; //Cancelar(9)
 			break;
 		
 		case 59://Cancelada
-			$datos_aux['acciones'] = '<input type="button" value="Validar" onclick="validarSUS(\''.$row['folio'].'\')">'; //Validar(8)
+			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn-validar">'; //Validar(8)
 			break;
 			
 		default: // 18 - 19 - 111 - 112 - 39 - 310 - 312 - 510 - 511 - 512
@@ -106,9 +104,26 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 
 $aux[] = $datos_aux;
 }//while
+
+$mes = array(
+		"", 
+		"enero",
+		"febrero",
+		"marzo",
+		"abril",
+		"mayo",
+		"junio",
+		"julio",
+		"agosto",
+		"septiembre",
+		"octubre",
+		"noviembre",
+		"diciembre"
+);
 	
 $data = array(
 		'seleccion' => $seleccion,
+		'mes' => $mes[date('n')],
 		'datos' => $aux);
 
 Flight::render('servicios/estadoSUS', $data);
