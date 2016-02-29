@@ -15,4 +15,7 @@ $actualizar = actualizar ( "servicioSUS", $valores, "folio='" . $folio . "'" );
 if ($actualizar [0] == 0 and $actualizar[1]!=1) {
 	echo "<p>Ocurió un problema, favor de comunicarse con el adminsitrador.</p>";
 	unset ($actualizar);}
+else{
+	echo "<p>Validada y en proceso.</p>";
+}
 ?>

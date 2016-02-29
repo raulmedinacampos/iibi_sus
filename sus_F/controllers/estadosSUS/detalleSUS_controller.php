@@ -2,7 +2,7 @@
 session_start();
 
 $folio = (isset($_POST['folio'])) ? $_POST['folio'] : "";
-$columnas = "*, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, DATE_FORMAT(fechaAprob,'%d/%m/%Y') as fechaA, left(idTipoServicio,1) as tipo";
+$columnas = "*, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, DATE_FORMAT(fechaVerific,'%d/%m/%Y') as fechaV, left(idTipoServicio,1) as tipo";
 
 $solicitud = seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
 $empleado = seleccionar('*','empleado',"idEmpleado=".$_SESSION['idEmpleado']);

@@ -10,20 +10,19 @@ session_start();
  * 6 - Auditor este no hace nada mas que mirar el estado de las sus y el detalle
  Los demás perfiles se habilitarán luego*/
 
-/*Para el arranque del sistema se usarA?n sAllo
+/*Para el arranque del sistema se usarán sólo
  * Solicitada						(1)
  * En proceso						(8)
  * Cancelada						(9)
  * Terminada. Para eva usuario		(10)
- * Evaluada							(11)
- * Archivada						(12) */
+ * Evaluada							(11) */
 
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
-	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
+	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11 and visible=1");
 
 if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
-	$seleccion = seleccionarTodo("*","servicioSUS"," estatus<12");
+	$seleccion = seleccionarTodo("*","servicioSUS"," visible=1");
 		
 
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
@@ -32,10 +31,10 @@ $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicita
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
-	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11";
+	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11 and visible=1";
 
 if ( $_SESSION['tipoUsuario'] == 3 ) 
-	$condicion= "servicioSUS.estatus<12 ";
+	$condicion= "visible=1 ";
 
 $condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio

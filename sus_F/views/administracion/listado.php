@@ -17,7 +17,7 @@ if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 	?>
 	<tr>
 		<td><?php echo $row['usuario']; ?></td>
-		<td><?php echo $row['nombre']; ?></td>
+		<td><?php echo $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']; ?></td>
 		<td><a href="#" data-id="<?php echo $row['idEmpleado']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
 	</tr>
 	<?php

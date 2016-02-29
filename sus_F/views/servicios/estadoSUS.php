@@ -17,7 +17,6 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 		<th align="center">Folio</th>
 		<th align="center">Fecha</th>
 		<th align="center">Tipo</th>
-		<th align="center">Descripción</th>
 		<th align="center">Estado</th>
 		<th align="center">Acción</th>
 	</tr>
@@ -26,10 +25,9 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 		$idUSolicitante = $dato['idUSolicitante'];
 	?>
     <tr>
-		<td align="center"><a href="#" data-folio="<?=$dato['folio']?>"><?=$dato['folio']?></a></td>
+		<td><a href="#" data-folio="<?=$dato['folio']?>"><?=$dato['folio']?></a></td>
 		<td><?=$dato['fecha']?></td>
         <td><?= $dato['servicio']?></td>
-        <td><?= $dato['descripcion']?></td>
         <td><?=$dato['estatus']?></td>
 		<td align="center"><?=$dato['acciones']?></td>
 	</tr>
