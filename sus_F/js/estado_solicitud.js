@@ -69,10 +69,6 @@ function inicializar() {
 		contenido += '<option value="Inconsistencia al llenar solicitud">Inconsistencia al llenar solicitud</option>';
 		contenido += '</select>';
 		contenido += '</div>';  //.form-group
-		contenido += '<div class="form-group">';
-		contenido += '<label>Observaciones</label>';
-		contenido += '<textarea id="obsCancelacion" name="obsCancelacion" class="form-control" rows="3"></textarea>';
-		contenido += '</div>';  //.form-group
 		
 		$('#myModal .modal-title').html('Cancelar solicitud');
 		$('#myModal .modal-body').html(contenido);
