@@ -12,7 +12,6 @@ session_start();
 
 /*Para el arranque del sistema se usarA?n sAllo
  * Solicitada						(1)
- * Validada por todos				(6) //en este caso sólo será aceptada por SG para la fecha de validación
  * En proceso						(8)
  * Cancelada						(9)
  * Terminada. Para eva usuario		(10)

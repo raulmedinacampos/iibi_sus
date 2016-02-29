@@ -77,7 +77,7 @@ function inicializar() {
 		$('#myModal .modal-title').html('Cancelar solicitud');
 		$('#myModal .modal-body').html(contenido);
 		$('#myModal .modal-footer .btn-default').html("No cancelar");
-		$('#myModal .modal-footer .btn-primary').html("Archivar");
+		$('#myModal .modal-footer .btn-primary').html("Cancelar");
 		$('#myModal .modal-footer .btn-primary').css("display", "inline");
 		
 		$('#myModal').modal('show');

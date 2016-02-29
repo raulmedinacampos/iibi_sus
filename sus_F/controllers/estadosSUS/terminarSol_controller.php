@@ -4,12 +4,17 @@ session_start();
 $folio= (isset($_POST['folio'])) ? addslashes($_POST['folio']) : "";
 
 $valores = "fechaLiberacion = now(), estatus=10, fechaModif=now()";
-/*Falta función para calcular la fecha de liberación según tabla de base de datos*/
 $actualizar = actualizar("servicioSUS", $valores, "folio='".$folio."'");
 
-if ( $actualizar[0] == 0 ) {
-	echo "<p>La solicitud ha sido terminada</p>";
+//	Si se realizó arreglo[0] = 1, arreglo[1] = numero de columnas afectadas
+//	Si no         arreglo[0] = 0, arreglo[1] = Mensaje de error.
+
+echo "Actualizar[0] ".$actualizar[0]. ". Actualizar[1] ".$actualizar[1];
+
+
+if ($actualizar [0] == 1 and $actualizar[1]==1) {
+	echo "<p>El servicio se concluyó.</p>";
 } else {
-	echo "<p>Ocurió un problema con la evaluación, favor de comunicarse con el adminsitrador.</p>";
+	echo "<p>Ocurió un problema, favor de comunicarse con el adminsitrador.</p>";
 }
 ?>

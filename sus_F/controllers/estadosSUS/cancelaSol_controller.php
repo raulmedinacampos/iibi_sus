@@ -1,11 +1,4 @@
 <?php
-/*Cancela solicitud es idéntica a evaSolicitud, se puede usar el mismo controlador?*/
-/*Falta la vista de cancelar solicitud
- * 
- * Donde se verán los datos de la solicitud más un recuadro donde se debe poner la razón para la cancelación.
- * 
- * */
-
 session_start();
 
 $folio= (isset($_POST['folio'])) ? addslashes($_POST['folio']) : "";

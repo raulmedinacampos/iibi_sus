@@ -19,8 +19,8 @@ session_start();
  * Evaluada							(11)
  * Archivada						(12) */
 
-$mes = (isset($_POST['mes'])) ? addslashes($_POST['mes']) : date('m');
-$mes = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : date('Y')
+$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
+$anio = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : date('Y');
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");

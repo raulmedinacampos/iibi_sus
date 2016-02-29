@@ -14,12 +14,12 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 ?>
 <table class="table table-condensed table-striped">
 	<tr>
-		<th>Folio</th>
-		<th>Fecha</th>
-		<th>Tipo</th>
-		<th>Descripción</th>
-		<th>Estado</th>
-		<th>Acción</th>
+		<th align="center">Folio</th>
+		<th align="center">Fecha</th>
+		<th align="center">Tipo</th>
+		<th align="center">Descripción</th>
+		<th align="center">Estado</th>
+		<th align="center">Acción</th>
 	</tr>
     <?php
     foreach ( $datos as $dato ) {
