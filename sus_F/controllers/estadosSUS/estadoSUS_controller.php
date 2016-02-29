@@ -75,11 +75,11 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 			
 		case 39://Cancelada
-			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(12)
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(visible=0)
 			break;
 					
 		case 311://Evaluada
-			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(12)
+			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn-archivar">'; //Archivar(visible=0)
 			break;
 			
 		case 51://Solicitada

@@ -19,6 +19,7 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 		<th align="center">Tipo</th>
 		<th align="center">Estado</th>
 		<th align="center">Acción</th>
+		<th align="center">Respaldo</th>
 	</tr>
     <?php
     foreach ( $datos as $dato ) {
@@ -30,6 +31,7 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
         <td><?= $dato['servicio']?></td>
         <td><?=$dato['estatus']?></td>
 		<td align="center"><?=$dato['acciones']?></td>
+		<td align="center"><a href="#" class="btn btn-sm btn-info" data-folio="<?=$dato['folio']?>">PDF</a></td>
 	</tr>
     <?php
 	}
