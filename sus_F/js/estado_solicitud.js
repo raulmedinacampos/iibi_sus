@@ -120,6 +120,15 @@ function inicializar() {
 			}
 		);
 	});
+	
+	$(".btn-pdf").click(function(e) {
+		e.preventDefault();
+		
+		var folio = $(this).data('folio');
+		
+		$("#hNuevaSolicitud").val(folio);
+		$("#formPDF").submit();
+	});
 }
 
 $(function() {

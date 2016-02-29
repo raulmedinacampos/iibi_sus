@@ -31,7 +31,7 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
         <td><?= $dato['servicio']?></td>
         <td><?=$dato['estatus']?></td>
 		<td align="center"><?=$dato['acciones']?></td>
-		<td align="center"><a href="#" class="btn btn-sm btn-info" data-folio="<?=$dato['folio']?>">PDF</a></td>
+		<td align="center"><button class="btn btn-sm btn-info btn-pdf" data-folio="<?=$dato['folio']?>">PDF</button></td>
 	</tr>
     <?php
 	}
@@ -40,3 +40,7 @@ if ( $row = mysqli_fetch_array($seleccion[1]) ) {
 <?php
 }
 ?>
+
+<form method="post" id="formPDF" name="formPDF" class="form-horizontal" action="sus-pdf" target="_blank">
+	<input type="hidden" id="hNuevaSolicitud" name="hNuevaSolicitud" value="" />
+</form>
