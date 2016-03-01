@@ -113,6 +113,30 @@ Flight::route('/reportes/mantenimientos-realizados-pdf/', function() {
 	require_once 'controllers/reportes/mtosRealizadosPDF_controller.php';
 });
 
+Flight::route('/reportes/servicios-electricos/', function() {
+	Flight::render('reportes/servicios_electricos');
+});
+
+Flight::route('/reportes/servicios-electricos-pdf/', function() {
+	require_once 'controllers/reportes/serviciosElectricosPDF_controller.php';
+});
+
+Flight::route('/reportes/servicios-con-duraciones/', function() {
+	Flight::render('reportes/servicios_duracion');
+});
+
+Flight::route('/reportes/servicios-con-duraciones-pdf/', function() {
+	require_once 'controllers/reportes/serviciosDuracionPDF_controller.php';
+});
+
+Flight::route('/reportes/estadisticas-de-cancelacion/', function() {
+	Flight::render('reportes/estadisticas_cancelacion');
+});
+
+Flight::route('/reportes/estadisticas-de-cancelacion-pdf/', function() {
+	require_once 'controllers/reportes/estadisticasCancelacionPDF_controller.php';
+});
+
 Flight::route('/reportes/cargar-informe-mensual/', function() {
 	require_once 'controllers/infoMensual_controller.php';
 });

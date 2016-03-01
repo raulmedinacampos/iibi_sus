@@ -20,14 +20,7 @@ $nombreMes = array(
 		"diciembre"
 );
 
-$fecha = "YEAR(fechaSolicitud) = '".$anio."' and MONTH(fechaSolicitud) = '".$mes."'";
-$mtoEqS  = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and ".$fecha);
-$mtoInmS = seleccionar("count(folio)","servicioSUS","idTipoServicio like '6%' and ".$fecha);
-
-$fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
-$mtoEqR  = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and estatus <9 and ".$fecha);
-$mtoInmR = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and estatus <9 and ".$fecha);
-
+$datos = seleccionarTodo("*","serviciosSUS","1 ORDER BY consecutivo, folio");
 
 $header = "";
 $footer = "";
@@ -50,37 +43,35 @@ $html .= '<br />';
 $html .= '<div class="contenedor">';
 $html .= '<p class="titulos">';
 $html .= '<span class="titulo1">Reporte para apoyar la evaluación del indicador</span><br />';
-$html .= '<span class="titulo2">Porcentaje de mantenimiento realizado</span>';
+$html .= '<span class="titulo2">Porcentaje de luminarias de bajo impacto instaladas</span>';
 $html .= '</p>';
 
 $html .= '<br />';
 
 $html .= '<p class="mes">Mes de contabilización: '.$nombreMes[$mes].' / '.$anio.'</p>';
 
+$html .= '<p class="titulos">Listado de servicios de electricidad</p>';
+
 $html .= '<table>';
 $html .= '<tr>';
-$html .= '<th></th>';
-$html .= '<th>Solicitados</th>';
-$html .= '<th>Realizados</th>';
+$html .= '<th>Fecha de liberación</th>';
+$html .= '<th>Descripción</th>';
+$html .= '<th>Observaciones de Servicios Generales</th>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td class="der">Mantenimiento a equipos</td>';
-$html .= '<td>'.$mtoEqS[0].'</td>';
-$html .= '<td>'.$mtoEqR[0].'</td>';
+$html .= '<td>&nbsp;</td>';
+$html .= '<td></td>';
+$html .= '<td></td>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td class="der">Mantenimiento a inmueble</td>';
-$html .= '<td>'.$mtoInmS[0].'</td>';
-$html .= '<td>'.$mtoInmR[0].'</td>';
+$html .= '<td>&nbsp;</td>';
+$html .= '<td></td>';
+$html .= '<td></td>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td class="der">Total</td>';
-
-$sumS = (int)$mtoEqS[0]+(int)$mtoInmS[0];
-$sumR = (int)$mtoEqR[0]+(int)$mtoInmR[0];
-
-$html .= '<td>'.$sumS.'</td>';
-$html .= '<td>'.$sumR.'</td>';
+$html .= '<td>&nbsp;</td>';
+$html .= '<td></td>';
+$html .= '<td></td>';
 $html .= '</tr>';
 $html .= '</table>';
 
