@@ -20,7 +20,14 @@ $nombreMes = array(
 		"diciembre"
 );
 
-$datos = seleccionarTodo("*","serviciosSUS","1 ORDER BY consecutivo, folio");
+$fecha = "YEAR(fechaSolicitud) = '".$anio."' and MONTH(fechaSolicitud) = '".$mes."'";
+$mtoEqS  = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and ".$fecha);
+$mtoInmS = seleccionar("count(folio)","servicioSUS","idTipoServicio like '6%' and ".$fecha);
+
+$fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
+$mtoEqR  = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and estatus <9 and ".$fecha);
+$mtoInmR = seleccionar("count(folio)","servicioSUS","idTipoServicio like '3%' and estatus <9 and ".$fecha);
+
 
 $header = "";
 $footer = "";
@@ -58,18 +65,22 @@ $html .= '<th>Realizados</th>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="der">Mantenimiento a equipos</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
+$html .= '<td>'.$mtoEqS[0].'</td>';
+$html .= '<td>'.$mtoEqR[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="der">Mantenimiento a inmueble</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
+$html .= '<td>'.$mtoInmS[0].'</td>';
+$html .= '<td>'.$mtoInmR[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="der">Total</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
+
+$sumS = (int)$mtoEqS[0]+(int)$mtoInmS[0];
+$sumR = (int)$mtoEqR[0]+(int)$mtoInmR[0];
+
+$html .= '<td>'.$sumS.'</td>';
+$html .= '<td>'.$sumR.'</td>';
 $html .= '</tr>';
 $html .= '</table>';
 
