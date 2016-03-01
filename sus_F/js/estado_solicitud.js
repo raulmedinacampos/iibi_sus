@@ -44,7 +44,7 @@ function inicializar() {
 		contenido += '</div>';  //.form-group
 		contenido += '</form>';
 		
-		$('#myModal .modal-title').html('Cancelar solicitud');
+		$('#myModal .modal-title').html('Evaluar solicitud');
 		$('#myModal .modal-body').html(contenido);
 		$('#myModal .modal-footer .btn-default').html("Cancelar");
 		$('#myModal .modal-footer .btn-primary').html("Aceptar");
@@ -93,22 +93,20 @@ function inicializar() {
 	$(".btn-validar").click(function(e) {
 		e.preventDefault();
 		
-		$(this).prop("disabled", "disabled");
-		
 		$.post(
 			'sus/validar-solicitud', 
 			{'folio': $(this).data('id')}, 
 			function(data) {
-				$('#myModal .modal-title').html('Validar solicitud');
-				$('#myModal .modal-body').html(data);
-				$('#myModal .modal-footer .btn-default').html("Cerrar");
-				$('#myModal .modal-footer .btn-primary').css("display", "none");
-				
-				$("#myModal").modal('show');
-				
-				$('#myModal .modal-footer .btn-default').one('click', function() {
+				if(data == "1") {
 					$("#miDiv").load("estadoSUS");
-				});
+				} else {
+					$('#myModal .modal-title').html('Validar solicitud');
+					$('#myModal .modal-body').html("Ocurió un problema, favor de comunicarse con el adminsitrador.");
+					$('#myModal .modal-footer .btn-default').html("Cerrar");
+					$('#myModal .modal-footer .btn-primary').css("display", "none");
+					
+					$("#myModal").modal('show');
+				}
 			}
 		);
 	});
@@ -226,19 +224,21 @@ function inicializar() {
 			'sus/archivar-solicitud', 
 			{'folio': $(this).data('id')}, 
 			function(data) {
-				$('#myModal .modal-title').html('Archivar solicitud');
-				$('#myModal .modal-body').html(data);
-				$('#myModal .modal-footer .btn-default').html("Cerrar");
-				$('#myModal .modal-footer .btn-primary').css("display", "none");
-				
-				$("#myModal").modal('show');
-				
-				$('#myModal .modal-footer .btn-default').one('click', function() {
+				if(data == "1") {
 					$("#miDiv").load("estadoSUS");
-				});
+				} else {
+					$('#myModal .modal-title').html('Archivar solicitud');
+					$('#myModal .modal-body').html("Ocurió un problema, favor de comunicarse con el adminsitrador.");
+					$('#myModal .modal-footer .btn-default').html("Cerrar");
+					$('#myModal .modal-footer .btn-primary').css("display", "none");
+					
+					$("#myModal").modal('show');
+				}
 			}
 		);
 	});
+	
+	/* Fin definición de botones */
 	
 	$(".btn-pdf").click(function(e) {
 		e.preventDefault();
