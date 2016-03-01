@@ -20,8 +20,6 @@ $nombreMes = array(
 		"diciembre"
 );
 
-$datos = seleccionarTodo("*","serviciosSUS","1 ORDER BY consecutivo, folio");
-
 $header = "";
 $footer = "";
 $html = "";
@@ -58,23 +56,23 @@ $html .= '<th>Fecha de liberación</th>';
 $html .= '<th>Descripción</th>';
 $html .= '<th>Observaciones de Servicios Generales</th>';
 $html .= '</tr>';
-$html .= '<tr>';
-$html .= '<td>&nbsp;</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
-$html .= '</tr>';
-$html .= '<tr>';
-$html .= '<td>&nbsp;</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
-$html .= '</tr>';
-$html .= '<tr>';
-$html .= '<td>&nbsp;</td>';
-$html .= '<td></td>';
-$html .= '<td></td>';
-$html .= '</tr>';
-$html .= '</table>';
 
+$fecha = "YEAR(fechaLiberación) = '".$anio."' and MONTH(fechaLibercion) = '".$mes."'";
+$datos = seleccionarTodo("fechaLiberacion as fechaL ,descripcion,motivo","servicioSUS","idTipoServicio = 65 and". $fecha);
+
+$seleccion=seleccionarTodo("folio,DATE_FORMAT(fechaSolicitud,'%d/%m/%Y'),estado","servicio","idSolicitante=1");
+while ( $row = mysqli_fetch_array($datos[1]) ) {
+	$html .= '<tr>';
+	$html .= '<td>'.$datos['fechaL'].'</td>';
+	$html .= '</tr>';
+	$html .= '<tr>';
+	$html .= '<td>'.$datos['descipcion'].'</td>';
+	$html .= '</tr>';
+	$html .= '<tr>';
+	$html .= '<td>'.$datos['motivo'].'</td>';
+	$html .= '</tr>';
+}
+$html .= '</table>';
 $html .= '</div>';  // .contenedor
 
 $ch = curl_init();
