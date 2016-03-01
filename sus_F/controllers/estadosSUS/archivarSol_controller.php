@@ -4,9 +4,9 @@ session_start();
 $folio= (isset($_POST['folio'])) ? addslashes($_POST['folio']) : "";
 $actualizar = actualizar('servicioSUS','visible = 0','folio = "'.$folio.'"');
 
-if ( $actualizar[0] == 0 ) {
-	echo "<p>La solicitud ha sido archivada</p>";
-} else {
-	echo "<p>Ocurió un problema con la evaluación, favor de comunicarse con el adminsitrador.</p>";
-}
+//	Si se realizó arreglo[0] = 1, arreglo[1] = numero de columnas afectadas
+if ($actualizar [0] == 1 and $actualizar[1]==1) 
+	echo "1";
+else
+	echo "0";
 ?>
