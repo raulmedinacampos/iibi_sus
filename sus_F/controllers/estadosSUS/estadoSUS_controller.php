@@ -102,6 +102,43 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 
 $aux[] = $datos_aux;
 }//while
+/* Intento para poner los renglones para evaluar cuando la solicitud la hace SG
+$columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante,
+			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
+
+$tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
+
+if ( $_SESSION['tipoUsuario'] == 3 )
+		$condicion= "visible=1 and servicioSUS.estatus=10";
+		$condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
+						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
+						  order by consecutivo asc";
+
+$datos = seleccionarTodoSM($columnas,$tablas,$condicion);
+
+while ( $row = mysqli_fetch_array($datos[1]) ) {
+	$datos_aux['idUSolicitante'] = $row['idUSolicitante'];
+	$datos_aux['folio'] = $row['folio'];
+	$datos_aux['fecha'] = $row['fecha'];
+	$datos_aux['servicio'] = $row['servicio'];
+	$datos_aux['descripcion'] = $row['descripcion'];
+	$datos_aux['estatus'] = $row['estatus'];
+
+	switch ( $_SESSION['tipoUsuario'].$row['estado'] ){
+			
+		case 310://Terminada
+			$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn-evaluar">';//Evaluar(11)
+			break;
+
+		default: // 18 - 19 - 111 - 112 - 39 - 310 - 312 - 510 - 511 - 512
+			$datos_aux['acciones'] = '';
+			break;
+	}//switch
+
+	$aux[] = $datos_aux;
+}//while
+
+*/
 
 $mes = array(
 		"", 

@@ -9,7 +9,7 @@ $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$res
 $area = (isset($_SESSION['idUAutoriza'])) ? seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado=empleado.idEmpleado and empleado.idEmpleado = '.$_SESSION['idUAutoriza']) : "";
 $area = $area['area'];
 
-$columnas="nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo";
+$columnas="nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo,motivo,estatus";
 $solicitud=seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
 
 $nomUsuario = $solicitud['nomSolicitante'];
@@ -17,6 +17,9 @@ $fechaS = $solicitud['fechaS'];
 $grupoServicio = $solicitud['tipo'];
 $servicio = $solicitud['idTipoServicio'];
 $descripcion = $solicitud['descripcion'];
+$motivo = $solicitud['motivo'];
+$estatus = $solicitud['estatus'];
+
 $left = 0;
 $top = -20;
 $top2 = -20;
@@ -366,7 +369,11 @@ $html .= '</tr>';
 $html .= '</table>';
 
 $html .= '<p class="subtitulo">DESCRIPCIÓN DEL SERVICIO (Especificar claramente fecha y hora del servicio requerido)</p>';
-$html .= '<div class="descripcion">'.$descripcion.'</td>';
+$html .= '<div class="descripcion">'.$descripcion;
+if($estatus==9)
+	$html .= '<br>Cancelada por: '.$motivo;
+
+	$html .= '</td>';
 $html .= '</div>';
 
 $html .= '<br />';

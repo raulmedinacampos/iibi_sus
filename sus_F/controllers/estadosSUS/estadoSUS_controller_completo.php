@@ -71,9 +71,9 @@
 		 * */
 		
 		
-		/*Para el arranque del sistema se usaron sólo
+		/*Para el arranque del sistema se usaron sï¿½lo
 		 * 
-		 * Haciéndose o modificándose		(0)
+		 * Haciï¿½ndose o modificï¿½ndose		(0)
 		 * En proceso						(8)
 		 * Cancelada						(9)
 		 * Terminada. Para eva usuario		(10)
@@ -81,8 +81,8 @@
 		 * Archivada						(12)
 		 
 		 *
-		 *Para que funcionen las demás es necesario cambiar los updates 
-		 *en la modificación de los estados de cada solicitud
+		 *Para que funcionen las demï¿½s es necesario cambiar los updates 
+		 *en la modificaciï¿½n de los estados de cada solicitud
 		 */
 		
 		switch ( $_SESSION['tipoUsuario'].$row['estado'] ) {
@@ -161,4 +161,51 @@
 	
 	Flight::render('servicios/estadoSUS', $data);
 
+/*
+//cambiar a estado 0
+function Modificar($folio){
+$cambio = actualizar ('servicioSUS','estatus = 0','folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud en modificaciÃ³n.";}
+	
+//estado 1 es hacer solicitud
+
+//cambiar a estado 2
+function vistoBueno($folio){
+$cambio = actualizar ('servicioSUS','estatus = 2 and fechaAprob=curdate()' ,'folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud con visto bueno del jefe inmediato.";}
+	
+//cambiar a estado 3
+function sinVistoBueno($folio){
+$cambio = actualizar ('servicioSUS','estatus = 3 and fechaAprob=curdate()' ,'folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud no autorizada por el jefe inmediato.";}
+	
+//cambiar a estado 4
+function solicitarSP($folio){
+$cambio = actualizar ('servicioSUS','estatus = 4 and fechaVerific=curdate() ','folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud verificada por Servicios generales, en espera de suficiencia presupuestal.";}
+	
+//cambiar a estado 5
+function noValidarSG($folio, $motivo){
+$cambio = actualizar ('servicioSUS','estatus = 5 and motivo="'.$motivo.'" and fechaVerific=curdate() ','folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud no verificada por Servicios generales.";}
+
+//cambiar a estado 6
+function conSuficiencia($folio){
+$cambio = actualizar ('servicioSUS','estatus = 6 ','folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud verificada y con suficiencia presupuestal.";}
+	
+//cambiar a estado 7
+function sinSuficiencia($folio){
+$cambio = actualizar ('servicioSUS','estatus = 7 and motivo="Solicitud sin suficiencia presupuestal."','folio = "'.$folio.'"');
+if ($cambio[0] == 1)
+	echo "Solicitud sin suficiencia presupuestal.";}
+	
+*/	
+	
 ?>

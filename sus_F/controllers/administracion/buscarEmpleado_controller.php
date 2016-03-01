@@ -6,7 +6,8 @@ $apMaterno = (isset($_POST['apMaterno'])) ? addslashes($_POST['apMaterno']) : ""
 $respuesta['encontrado'] = 0;
 $respuesta['datos'] = "";
 
-$empleado = seleccionarTodo("*","empleado","1 ORDER BY nombre, apellidoP, apellidoM");
+$empleado = seleccionarTodo("*","empleado","nombre like '%$nombre%' and apellidoP like '%$apPaterno%' and apellidoM like '%$apMaterno%'
+		and estatus = 1 ORDER BY apellidoP, apellidoM");
 
 if ( mysqli_num_rows($empleado[1]) > 0 ) {
 	$respuesta['encontrado'] = 1;

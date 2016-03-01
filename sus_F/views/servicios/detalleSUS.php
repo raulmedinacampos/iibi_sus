@@ -14,13 +14,12 @@
 	<div class="panel-body">
 	<p><strong class="text-primary">Servicio requerido: </strong><?php echo $solicitud['descripcion']; ?></p>
 	<p><strong class="text-primary">Descripción: </strong><?php echo $solicitud['detalle']; ?></p>
-	<p><strong class="text-primary">Estado: </strong><?php echo $estado['estatus']; ?></p>
-	<?php 
+	<p><strong class="text-primary">Estado: </strong><?php echo $estado['estatus']; ?></p><?php 
+	if($solicitud['motivo']!=NULL){?>
+	<p><strong class="text-primary">Comentarios: </strong><?php echo $solicitud['motivo']; ?></p><?php }
 	
 	if($solicitud['evaluacion']!=NULL){?>
 	<hr><p><strong class="text-primary">Evaluación: </strong><?php echo $solicitud['evaluacion']; ?></p>
-	<p><strong class="text-primary">Observaciones: </strong><?php echo $solicitud['obsEva']; ?></p>
-	<?php
-	}?>
+	<p><strong class="text-primary">Observaciones: </strong><?php echo $solicitud['obsEva']; ?></p><?php }?>
 	</div>
 </div>
