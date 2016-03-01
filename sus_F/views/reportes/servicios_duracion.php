@@ -4,7 +4,7 @@
 
 <h4>Seleccione el mes y año para obtener el reporte</h4>
 
-<form method="post" id="formReporte" name="formReporte" class="form-horizontal" action="reportes/mantenimientos-realizados-pdf" target="_blank">
+<form method="post" id="formReporte" name="formReporte" class="form-horizontal" action="reportes/servicios-con-duraciones-pdf" target="_blank">
 	<div class="form-group">
 		<label class="col-sm-1 control-label">Mes</label>
 		<div class="col-sm-3">

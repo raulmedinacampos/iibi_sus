@@ -24,6 +24,10 @@ table td {
 	text-align: center;
 }
 
+table td.izq {
+	text-align: left;
+}
+
 table td.der {
 	text-align: right;
 	padding-right: 10pt;
@@ -57,4 +61,18 @@ table td.der {
 	font-size: 10pt;
 	font-weight: bold;
 	text-align: right;
+}
+
+.titulos {
+	text-align: center;
+}
+
+.titulo1 {
+	font-size: 12pt;
+	color: #757575;
+}
+
+.titulo2 {
+	font-size: 14pt;
+	color: #337AB7;
 }
