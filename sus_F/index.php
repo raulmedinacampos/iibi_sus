@@ -81,6 +81,10 @@ Flight::route('/sus/validar-solicitud/', function() {
 	require_once 'controllers/estadosSUS/validarSol_controller.php';
 });
 
+Flight::route('/sus/cancelar-solicitud/', function() {
+	require_once 'controllers/estadosSUS/cancelaSol_controller.php';
+});
+
 Flight::route('/sus/terminar-solicitud/', function() {
 	require_once 'controllers/estadosSUS/terminarSol_controller.php';
 });
