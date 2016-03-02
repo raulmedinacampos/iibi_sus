@@ -59,8 +59,11 @@
 	if ( !isset($menu) ) {
 	?>
 	<div class="menu">
-		<ul id="cbp-tm-menu" class="cbp-tm-menu">
-			<li><a href="sus" target="myDiv">Solicitud Única de Servicios</a></li>
+		<ul id="cbp-tm-menu" class="cbp-tm-menu">?><?php 
+		if ( $_SESSION['tipoUsuario'] != 6) {?>
+			<li><a href="sus" target="myDiv">Solicitud Única de Servicios</a></li><?php }?>
+		
+		
 			<li><a href="estadoSUS" target="myDiv">Estado de solicitudes</a></li>
 			<li><a href="#">Reportes</a>
 				<ul class="cbp-tm-submenu">
@@ -70,7 +73,8 @@
 					<li><a href="reportes/servicios-con-duraciones" target="_self">Servicios con duraciones</a></li>
 					<li><a href="reportes/estadisticas-de-cancelacion" target="_self">Estadísticas de cancelación de servicios</a></li>
 				</ul>
-			</li>
+			</li><?php 
+			if ( $_SESSION['tipoUsuario'] == 3 OR $_SESSION['tipoUsuario']==5) {?>
 			<li><a href="#">Administración</a>
 				<ul class="cbp-tm-submenu">
 					<li><a href="administracion/lista-de-usuarios" class="cbp-tm-icon-archive" target="_self">Lista de usuarios</a></li>
@@ -78,6 +82,8 @@
 					<li><a href="administracion/alta-de-usuario" class="cbp-tm-icon-archive" target="_self">Alta de usuario</a></li>
 				</ul>
 			</li>
+			<?php }?>
+			
 			<li><a href="#">Ayuda</a>
 				<ul class="cbp-tm-submenu">
 				<?php
