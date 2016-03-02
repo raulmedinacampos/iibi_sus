@@ -20,7 +20,12 @@ $nombreMes = array(
 		"diciembre"
 );
 
-$datos = seleccionarTodo("*","serviciosSUS","1 ORDER BY consecutivo, folio");
+$fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
+
+$cUsuario=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Cancelada por el usuario" and '.$fecha); 
+$cPresup=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Falta de presupuesto" and '.$fecha); 
+$cPersonal=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Falta de personal" and '.$fecha);
+$cLlenado=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Inconsistencia al llenar solicitud" and '.$fecha);
 
 $header = "";
 $footer = "";
@@ -56,23 +61,25 @@ $html .= '<th>Número de servicios cancelados</th>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Cancelada por el usuario</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$cUsuario[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Falta de presupuesto</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$cPresup[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Falta de personal</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$cPersonal[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Inconsistencia al llenar la solicitud</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$cLlenado[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
+
+$total = (int)$cLlenado[0]+(int)$cPersonal[0]+(int)$cPresup[0]+(int)$cUsuario[0];
 $html .= '<td class="izq">Total de servicios cancelados</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$total.'</td>';
 $html .= '</tr>';
 $html .= '</table>';
 

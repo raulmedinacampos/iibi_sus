@@ -20,7 +20,6 @@ $nombreMes = array(
 		"diciembre"
 );
 
-$datos = seleccionarTodo("*","serviciosSUS","1 ORDER BY consecutivo, folio");
 
 $header = "";
 $footer = "";
@@ -50,14 +49,19 @@ $html .= '<br />';
 
 $html .= '<p class="mes">Mes de contabilización: '.$nombreMes[$mes].' / '.$anio.'</p>';
 
+
+$fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
+$onTime = seleccionar('count(folio)','servicioSUS','estatus >9 and fechaLiberacion<=fechaCompromiso and '.$fecha);
+$total = seleccionar('count(folio)','servicioSUS','estatus >9 and '.$fecha); 
+
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="izq">Número de servicios realizados en tiempo</td>';
-$html .= '<td></td>';
+$html .= '<td>'.$onTime[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Total de servicios realizados</td>';
-$html .= '<td></td>';
+$html .= '<td width="20%" >'.$total[0].'</td>';
 $html .= '</tr>';
 $html .= '</table>';
 
