@@ -2,25 +2,12 @@
 
 session_start();
 	
-/*Tipo usuario
- * 
- * 1 - Usuario
- * 3 - SG 
- * 5 - SA	
- * 6 - Auditor este no hace nada mas que mirar el estado de las sus y el detalle
- Los demás perfiles se habilitarán luego*/
+//$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
 
-/*Para el arranque del sistema se usarA?n sAllo
- * Solicitada						(1)
- * Validada por todos				(6) //en este caso sólo será aceptada por SG para la fecha de validación
- * En proceso						(8)
- * Cancelada						(9)
- * Terminada. Para eva usuario		(10)
- * Evaluada							(11)
- * Archivada						(12) */
-
-$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
-$anio = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : date('Y');
+$fechaI  = (isset($_POST['fechaI']))  ? addslashes($_POST['fechaI']) : '';
+$fechaF  = (isset($_POST['fechaF']))  ? addslashes($_POST['fechaF']) : '';
+$tipo  = (isset($_POST['tipo']))  ? addslashes($_POST['tipo']) : '';
+$estado  = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
@@ -40,9 +27,9 @@ if ( $_SESSION['tipoUsuario'] == 1 )
 if ( $_SESSION['tipoUsuario'] == 3 ) 
 	$condicion= "servicioSUS.estatus<12 ";
 
+$condicion = $condicion." and fechaSolicitud between ".$fechaI." and ".$fechaF." and servicioSUS.idTipoServicio =".$tipo." and servicioSUS.estatus = ".$estado;
 $condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
-						  and fechaSolicitud 
 						  order by consecutivo asc";
 
 $datos = seleccionarTodoSM($columnas,$tablas,$condicion);
@@ -60,11 +47,6 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 	
 	switch ( $_SESSION['tipoUsuario'].$row['estado'] ){
 					
-/*		case 11://Solicitada
-			/* Modificar(0)
-			 * Cancelar (9)*//*
-			break;
-		*/			
 		case 110://Terminada
 			$datos_aux['acciones'] = '<input type="button" value="Evaluar" onclick="evaluarSUS(\''.$row['folio'].'\')">';//Evaluar(11)
 			break;
@@ -100,7 +82,6 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 			
 		default: // 18 - 19 - 111 - 112 - 39 - 310 - 312 - 510 - 511 - 512
-//			$datos_aux['acciones'] = $_SESSION['tipoUsuario'].$row['estado'];
 			$datos_aux['acciones'] = '';
 			break;
 		}//switch
