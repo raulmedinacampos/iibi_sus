@@ -57,19 +57,26 @@ $html .= '<th>Descripción</th>';
 $html .= '<th>Observaciones de Servicios Generales</th>';
 $html .= '</tr>';
 
-$fecha = "YEAR(fechaLiberación) = '".$anio."' and MONTH(fechaLibercion) = '".$mes."'";
-$datos = seleccionarTodo("fechaLiberacion as fechaL ,descripcion,motivo","servicioSUS","idTipoServicio = 65 and". $fecha);
+$fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
+$datos = seleccionarTodo("fechaLiberacion as fechaL ,descripcion,motivo","servicioSUS","idTipoServicio = 65 AND ". $fecha);
 
-$seleccion=seleccionarTodo("folio,DATE_FORMAT(fechaSolicitud,'%d/%m/%Y'),estado","servicio","idSolicitante=1");
-while ( $row = mysqli_fetch_array($datos[1]) ) {
+$seleccion=seleccionarTodo("folio,DATE_FORMAT(fechaSolicitud,'%d/%m/%Y'),estatus","servicioSUS","idUSolicitante=1");
+
+if ( isset($datos[1]) && mysqli_num_rows( $datos[1]) > 0 ) {
+	while ( $row = mysqli_fetch_array($datos[1]) ) {
+		$html .= '<tr>';
+		$html .= '<td>'.$datos['fechaL'].'</td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<td>'.$datos['descipcion'].'</td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<td>'.$datos['motivo'].'</td>';
+		$html .= '</tr>';
+	}
+} else {
 	$html .= '<tr>';
-	$html .= '<td>'.$datos['fechaL'].'</td>';
-	$html .= '</tr>';
-	$html .= '<tr>';
-	$html .= '<td>'.$datos['descipcion'].'</td>';
-	$html .= '</tr>';
-	$html .= '<tr>';
-	$html .= '<td>'.$datos['motivo'].'</td>';
+	$html .= '<td colspan="3">No se encontraron resultados</td>';
 	$html .= '</tr>';
 }
 $html .= '</table>';
