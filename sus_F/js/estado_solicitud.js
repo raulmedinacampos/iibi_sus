@@ -1,4 +1,12 @@
 function inicializar() {
+	$("form").css("margin", "0");
+	
+	$('.datepicker').datepicker({
+		format: 'dd/mm/yyyy',
+		language: 'es',
+		orientation: 'top auto'
+	});
+	
 	$("table a").click(function(e) {
 		e.preventDefault();
 		
