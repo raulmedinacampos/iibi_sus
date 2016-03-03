@@ -10,7 +10,7 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">Datos personales</div>
 		<div class="panel-body">
-			<div class="form-group">
+			<div class="inicial">
 				<label class="col-sm-2 control-label datos-adicionales">Grado</label>
 				<div class="col-sm-4 datos-adicionales">
 					<input type="hidden" id="hdnId" name="hdnId" value="" />
@@ -27,19 +27,19 @@
 				</div>
 				
 				<label class="col-sm-2 control-label">Nombre(s)</label>
-				<div class="col-sm-4">
+				<div class="col-sm-2">
 					<input id="nombre" name="nombre" class="form-control" />
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<div class="inicial">
 				<label class="col-sm-2 control-label">Apellido paterno</label>
-				<div class="col-sm-4">
+				<div class="col-sm-2">
 					<input id="apPaterno" name="apPaterno" class="form-control" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Apellido materno</label>
-				<div class="col-sm-4">
+				<div class="col-sm-2">
 					<input id="apMaterno" name="apMaterno" class="form-control" />
 				</div>
 			</div>

@@ -29,6 +29,9 @@ function buscarEmpleado() {
 					$("#myModal .modal-footer .btn-default").css("display", "inline");
 					$("#myModal .modal-footer .btn-primary").css("display", "none");
 					
+					$(".inicial div.col-sm-2").addClass("col-sm-4").removeClass("col-sm-2");
+					$(".inicial").addClass("form-group").removeClass("inicial");
+					
 					$(".btn-default").click(function() {
 						$(".datos-adicionales").slideDown();
 					});
@@ -39,6 +42,9 @@ function buscarEmpleado() {
 					$("#myModal .modal-body").html(d.datos);
 					$("#myModal .modal-footer .btn-default").css("display", "none");
 					$("#myModal .modal-footer .btn-primary").css("display", "inline");
+					
+					$(".inicial div.col-sm-2").addClass("col-sm-4").removeClass("col-sm-2");
+					$(".inicial").addClass("form-group").removeClass("inicial");
 					
 					$(".detalle").css("display", "none");
 					
