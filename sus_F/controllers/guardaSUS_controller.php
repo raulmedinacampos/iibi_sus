@@ -24,7 +24,7 @@ if ( !empty($_POST['descripcion']) ) {
 if ( !empty($_POST['detalle']) ) {
 	$detalle = $_POST['detalle'];
 } else {
-	$detalle = "Sin detalle del servicio.";
+	$detalle = "";
 }
 
 if ( $servicio == 13 || $servicio == 36 || $servicio == 69 ) {
