@@ -4,12 +4,10 @@ body, html {
 }
 
 div.descripcion {
-	padding: 0 5pt;
-	border: 0.5pt solid #000000;
-}
-
-div.descripcion p {
+	padding: 3pt 5pt;
+	margin-bottom: 8pt;
 	font-size: 8pt;
+	border: 0.5pt solid #000000;
 }
 
 table {
@@ -43,6 +41,7 @@ table td.centrado {
 
 table td.sin-borde {
 	border: none;
+	vertical-align: top;
 }
 
 table.evaluacion th {
@@ -89,30 +88,43 @@ table.servicio tr td table {
 
 table.servicio tr td table td {
 	border: none;
-	font-size: 8pt;
+	font-size: 6.5pt;
 }
 
 table.servicio tr td table td.casilla {
-	width: 20pt;
+	width: 18pt;
 	border: 1pt solid #000000;
 }
 
 .columna-1 {
 	float: left;
 	width: 63%;
-	font-size: 9pt;
+	font-size: 8pt;
 }
 
 .columna-2 {
 	float: right;
 	width: 34%;
-	font-size: 9pt;
+	font-size: 8pt;
+}
+
+.columna-1 p, .columna-2 p {
+	margin: 0 0 3pt;
 }
 
 .columna-3 {
 	float: left;
 	width: 48%;
 	font-size: 8pt;
+}
+
+.columna-3 p.fecha-liberacion {
+	margin-bottom: 30.5pt;
+}
+
+.columna-3 p, .columna-4 p {
+	margin: 0 0 3pt;
+	font-size: 7pt;
 }
 
 .columna-4 {
@@ -122,8 +134,8 @@ table.servicio tr td table td.casilla {
 	border: 1pt solid #1272A0;
 }
 
-.fecha-liberacion {
-	margin-bottom: 35pt;
+.columna-4 .margen-izquierdo {
+	margin-left: 10pt;
 }
 
 .firma {
@@ -170,10 +182,6 @@ table.servicio tr td table td.casilla {
 	text-align: right;
 }
 
-.margen-izquierdo {
-	margin-left: 10pt;
-}
-
 .nota {
 	position: absolute;
 	bottom: 30pt;
@@ -182,6 +190,7 @@ table.servicio tr td table td.casilla {
 }
 
 .subtitulo {
+	margin-bottom: 3pt;
 	font-size: 8pt;
 	font-weight: bold;
 }
