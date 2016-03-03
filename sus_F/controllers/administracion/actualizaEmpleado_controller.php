@@ -1,7 +1,4 @@
 <?php
-
-/*se guarda si es nuevo se actualiza si ya existe*/
-
 $grado = (isset($_POST['grado'])) ? addslashes($_POST['grado']) : "";
 $nombre = (isset($_POST['nombre'])) ? addslashes($_POST['nombre']) : "";
 $apPaterno = (isset($_POST['apPaterno'])) ? addslashes($_POST['apPaterno']) : "";

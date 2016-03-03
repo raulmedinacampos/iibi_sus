@@ -25,7 +25,7 @@ if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['
 	$seleccion = seleccionarTodo("*","servicioSUS"," visible=1");
 		
 
-$columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
+$columnas = "*, folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
 
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
@@ -63,7 +63,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 		case 110://Terminada
 			$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
 			break;
-		
+			
 		case 31://Solicitada
 			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-validar">'; //Validar(8)
 			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-cancelar">'; //Cancelar(9)
@@ -78,6 +78,13 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-archivar">'; //Archivar(visible=0)
 			break;
 					
+		case 310://Terminada
+			if((int)$_SESSION['idUsuario']==(int)$row['idUSolicitante'])
+				$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
+			else
+				$datos_aux['acciones'] = '';//Evaluar(11)
+			break;
+		
 		case 311://Evaluada
 			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-archivar">'; //Archivar(visible=0)
 			break;
@@ -93,8 +100,16 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 		case 59://Cancelada
 			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-validar">'; //Validar(8)
 			break;
+
+		case 510://Terminada
+			if((int)$_SESSION['idUsuario']==(int)$row['idUSolicitante'])
+				$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
+			else
+				$datos_aux['acciones'] = '';//Evaluar(11)
+			break;
+							
 			
-		default: // 18 - 19 - 111 - 112 - 39 - 310 - 312 - 510 - 511 - 512
+		default: // 18 - 19 - 111 - 112 - 39 -  312  - 511 - 512
 //			$datos_aux['acciones'] = $_SESSION['tipoUsuario'].$row['estado'];
 			$datos_aux['acciones'] = '';
 			break;
@@ -103,25 +118,8 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 $aux[] = $datos_aux;
 }//while
 
-$mes = array(
-		"", 
-		"enero",
-		"febrero",
-		"marzo",
-		"abril",
-		"mayo",
-		"junio",
-		"julio",
-		"agosto",
-		"septiembre",
-		"octubre",
-		"noviembre",
-		"diciembre"
-);
-	
 $data = array(
 		'seleccion' => $seleccion,
-		'mes' => $mes[date('n')],
 		'datos' => $aux);
 
 Flight::render('servicios/estadoSUS', $data);

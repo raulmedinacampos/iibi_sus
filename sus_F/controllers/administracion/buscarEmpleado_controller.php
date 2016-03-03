@@ -21,6 +21,9 @@ if ( mysqli_num_rows($empleado[1]) > 0 ) {
 		$respuesta['datos'] .= '</div>';
 	}
 }
+else{
+	$respuesta['encontrado']=0;
+}
 
 echo json_encode($respuesta);
 ?>
