@@ -28,6 +28,13 @@
 			<label>Grupo</label>
 			<select id="grupo" name="grupo" class="form-control">
 				<option value="">Seleccione</option>
+				<?php
+				while ( $row = mysqli_fetch_array($grupo[1]) ) {
+				?>
+				<option value="<?php echo $row['idTipoUsuarioSUS']; ?>"><?php echo $row['tipoUsuarioSUS']?></option>
+				<?php
+				}
+				?>
 			</select>
 		</div>
 	</div>
