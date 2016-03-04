@@ -90,14 +90,76 @@ function buscarEmpleado() {
 	});
 }
 
+function validar() {
+	$("#formEmpleado").validate({
+		rules: {
+			nombre: {
+				required: true
+			},
+			apPaterno: {
+				required: true
+			},
+			correo: {
+				email: true
+			},
+			correoConf: {
+				equalTo: "#correo"
+			},
+			area: {
+				required: true
+			},
+			puesto: {
+				required: true
+			},
+			telefonoOf: {
+				required: true
+			},
+			correoInst: {
+				required: true,
+				email: true
+			},
+			correoInstConf: {
+				equalTo: "#correoInst"
+			}
+		},
+		messages: {
+			correoConf: "El correo no coincide",
+			correoInstConf: {
+				equalTo: "El correo no coincide"
+			}
+		}
+	});
+}
+
 function guardar() {
 	$("#btnGuardar").click(function(e) {
 		e.preventDefault();
+		
+		if ( $("#formEmpleado").valid() ) {
+			$.post(
+				'administracion/guarda-empleado', 
+				$("#formEmpleado").serialize(), 
+				function(data) {
+					if ( data == "1" ) {
+						$("#miDiv").load("administracion/lista-de-usuarios");
+					}
+					
+					else {
+						$("#myModal .modal-body").html("Ocurió un problema, favor de comunicarse con el administrador");
+						$("#myModal .modal-footer .btn-default").css("display", "inline");
+						$("#myModal .modal-footer .btn-primary").css("display", "none");
+						
+						$("#myModal").modal('show');
+					}
+				}
+			);
+		}*/
 	});
 }
 
 $(function() {
 	inicializar();
 	buscarEmpleado();
+	validar();
 	guardar();
 });

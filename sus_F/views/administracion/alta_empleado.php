@@ -26,14 +26,14 @@
 					</select>
 				</div>
 				
-				<label class="col-sm-2 control-label">Nombre(s)</label>
+				<label class="col-sm-2 control-label obligatorio">Nombre(s)</label>
 				<div class="col-sm-2">
 					<input id="nombre" name="nombre" class="form-control" />
 				</div>
 			</div>
 			
 			<div class="inicial">
-				<label class="col-sm-2 control-label">Apellido paterno</label>
+				<label class="col-sm-2 control-label obligatorio">Apellido paterno</label>
 				<div class="col-sm-2">
 					<input id="apPaterno" name="apPaterno" class="form-control" />
 				</div>
@@ -86,7 +86,7 @@
 		<div class="panel-heading">Datos laborales</div>
 		<div class="panel-body">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Área IIBI</label>
+				<label class="col-sm-2 control-label obligatorio">Área IIBI</label>
 				<div class="col-sm-4">
 					<select id="area" name="area" class="form-control">
 						<option value="">Seleccione</option>
@@ -100,7 +100,7 @@
 					</select>
 				</div>
 				
-				<label class="col-sm-2 control-label">Puesto</label>
+				<label class="col-sm-2 control-label obligatorio">Puesto</label>
 				<div class="col-sm-4">
 					<select id="puesto" name="puesto" class="form-control">
 						<option value="">Seleccione</option>
@@ -136,14 +136,14 @@
 					<input id="numCuenta" name="numCuenta" class="form-control" />
 				</div>
 				
-				<label class="col-sm-2 control-label">Teléfono oficina</label>
+				<label class="col-sm-2 control-label obligatorio">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" />
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Correo institucional</label>
+				<label class="col-sm-2 control-label obligatorio">Correo institucional</label>
 				<div class="col-sm-4">
 					<input id="correoInst" name="correoInst" class="form-control" />
 				</div>
