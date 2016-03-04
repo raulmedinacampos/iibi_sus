@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$grupo = seleccionarTodo("*","cGradoAcad","1 ORDER BY jerarquia, descripcion");
+$grupo = seleccionarTodo("*","cTipoUsuarioSUS","estatus=1");
 
 $data = array(
 		'grupo' => $grupo
