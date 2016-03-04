@@ -180,6 +180,14 @@ Flight::route('/administracion/guarda-usuario/', function() {
 Flight::route('/administracion/editar-empleado/', function() {
 	require_once 'controllers/administracion/editar_empleado_controller.php';
 });
+
+Flight::route('/administracion/duracion-de-servicios/', function() {
+	require_once 'controllers/administracion/duracion_servicios_controller.php';
+});
+
+Flight::route('/administracion/firmas-autorizadas/', function() {
+	require_once 'controllers/administracion/firmas_autorizadas_controller.php';
+});
 	
 Flight::route('/salir/', function() {
 	session_start();
