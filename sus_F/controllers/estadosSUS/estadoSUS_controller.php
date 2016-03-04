@@ -19,7 +19,7 @@ session_start();
 
 
 $servicios = seleccionarTodo("idTipoServicio,servicio", "cTipoServicio", "idTipoServicioPadre=0");
-$estados= seleccionarTodo("idEstatusSUS,estatus", "cTipoServicio", "idTipoServicioPadre=0");
+$estados= seleccionarTodo("idEstatusSUS,estatus", "cEstatusSUS", "1");
 
 	
 if ( $_SESSION['tipoUsuario'] == 1 ) 
@@ -36,8 +36,7 @@ $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11 and visible=1";
-
-if ( $_SESSION['tipoUsuario'] == 3 ) 
+else 
 	$condicion= "visible=1 ";
 
 $condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
@@ -125,8 +124,8 @@ $aux[] = $datos_aux;
 $data = array(
 		'seleccion' => $seleccion,
 		'datos' => $aux,
-		'estados' => estados,
-		'servicios' => servicios
+		'estados' => $estados,
+		'servicios' => $servicios
 		
 );
 
