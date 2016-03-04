@@ -3,14 +3,21 @@
 session_start();
 
 $folio= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
-$responsable = (isset($_SESSION['idUAutoriza'])) ? seleccionar('*','empleado',"idEmpleado=".$_SESSION['idUAutoriza']) : "";
+
+$columnas="idUSolicitante,nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo";
+$solicitud=seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
+
+$empleado = seleccionar('*','empleado,usuarioSUS',"empleado.idEmpleado=usuarioSUS.idEmpleado and usuarioSUS.idUsuario=".$solicitud['idUSolicitante']);
+if($empleado['idUsuAutoriza']!=0)
+	$responsable = seleccionar('*','empleado',"idEmpleado=".$empleado['idUsuAutoriza']);
+else
+	$responsable = seleccionar('*','empleado',"idEmpleado=".$solicitud['idUSolicitante']);
+
 $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$responsable['apellidoP']." ".$responsable['apellidoM'];
 
-$area = (isset($_SESSION['idUAutoriza'])) ? seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado=empleado.idEmpleado and empleado.idEmpleado = '.$_SESSION['idUAutoriza']) : "";
+$area = seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = empleado.idEmpleado and empleado.idEmpleado = '.$solicitud['idUSolicitante']);
 $area = $area['area'];
 
-$columnas="nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo";
-$solicitud=seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
 
 $nomUsuario = $solicitud['nomSolicitante'];
 $fechaS = $solicitud['fechaS'];

@@ -27,7 +27,7 @@ if ( $_SESSION['tipoUsuario'] == 1 )
 if ( $_SESSION['tipoUsuario'] == 3 ) 
 	$condicion= "servicioSUS.estatus<12 ";
 
-$condicion = $condicion." and fechaSolicitud between ".$fechaI." and ".$fechaF." and servicioSUS.idTipoServicio =".$tipo." and servicioSUS.estatus = ".$estado;
+$condicion = $condicion." and fechaSolicitud between ".$fechaI." and ".$fechaF." and servicioSUS.idTipoServicio like '".$tipo."%' and servicioSUS.estatus = ".$estado;
 $condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
 						  order by consecutivo asc";
