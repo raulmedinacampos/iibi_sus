@@ -4,9 +4,9 @@ session_start();
 	
 //$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
 
-$fechaI  = (isset($_POST['fechaI']))  ? addslashes($_POST['fechaI']) : '';
-$fechaF  = (isset($_POST['fechaF']))  ? addslashes($_POST['fechaF']) : '';
-$tipo  = (isset($_POST['tipo']))  ? addslashes($_POST['tipo']) : '';
+$fechaI  = (isset($_POST['fechaInicial']))  ? addslashes($_POST['fechaInicial']) : '';
+$fechaF  = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : '';
+$tipo  = (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
 $estado  = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 

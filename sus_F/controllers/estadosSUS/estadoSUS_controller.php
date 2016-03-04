@@ -18,6 +18,10 @@ session_start();
  * Evaluada							(11) */
 
 
+$servicios = seleccionarTodo("idTipoServicio,servicio", "cTipoServicio", "idTipoServicioPadre=0");
+$estados= seleccionarTodo("idEstatusSUS,estatus", "cTipoServicio", "idTipoServicioPadre=0");
+
+	
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11 and visible=1");
 
@@ -82,7 +86,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			if((int)$_SESSION['idUsuario']==(int)$row['idUSolicitante'])
 				$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
 			else
-				$datos_aux['acciones'] = '';//Evaluar(11)
+				$datos_aux['acciones'] = '';
 			break;
 		
 		case 311://Evaluada
@@ -105,7 +109,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			if((int)$_SESSION['idUsuario']==(int)$row['idUSolicitante'])
 				$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
 			else
-				$datos_aux['acciones'] = '';//Evaluar(11)
+				$datos_aux['acciones'] = '';
 			break;
 							
 			
@@ -120,7 +124,12 @@ $aux[] = $datos_aux;
 
 $data = array(
 		'seleccion' => $seleccion,
-		'datos' => $aux);
+		'datos' => $aux,
+		'estados' => estados,
+		'servicios' => servicios
+		
+);
+
 
 Flight::render('servicios/estadoSUS', $data);
 
