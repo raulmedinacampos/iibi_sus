@@ -1,4 +1,5 @@
 <?php
+$id = (isset($_POST['hdnId'])) ? addslashes($_POST['hdnId']) : "";
 $grado = (isset($_POST['grado'])) ? addslashes($_POST['grado']) : "";
 $nombre = (isset($_POST['nombre'])) ? addslashes($_POST['nombre']) : "";
 $apPaterno = (isset($_POST['apPaterno'])) ? addslashes($_POST['apPaterno']) : "";
@@ -10,38 +11,45 @@ $rfc = (isset($_POST['rfc'])) ? addslashes($_POST['rfc']) : "";
 $curp = (isset($_POST['curp'])) ? addslashes($_POST['curp']) : "";
 $area = (isset($_POST['area'])) ? addslashes($_POST['area']) : "";
 $puesto = (isset($_POST['puesto'])) ? addslashes($_POST['puesto']) : "";
-$fechaEntrada = (isset($_POST['fechaEntrada'])) ? addslashes($_POST['fechaEntrada']) : "";
+$fechaInicio = (isset($_POST['fechaEntrada'])) ? addslashes($_POST['fechaEntrada']) : "";
 $numTrabajador = (isset($_POST['numTrabajador'])) ? addslashes($_POST['numTrabajador']) : "";
 $numCuenta = (isset($_POST['numCuenta'])) ? addslashes($_POST['numCuenta']) : "";
 $telOficina = (isset($_POST['telefonoOf'])) ? addslashes($_POST['telefonoOf']) : "";
 $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) : "";
+$correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
 
 $iniciales = strtoupper(substr($nombre, 0, 1).substr($apPaterno, 0, 1).substr($apMaterno, 0, 1));
 
-$valsEmpleado ='"'.$grado.'", "'.
-			$nombre.'","'.
-			$apPaterno.'","'.
-			$apMaterno.'","'.
-			$iniciales.'","'.
-			$numTrabajador.'","'.
-			$numCuenta.'","'.
-			$telefono.'","'.
-			$celular.'","'.
-			$telOficina.'","'.
-			$correo.'","'.
-			$correoInst.'","'.
-			$fechaEntrada.'","'.
-			$rfc.'","'.
-			$curp.'"';
+$valsEmpleado = 
+	   'gradoAcad 	= "'.$grado.'",
+		nombre 		= "'.$nombre.'",
+		apellidoP 	= "'.$apPaterno.'",
+		apellidoM	= "'.$apMaterno.'",
+		iniciales 	= "'.$iniciales.'",
+		noTrabajador= "'.$numTrabajador.'",
+		noCuenta	= "'.$numCuenta.'",
+		telFijo		= "'.$telefono.'",
+		telMovil	= "'.$celular.'",
+		telOficina	= "'.$telOficina.'",
+		eMailPers 	= "'.$correo.'",
+		eMailOf		= "'.$correoInst.'",
+		rfc			= "'.$rfc.'",
+		curp		= "'.$curp.'",
+		fechaModif 	= now()';
 
-$valsPuesto = '"'.$puesto.'", '.
-		      $area.', "'.
-		      $fechaEntrada.'"';
+$actualizar = actualizar('empleado', $valsEmpleado, 'idEmpleado='.$id);
+if ( $actualizar[0] == 0 )
+	echo $actualizar[1];
+
+$valsPuesto = 
+	   'puesto		= "'.$puesto.'",
+		idArea		= "'.$area.'",
+		correoPuesto= "'.$correoPuesto.'",
+		fechaInicio	= "'.$fechaInicio.'",
+		fechaModif	= now()';
 			
-$insertar = trInsertEmpleado($valsEmpleado, $valsPuesto);
+$actualizar = actualizar('puesto', $valsPuesto, 'estatus = 1 and idEmpleado='.$id);
 
-if ( $insertar[0] == 1 ) {
-} else {
-	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";
-}
+if ( $actualizar[0] == 0 ) 
+	echo $actualizar[1];
 ?>

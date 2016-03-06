@@ -107,7 +107,7 @@
 						<?php
 						while ( $row = mysqli_fetch_array($puesto[1]) ) {
 						?>
-							<option value="<?php echo $row['idPuesto']; ?>"<?php if($empleado ['puesto']  == $row['nombre']){echo 'selected="selected"';} ?>><?php echo $row['nombre'];  ?></option>
+							<option value="<?php echo $row['nombre']; ?>"<?php if($empleado ['puesto']  == $row['nombre']){echo 'selected="selected"';} ?>><?php echo $row['nombre'];  ?></option>
 						<?php
 						}
 						?>
@@ -116,7 +116,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Fecha de entrada</label>
+				<label class="col-sm-2 control-label">Fecha de inicio</label>
 				<div class="col-sm-4">
 					<div class="input-group">
 						<input id="fechaEntrada" name="fechaEntrada" class="form-control datepicker" value="<?php echo $empleado['fechaInicio']; ?>" />
@@ -142,6 +142,18 @@
 				</div>
 			</div>
 			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Correo del puesto</label>
+				<div class="col-sm-4">
+					<input id="correoInst" name="correoPuesto" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
+				</div>
+				
+				<label class="col-sm-2 control-label">Confirmar correo</label>
+				<div class="col-sm-4">
+					<input id="correoInstConf" name="correoPuestoConf" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
+				</div>
+			</div>
+
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Correo institucional</label>
 				<div class="col-sm-4">
