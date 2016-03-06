@@ -4,7 +4,7 @@
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
 <!-- <script src="js/edicion_empleado.js" type="text/javascript"></script>-->
 
-<h4>Escriba los datos del empleado</h4>
+<h4>Escriba o modifique los datos del empleado</h4>
 
 <form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
 	<div class="panel panel-primary">

@@ -1,7 +1,5 @@
 <?php
 
-/*se guarda si es nuevo se actualiza si ya existe*/
-
 $grado = (isset($_POST['grado'])) ? addslashes($_POST['grado']) : "";
 $nombre = (isset($_POST['nombre'])) ? addslashes($_POST['nombre']) : "";
 $apPaterno = (isset($_POST['apPaterno'])) ? addslashes($_POST['apPaterno']) : "";
@@ -18,6 +16,7 @@ $numTrabajador = (isset($_POST['numTrabajador'])) ? addslashes($_POST['numTrabaj
 $numCuenta = (isset($_POST['numCuenta'])) ? addslashes($_POST['numCuenta']) : "";
 $telOficina = (isset($_POST['telefonoOf'])) ? addslashes($_POST['telefonoOf']) : "";
 $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) : "";
+$correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
 
 $iniciales = strtoupper(substr($nombre, 0, 1).substr($apPaterno, 0, 1).substr($apMaterno, 0, 1));
 
@@ -39,6 +38,7 @@ $valsEmpleado ='"'.$grado.'", "'.
 
 $valsPuesto = '"'.$puesto.'", '.
 		      $area.', "'.
+		      $correoPuesto.', "'.
 		      $fechaEntrada.'"';
 			
 $insertar = trInsertEmpleado($valsEmpleado, $valsPuesto);

@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$grado = seleccionarTodo("*","cGradoAcad","1 ORDER BY jerarquia, descripcion");
-$area = seleccionarTodo("*","cArea","estatus = 1 ORDER BY jerarquia, area");
-$puesto = seleccionarTodo("*","cPuesto","1 ORDER BY jerarquia, nombre");
+$grado = seleccionarTodo("*","cGradoAcad","1 ORDER BY descripcion");
+$area = seleccionarTodo("*","cArea","areaPadre != 0 and estatus = 1 ORDER BY jerarquia, area ");
+$puesto = seleccionarTodo("*","cPuesto","1 ORDER BY nombre");
 
 $data = array(
 		'grado' => $grado,

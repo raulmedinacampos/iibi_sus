@@ -19,7 +19,7 @@
 						<?php
 						while ( $row = mysqli_fetch_array($grado[1]) ) {
 						?>
-							<option value="<?php echo $row['grado']; ?>"><?php echo $row['descripcion']; ?></option>
+							<option value="<?php echo $row['grado']; ?>"><?php echo $row['grado']; ?></option>
 						<?php
 						}
 						?>
@@ -139,6 +139,18 @@
 				<label class="col-sm-2 control-label obligatorio">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Correo del puesto</label>
+				<div class="col-sm-4">
+					<input id="correoInst" name="correoPuesto" class="form-control" />
+				</div>
+				
+				<label class="col-sm-2 control-label">Confirmar correo</label>
+				<div class="col-sm-4">
+					<input id="correoInstConf" name="correoPuestoConf" class="form-control"  />
 				</div>
 			</div>
 			
