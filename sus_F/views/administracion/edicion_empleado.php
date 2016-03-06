@@ -4,7 +4,7 @@
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
 <!-- <script src="js/edicion_empleado.js" type="text/javascript"></script>-->
 
-<h4>Escriba los datos del nuevo empleado</h4>
+<h4>Escriba los datos del empleado</h4>
 
 <form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
 	<div class="panel panel-primary">
@@ -19,7 +19,7 @@
 						<?php
 						while ( $row = mysqli_fetch_array($grado[1]) ) {
 						?>
-							<option value="<?php echo $row['grado']; ?>" <?php if($empleado['gradoAcad'] == $row['grado']){echo 'selected="selected"';} ?>><?php echo $row['descripcion']; ?></option>
+							<option value="<?php echo $row['grado']; ?>" <?php if($empleado['gradoAcad'] == $row['grado']){echo 'selected="selected"';} ?>><?php echo $row['grado']; ?></option>
 						<?php
 						}
 						?>
@@ -64,7 +64,7 @@
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoConf" name="correoConf" class="form-control" />
+					<input id="correoConf" name="correoConf" class="form-control" value="<?php echo $empleado['eMailPers']; ?>" />
 				</div>
 			</div>
 			
@@ -93,7 +93,7 @@
 						<?php
 						while ( $row = mysqli_fetch_array($area[1]) ) {
 						?>
-							<option value="<?php echo $row['idArea']; ?>"><?php echo $row['area']; ?></option>
+							<option value="<?php echo $row['idArea']; ?>"<?php if($empleado ['idArea']    == $row['idArea']){echo 'selected="selected"';} ?>><?php echo $row['area'];  ?></option>
 						<?php
 						}
 						?>
@@ -107,7 +107,7 @@
 						<?php
 						while ( $row = mysqli_fetch_array($puesto[1]) ) {
 						?>
-							<option value="<?php echo $row['nombre']; ?>"><?php echo $row['nombre']; ?></option>
+							<option value="<?php echo $row['idPuesto']; ?>"<?php if($empleado ['puesto']  == $row['nombre']){echo 'selected="selected"';} ?>><?php echo $row['nombre'];  ?></option>
 						<?php
 						}
 						?>
@@ -119,7 +119,7 @@
 				<label class="col-sm-2 control-label">Fecha de entrada</label>
 				<div class="col-sm-4">
 					<div class="input-group">
-						<input id="fechaEntrada" name="fechaEntrada" class="form-control datepicker" value="<?php echo $empleado['fechaIngreso']; ?>" />
+						<input id="fechaEntrada" name="fechaEntrada" class="form-control datepicker" value="<?php echo $empleado['fechaInicio']; ?>" />
 						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					</div>
 				</div>
@@ -150,7 +150,7 @@
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoInstConf" name="correoInstConf" class="form-control" />
+					<input id="correoInstConf" name="correoInstConf" class="form-control" value="<?php echo $empleado['eMailOf']; ?>" />
 				</div>
 			</div>
 		</div>
