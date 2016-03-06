@@ -9,12 +9,13 @@ $fechaF = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : ''
 $tipo  	= (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
 $estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
+/*
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
 
 if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
 	$seleccion = seleccionarTodo("*","servicioSUS"," estatus<12");
-		
+*/		
 
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
@@ -24,7 +25,7 @@ $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11";
 
-if ( $_SESSION['tipoUsuario'] == 3 ) 
+if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
 	$condicion= "servicioSUS.estatus<12 ";
 
 if($fechaI!='')
@@ -101,8 +102,23 @@ $aux[] = $datos_aux;
 }//while
 	
 $data = array(
-		'seleccion' => $seleccion,
+//		'seleccion' => $seleccion,
 		'datos' => $aux);
+
+echo   "<tr><th>Folio</th>
+		<th>Fecha</th>
+		<th>Tipo</th>
+		<th>Descripción</th>
+		<th>Estado</th>
+		<th>Acción</th></tr>";
+
+foreach ( $datos as $dato ) {
+	echo "<tr><td><a href='#' data-folio=".$dato['folio'].">".$dato['fecha']."</td>";
+	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</td>";
+	echo "<td>".$dato['estatus']."</td>";
+	echo "<td>".$dato['acciones']."</td>";
+	echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';
+}
 
 Flight::render('servicios/estadoSUS', $data);
 
