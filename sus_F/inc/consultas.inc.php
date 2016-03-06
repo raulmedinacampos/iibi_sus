@@ -368,7 +368,7 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 
 	/*El if de René =D*/
 	if(($newEmp=!0)&&($newEmp=!NULL)){
-		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
+		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,correoPuesto,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
 	else{
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
