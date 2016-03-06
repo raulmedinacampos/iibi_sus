@@ -25,6 +25,21 @@
 		
 	<div class="form-group">
 		<div class="col-sm-3">
+			<label>Persona que autoriza</label>
+			<select id="autoriza" name="autoriza" class="form-control">
+				<option value="">Seleccione</option>
+				<option value="0">***El mismo usuario autoriza***</option><?php
+				while ( $row = mysqli_fetch_array($autoriza[1]) ) { ?>
+				<option value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']?></option>
+				<?php }?>
+			</select>
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<div class="col-sm-3">
 			<label>Grupo</label>
 			<select id="grupo" name="grupo" class="form-control">
 				<option value="">Seleccione</option>

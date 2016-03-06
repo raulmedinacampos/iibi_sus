@@ -4,10 +4,11 @@ $maxID=maximo("idUsuario", "usuarioSUS")+1;
 $tipoUsuario = (isset($_POST['grupo'])) ? addslashes($_POST['grupo']) : "";
 $idEmpleado = (isset($_POST['hdn_id'])) ? addslashes($_POST['hdn_id']) : "";
 $usuario = (isset($_POST['usuario'])) ? addslashes($_POST['usuario']) : "";
-//$idUsuAutoriza = (isset($_POST['usuario'])) ? addslashes($_POST['usuario']) : "";
+$idUsuAutoriza = (isset($_POST['autoriza'])) ? addslashes($_POST['autoriza']) : "";
+$contrasenia = "contra";
 
-$contrasenia = "contrasenia";
-$fechaModif = date('Y-m-d H:i:s');
+//$contrasenia = generarClave();
+//$fechaModif = date('Y-m-d H:i:s');
 
 $valores =	$idEmpleado.','.
 			$tipoUsuario.',"'.
@@ -16,8 +17,7 @@ $valores =	$idEmpleado.','.
 
 $insertar = insertar("usuarioSUS", $valores);
 
-if ( $insertar[0] == 1 ) {
-} else {
-	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";
-}
+if ( $insertar[0] == 0 ) 
+	echo $insertar[1];
+
 ?>

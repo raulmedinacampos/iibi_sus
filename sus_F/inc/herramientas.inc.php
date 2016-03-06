@@ -14,14 +14,23 @@ function generarClave($longitud =8){
 	0, $longitud);} 
 
 
+/*Funcion generarUsuario
+ * Toma el nombre y apellidos de la persona y construye el nombre de usuario
+ * primera letra del nombre, primer apellido completo, primera letra del segundo apellido
+ */
+	
+function generarUsuario($nombre,$ap1,$ap2){
+	return strtoupper(substr($nombre, 0, 1).$ap1.substr($ap2, 0, 1));
+}
+	
+	
 /*Funcion normaliza fecha para base de datos
 
 Cambia la forma dd/mm/aaaa a 
 aaaa-mm-dd que entrega el calendio en javascript
 
 
-Recibe como parámetro la fecha a cambiar.
-*/
+Recibe como parámetro la fecha a cambiar.*/
 
 function normaFecha($fecha){
 	$año = substr($fecha,6,4); 
@@ -29,11 +38,6 @@ function normaFecha($fecha){
 	$mes = substr($fecha,0,2);
 	return $año."-".$mes."-".$dia;
 	}
-
-
-
-
-
 
 
 
