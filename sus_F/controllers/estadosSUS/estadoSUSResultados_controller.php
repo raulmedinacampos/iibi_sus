@@ -4,10 +4,10 @@ session_start();
 	
 //$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
 
-$fechaI  = (isset($_POST['fechaInicial']))  ? addslashes($_POST['fechaInicial']) : '';
-$fechaF  = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : '';
-$tipo  = (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
-$estado  = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
+$fechaI = (isset($_POST['fechaInicial']))  ? addslashes($_POST['fechaInicial']) : '';
+$fechaF = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : '';
+$tipo  	= (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
+$estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
@@ -27,8 +27,19 @@ if ( $_SESSION['tipoUsuario'] == 1 )
 if ( $_SESSION['tipoUsuario'] == 3 ) 
 	$condicion= "servicioSUS.estatus<12 ";
 
-$condicion = $condicion." and fechaSolicitud between ".$fechaI." and ".$fechaF." and servicioSUS.idTipoServicio like '".$tipo."%' and servicioSUS.estatus = ".$estado;
-$condicion = $condicion." and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
+if($fechaI!='')
+	$condicion 	.= " and fechaSolicitud >= '".$fechaI."'";
+	
+if($fechaF!='')	
+	$condicion 	.= " and fechaSolicitud <='".$fechaF."'";
+	
+if ($tipo!='')
+	$condicion 	.= " and servicioSUS.idTipoServicio like '".$tipo."%' ";
+
+if($estado!='')	
+	$condicion 	.= " and servicioSUS.estatus = ".$estado;
+
+$condicion 		.= " and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
 						  order by consecutivo asc";
 
