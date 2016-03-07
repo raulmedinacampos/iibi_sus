@@ -233,22 +233,64 @@ function inicializar() {
 			$(".btn-archivar").click(function(e) {
 				e.preventDefault();
 				
-				$.post(
-					'sus/archivar-solicitud', 
-					{'folio': $(this).data('id')}, 
-					function(data) {
-						if(data == "1") {
-							$("#miDiv").load("estadoSUS");
-						} else {
-							$('#myModal .modal-title').html('Archivar solicitud');
-							$('#myModal .modal-body').html("Ocurió un problema, favor de comunicarse con el adminsitrador.");
-							$('#myModal .modal-footer .btn-default').html("Cerrar");
-							$('#myModal .modal-footer .btn-primary').css("display", "none");
-							
-							$("#myModal").modal('show');
+				var folio = $(this).data("id");
+				
+				var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
+				contenido += '<p>Favor de subir el documento digital</p>';
+				contenido += '<div class="form-group">';
+				contenido += '<label>Documento digital</label>';
+				contenido += '<input type="file" id="documento" name="documento" />';
+				contenido += '</div>';  //.form-group
+				contenido += '</form>';
+				
+				$('#myModal .modal-title').html('Archivar solicitud');
+				$('#myModal .modal-body').html(contenido);
+				$('#myModal .modal-footer .btn-default').html("Cancelar");
+				$('#myModal .modal-footer .btn-primary').html("Aceptar");
+				$('#myModal .modal-footer .btn-primary').css("display", "inline");
+				
+				$("#documento").filestyle({buttonText: "Buscar archivo"});
+				
+				$('#myModal').modal('show');
+				
+				$("#formArchivar").css("margin", "auto");
+				
+				$("#formArchivar").validate({
+					rules: {
+						documento: {
+							required: true
 						}
 					}
-				);
+				});
+				
+				$('#documento').fileupload({
+			        dataType: 'json',
+			        add: function (e, data) {
+			            data.context = $('#myModal .modal-footer .btn-primary')
+			            	.one("click", function () {
+			            		
+			            		$.post(
+			            			'sus/archivar-solicitud',
+			            			{},
+			            			function(d) {
+			            				if ( d == "") {
+			            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
+			            				}
+			            				
+			            				data.submit();
+			            			}
+			            		);
+			                });
+			        },
+			        always: function (e, data) {
+			        	$("#miDiv").load("estadoSUS");
+			        	$('#myModal').modal('hide');
+			        }
+			    });	
+				
+				$('#myModal .modal-footer .btn-default').click(function() {
+					$('#myModal').modal('hide');
+				});
 			});
 			
 			/* Fin definición de botones */
@@ -495,22 +537,64 @@ function buscar() {
 				$(".btn-archivar").click(function(e) {
 					e.preventDefault();
 					
-					$.post(
-						'sus/archivar-solicitud', 
-						{'folio': $(this).data('id')}, 
-						function(data) {
-							if(data == "1") {
-								$("#miDiv").load("estadoSUS");
-							} else {
-								$('#myModal .modal-title').html('Archivar solicitud');
-								$('#myModal .modal-body').html("Ocurió un problema, favor de comunicarse con el adminsitrador.");
-								$('#myModal .modal-footer .btn-default').html("Cerrar");
-								$('#myModal .modal-footer .btn-primary').css("display", "none");
-								
-								$("#myModal").modal('show');
+					var folio = $(this).data("id");
+					
+					var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
+					contenido += '<p>Favor de subir el documento digital</p>';
+					contenido += '<div class="form-group">';
+					contenido += '<label>Documento digital</label>';
+					contenido += '<input type="file" id="documento" name="documento" />';
+					contenido += '</div>';  //.form-group
+					contenido += '</form>';
+					
+					$('#myModal .modal-title').html('Archivar solicitud');
+					$('#myModal .modal-body').html(contenido);
+					$('#myModal .modal-footer .btn-default').html("Cancelar");
+					$('#myModal .modal-footer .btn-primary').html("Aceptar");
+					$('#myModal .modal-footer .btn-primary').css("display", "inline");
+					
+					$("#documento").filestyle({buttonText: "Buscar archivo"});
+					
+					$('#myModal').modal('show');
+					
+					$("#formArchivar").css("margin", "auto");
+					
+					$("#formArchivar").validate({
+						rules: {
+							documento: {
+								required: true
 							}
 						}
-					);
+					});
+					
+					$('#documento').fileupload({
+				        dataType: 'json',
+				        add: function (e, data) {
+				            data.context = $('#myModal .modal-footer .btn-primary')
+				            	.one("click", function () {
+				            		
+				            		$.post(
+				            			'sus/archivar-solicitud',
+				            			{},
+				            			function(d) {
+				            				if ( d == "") {
+				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
+				            				}
+				            				
+				            				data.submit();
+				            			}
+				            		);
+				                });
+				        },
+				        always: function (e, data) {
+				        	$("#miDiv").load("estadoSUS");
+				        	$('#myModal').modal('hide');
+				        }
+				    });	
+					
+					$('#myModal .modal-footer .btn-default').click(function() {
+						$('#myModal').modal('hide');
+					});
 				});
 				
 				/* Fin definición de botones */

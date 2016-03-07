@@ -2,7 +2,10 @@
 <link href="css/servicios.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-<script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
+<script src="js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+<script src="js/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="js/jquery.iframe-transport.js" type="text/javascript"></script>
+<script src="js/jquery.fileupload.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/estado_solicitud.js"></script>
 
 <h3>Estado de solicitudes</h3>
