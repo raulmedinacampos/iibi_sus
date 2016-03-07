@@ -385,6 +385,46 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 	return $regreso;}
 
-
+function trNuevoSAC($update,$insert,$idPuestoAnt){
+	$sql = "SET AUTOCOMMIT=0;";
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	
+	$sql = "BEGIN;";
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	
+	$sql = "INSERT INTO puesto (
+			idPuesto,
+			puesto,
+			idEmpleado,
+			idArea,
+			correoPuesto,
+			fechaInicio,
+			fechaModif,
+			estatus)
+		VALUES (".$insert.",1)";
+	
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	$newPuesto = mysqli_insert_id($GLOBALS['conexion']);
+	
+	
+	/*El if de René =D*/
+	if(($newPuesto=!0)&&($newPuesto=!NULL)){
+		$sql = "UPDATE puesto SET ".$update." WHERE idPuesto=".$idPuestoAnt;
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+	else{
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+	
+	if ($resultado) {
+		$sql = "COMMIT";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+		$regreso[0] = 1;
+		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
+	else{
+		$sql = "ROLLBACK;";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+		$regreso[1];
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+return $regreso;}
+	
 
 ?>

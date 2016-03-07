@@ -82,4 +82,25 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<h5 class="text-primary"><strong>Jefe de Departamento de Bienes y suministros</strong></h5>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Actual:</label>
+			<div class="col-sm-8">
+				<input type="text" id="actualBienes" name="actualBienes" class="form-control" readonly="readonly" value="Aquí va el nombre que se jala desde la base" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Nuevo:</label>
+			<div class="col-sm-8">
+				<input type="text" id="bienes" name="bienes" class="form-control" />
+			</div>
+			<div class="col-sm-2">
+				<button id="btnBienes" name="btnBienes" class="btn btn-primary">Actualizar</button>
+			</div>
+		</div>
+	</div>
+
 </form>
