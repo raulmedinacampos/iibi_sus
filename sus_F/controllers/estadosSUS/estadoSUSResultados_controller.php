@@ -2,20 +2,11 @@
 
 session_start();
 	
-//$mes  = (isset($_POST['mes']))  ? addslashes($_POST['mes'])  : date('m');
-
 $fechaI = (isset($_POST['fechaInicial']))  ? addslashes($_POST['fechaInicial']) : '';
 $fechaF = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : '';
 $tipo  	= (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
 $estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
-/*
-if ( $_SESSION['tipoUsuario'] == 1 ) 
-	$seleccion = seleccionarTodo("*","servicioSUS","idUSolicitante=".$_SESSION['idUsuario']." and estatus<11");
-
-if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
-	$seleccion = seleccionarTodo("*","servicioSUS"," estatus<12");
-*/		
 
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
@@ -59,7 +50,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 	
 	switch ( $_SESSION['tipoUsuario'].$row['estado'] ){
 					
-				case 110://Terminada
+		case 110://Terminada
 			$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
 			break;
 			
