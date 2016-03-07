@@ -37,7 +37,7 @@ function guardar() {
 		e.preventDefault();
 		
 		$.post(
-				'guardar-usuario',
+				'administracion/guarda-usuario',
 				$("#formUsuario").serialize(),
 				function(data) {
 					
