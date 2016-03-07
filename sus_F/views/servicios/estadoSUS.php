@@ -34,6 +34,13 @@
 				<div class="col-sm-4">
 					<select id="tipoServicio" name="tipoServicio" class="form-control">
 						<option value="">Seleccione</option>
+						<?php
+						while ( $row = mysqli_fetch_array($servicios[1]) ) {
+						?>
+						<option value="<?php echo $row['idTipoServicio']; ?>"><?php echo $row['servicio']; ?></option>
+						<?php
+						}
+						?>
 					</select>
 				</div>
 				
@@ -41,6 +48,13 @@
 				<div class="col-sm-4">
 					<select id="estado" name="estado" class="form-control">
 						<option value="">Seleccione</option>
+						<?php
+						while ( $row = mysqli_fetch_array($estados[1]) ) {
+						?>
+						<option value="<?php echo $row['idEstatusSUS']; ?>"><?php echo $row['estatus']; ?></option>
+						<?php
+						}
+						?>
 					</select>
 				</div>
 			</div>

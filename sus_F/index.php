@@ -69,10 +69,10 @@ Flight::route('/estadoSUS/', function() {
 	require_once 'controllers/estadosSUS/estadoSUS_controller.php';
 });
 
-/*Flight::route('/estadoSUS/', function() {
+Flight::route('/resultados-estadoSUS/', function() {
 	require_once 'controllers/estadosSUS/estadoSUSResultados_controller.php';
 });
-*/	
+	
 Flight::route('/detalleSUS/', function() {
 	require_once 'controllers/estadosSUS/detalleSUS_controller.php';
 });

@@ -101,25 +101,19 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 $aux[] = $datos_aux;
 }//while
 	
-$data = array(
-//		'seleccion' => $seleccion,
-		'datos' => $aux);
-
 echo   "<tr><th>Folio</th>
 		<th>Fecha</th>
 		<th>Tipo</th>
-		<th>Descripción</th>
 		<th>Estado</th>
-		<th>Acción</th></tr>";
+		<th>Acción</th>
+		<th>&nbsp;</th></tr>";
 
-foreach ( $datos as $dato ) {
-	echo "<tr><td><a href='#' data-folio=".$dato['folio'].">".$dato['fecha']."</td>";
-	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</td>";
+foreach ( $aux as $dato ) {
+	echo "<tr><td><a href='#' data-folio=".$dato['folio'].">".$dato['folio']."</a></td>";
+	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['fecha']."</a></td>";
+	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</a></td>";
 	echo "<td>".$dato['estatus']."</td>";
 	echo "<td>".$dato['acciones']."</td>";
 	echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';
 }
-
-Flight::render('servicios/estadoSUS', $data);
-
 ?>
