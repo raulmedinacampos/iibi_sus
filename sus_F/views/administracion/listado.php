@@ -19,9 +19,15 @@ if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 		<td><?php echo $row['usuario']; ?></td>
 		<td><?php echo $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']; ?></td>
 		<td class="text-center">
-			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="editar"><span class="glyphicon glyphicon-pencil"></span></a>
-			<!-- <a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="administrar"><span class="glyphicon glyphicon-cog"></span></a>
-			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="eliminar"><span class="glyphicon glyphicon-trash"></span></a> -->
+			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="editar" title="Modificar datos de usuario" data-toggle="tooltip">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</a>
+			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="administrar" title="Modificar perfil de usuario" data-toggle="tooltip">
+				<span class="glyphicon glyphicon-cog"></span>
+			</a>
+			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="eliminar" title="Eliminar usuario" data-toggle="tooltip">
+				<span class="glyphicon glyphicon-trash"></span>
+			</a>
 		</td>
 	</tr>
 	<?php

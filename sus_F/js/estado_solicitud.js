@@ -236,7 +236,8 @@ function inicializar() {
 				var folio = $(this).data("id");
 				
 				var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
-				contenido += '<p>Favor de subir el documento digital</p>';
+				contenido += '<p>Favor de subir el documento digital.<br />';
+				contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 100 kB</strong></p>';
 				contenido += '<div class="form-group">';
 				contenido += '<label>Documento digital</label>';
 				contenido += '<input type="file" id="documento" name="documento" />';
@@ -255,6 +256,8 @@ function inicializar() {
 				
 				$("#formArchivar").css("margin", "auto");
 				
+				
+				
 				$("#formArchivar").validate({
 					rules: {
 						documento: {
@@ -264,14 +267,17 @@ function inicializar() {
 				});
 				
 				$('#documento').fileupload({
+					formData: {'folio': folio},
 			        dataType: 'json',
 			        add: function (e, data) {
 			            data.context = $('#myModal .modal-footer .btn-primary')
-			            	.one("click", function () {
+			            	.click(function () {
+			            		var envio = $('#formArchivar').serializeArray();
+			            		envio.push({'folio': folio});
 			            		
 			            		$.post(
 			            			'sus/archivar-solicitud',
-			            			{},
+			            			{'folio': folio},
 			            			function(d) {
 			            				if ( d == "") {
 			            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
@@ -540,7 +546,8 @@ function buscar() {
 					var folio = $(this).data("id");
 					
 					var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
-					contenido += '<p>Favor de subir el documento digital</p>';
+					contenido += '<p>Favor de subir el documento digital.<br />';
+					contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 100 kB</strong></p>';
 					contenido += '<div class="form-group">';
 					contenido += '<label>Documento digital</label>';
 					contenido += '<input type="file" id="documento" name="documento" />';
@@ -559,6 +566,8 @@ function buscar() {
 					
 					$("#formArchivar").css("margin", "auto");
 					
+					
+					
 					$("#formArchivar").validate({
 						rules: {
 							documento: {
@@ -568,14 +577,17 @@ function buscar() {
 					});
 					
 					$('#documento').fileupload({
+						formData: {'folio': folio},
 				        dataType: 'json',
 				        add: function (e, data) {
 				            data.context = $('#myModal .modal-footer .btn-primary')
-				            	.one("click", function () {
+				            	.click(function () {
+				            		var envio = $('#formArchivar').serializeArray();
+				            		envio.push({'folio': folio});
 				            		
 				            		$.post(
 				            			'sus/archivar-solicitud',
-				            			{},
+				            			{'folio': folio},
 				            			function(d) {
 				            				if ( d == "") {
 				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
