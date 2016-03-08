@@ -97,6 +97,9 @@ Flight::route('/sus/archivar-solicitud/', function() {
 	require_once 'controllers/estadosSUS/archivarSol_controller.php';
 });
 
+Flight::route('/sus/subir-documento/', function() {
+	require_once 'controllers/estadosSUS/subirDocumento_controller.php';
+});
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });
