@@ -101,7 +101,7 @@
 				?>
 					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
 					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li>
-					<li><a href="#" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
+					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
 					<li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li>
 				</ul>
 			</li>

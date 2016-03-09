@@ -170,7 +170,6 @@ function guardar() {
 	                $('#formSolicitud').serialize(),
 	                function(data) {
 	                	$("#hNuevaSolicitud").val(data);
-	                	$("#formPDF").submit();
 	                	
 	                	$('#miDiv').load('estadoSUS');
 	                }
