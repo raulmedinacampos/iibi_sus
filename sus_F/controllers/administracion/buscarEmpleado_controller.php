@@ -6,10 +6,10 @@ $apMaterno = (isset($_POST['apMaterno'])) ? addslashes($_POST['apMaterno']) : ""
 $respuesta['encontrado'] = 0;
 $respuesta['datos'] = "";
 
-$empleado = seleccionarTodo("*","empleado","nombre like '%$nombre%' and apellidoP like '%$apPaterno%' and apellidoM like '%$apMaterno%'
+$empleado = seleccionarTodoSM("*","empleado","nombre like '%$nombre%' and apellidoP like '%$apPaterno%' and apellidoM like '%$apMaterno%'
 		and estatus = 1 ORDER BY apellidoP, apellidoM");
 
-if ( mysqli_num_rows($empleado[1]) > 0 ) {
+if ( isset($empleado[1]) && mysqli_num_rows($empleado[1]) > 0 ) {
 	$respuesta['encontrado'] = 1;
 	while ( $row = mysqli_fetch_array($empleado[1]) ) {
 		$respuesta['datos'] .= '<div class="radio"><label><input type="radio" id="rdb_'.$row['idEmpleado'].'" name="rdbUsuario" data-id="'.$row['idEmpleado'].'" />';
@@ -20,8 +20,7 @@ if ( mysqli_num_rows($empleado[1]) > 0 ) {
 		$respuesta['datos'] .= 'Número de trabajador: '.$row['noTrabajador'];
 		$respuesta['datos'] .= '</div>';
 	}
-}
-else{
+} else {
 	$respuesta['encontrado']=0;
 }
 
