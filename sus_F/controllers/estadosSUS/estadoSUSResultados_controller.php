@@ -1,4 +1,5 @@
 <?php
+require 'inc/herramientas.inc.php' ;
 
 session_start();
 	
@@ -7,9 +8,9 @@ $fechaF = (isset($_POST['fechaFinal']))  ? addslashes($_POST['fechaFinal']) : ''
 $tipo  	= (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) : '';
 $estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
-
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
+
 
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 
@@ -19,17 +20,22 @@ if ( $_SESSION['tipoUsuario'] == 1 )
 if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
 	$condicion= "servicioSUS.estatus<12 ";
 
-if($fechaI!='')
-	$condicion 	.= " and fechaSolicitud >= '".$fechaI."'";
+if($fechaI!=''){
+	$fechaI = normaFecha($fechaI);
+	$condicion 	.= " and fechaSolicitud >= '".$fechaI."'";}
 	
-if($fechaF!='')	
-	$condicion 	.= " and fechaSolicitud <='".$fechaF."'";
-	
+if($fechaF!=''){
+	$fechaF = normaFecha($fechaF);
+	$condicion 	.= " and fechaSolicitud <= '".$fechaF."'";}
+
 if ($tipo!='')
 	$condicion 	.= " and servicioSUS.idTipoServicio like '".$tipo."%' ";
 
-if($estado!='')	
-	$condicion 	.= " and servicioSUS.estatus = ".$estado;
+if($estado!=''){	
+	if($estado!=12)
+		$condicion 	.= " and servicioSUS.estatus = ".$estado;
+	else
+		$condicion 	.= " and servicioSUS.visible = 0";}
 
 $condicion 		.= " and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
@@ -40,6 +46,7 @@ $datos = seleccionarTodoSM($columnas,$tablas,$condicion);
 $datos_aux = array();
 $aux = array();
 
+if($row = mysqli_fetch_array($datos[1])){
 while ( $row = mysqli_fetch_array($datos[1]) ) {
 	$datos_aux['idUSolicitante'] = $row['idUSolicitante'];
 	$datos_aux['folio'] = $row['folio'];
@@ -105,6 +112,10 @@ foreach ( $aux as $dato ) {
 	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</a></td>";
 	echo "<td>".$dato['estatus']."</td>";
 	echo "<td>".$dato['acciones']."</td>";
-	echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';
-}
+	echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';}
+}else
+	
+echo "<tr><th colspan=5>No se encontraron coincidencias</th></tr>";
+	
+	
 ?>
