@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$id = (isset($_POST['id'])) ? $_POST['id'] : "";
+$id = (isset($_POST['id'])) ? $_POST['id'] : $_SESSION['idEmpleado'];
 
 $grado = seleccionarTodo("*","cGradoAcad","1 ORDER BY jerarquia, descripcion");
 $area = seleccionarTodo("*","cArea","estatus = 1 ORDER BY jerarquia, area");
