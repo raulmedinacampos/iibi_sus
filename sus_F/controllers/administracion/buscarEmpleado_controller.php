@@ -20,8 +20,6 @@ if ( isset($empleado[1]) && mysqli_num_rows($empleado[1]) > 0 ) {
 		$respuesta['datos'] .= 'Número de trabajador: '.$row['noTrabajador'];
 		$respuesta['datos'] .= '</div>';
 	}
-} else {
-	$respuesta['encontrado']=0;
 }
 
 echo json_encode($respuesta);
