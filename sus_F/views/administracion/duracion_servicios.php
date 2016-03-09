@@ -8,10 +8,10 @@
    <th width="35%">Servicio</th>
    <th width="40%" class="text-center">Duración estimada</th></tr><?php
    
-   foreach ($data as $servicio ) { ?> <tr>
-    <td><?=$servicio['servicio']?></td>
+   while ( $row = mysqli_fetch_array($servicio[1]) ) { ?> <tr>
+    <td><?php echo $row['servicio']?></td>
 	<td><div class="col-sm-offset-3 col-sm-6">
-	    <input type="text" id="<?=$servicio['idTipoServicio']?>" name="<?=$servicio['idTipoServicio']?>" class="form-control input-sm" value="<?=$servicio['duracionEstimada']?>" />
+	    <input type="text" id="<?php echo $row['idTipoServicio']?>" name="<?php echo $row['idTipoServicio']?>" class="form-control input-sm" value="<?php echo $row['duracionEstimada']?>" />
 	    </div></td></tr><?php } ?>
  </table>
  <div class="pull-right">
