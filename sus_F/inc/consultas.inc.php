@@ -88,8 +88,9 @@ function contar($columna, $tabla){
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso = mysqli_fetch_array($respuesta);
-		else
-			echo $GLOBALS['err_select'];}
+		else{
+			$regreso = "";
+			echo $GLOBALS['err_select'];}}
 	return $regreso;}
 
 
@@ -177,6 +178,7 @@ function seleccionarTodo($columnas,$tablas,$condicion){
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso[1] = $respuesta;
 		else
+			$regreso ="";
 			echo $GLOBALS['err_select'];}
 	return $regreso;}
 
@@ -385,6 +387,9 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 	return $regreso;}
 
+	
+	
+	
 function trNuevoSAC($update,$insert,$idPuestoAnt){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);

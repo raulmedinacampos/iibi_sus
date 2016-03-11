@@ -4,9 +4,6 @@ session_start();
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secreatario'";
 $secretario = seleccionar("*", "empleado,puesto", $condicion);
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secreatario'";
-$secretario = seleccionar("*", "empleado,puesto", $condicion);
-
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
 $sGenerales = seleccionar("*", "empleado,puesto", $condicion);
 

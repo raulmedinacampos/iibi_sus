@@ -81,7 +81,7 @@
 					<li><a href="administracion/alta-de-empleado" class="cbp-tm-icon-archive" target="_self">Alta de empleado</a></li>
 					<li><a href="administracion/alta-de-usuario" class="cbp-tm-icon-archive" target="_self">Alta de usuario</a></li>
 					<li><a href="administracion/duracion-de-servicios" target="_self">Duración de servicios</a></li>
-					<!--<li><a href="administracion/firmas-autorizadas" target="_self">Firmas autorizadas</a></li>  -->
+					<li><a href="administracion/firmas-autorizadas" target="_self">Firmas autorizadas</a></li>
 				</ul>
 			</li>
 			<?php }?>
@@ -102,7 +102,7 @@
 					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
 					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li>
 					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
-					<!-- <li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li> -->
+					<li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li>
 				</ul>
 			</li>
 			<li><a href="salir">Salir</a></li>
