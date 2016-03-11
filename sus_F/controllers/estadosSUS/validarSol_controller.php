@@ -11,6 +11,13 @@ $valores = "fechaVerific = now(), fechaCompromiso = now() + interval ".$duracion
 /* Falta función para calcular la fecha compromiso días hábiles  */
 $actualizar = actualizar ( "servicioSUS", $valores, "folio='" . $folio . "'" );
 
+$valores   = "eMailOf, concat(gradoAcad,' ',nombre,' ',apellidoP,' ',apellidoM)";
+$tablas    = 'empleado, usuarioSUS';
+$condicion = 'empleado.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = (select idUSolicitante from servicioSUS where folio = '.$folio.')'; 
+
+$datosUsu = seleccionarSinMsj($valores, $tablas, $condicion);
+mailValidacion($solNombre, $solMail, $folio);
+
 //	Si se realizó arreglo[0] = 1, arreglo[1] = numero de columnas afectadas
 if ($actualizar [0] == 1 and $actualizar[1]==1) 
 	echo "1";

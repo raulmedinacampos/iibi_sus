@@ -2,8 +2,8 @@
 
 session_start();
 
-//$id= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
-$id = "2016-2";
+$id= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "2016-2";
+
 
 $seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Correspondencia"');
 if($seleccion[0]!=0)
@@ -158,7 +158,7 @@ $footer = '<p class="footer">F01 PSG Rev. 01</p>';
 /***************/
 $html .= '<p class="mes"></p>';
 
-$html .= '<p class="mes">MES:'.$infoMes['fecha'].' </p>';
+$html .= '<p class="mes">Fecha:'.$infoMes['fecha'].' </p>';
 
 $html .= '<table>';
 $html .= '<tr>';
