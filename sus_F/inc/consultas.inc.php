@@ -77,7 +77,6 @@ function contar($columna, $tabla){
 	 
  function seleccionar($columnas,$tablas,$condicion){
 	$consulta="select ".$columnas." from ".$tablas. " where ".$condicion;
-//	echo "<br>".$consulta;
 	$respuesta=mysqli_query($GLOBALS['conexion'],$consulta);
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
@@ -89,8 +88,7 @@ function contar($columna, $tabla){
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso = mysqli_fetch_array($respuesta);
 		else{
-			$regreso = "";
-			echo $GLOBALS['err_select'];}}
+			$regreso =  $GLOBALS['err_select'];}}
 	return $regreso;}
 
 
@@ -178,8 +176,7 @@ function seleccionarTodo($columnas,$tablas,$condicion){
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso[1] = $respuesta;
 		else
-			$regreso ="";
-			echo $GLOBALS['err_select'];}
+			$regreso = $GLOBALS['err_select'];}
 	return $regreso;}
 
 

@@ -112,6 +112,10 @@ Flight::route('/reportes/infoMes/', function() {
 	Flight::render('reportes/infoMes');
 });
 
+Flight::route('/reportes/infoMes-consultar/', function() {
+	require_once 'controllers/infoMensualFiltro_controller.php';
+});
+
 Flight::route('/reportes/mantenimientos-realizados/', function() {
 	Flight::render('reportes/mtos_realizados');
 });
