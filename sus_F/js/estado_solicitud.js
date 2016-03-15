@@ -274,6 +274,7 @@ function inicializar() {
 			            	.click(function () {
 			            		var envio = $('#formArchivar').serializeArray();
 			            		envio.push({'folio': folio});
+			            		$('#myModal .modal-footer .btn-primary').off('click');
 			            		
 			            		$.post(
 			            			'sus/archivar-solicitud',
@@ -584,6 +585,7 @@ function buscar() {
 				            	.click(function () {
 				            		var envio = $('#formArchivar').serializeArray();
 				            		envio.push({'folio': folio});
+				            		$('#myModal .modal-footer .btn-primary').off('click');
 				            		
 				            		$.post(
 				            			'sus/archivar-solicitud',
