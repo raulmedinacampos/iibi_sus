@@ -2,7 +2,7 @@
 
 session_start();
 
-$id= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "2016-2";
+$id= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
 
 
 $seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Correspondencia"');

@@ -4,8 +4,8 @@ session_start();
 $tablas = "servicioSUS";
 $columnas= "count(*)";
  
-$mes = (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "";
-$anio = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "";
+$mes = (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "1";
+$anio = (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "2016";
 
 $condicion = "idTipoServicio like '2%' and month(fechaSolicitud)=".$mes." and year(fechaSolicitud)=".$anio;
 $correspS= seleccionar($columnas, $tablas, $condicion);
