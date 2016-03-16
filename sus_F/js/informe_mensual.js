@@ -120,7 +120,7 @@ function guardar() {
 		e.preventDefault();
 		
 		$.post(
-			'reportes/guardar-informe-mensual',
+			'reportes/guarda-informe-mensual',
 			$("#formInforme").serialize(),
 			function(data) {
 			}
@@ -132,6 +132,5 @@ $(function() {
 	inicializar();
 	validar();
 	consultarInforme();
-	cargarInfo();
 	guardar();
 });

@@ -38,7 +38,6 @@
 		
 		<div class="col-sm-4">
 			<button id="btnConsultar" class="btn btn-info">Consultar informe</button>
-			<button id="btnCargar" class="btn btn-warning">Nuevo informe</button>
 		</div>
 	</div>
 	
@@ -141,8 +140,8 @@
 		<tr>
 			<td>9</td>
 			<td>Seguridad</td>
-			<td class="text-center" id="hSegS"></td>
-			<td class="text-center" id="hSegR"></td>
+			<td class="text-center" id="tdSegS"></td>
+			<td class="text-center" id="tdSegR"></td>
 			<td>
 				<input type="hidden" name="hSegS" value="" id="hSegS" />
 				<input type="hidden" name="hSegR" value="" id="hSegR" />
