@@ -50,68 +50,68 @@ $obsSalidaB = (isset($_POST['obsSalidaB'])) ? addslashes($_POST['obsSalidaB']) :
 $obsEntradaB = (isset($_POST['obsEntradaB'])) ? addslashes($_POST['obsEntradaB']) : "";
 $obsGrales = (isset($_POST['obsGrales'])) ? addslashes($_POST['obsGrales']) : "";
 
-$valores = "'".date('Y')."-".date('mm')."',now(),'".$obsGrales."',".$_SESSION['idUsuario'].",0,NULL,1";
+$valores = "'".date('Y')."-".date('m')."',now(),'".$obsGrales."',".$_SESSION['idUsuario'].",0,NULL,1";
 $infMes = insertar("infMesSUS", $valores);		
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Correspondencia','".$obsCorresp."',".$hCorrespS.",".$hCorrespR.",'".date('Y')."-".date('mm');
+$valores = $maxID.",'Correspondencia','".$obsCorresp."',".$hCorrespS.",".$hCorrespR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Fotocopiado','".$obsFotoc."',".$hFotocR.",".$hFotocR.",'".date('Y')."-".date('mm');
+$valores = $maxID.",'Fotocopiado','".$obsFotoc."',".$hFotocR.",".$hFotocR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Engargolado','".$obsEngar."',".$hEngarS.",".$hEngarR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Engargolado','".$obsEngar."',".$hEngarS.",".$hEngarR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Mantenimiento a equipo','".$obsMtoEq."',".$hMtoEqS.",".$hMtoEqR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Mantenimiento a equipo','".$obsMtoEq."',".$hMtoEqS.",".$hMtoEqR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Mantenimiento a inmueble','".$obsMtoInm."',".$hMtoInmS.",".$hMtoInmR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Mantenimiento a inmueble','".$obsMtoInm."',".$hMtoInmS.",".$hMtoInmR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Mantenimiento a veh�culos','".$obsMtoVeh."',".$hMtoVehS.",".$hMtoVehR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Mantenimiento a veh�culos','".$obsMtoVeh."',".$hMtoVehS.",".$hMtoVehR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Transporte','".$obsTransp."',".$hTranspS.",".$hTranspR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Transporte','".$obsTransp."',".$hTranspS.",".$hTranspR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Limpieza','".$obsLimp."',".$hLimpS.",".$hLimpR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Limpieza','".$obsLimp."',".$hLimpS.",".$hLimpR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Seguridad','".$obsSeg."',".$hSegS.",".$hSegR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Seguridad','".$obsSeg."',".$hSegS.",".$hSegR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Servicios realizados','".$obsTotalR."',0,".$hTotalR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Servicios realizados','".$obsTotalR."',0,".$hTotalR.",'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Servicios solicitados','".$obsTotalS."',".$hTotalS.",0,'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Servicios solicitados','".$obsTotalS."',".$hTotalS.",0,'".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Servicios programados realizados','".$obsSerProgR."',0,".$numSerProgR.",'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Servicios programados realizados','".$obsSerProgR."',0,'".$numSerProgR."','".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Servicios programados no realizados','".$obsSerProgNR."',".$numSerProgNR.",0,'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Servicios programados no realizados','".$obsSerProgNR."','".$numSerProgNR."','0','".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Entrada de bienes de activo fijo','".$obsEntradaB."',".$entradaBienes.",0,'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Entrada de bienes de activo fijo','".$obsEntradaB."','".$entradaBienes."','0','".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
-$valores = $maxID.",'Salida de bienes de activo fijo','".$obsSalidaB."',".$salidaBienes.",0,'".date('Y')."-".date('mm')."'";
+$valores = $maxID.",'Salida de bienes de activo fijo','".$obsSalidaB."','".$salidaBienes."','0','".date('Y')."-".date('m')."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
 if ( $insertar[0] == 1 ) {

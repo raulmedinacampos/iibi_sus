@@ -1,9 +1,12 @@
 <?php
 
 session_start();
+require 'inc/herramientas.inc.php';
 
-$id= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
-
+$mes= (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "";
+$anio= (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "";
+$id = $anio."-".$mes;
+$mesL=mesLargo($mes);
 
 $seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Correspondencia"');
 if($seleccion[0]!=0)
@@ -154,11 +157,9 @@ $header .= '</table>';
 $header .= '</div>';
 
 $footer = '<p class="footer">F01 PSG Rev. 01</p>';
-
 /***************/
-$html .= '<p class="mes"></p>';
-
-$html .= '<p class="mes">Fecha:'.$infoMes['fecha'].' </p>';
+$html .= '<p class="mes">Mes:'.$mes.'</p>';
+$html .= '<p class="mes">Fecha de elaboración:'.$infoMes['fecha'].' </p>';
 
 $html .= '<table>';
 $html .= '<tr>';

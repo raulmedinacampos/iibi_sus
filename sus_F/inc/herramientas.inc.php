@@ -79,4 +79,23 @@ function normaBusca($nomcampo,$campo) {
         $campo="$nomcampo like ".$campo;
 	return($campo);}
 
+function mesLargo($mesNum){
+	$mesNum = (int)$mesNum;
+	switch ($mesNum){
+	case 1: $mesL = "Enero"; break;
+	case 2: $mesL = "Febrero"; break;
+	case 3: $mesL = "Marzo"; break;
+	case 4: $mesL = "Abril"; break;
+	case 5: $mesL = "Mayo"; break;
+	case 6: $mesL = "Junio"; break;
+	case 7: $mesL = "Julio"; break;
+	case 8: $mesL = "Agosto"; break;
+	case 9: $mesL = "Septiembre"; break;
+	case 10: $mesL = "Octubre"; break;
+	case 11: $mesL = "Noviembre"; break;
+	case 12: $mesL = "Diciembre"; break;
+	
+	return($mesL);}
+}
+	
 ?>
