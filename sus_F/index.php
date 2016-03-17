@@ -100,8 +100,13 @@ Flight::route('/sus/archivar-solicitud/', function() {
 Flight::route('/sus/subir-documento/', function() {
 	require_once 'controllers/estadosSUS/subirDocumento_controller.php';
 });
+
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
+});
+
+Flight::route('/listado-grupos/', function() {
+	require_once 'controllers/lista_grupos_controller.php';
 });
 
 Flight::route('/evaluacion/evaSolicitud/', function() {
