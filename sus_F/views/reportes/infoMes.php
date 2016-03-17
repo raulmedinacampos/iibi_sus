@@ -1,7 +1,7 @@
 <script src="js/informe_mensual.js" type="text/javascript"></script>
 
 <h2>Informe Mensual de Servicios</h2>
-<form action="" id="formInforme" name="formInforme" class="form-horizontal" method="post" accept-charset="utf-8">
+<form action="reportes/informe-mensual-pdf" id="formInforme" name="formInforme" class="form-horizontal" method="post" accept-charset="utf-8">
 	<div class="form-group">
 		<label class="col-sm-1 control-label">Mes</label>
 		<div class="col-sm-3">

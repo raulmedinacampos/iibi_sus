@@ -5,6 +5,7 @@ require 'inc/herramientas.inc.php';
 
 $mes= (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "";
 $anio= (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "";
+
 $id = $anio."-".$mes;
 $mesL=mesLargo($mes);
 
@@ -312,6 +313,6 @@ $mpdf->SetHTMLHeader($header);
 $mpdf->SetHTMLFooter($footer);
 $mpdf->WriteHTML($stylesheet, 1);
 $mpdf->WriteHTML($html);
-$mpdf->Output();
+$mpdf->Output($id.".pdf", "D");
 exit;
 ?>

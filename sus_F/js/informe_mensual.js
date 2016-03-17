@@ -44,8 +44,6 @@ function consultarInforme() {
 				function(data) {
 					if ( data == "1" ) {
 						// Se encontró registro
-						$("#formInforme").attr("action", "reportes/informe-mensual-pdf");
-						$("#formInforme").attr("target", "_blank");
 						$("#formInforme").submit();
 					} else {
 						// No hay registro, se muestra formulario
@@ -123,6 +121,11 @@ function guardar() {
 			'reportes/guarda-informe-mensual',
 			$("#formInforme").serialize(),
 			function(data) {
+				if ( data == "1" ) {
+					$("miDiv").load("reportes/infoMes");
+					
+					$("#formInforme").submit();
+				}
 			}
 		);
 	});
