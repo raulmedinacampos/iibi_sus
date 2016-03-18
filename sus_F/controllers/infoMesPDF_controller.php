@@ -7,6 +7,7 @@ $mes= (isset($_POST['mes'])) ? addslashes($_POST['mes']) : "";
 $anio= (isset($_POST['anio'])) ? addslashes($_POST['anio']) : "";
 
 $id = $anio."-".$mes;
+
 $mesL=mesLargo($mes);
 
 $seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Correspondencia"');
@@ -49,7 +50,7 @@ $mtoInm = array(
 		'obs' => $seleccion['observacion']);
 else $mtoInm = array('s' => '','r' => '','obs' => '');
 
-$seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Mantenimiento a veh�culos"');
+$seleccion= seleccionarSinMsj2('*','obsInfMesSUS','idInfMes="'.$id.'" and tipoServicio = "Mantenimiento a vehículos"');
 if($seleccion[0]!=0)
 $mtoVeh = array(
 		's' => $seleccion['totalS'],
@@ -159,9 +160,8 @@ $header .= '</div>';
 
 $footer = '<p class="footer">F01 PSG Rev. 01</p>';
 /***************/
-$html .= '<p class="mes">Mes:'.$mes.'</p>';
+$html .= '<p class="mes">Mes y año de contabilización:'.$mesL.'de '.$anio.'</p>';
 $html .= '<p class="mes">Fecha de elaboración:'.$infoMes['fecha'].' </p>';
-
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<th>LÍNEA</th>';
@@ -291,13 +291,13 @@ $html .= '<p><strong>OBSERVACIONES:</strong><br>'.$infoMes['obsGrales'].'</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>ELABORÓ</p>';
 $html .= '<p class="nombre">LIC. LUCERO URBINA HERNÁNDEZ</p>';
-$html .= '<p>NOMBRE Y FIRMA<br />RESPONSABLE SERVICIOS GENERALES</p>';
+$html .= '<p>RESPONSABLE SERVICIOS GENERALES</p>';
 $html .= '</div>';
 
 $html .= '<div class="firma firma2">';
 $html .= '<p>ENTERADO</p>';
 $html .= '<p class="nombre">LIC. AMANDA G. GONZÁLEZ ROBLES SÁNCHEZ</p>';
-$html .= '<p>NOMBRE Y FIRMA<br />SERCRETARIO O JEFE DE UNIDAD<br />ADMINISTRATIVA</p>';
+$html .= '<p>SERCRETARIO O JEFE DE UNIDAD<br />ADMINISTRATIVA</p>';
 $html .= '</div>';
 
 $ch = curl_init();
