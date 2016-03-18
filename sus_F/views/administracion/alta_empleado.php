@@ -14,6 +14,7 @@
 				<label class="col-sm-2 control-label datos-adicionales">Grado</label>
 				<div class="col-sm-4 datos-adicionales">
 					<input type="hidden" id="hdnId" name="hdnId" value="" />
+					<input type="hidden" id="hdnNE" name="hdnNE" value="" />
 					<select id="grado" name="grado" class="form-control">
 						<option value="">Seleccione</option>
 						<?php
