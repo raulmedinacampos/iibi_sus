@@ -16,26 +16,33 @@ $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 
 if ( $_SESSION['tipoUsuario'] == 1 ) 
 	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11";
-
-if ( $_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) 
-	$condicion= "servicioSUS.estatus<12 ";
-
-if($fechaI!=''){
-	$fechaI = normaFecha($fechaI);
-	$condicion 	.= " and fechaSolicitud >= '".$fechaI."'";}
 	
-if($fechaF!=''){
-	$fechaF = normaFecha($fechaF);
-	$condicion 	.= " and fechaSolicitud <= '".$fechaF."'";}
+if ($_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6)
+	if($estado!=12) 
+		$condicion= "servicioSUS.estatus<12 ";
+	else 
+		$condicion="1";
+
+if($estado!='')
+	$condicion 	.= " and servicioSUS.estatus = ".$estado;
+
+if($fechaF==''&&$fechaI=='')
+	$condicion .= " and month(fechaSolicitud) = month(now())";
+	
+else{
+	
+	if($fechaI!=''){
+		$fechaI = normaFecha($fechaI);
+		$condicion 	.= " and date(fechaSolicitud) >= '".$fechaI."'";}
+		
+	if($fechaF!=''){
+		$fechaF = normaFecha($fechaF);
+		$condicion 	.= " and date(fechaSolicitud) <= '".$fechaF."'";}
+}
 
 if ($tipo!='')
 	$condicion 	.= " and servicioSUS.idTipoServicio like '".$tipo."%' ";
 
-if($estado!=''){	
-	if($estado!=12)
-		$condicion 	.= " and servicioSUS.estatus = ".$estado;
-	else
-		$condicion 	.= " and servicioSUS.visible = 0";}
 
 $condicion 		.= " and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
@@ -46,7 +53,7 @@ $datos = seleccionarTodoSM($columnas,$tablas,$condicion);
 $datos_aux = array();
 $aux = array();
 
-if($row = mysqli_fetch_array($datos[1])){
+if($datos[0]==1){
 while ( $row = mysqli_fetch_array($datos[1]) ) {
 	$datos_aux['idUSolicitante'] = $row['idUSolicitante'];
 	$datos_aux['folio'] = $row['folio'];
@@ -96,6 +103,9 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			break;
 		}//switch
 
+		
+
+		
 $aux[] = $datos_aux;
 }//while
 	
@@ -104,7 +114,8 @@ echo   "<tr><th>Folio</th>
 		<th>Tipo</th>
 		<th>Estado</th>
 		<th>Acción</th>
-		<th>&nbsp;</th></tr>";
+		<th></th></tr>";
+
 
 foreach ( $aux as $dato ) {
 	echo "<tr><td><a href='#' data-folio=".$dato['folio'].">".$dato['folio']."</a></td>";
