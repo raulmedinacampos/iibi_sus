@@ -3,7 +3,7 @@
 	LA COMPARACION DEL WHERE NO ES SENSITIVA, ES DECIR IGNORA MAYÚSCULAS 
     Y MINÚSCULAS*/
 
-$host = "localhost";
+$host = "132.248.242.11";
 $usuario ="sigedaa";
 $contraseña="sigedaa";
 //$contraseña="z11%axsus";
@@ -18,6 +18,7 @@ Si se logró, devuelve el identificador de la conexión, sino, devuelve el error
 
 function conectar(){
 	$conexion = mysqli_connect($GLOBALS['host'],$GLOBALS['usuario'],$GLOBALS['contraseña'], $GLOBALS['base']);
+	unset ($GLOBALS['host'],$GLOBALS['usuario'],$GLOBALS['contraseña'], $GLOBALS['base']);
 	if (!$conexion) {
 		$error = 'Error de Conexión (' . mysqli_connect_errno() . ') '
 				 . mysqli_connect_error();
@@ -27,6 +28,7 @@ function conectar(){
 		else
 		echo "<br>conexion: false";
 */		
+		
 	return $conexion;}
 
 	
@@ -40,6 +42,8 @@ Si se logró, devuelve el identificador de la conexión, sino, devuelve el error
 
 function conectarCon($base){
 	$conexion = mysqli_connect($GLOBALS['host'],$GLOBALS['usuario'],$GLOBALS['contraseña'], $base);
+	unset ($GLOBALS['host'],$GLOBALS['usuario'],$GLOBALS['contraseña'], $GLOBALS['base']);
+	
 	if (!$conexion) {
 		$error = 'Error de Conexión (' . mysqli_connect_errno() . ') '
 				 . mysqli_connect_error();

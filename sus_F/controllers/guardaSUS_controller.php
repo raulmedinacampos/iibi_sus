@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require 'inc/correos.inc.php' ;
 require("inc/herramientas.inc.php");
 
 $consecutivo = maxEnAnio('consecutivo','fechaSolicitud','servicioSUS')+1;
@@ -37,7 +37,12 @@ $tabla = 'servicioSUS (folio,consecutivo,idTipoServicio,otro,descripcion,detalle
 $valores = "'".$folio."',".$consecutivo.",".$servicio.",'".$otro."','".$desc."','".$detalle."',now(),'".$nomSol."',".$_SESSION['idUsuario'].",1";
 $insertar = insertar($tabla,$valores);
 
-if ( $insertar[0] == 1 ) {
-	echo $folio;
+if ( $insertar[0] == 1 ){
+	
+	$tipoServicio = seleccionarSinMsj("servicio", 'cTipoServicio', "idTipoServicio='".$servicio."'");
+	$exito = mailNewSol($tipoServicio['servicio'], $nomSol, $folio);
+	
+	if($exito == 1)
+		echo $folio;
 }
 ?>

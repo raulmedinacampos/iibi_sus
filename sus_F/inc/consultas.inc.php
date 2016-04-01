@@ -116,11 +116,14 @@ function seleccionarSinMsj($columnas,$tablas,$condicion){
 	$respuesta=mysqli_query($GLOBALS['conexion'],$consulta);
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
-		$regreso = $GLOBALS['ERROR'];
+		$regreso = 0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
-			$regreso = mysqli_fetch_array($respuesta);}
+			$regreso = mysqli_fetch_array($respuesta);
+		else
+			$regreso=0;}
+		
 	return $regreso;}
 
 
@@ -174,9 +177,9 @@ function seleccionarTodo($columnas,$tablas,$condicion){
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
 		echo $regreso[1];}
 	else{
-		$regreso[0] = 1;
-		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
-			$regreso[1] = $respuesta;
+		if(mysqli_affected_rows($GLOBALS['conexion'])!=0){
+			$regreso[0] = 1;
+			$regreso[1] = $respuesta;}
 		else
 			$regreso = $GLOBALS['err_select'];}
 	return $regreso;}
@@ -190,13 +193,18 @@ function seleccionarTodoSM($columnas,$tablas,$condicion){
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
 		$regreso[0] = 0;
-		$regreso[1] = $GLOBALS['ERROR'];
+		$regreso[1] = 0;
+	//	$regreso[1] = $GLOBALS['ERROR'];
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
-		echo $regreso[1];}
+		//echo $regreso[1];
+	}
 	else{
-		$regreso[0] = 1;
-		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
-			$regreso[1] = $respuesta;
+		if(mysqli_affected_rows($GLOBALS['conexion'])!=0){
+			$regreso[0] = 1;
+			$regreso[1] = $respuesta;}
+		else{
+			$regreso[0]=0;
+			$regreso[1]=0;}
 		}
 	return $regreso;}
 

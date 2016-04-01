@@ -34,8 +34,8 @@ Recibe como parámetro la fecha a cambiar.*/
 
 function normaFecha($fecha){
 	$año = substr($fecha,6,4); 
-	$dia = substr($fecha,3,2);
-	$mes = substr($fecha,0,2);
+	$mes = substr($fecha,3,2);
+	$dia = substr($fecha,0,2);
 	return $año."-".$mes."-".$dia;
 	}
 

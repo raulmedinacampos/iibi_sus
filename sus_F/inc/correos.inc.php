@@ -1,11 +1,12 @@
-<?php
+﻿<?php
 require './inc/phpmailer/PHPMailerAutoload.php';
 
-$host = "iibi.unam.mx";
-$puerto = 587;
-$usuMail ="dafne";
-$contraMail="d4fn3b4r";
-
+global $hostM, $puertoM,$usuM,$contraM,$jefeServicios;
+$puertoM = "587";
+$hostM = "iibi.unam.mx";
+$usuM ="dafne";			//nombre de la cuenta que manda el correo
+$contraM="d4fn3b4r";	//contraseña de la cuenta que manda el correo
+$jefeServicios = "Lic. Lucero Urbina Hernández"; // cambiar esto por una consulta a la base que de el nombre
 
 /*Funcion mailValidacion
  * 
@@ -13,30 +14,71 @@ $contraMail="d4fn3b4r";
  * y ya está en trámite.
  * 
  * Como párametros recibe
- * 		nombre 	nombre del usuario solicitante
- * 		mail	correo electrónico del usuario solicitante  * */
+ * 		solNombre 	nombre del usuario solicitante
+ * 		solMail	correo electrónico del usuario solicitante  * */
 
 function mailValidacion($solNombre,$solMail,$folioM){
-
+	
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
 	<p>En atención con su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada por el área correspondiente. 
 	<br> Para continuar con el trámite se le solicita imprima el formato y requisite  las firmas correspondientes.Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
-  	<p>Atentamente</p><br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+  	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+//	print "globales: $GLOBALS[hostM]";
+//	print_r ($GLOBALS);
+	
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+
+	$mail->Host	  	= $GLOBALS['hostM'];
+	$mail->Port 	= $GLOBALS['puertoM'];
+	$mail->Username = $GLOBALS['usuM'];
+	$mail->Password = $GLOBALS['contraM'];
+	
+	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
+	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
+
+	$mail->Subject    = utf8_decode("Confirmación de verificación de solicitud de servicios");
+	$mail->MsgHTML(utf8_decode($mensaje));
+
+	if(!($mail->Send())){
+		//print_r($mail->ErrorInfo);
+		$regreso=0;}
+	else 
+		$regreso=1;
+	
+	unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);	
+	return $regreso;
+	
+}
+
+
+function mailNewSol($tipoServicio,$solicitante,$folio){
+	$mensaje	=  "<p>".$GLOBALS['jefeServicios']."</p>
+	
+	<p>Se le informa que tiene una nueva solicitud de ".$tipoServicio." por parte de $solicitante con folio $folio.</p>
+	<p>Para ver los detalles del servicio por favor ingrese al sistema de Solicitud Única de Servicios.<p>";
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
-	$mail->Host		  = $GLOBALS['host'];
-	$mail->Port 	  = $GLOBALS['puerto'];
-	$mail->Username   = $GLOBALS['usuMail'];
-	$mail->Password   = $GLOBALS['contraMail'];
+	
+	$mail->Host	  	= $GLOBALS['hostM'];
+	$mail->Port 	= $GLOBALS['puertoM'];
+	$mail->Username = $GLOBALS['usuM'];
+	$mail->Password = $GLOBALS['contraM'];
+	
+	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
+	$mail->AddAddress("$mail->Username.'@'.$mail->Host",$GLOBALS['jefeServicios']); //Dirección y nombre del remitente.
 
-	$mail->SetFrom($GLOBALS['usuMail'].'@'.$GLOBALS['host'], 'Servicios generales, IIBI');
-	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
+	$mail->Subject    = utf8_decode("Nueva solicitud de servicios");
+	$mail->MsgHTML(utf8_decode($mensaje));
 
-	$mail->Subject    = "Confirmación de verificación de solicitud de servicios";
-	$mail->MsgHTML($mensaje);
-
-	if(!($mail->Send()))
-		print_r($mail->ErrorInfo);
+	if(!($mail->Send())){
+		//print_r($mail->ErrorInfo);
+		$regreso=0;	}
+	else 
+		$regreso=1;
+	
+	unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
+	return $regreso;
 }

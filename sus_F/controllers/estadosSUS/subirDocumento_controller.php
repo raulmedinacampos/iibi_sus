@@ -8,7 +8,7 @@ $tipoDoc = $_FILES['documento']['type'];
 $tamanioDoc = $_FILES['documento']['size'];
 
 
-if (move_uploaded_file($_FILES['documento']['tmp_name'], $ruta.$nombreDoc))
+if (move_uploaded_file($_FILES['documento']['tmp_name'], $ruta.$folio."_".$nombreDoc))
 $subida = 1;
 
 /*
