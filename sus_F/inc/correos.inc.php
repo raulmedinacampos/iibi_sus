@@ -53,6 +53,69 @@ function mailValidacion($solNombre,$solMail,$folioM){
 }
 
 
+function mailTerminacion($solNombre,$solMail,$folioM){
+
+	$nombre 	= htmlspecialchars($solNombre);
+	$mensaje	=  "<p>$nombre</p>
+	<p>En atención con su solicitud con folio ".$folioM." le informamos que el área de Servicios Generales la ha dado por concluida. </br>
+	<br>Favor de verificar dicha actividad para posteriormente ingresar al sistema y evaluar el servicio otrorgado.</p>
+  	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+
+	$mail->Host	  	= $GLOBALS['hostM'];
+	$mail->Port 	= $GLOBALS['puertoM'];
+	$mail->Username = $GLOBALS['usuM'];
+	$mail->Password = $GLOBALS['contraM'];
+
+	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
+	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
+
+	$mail->Subject    = utf8_decode("Conclusión del servicio solicitado");
+	$mail->MsgHTML(utf8_decode($mensaje));
+
+	if(!($mail->Send()))
+		$regreso=0;
+	else
+		$regreso=1;
+
+	unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
+	return $regreso;
+
+}
+
+function mailCancelacion($solNombre,$solMail,$folioM){
+
+	$nombre 	= htmlspecialchars($solNombre);
+	$mensaje	=  "<p>$nombre</p>
+	<p>Le informamos que su solicitud con folio ".$folioM." ha sido cancelada. Por favor comuníquese al 562-30374 para mayor información.</p>
+  	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+
+	$mail->Host	  	= $GLOBALS['hostM'];
+	$mail->Port 	= $GLOBALS['puertoM'];
+	$mail->Username = $GLOBALS['usuM'];
+	$mail->Password = $GLOBALS['contraM'];
+
+	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
+	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
+
+	$mail->Subject    = utf8_decode("Cancelación del servicio solicitado");
+	$mail->MsgHTML(utf8_decode($mensaje));
+
+	if(!($mail->Send()))
+		$regreso=0;
+		else
+			$regreso=1;
+
+			unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
+			return $regreso;
+
+}
+
 function mailNewSol($tipoServicio,$solicitante,$folio){
 	$mensaje	=  "<p>".$GLOBALS['jefeServicios']."</p>
 	
@@ -82,3 +145,4 @@ function mailNewSol($tipoServicio,$solicitante,$folio){
 	unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
 	return $regreso;
 }
+

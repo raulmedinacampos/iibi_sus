@@ -9,6 +9,7 @@
 <script type="text/javascript" src="js/estado_solicitud.js"></script>
 
 <h3>Estado de solicitudes</h3>
+<p>Inicialmente se muestran las solicitudes de <?php setlocale(LC_TIME, "es_MX"); echo strftime("%B");?>, si desea conocer el estado de otras solicitudes por favor use los filtros siguientes:</p>
 
 <div class="panel panel-primary">
 	<div class="panel-heading">Filtros de búsqueda</div>
