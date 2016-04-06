@@ -1,6 +1,6 @@
 <?php
 session_start();
-$condicion ="idTipoServicioPadre!=0 and servicio!='Otro'";
+$condicion ="idTipoServicioPadre>0 and servicio!='Otro'";
 $servicio = seleccionarTodo("idTipoServicio,servicio,duracionEstimada", "cTipoServicio",$condicion );
 
 $data = array(

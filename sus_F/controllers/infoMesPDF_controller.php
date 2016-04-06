@@ -160,8 +160,8 @@ $header .= '</div>';
 
 $footer = '<p class="footer">F01 PSG Rev. 01</p>';
 /***************/
-$html .= '<p class="mes">Mes y año de contabilización:'.$mesL.'de '.$anio.'</p>';
-$html .= '<p class="mes">Fecha de elaboración:'.$infoMes['fecha'].' </p>';
+$html .= '<p class="mes">Mes y año de contabilización: '.$mesL.' de '.$anio.'</p>';
+$html .= '<p class="mes">Fecha de elaboración: '.$infoMes['fecha'].' </p>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<th>LÍNEA</th>';

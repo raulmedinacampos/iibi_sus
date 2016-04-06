@@ -61,6 +61,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 	$datos_aux['servicio'] = $row['servicio'];
 	$datos_aux['descripcion'] = $row['descripcion'];
 	$datos_aux['estatus'] = $row['estatus'];
+	$datos_aux['idServicio']=$row['estado'];
 	
 	switch ( $_SESSION['tipoUsuario'].$row['estado'] ){
 					
@@ -82,7 +83,7 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-archivar">'; //Archivar(visible=0)
 			break;
 					
-				case 311://Evaluada
+		case 311://Evaluada
 			$datos_aux['acciones'] = '<input type="button" value="Archivar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-archivar">'; //Archivar(visible=0)
 			break;
 			
@@ -123,7 +124,11 @@ foreach ( $aux as $dato ) {
 	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</a></td>";
 	echo "<td>".$dato['estatus']."</td>";
 	echo "<td>".$dato['acciones']."</td>";
-	echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';}
+	if($dato['idServicio']>=8)
+		echo '<td><button class="btn btn-sm btn-info btn-pdf" data-folio="'.$dato['folio'].'">PDF</button></td></tr>';
+	else
+		echo '<td> </td></tr>';}
+	
 }else
 	
 echo "<tr><th colspan=5>No se encontraron coincidencias</th></tr>";

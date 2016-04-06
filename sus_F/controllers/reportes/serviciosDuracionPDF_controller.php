@@ -41,8 +41,8 @@ $html .= '<br />';
 
 $html .= '<div class="contenedor">';
 $html .= '<p class="titulos">';
-$html .= '<span class="titulo1">Reporte para apoyar la evaluación del indicador</span><br />';
-$html .= '<span class="titulo2">Porcentaje de servicios realizados en los plazos establecidos</span>';
+$html .= '<span class="titulo1">Reporte para apoyar la evaluación de indicadores</span><br />';
+$html .= '<span class="titulo2">Número de servicios realizados en los plazos establecidos</span>';
 $html .= '</p>';
 
 $html .= '<br />';

@@ -115,8 +115,9 @@ $maxID=maximo("idObservacion", "obsInfMesSUS")+1;
 $valores = $maxID.",'Salida de bienes de activo fijo','".$obsSalidaB."','".$salidaBienes."','0','".$anio."-".$mes."'";
 $insertar = insertar("obsInfMesSUS", $valores);
 
-if ( $insertar[0] == 1 ) {
-} else {
+if ( $insertar[0] == 1 ) 
+	echo "1";
+else 
 	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";
-}
+
 ?>

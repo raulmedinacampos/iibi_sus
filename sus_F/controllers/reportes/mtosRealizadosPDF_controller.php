@@ -49,8 +49,8 @@ $html .= '<br />';
 
 $html .= '<div class="contenedor">';
 $html .= '<p class="titulos">';
-$html .= '<span class="titulo1">Reporte para apoyar la evaluación del indicador</span><br />';
-$html .= '<span class="titulo2">Porcentaje de mantenimiento realizado</span>';
+$html .= '<span class="titulo1">Reporte para apoyar la evaluación de indicadores</span><br />';
+$html .= '<span class="titulo2">Número de mantenimientos realizados</span>';
 $html .= '</p>';
 
 $html .= '<br />';

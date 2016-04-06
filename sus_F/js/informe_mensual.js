@@ -45,6 +45,7 @@ function consultarInforme() {
 					if ( data == "1" ) {
 						// Se encontró registro
 						$("#formInforme").submit();
+						$(".oculto").css("display", "none");
 					} else {
 						// No hay registro, se muestra formulario
 						$.post(
@@ -123,7 +124,6 @@ function guardar() {
 			function(data) {
 				if ( data == "1" ) {
 					$("miDiv").load("reportes/infoMes");
-					
 					$("#formInforme").submit();
 				}
 			}

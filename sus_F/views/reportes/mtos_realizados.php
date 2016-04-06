@@ -2,6 +2,7 @@
 
 <script src="js/reporte.js" type="text/javascript"></script>
 
+<h3>Mantenimientos realizados</h3>
 <h4>Seleccione el mes y año para obtener el reporte</h4>
 
 <form method="post" id="formReporte" name="formReporte" class="form-horizontal" action="reportes/mantenimientos-realizados-pdf" target="_blank">

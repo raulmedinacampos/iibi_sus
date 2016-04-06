@@ -1,7 +1,7 @@
 <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="js/alta_usuario.js" type="text/javascript"></script>
 
-<h4>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h4>
+<h5>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h5>
 
 <form method="post" id="formUsuario" name="formUsuario" class="form-horizontal" action="">
 	<div class="form-group">
