@@ -72,7 +72,7 @@
 					<li><a href="reportes/mantenimientos-realizados" target="_self">Mantenimientos realizados</a></li>
 					<li><a href="reportes/servicios-electricos" target="_self">Servicios eléctricos</a></li>
 					<li><a href="reportes/servicios-con-duraciones" target="_self">Servicios con duraciones</a></li>
-					<li><a href="reportes/estadisticas-de-cancelacion" target="_self">Estadísticas de cancelación de servicios</a></li>
+					<li><a href="reportes/estadisticas-de-cancelacion" target="_self">Cancelaciones de servicios</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Administración</a>
