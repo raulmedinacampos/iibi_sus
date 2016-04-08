@@ -2,7 +2,7 @@
 
 <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
-<!-- <script src="js/edicion_empleado.js" type="text/javascript"></script>-->
+<script src="js/edicion_empleado.js" type="text/javascript"></script>
 
 <h4>Escriba o modifique los datos del empleado</h4>
 
@@ -187,7 +187,7 @@
       <div class="modal-body"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Aceptar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+        <button type="button" name="btnActualizar" class="btn btn-default" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>

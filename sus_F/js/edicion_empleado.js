@@ -3,7 +3,7 @@ function actualizar() {
 		e.preventDefault();
 		
 		$.post(
-			'administracion/modifica_empleado',
+			'administracion/edicion_empleado',
 			$("#formServicios").serialize(),
 			function(data) {
 				$("#miDiv").load("administracion/listado");

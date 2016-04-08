@@ -53,6 +53,8 @@ Flight::route('/principal/', function() {
 	require_once 'controllers/principal_controller.php';
 });
 
+
+/*Solicitud de servicios*/
 Flight::route('/sus/', function() {
 	require_once 'controllers/sus_controller.php';
 });
@@ -65,6 +67,7 @@ Flight::route('/guardaSUS/', function() {
 	require 'controllers/guardaSUS_controller.php';
 });
 
+/*Estado de solicitudes*/
 Flight::route('/estadoSUS/', function() {
 	require_once 'controllers/estadosSUS/estadoSUS_controller.php';
 });
@@ -77,10 +80,16 @@ Flight::route('/detalleSUS/', function() {
 	require_once 'controllers/estadosSUS/detalleSUS_controller.php';
 });
 
+/*Acciones para solicitudes*/
 Flight::route('/sus/evaluar-solicitud/', function() {
 	require_once 'controllers/estadosSUS/evaSolicitud_controller.php';
 });
 
+/*NO CREO QUE VAYA ESTO*/
+Flight::route('/evaluacion/evaSolicitud/', function() {
+	require_once 'controllers/estadosSUS/evaSolicitud_controller.php';
+});
+	
 Flight::route('/sus/validar-solicitud/', function() {
 	require_once 'controllers/estadosSUS/validarSol_controller.php';
 });
@@ -101,24 +110,25 @@ Flight::route('/sus/subir-documento/', function() {
 	require_once 'controllers/estadosSUS/subirDocumento_controller.php';
 });
 
-Flight::route('/listado-empleados/', function() {
-	require_once 'controllers/lista_empleados_controller.php';
-});
-
-Flight::route('/listado-grupos/', function() {
-	require_once 'controllers/lista_grupos_controller.php';
-});
-
-Flight::route('/evaluacion/evaSolicitud/', function() {
-	require_once 'controllers/estadosSUS/evaSolicitud_controller.php';
-});
-
+/*reportes*/
 Flight::route('/reportes/infoMes/', function() {
 	Flight::render('reportes/infoMes');
 });
 
+Flight::route('/reportes/cargar-informe-mensual/', function() {
+	require_once 'controllers/infoMensual_controller.php';
+});
+
 Flight::route('/reportes/infoMes-consultar/', function() {
 	require_once 'controllers/infoMensualFiltro_controller.php';
+});
+
+Flight::route('/reportes/guarda-informe-mensual/', function() {
+	require_once 'controllers/guardaInfoMensual_controller.php';
+});
+	
+Flight::route('/reportes/informe-mensual-pdf/', function() {
+	require_once 'controllers/infoMesPDF_controller.php';
 });
 
 Flight::route('/reportes/mantenimientos-realizados/', function() {
@@ -144,25 +154,24 @@ Flight::route('/reportes/servicios-con-duraciones/', function() {
 Flight::route('/reportes/servicios-con-duraciones-pdf/', function() {
 	require_once 'controllers/reportes/serviciosDuracionPDF_controller.php';
 });
-
+	
 Flight::route('/reportes/estadisticas-de-cancelacion/', function() {
 	Flight::render('reportes/estadisticas_cancelacion');
 });
-
+	
 Flight::route('/reportes/estadisticas-de-cancelacion-pdf/', function() {
 	require_once 'controllers/reportes/estadisticasCancelacionPDF_controller.php';
 });
+	
+	
+/*Administración*/
 
-Flight::route('/reportes/cargar-informe-mensual/', function() {
-	require_once 'controllers/infoMensual_controller.php';
+Flight::route('/listado-empleados/', function() {
+	require_once 'controllers/lista_empleados_controller.php';
 });
-
-Flight::route('/reportes/guarda-informe-mensual/', function() {
-	require_once 'controllers/guardaInfoMensual_controller.php';
-});
-
-Flight::route('/reportes/informe-mensual-pdf/', function() {
-	require_once 'controllers/infoMesPDF_controller.php';
+	
+Flight::route('/listado-grupos/', function() {
+	require_once 'controllers/lista_grupos_controller.php';
 });
 	
 Flight::route('/administracion/alta-de-empleado/', function() {
@@ -204,7 +213,11 @@ Flight::route('/administracion/duracion-de-servicios/', function() {
 Flight::route('/administracion/firmas-autorizadas/', function() {
 	require_once 'controllers/administracion/firmas_autorizadas_controller.php';
 });
-	
+
+/*Ayuda*/
+
+
+/*Salir*/
 Flight::route('/salir/', function() {
 	session_start();
 
