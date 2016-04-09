@@ -166,6 +166,10 @@ Flight::route('/reportes/estadisticas-de-cancelacion-pdf/', function() {
 	
 /*Administración*/
 
+Flight::route('/administracion/lista-de-usuarios/', function() {
+	require_once 'controllers/administracion/lista_usuarios_controller.php';
+});
+	
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });
@@ -182,6 +186,10 @@ Flight::route('/administracion/guarda-empleado/', function() {
 	require_once 'controllers/administracion/guardaEmpleado_controller.php';
 });
 
+Flight::route('/administracion/actualiza-empleado/', function() {
+	require_once 'controllers/administracion/actualizaEmpleado_controller.php';
+});
+
 Flight::route('/administracion/buscar-empleado/', function() {
 	require_once 'controllers/administracion/buscarEmpleado_controller.php';
 });
@@ -190,9 +198,6 @@ Flight::route('/administracion/buscar-info/', function() {
 	require_once 'controllers/administracion/buscarInfoEmpleado_controller.php';
 });
 
-Flight::route('/administracion/lista-de-usuarios/', function() {
-	require_once 'controllers/administracion/lista_usuarios_controller.php';
-});
 	
 Flight::route('/administracion/alta-de-usuario/', function() {
 	require_once 'controllers/administracion/usuario_controller.php';

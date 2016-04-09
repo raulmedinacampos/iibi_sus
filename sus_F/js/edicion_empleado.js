@@ -1,12 +1,12 @@
 function actualizar() {
-	$("#btnActualizar").one("click", function(e) {
+	$("#btnGuardar").one("click", function(e) {
 		e.preventDefault();
 		
 		$.post(
-			'administracion/edicion_empleado',
-			$("#formServicios").serialize(),
+			'administracion/actualiza-empleado',
+			$("#formEmpleado").serialize(),
 			function(data) {
-				$("#miDiv").load("administracion/listado");
+				$("#miDiv").load("administracion/lista-de-usuarios");
 			}
 		);
 	});

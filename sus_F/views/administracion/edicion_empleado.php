@@ -187,7 +187,7 @@
       <div class="modal-body"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Aceptar</button>
-        <button type="button" name="btnActualizar" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+        <button type="button"class="btn btn-default" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
