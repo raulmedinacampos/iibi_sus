@@ -1,6 +1,6 @@
 <?php
-$id = (isset($_POST['hdnId'])) ? addslashes($_POST['hdnId']) : "";
-$newPerfil = (isset($_POST['newPerfil'])) ? addslashes($_POST['newPerfil']) : "";
+$id = (isset($_POST['id'])) ? addslashes($_POST['id']) : "";
+$newPerfil = (isset($_POST['grupo'])) ? addslashes($_POST['grupo']) : "";
 
 $actualizar = actualizar('usuarioSUS', 'tipoUsuario='.$newPerfil, 'idUsuario='.$id);
 if ( $actualizar[0] == 0 )

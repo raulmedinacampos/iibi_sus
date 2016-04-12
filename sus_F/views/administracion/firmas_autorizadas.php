@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
-				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="Aquí va el nombre que se jala desde la base" />
+				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="<?echo $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'] ?>"/>
 			</div>
 		</div>
 		
@@ -28,7 +28,7 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
-				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="Aquí va el nombre que se jala desde la base" />
+				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="<?echo $sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'] ?>" />
 			</div>
 		</div>
 		
@@ -42,7 +42,8 @@
 			</div>
 		</div>
 	</div>
-	
+
+<!-- 	
 	<div class="row">
 		<h5 class="text-primary"><strong>Jefe de Departamento de Personal</strong></h5>
 		<div class="form-group">
@@ -102,5 +103,5 @@
 			</div>
 		</div>
 	</div>
-
+ -->
 </form>

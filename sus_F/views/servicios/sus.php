@@ -44,9 +44,6 @@
 						<label><input type="radio" id="rdb" name="servicio" value="11" />Limpieza</label>
 					</div>
 					
-					<div class="radio">
-						<label><input type="radio" id="rdb" name="servicio" value="12" />Servicio de bocadillos</label>
-					</div>
 					
 					<div class="radio">
 						<label><input type="radio" id="rdb_diversos_otro" name="servicio" value="13" />Otro</label>

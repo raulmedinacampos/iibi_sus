@@ -174,6 +174,22 @@ Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });
 	
+Flight::route('/administracion/editar-empleado/', function() {
+	require_once 'controllers/administracion/editar_empleado_controller.php';
+});
+
+Flight::route('/administracion/actualiza-empleado/', function() {
+	require_once 'controllers/administracion/actualizaEmpleado_controller.php';
+});	
+
+Flight::route('/administracion/modificar-perfil-usuario/', function() {
+	require_once 'controllers/administracion/modifica_perfil_controller.php';
+});
+
+Flight::route('/administracion/eliminar-usuario/', function() {
+	require_once 'controllers/administracion/baja_usuario_controller.php';
+});
+	
 Flight::route('/listado-grupos/', function() {
 	require_once 'controllers/lista_grupos_controller.php';
 });
@@ -186,9 +202,6 @@ Flight::route('/administracion/guarda-empleado/', function() {
 	require_once 'controllers/administracion/guardaEmpleado_controller.php';
 });
 
-Flight::route('/administracion/actualiza-empleado/', function() {
-	require_once 'controllers/administracion/actualizaEmpleado_controller.php';
-});
 
 Flight::route('/administracion/buscar-empleado/', function() {
 	require_once 'controllers/administracion/buscarEmpleado_controller.php';
@@ -207,9 +220,6 @@ Flight::route('/administracion/guarda-usuario/', function() {
 	require_once 'controllers/administracion/guardaUsuario_controller.php';
 });
 
-Flight::route('/administracion/editar-empleado/', function() {
-	require_once 'controllers/administracion/editar_empleado_controller.php';
-});
 
 Flight::route('/administracion/duracion-de-servicios/', function() {
 	require_once 'controllers/administracion/duracion_servicios_controller.php';

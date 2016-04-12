@@ -10,6 +10,7 @@ if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 	<tr>
 		<th>Usuario</th>
 		<th>Nombre</th>
+		<th>Perfil</th>
 		<th class="text-center">Acciones</th>
 	</tr>
 	<?php
@@ -18,6 +19,7 @@ if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 	<tr>
 		<td><?php echo $row['usuario']; ?></td>
 		<td><?php echo $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']; ?></td>
+		<td><?php echo $row['tipoUsuarioSUS']?></td>
 		<td class="text-center">
 			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="editar" title="Modificar datos de usuario" data-toggle="tooltip">
 				<span class="glyphicon glyphicon-pencil"></span>

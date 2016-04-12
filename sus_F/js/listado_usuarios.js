@@ -48,12 +48,12 @@ function inicializar() {
 					$('#myModal .modal-footer .btn-primary').off('click');
 					
 					$.post(
-						'administracion/modificar-perfil-empleado',
+						'administracion/modificar-perfil-usuario',
 						{'id': id, 'grupo': grupo},
 						function(d) {
 							$("#myModal").modal('hide');
 							
-							$("#miDiv").html("administracion/lista-de-usuarios");
+							$("#miDiv").load("administracion/lista-de-usuarios");
 						}
 					);
 				});
@@ -76,12 +76,12 @@ function inicializar() {
 			$('#myModal .modal-footer .btn-primary').off('click');
 			
 			$.post(
-				'administracion/eliminar-empleado',
+				'administracion/eliminar-usuario',
 				{'id': id},
 				function(data) {
 					$("#myModal").modal('hide');
 					
-					$("#miDiv").html("administracion/lista-de-usuarios");
+					$("#miDiv").load("administracion/lista-de-usuarios");
 				}
 			);
 		});
