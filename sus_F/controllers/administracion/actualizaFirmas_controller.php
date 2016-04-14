@@ -3,6 +3,8 @@
 $idPuestoAnt = (isset($_POST['idPuestoAnt'])) ? addslashes($_POST['idPuestoAnt']) : "";
 $idEmpleado = (isset($_POST['hdn_id'])) ? addslashes($_POST['hdn_id']) : "";
 
+
+
 $anterior = seleccionar('*', 'puesto', 'idPuesto='.$idPuestoAnt);
 $update= "fechaFin=now() and estatus=0 and fechaModif=now()";
  	

@@ -373,6 +373,7 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
+	$regreso="";
 
 
 	/*El if de René =D*/

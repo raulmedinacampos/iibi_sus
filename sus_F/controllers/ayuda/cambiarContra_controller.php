@@ -1,10 +1,12 @@
 <?php
 require 'inc/correos.inc.php' ;
 require 'inc/herramientas.inc.php';
+session_start();
+$exito="";
 
-$confimacion = (isset($_POST['confimacion'])) ? addslashes($_POST['confimacion']) : "";
+$conf = (isset($_POST['conf'])) ? addslashes($_POST['conf']) : "";
 
-if($confirmacion==1){
+if($conf!=""){
 	
 	$newContra= generarClave();
 	$valores= "contrasenia='".$newContra."'";

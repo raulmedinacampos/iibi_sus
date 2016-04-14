@@ -173,6 +173,10 @@ Flight::route('/administracion/lista-de-usuarios/', function() {
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });
+
+Flight::route('/listado-firmas/', function() {
+	require_once 'controllers/lista_firmas_controller.php';
+});
 	
 Flight::route('/administracion/editar-empleado/', function() {
 	require_once 'controllers/administracion/editar_empleado_controller.php';
@@ -231,6 +235,9 @@ Flight::route('/administracion/firmas-autorizadas/', function() {
 
 /*Ayuda*/
 
+Flight::route('/ayuda/cambiar-contra/', function() {
+	require_once 'controllers/ayuda/cambiarContra_controller.php';
+});
 
 /*Salir*/
 Flight::route('/salir/', function() {

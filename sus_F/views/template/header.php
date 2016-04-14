@@ -1,5 +1,8 @@
 <!doctype html>
 <html>
+<!-- <script src="js/query.js" type="text/javascript"></script>
+<script src="js/cambiar_contrasenia.js" type="text/javascript"></script>
+ -->
 <head>
 	<meta charset="utf-8">
 	<meta name="description" content="Instituto de Investigaciones Bibliotecológicas Página Web de Créditos" />
@@ -92,17 +95,15 @@
 				$normatividad = "";
 				
 				if ( $_SESSION['tipoUsuario'] == 1 ) {
-					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';
-				}
+					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';}
 				
 				if ( $_SESSION['tipoUsuario'] == 3 ) {
-					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';
-				}
+					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';}
 				?>
 					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
 					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li>
 					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
-					<li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li>
+					<li><a href="#" class="cambiar"  target="_self">Cambiar contraseña</a></li>
 				</ul>
 			</li>
 			<li><a href="salir">Salir</a></li>
