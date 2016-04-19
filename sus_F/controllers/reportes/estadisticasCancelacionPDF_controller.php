@@ -47,7 +47,7 @@ $html .= '<br />';
 
 $html .= '<div class="contenedor">';
 $html .= '<p class="titulos">';
-$html .= '<span class="titulo2">Estadísticos de cancelación de </br>solicitudes por justificación</span>';
+$html .= '<span class="titulo2">Cancelación de solicitudes por justificación</span>';
 $html .= '</p>';
 
 $html .= '<br />';

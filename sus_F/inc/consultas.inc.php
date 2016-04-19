@@ -4,9 +4,9 @@ $conexion = conectar();
 
 /*IMPORTANTE LA COMPARACION DEL WHERE NO ES SENSITIVA, ES DECIR IGNORA MAYÚSCULAS Y MINÚSCULAS*/
 
-$ERROR = "[global]<br>Ocurrió un error, favor de comunicarse con el administrador del sistema.";
-$err_update = "[global]<br>No se realizó alguna actualización. Favor de comunicarse con el administrador.";
-$err_select = "[global]<br>No se encontraron coincidencias.";
+$ERROR = "[]<br>Ocurrió un error, favor de comunicarse con el administrador del sistema.";
+$err_update = "[]<br>No se realizó alguna actualización. Favor de comunicarse con el administrador.";
+$err_select = "[]<br>No se encontraron coincidencias.";
 
 
 
@@ -175,13 +175,16 @@ function seleccionarTodo($columnas,$tablas,$condicion){
 		$regreso[0] = 0;
 		$regreso[1] = $GLOBALS['ERROR'];
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
-		echo $regreso[1];}
+		echo $regreso[1];
+	}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0){
 			$regreso[0] = 1;
 			$regreso[1] = $respuesta;}
-		else
-			$regreso = $GLOBALS['err_select'];}
+		else{
+			$regreso[0]=0;
+			$regreso[1] = $GLOBALS['err_select'];}
+	}
 	return $regreso;}
 
 
@@ -194,9 +197,7 @@ function seleccionarTodoSM($columnas,$tablas,$condicion){
 	// si hubo errores en la consulta
 		$regreso[0] = 0;
 		$regreso[1] = 0;
-	//	$regreso[1] = $GLOBALS['ERROR'];
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
-		//echo $regreso[1];
 	}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0){
@@ -295,6 +296,10 @@ function borrar($tabla,$condicion){
 			echo $GLOBALS['err_select'];}}
 	return $regreso;}
 	
+	
+	
+	
+	
 function iUsuario($valsEmpleado,$valsPuesto){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
@@ -323,9 +328,8 @@ function iUsuario($valsEmpleado,$valsPuesto){
 
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
+	/*verificar que $newEmp esté pasando. hubo errores en la transaccion InsertaEmpleado*/
 
-
-	/*El if de Ren� =D*/
 	if(($newEmp=!0)&&($newEmp=!NULL)){
 		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
@@ -334,16 +338,17 @@ function iUsuario($valsEmpleado,$valsPuesto){
 			
 	if ($resultado) {
 		$sql = "COMMIT";
-		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[0] = 1;
+		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
 	else{
 		$sql = "ROLLBACK;";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[1];
+		$regreso[0]=0;
+		$regreso[1]=0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 	
 return $regreso;}
+
 
 function trInsertEmpleado($valsEmpleado,$valsPuesto){
 	$sql = "SET AUTOCOMMIT=0;";
@@ -353,49 +358,38 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 
 	$sql = "INSERT INTO empleado (
-			gradoAcad,
-			nombre,
-			apellidoP,
-			apellidoM,
-			iniciales,
-			noTrabajador,
-			noCuenta,
-			telFijo,
-			telMovil,
-			telOficina,
-			eMailPers,
-			eMailOf,
-			fechaIngreso,
-			RFC,
-			CURP,
-			estatus)
+			gradoAcad, 		nombre,
+			apellidoP,		apellidoM,
+			iniciales,		noTrabajador,
+			noCuenta,		telFijo,
+			telMovil,		telOficina,
+			eMailPers,		eMailOf,
+			fechaIngreso,	RFC,
+			CURP,			estatus)
 		VALUES (".$valsEmpleado.",1)";
 
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
-	$regreso="";
-
-
-	/*El if de René =D*/
+	$temp = $newEmp;
+	
 	if(($newEmp=!0)&&($newEmp=!NULL)){
-		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,correoPuesto,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
+		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,correoPuesto,fechaInicio,estatus) values (".$temp.",".$valsPuesto.",1)";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
 	else{
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 				
 	if ($resultado) {
 		$sql = "COMMIT";
-		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[0] = 1;
+		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
 	else{
 		$sql = "ROLLBACK;";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[1];
+		$regreso[0]=0;
+		$regreso[1]=0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 	return $regreso;}
 
-	
 	
 	
 function trNuevoSAC($update,$insert,$idPuestoAnt){
@@ -419,8 +413,6 @@ function trNuevoSAC($update,$insert,$idPuestoAnt){
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	$newPuesto = mysqli_insert_id($GLOBALS['conexion']);
 	
-	
-	/*El if de René =D*/
 	if(($newPuesto=!0)&&($newPuesto=!NULL)){
 		$sql = "UPDATE puesto SET ".$update." WHERE idPuesto=".$idPuestoAnt;
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
@@ -429,13 +421,13 @@ function trNuevoSAC($update,$insert,$idPuestoAnt){
 	
 	if ($resultado) {
 		$sql = "COMMIT";
-		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[0] = 1;
+		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);;
 		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
 	else{
 		$sql = "ROLLBACK;";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[1];
+		$regreso[0]=0;
+		$regreso[1]=0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 return $regreso;}
 	

@@ -36,15 +36,10 @@ $valsEmpleado ='"'.$grado.'", "'.
 			$rfc.'","'.
 			$curp.'"';
 
-$valsPuesto = '"'.$puesto.'", '.
-		      $area.', "'.
-		      $correoPuesto.', "'.
-		      $fechaEntrada.'"';
+$valsPuesto = '"'.$puesto.'", '.$area.', "'.$correoPuesto.'","'.$fechaEntrada.'"';
 			
 $insertar = trInsertEmpleado($valsEmpleado, $valsPuesto);
 
-if ( $insertar[0] == 1 ) {
-} else {
-	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";
-}
+echo $insertar[0];
+
 ?>

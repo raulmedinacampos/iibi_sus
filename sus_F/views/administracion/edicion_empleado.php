@@ -44,7 +44,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group datos-adicionales">
+<!-- 			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Teléfono</label>
 				<div class="col-sm-4">
 					<input id="telefono" name="telefono" class="form-control" value="<?php echo $empleado['telFijo']; ?>" />
@@ -78,7 +78,7 @@
 				<div class="col-sm-4">
 					<input id="curp" name="curp" class="form-control" value="<?php echo $empleado['CURP']; ?>" />
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 	

@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
 
 <script src="js/reporte.js" type="text/javascript"></script>
-<h3>Servicios de elecricidad</h3>
+<h3>Servicios de electricidad</h3>
 <h4>Seleccione el mes y año para obtener el reporte</h4>
 
 <form method="post" id="formReporte" name="formReporte" class="form-horizontal" action="reportes/servicios-electricos-pdf" target="_blank">
