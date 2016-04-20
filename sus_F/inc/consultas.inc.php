@@ -232,13 +232,11 @@ function actualizar($tabla,$valores, $condicion){
 			$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
 		else{
 			$regreso[0] = 0;
-			$regreso[1] = $GLOBALS['err_update'];
-//			echo $regreso[1];
-			}}
+			$regreso[1] = $GLOBALS['err_update'];}
+	}
 	else{
 		$regreso[0] = 0;
-		$regreso[1] = $GLOBALS['ERROR'];
-//		echo $regreso[1];
+		$regreso[1] = mysqli_error($GLOBALS['conexion']);
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
 	return $regreso;}
 
@@ -261,7 +259,7 @@ function insertar($tabla,$valores){
 		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
 	else{
 		$regreso[0] = 0;
-		$regreso[1] = $GLOBALS['ERROR'];
+		$regreso[1] = mysqli_error($GLOBALS['conexion']);
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
 	return $regreso;}
 	

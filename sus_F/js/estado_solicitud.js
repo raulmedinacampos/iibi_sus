@@ -548,7 +548,7 @@ function buscar() {
 					
 					var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
 					contenido += '<p>Favor de subir el documento digital.<br />';
-					contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 100 kB</strong></p>';
+					contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 3 MB</strong></p>';
 					contenido += '<div class="form-group">';
 					contenido += '<label>Documento digital</label>';
 					contenido += '<input type="file" id="documento" name="documento" />';

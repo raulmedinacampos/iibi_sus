@@ -10,7 +10,7 @@ if($conf!=""){
 	
 	$newContra= generarClave();
 	$valores= "contrasenia='".$newContra."'";
-	$condicion = 'idUsuario='.$_SESSION ['idUsuario'];
+	echo $condicion = 'idUsuario='.$_SESSION ['idUsuario'];
 	
 	$actualizar = actualizar ( "usuarioSUS", $valores, $condicion );
 	
@@ -18,15 +18,15 @@ if($conf!=""){
 		
 		$valores   = "eMailOf, concat(gradoAcad,' ',nombre,' ',apellidoP,' ',apellidoM) as nombre, usuario, contrasenia";
 		$tablas    = 'empleado, usuarioSUS';
-		$condicion = 'empleado.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = '.$_SESSION['idUsuario']."'";
+		$condicion = 'empleado.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = '.$_SESSION['idUsuario'];
 		
 		$datosUsu = seleccionarSinMsj($valores, $tablas, $condicion);
-		$exito= mailContra($datosUsu['nombre'], $datosUsu['eMailOf'],$usuario, $contrasenia);
+		
+		$exito= mailNewContra($datosUsu['nombre'], $datosUsu['eMailOf'],$datosUsu['usuario'], $newContra);
 	}
 	else //si no se actualizó
 	$exito=0;
 }
 
 echo $exito;
-
 ?>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $id = (isset($_POST['hdnId'])) ? addslashes($_POST['hdnId']) : "";
 $grado = (isset($_POST['grado'])) ? addslashes($_POST['grado']) : "";
 $nombre = (isset($_POST['nombre'])) ? addslashes($_POST['nombre']) : "";
@@ -38,8 +40,11 @@ $valsEmpleado =
 		fechaModif 	= now()';
 
 $actualizar = actualizar('empleado', $valsEmpleado, 'idEmpleado='.$id);
-if ( $actualizar[0] == 0 )
-	echo $actualizar[1];
+if ($actualizar[0] == 0){
+	$exito=0;
+	echo $actualizar[1];}
+else 
+	$exito=1;
 
 $valsPuesto = 
 	   'puesto		= "'.$puesto.'",
@@ -49,7 +54,17 @@ $valsPuesto =
 		fechaModif	= now()';
 			
 $actualizar = actualizar('puesto', $valsPuesto, 'estatus = 1 and idEmpleado='.$id);
+if ($actualizar[0] == 0){
+	$exito=0;
+	echo $actualizar[1];}
+else 
+	$exito=1;
 
-if ( $actualizar[0] == 0 ) 
-	echo $actualizar[1];
+
+if($exito==1)
+	echo $_SESSION['tipoUsuario'];
+else 
+	echo "0";
+
+
 ?>

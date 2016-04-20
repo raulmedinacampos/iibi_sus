@@ -27,7 +27,7 @@ if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="administrar" title="Modificar perfil de usuario" data-toggle="tooltip">
 				<span class="glyphicon glyphicon-cog"></span>
 			</a>
-			<a href="#" data-id="<?php echo $row['idEmpleado']; ?>" class="eliminar" title="Eliminar usuario" data-toggle="tooltip">
+			<a href="#" data-id="<?php echo $row['idUsuario']; ?>" class="eliminar" title="Eliminar usuario" data-toggle="tooltip">
 				<span class="glyphicon glyphicon-trash"></span>
 			</a>
 		</td>

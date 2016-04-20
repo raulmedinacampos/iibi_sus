@@ -6,7 +6,11 @@ function actualizar() {
 			'administracion/actualiza-empleado',
 			$("#formEmpleado").serialize(),
 			function(data) {
-				$("#miDiv").load("/sus");
+				if(data==3)//tipoUsuario admin
+					$("#miDiv").load("administracion/lista-de-usuarios");
+				else
+					//	if(data==1)	//tipoUsuario usuario	
+					$("#miDiv").load("estadoSUS");
 			}
 		);
 	});

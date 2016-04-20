@@ -9,7 +9,7 @@ $tipo  	= (isset($_POST['tipoServicio']))  ? addslashes($_POST['tipoServicio']) 
 $estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
-			servicio, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
+			servicio,cTipoServicio.idTipoServicio,otro, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
 
 
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
@@ -62,6 +62,10 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 	$datos_aux['descripcion'] = $row['descripcion'];
 	$datos_aux['estatus'] = $row['estatus'];
 	$datos_aux['idServicio']=$row['estado'];
+	//????????? esta línea de arriba está bien??? Por lo pronto parece funcionar
+	
+	$datos_aux['otro']=$row['otro'];
+	$datos_aux['idTipoServicio']=$row['idTipoServicio'];
 	
 	switch ( $_SESSION['tipoUsuario'].$row['estado'] ){
 					
@@ -121,7 +125,11 @@ echo   "<tr><th>Folio</th>
 foreach ( $aux as $dato ) {
 	echo "<tr><td><a href='#' data-folio=".$dato['folio'].">".$dato['folio']."</a></td>";
 	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['fecha']."</a></td>";
-	echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</a></td>";
+	
+	if($dato['idTipoServicio']==13||$dato['idTipoServicio']==23||$dato['idTipoServicio']==36||$dato['idTipoServicio']==69)
+		echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['otro']."</a></td>";
+	else
+		echo "<td><a href='#' data-folio=".$dato['folio'].">".$dato['servicio']."</a></td>";
 	echo "<td>".$dato['estatus']."</td>";
 	echo "<td>".$dato['acciones']."</td>";
 	if($dato['idServicio']>=8)

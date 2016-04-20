@@ -170,7 +170,7 @@ function mailNewContra($solNombre,$solMail,$usuario,$newContra){
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send())){
-		//print_r($mail->ErrorInfo);
+		print_r($mail->ErrorInfo);
 		$regreso=0;}
 	else
 		$regreso=1;

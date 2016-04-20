@@ -80,7 +80,7 @@ function inicializar() {
 				{'id': id},
 				function(data) {
 					$("#myModal").modal('hide');
-					
+					alert("Usuario eliminado.");
 					$("#miDiv").load("administracion/lista-de-usuarios");
 				}
 			);
