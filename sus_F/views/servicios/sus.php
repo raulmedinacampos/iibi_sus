@@ -32,7 +32,7 @@
 	
 	<h4>Tipo de servicio:</h4>
 	<div class="nota">
-		<p>Nota: Es necesario elaborar una solcitud por cada servicio requerido</p>
+		<p>Nota: Es necesario elaborar una solicitud por cada servicio requerido</p>
 	</div>
 	
 	<div class="row row-eq-height">

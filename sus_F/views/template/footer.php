@@ -10,7 +10,7 @@
 			<div class="administrado">
 				<a href="#">Ubicación</a>: Circuito Interior s/n, Torre II de
 				Humanidades, pisos 11, 12 y 13, Ciudad Universitaria, C.P. 04510, Del.
-				Coyoacán, México, D.F.<br /> Sitio web administrado por:
+				Coyoacán, México, Cd. Mx.<br /> Sitio web administrado por:
 				Instituo de Investigaciones Bibiotecológicas y de la Información. <a
 					href="mailto:tecnica@iibi.unam.mx">Informes</a>
 			</div>
