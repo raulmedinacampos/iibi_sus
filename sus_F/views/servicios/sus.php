@@ -65,7 +65,7 @@
 					</div>
 					
 					<div class="radio">
-						<label><input type="radio" id="rdb_23" name="servicio" value="23" />Otro</label>
+						<label><input type="radio" id="rdb_mensajeria_otro" name="servicio" value="23" />Otro</label>
 					</div>
 				</div>
 			</div>

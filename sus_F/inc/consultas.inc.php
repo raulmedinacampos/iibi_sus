@@ -262,7 +262,6 @@ function insertar($tabla,$valores){
 	else{
 		$regreso[0] = 0;
 		$regreso[1] = $GLOBALS['ERROR'];
-		echo $regreso[1];
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
 	return $regreso;}
 	

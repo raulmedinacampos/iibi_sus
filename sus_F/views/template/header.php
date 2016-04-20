@@ -1,8 +1,5 @@
 <!doctype html>
 <html>
-<!-- <script src="js/query.js" type="text/javascript"></script>
-<script src="js/cambiar_contrasenia.js" type="text/javascript"></script>
- -->
 <head>
 	<meta charset="utf-8">
 	<meta name="description" content="Instituto de Investigaciones Bibliotecológicas Página Web de Créditos" />
@@ -29,6 +26,8 @@
 	<script src="js/jqueryvalidation.js"></script>
 	<script src="js/validarIndex.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/cambiar_contrasenia.js" type="text/javascript"></script>
+ 
 	<?php
 	if (isset ( $js )) {
 		foreach ( $js as $val ) {

@@ -16,6 +16,18 @@ function agregarOtro() {
 			$('.txt-otro-d').remove();
 		}
 		
+		if ( $(this).prop("id") == "rdb_mensajeria_otro" ) {
+			if ( $('#txt_otro_mensajeria').length == 0 ) {
+				var div = $(this).parents(".radio");
+				var txt = '<div class="txt-otro-msg col-sm-12">';
+				txt += '<input id="txt_otro_mensajeria" name="txt_otro_mensajeria" class="form-control" placeholder="Describe el servicio" />';
+				txt += '</div>';
+				div.after(txt);
+			}
+		} else {
+			$('.txt-otro-msg').remove();
+		}
+		
 		if ( $(this).prop("id") == "rdb_mto_otro" ) {
 			if ( $('#txt_otro_mto').length == 0 ) {
 				var div = $(this).parents(".radio");

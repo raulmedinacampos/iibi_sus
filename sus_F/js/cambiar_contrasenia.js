@@ -1,5 +1,5 @@
 $(function() {
-	$("#cambiar").click(function(e) {
+	$(".cambiar").click(function(e) {
 		e.preventDefault();
 		
 		$(".modal-header .modal-title").html("Cambiar contraseña");
@@ -11,12 +11,13 @@ $(function() {
 		$("#myModal .modal-footer .btn-primary").click(function() {
 			$('#myModal .modal-footer .btn-primary').off('click');
 			
-			$.post('/ayuda/cambiar-contra/',
-			 {'conf': 1},
-			 function(data) {
+			$.post(
+				'ayuda/cambiar-contra/',
+				{'conf': 1},
+				function(data) {
 					$("#myModal").modal('hide');
 					
-					$("#miDiv").load("/estado-sus/");
+					$("#miDiv").load("estadoSUS/");
 				}
 			);
 		});

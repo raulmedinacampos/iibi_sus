@@ -40,7 +40,7 @@ function guardar() {
 				'administracion/guarda-usuario',
 				$("#formUsuario").serialize(),
 				function(data) {
-					
+					$("#miDiv").load("administracion/lista-de-usuarios");
 				}
 		);
 	});

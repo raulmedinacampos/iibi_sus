@@ -6,7 +6,7 @@ function actualizar() {
 			'administracion/actualiza-empleado',
 			$("#formEmpleado").serialize(),
 			function(data) {
-				$("#miDiv").load("administracion/lista-de-usuarios");
+				$("#miDiv").load("/sus");
 			}
 		);
 	});
