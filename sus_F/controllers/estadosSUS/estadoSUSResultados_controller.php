@@ -14,10 +14,10 @@ $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicita
 
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
 
-if ( $_SESSION['tipoUsuario'] == 1 ) 
-	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<11";
+if ( $_SESSION['tipoUsuario'] == 1 ) //usuario normal 
+	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<=11";
 	
-if ($_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6)
+if ($_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['tipoUsuario'] == 6) //usuario con permisos de admin
 	if($estado!=12) 
 		$condicion= "servicioSUS.estatus<12 ";
 	else 

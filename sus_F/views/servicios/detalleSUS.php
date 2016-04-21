@@ -1,7 +1,8 @@
 <h3 style="margin-top:0;"><strong class="text-primary">Folio: <?php echo $folio; ?></strong></h3>
 
-<p><strong class="text-primary">Fecha de solicitud: </strong><?php echo $solicitud['fechaS']; ?>
-<strong class="text-primary"> Fecha de autorización: </strong><?php echo $solicitud['fechaV']; ?></p>
+<p><strong class="text-primary">Fecha de solicitud: </strong><?php echo $solicitud['fechaS']; ?><?php 
+if($solicitud['fechaV']!=NULL){?>
+	<br><strong class="text-primary"> Fecha de validación: </strong><?php echo $solicitud['fechaV']; ?></p><?php }?>
 
 <p><strong class="text-primary">Responsable </strong><?php echo $nomResponsable;?></p>
 <p><strong class="text-primary">Área solicitante: </strong><?php echo $area['area']; ?></p>

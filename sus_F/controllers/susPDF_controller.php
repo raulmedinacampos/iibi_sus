@@ -40,8 +40,7 @@ $left2 = 0; //palomita evaluacion
 
 $top = -20;
 $top2 = -20;
-$top3 = 654; //Palomita evaluacion
-
+$top3 = -20;
 
 if($grupoServicio==1) //diversos
 	$left = 155;
@@ -111,13 +110,16 @@ if($servicio==71)//vigilancia
 
 	
 if($evaluacion=="E"){
-	$left2=139;}
+	$top3 = 654; $left2=139;}
+	
 if($evaluacion=="B"){
-	$left2=219;}
+	$top3 = 654; $left2=219;}
+
 if($evaluacion=="R"){
-	$left2=307;}
+	$top3 = 654; $left2=307;}
+
 if($evaluacion=="M"){
-	$left2=383;}
+	$top3 = 654; $left2=383;}
 	
 	
 	
