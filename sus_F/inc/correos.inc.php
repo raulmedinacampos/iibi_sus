@@ -185,7 +185,7 @@ function mailEnvioContra($solNombre,$solMail,$usuario,$contra){
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
 	<p>Por este medio se le informa que se ha dado de alta como usuario del Sistema de solicitud única de servicios del IIBI.
-	<br> Podrá ingresar al sistema mediante la liga dispuesta en el catálogo de servicios de la Secretaría Administrativa utilizando las siguientes credenciales.</p>
+	<br> Podrá ingresar al sistema mediante la dirección electrónica http://132.248.242.11/sus/ dispuesta en el catálogo de servicios de la Secretaría Administrativa utilizando las siguientes credenciales.</p>
 	<p> USUARIO: ".$usuario."
 	<br> CONTRASEÑA: ".$contra."</p>
 	<p>".$GLOBALS['jefeServicios']."
