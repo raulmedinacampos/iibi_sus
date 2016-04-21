@@ -21,7 +21,7 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada por el área correspondiente. 
+	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada. 
 	<br> Se le solicita imprimir el formato, recabar las firmas correspondientes y entregarlo en Servicios Generales para continuar con su trámite.
 	<br> Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
@@ -43,7 +43,8 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send())){
-		//print_r($mail->ErrorInfo);
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailValidacion-$folioM");
+		print_r($mail->ErrorInfo);
 		$regreso=0;}
 	else 
 		$regreso=1;
@@ -77,8 +78,10 @@ function mailTerminacion($solNombre,$solMail,$folioM){
 	$mail->Subject    = utf8_decode("Conclusión del servicio solicitado.");
 	$mail->MsgHTML(utf8_decode($mensaje));
 
-	if(!($mail->Send()))
-		$regreso=0;
+	if(!($mail->Send())){
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailTerminacion-$folioM");
+		print_r($mail->ErrorInfo);
+		$regreso=0;}
 	else
 		$regreso=1;
 
@@ -105,16 +108,18 @@ function mailCancelacion($solNombre,$solMail,$folioM){
 	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
 	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
 
-	$mail->Subject    = utf8_decode("Cancelación del servicio solicitado");
+	$mail->Subject    = utf8_decode("Cancelación del servicio solicitado.");
 	$mail->MsgHTML(utf8_decode($mensaje));
 
-	if(!($mail->Send()))
-		$regreso=0;
-		else
-			$regreso=1;
+	if(!($mail->Send())){
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailCancelacion-$folioM");
+		print_r($mail->ErrorInfo);
+		$regreso=0;}
+	else
+		$regreso=1;
 
-			unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
-			return $regreso;
+	unset($GLOBALS['hostM'],$GLOBALS['puertoM'],$GLOBALS['usuM'],$GLOBALS['contraM'],$GLOBALS['jefeServicios']);
+	return $regreso;
 
 }
 
@@ -131,15 +136,18 @@ function mailNewSol($tipoServicio,$solicitante,$folio){
 	$mail->Port 	= $GLOBALS['puertoM'];
 	$mail->Username = $GLOBALS['usuM'];
 	$mail->Password = $GLOBALS['contraM'];
+	$solMail = "$mail->Username@$mail->Host";
 	
-	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
-	$mail->AddAddress("$mail->Username.'@'.$mail->Host",$GLOBALS['jefeServicios']); //Dirección y nombre del remitente.
-
-	$mail->Subject    = utf8_decode("Nueva solicitud de servicios");
+	$mail->SetFrom($solMail, 'Servicios generales, IIBI');
+	$mail->AddAddress($solMail,$GLOBALS['jefeServicios']); //Dirección y nombre del remitente.
+	
+	$mail->Subject    = utf8_decode("Nueva solicitud de servicios.");
 	$mail->MsgHTML(utf8_decode($mensaje));
-
+	//print_r ($GLOBALS);
+	
 	if(!($mail->Send())){
-		//print_r($mail->ErrorInfo);
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailNewSol-$folio");
+		print_r($mail->ErrorInfo);
 		$regreso=0;	}
 	else 
 		$regreso=1;
@@ -172,6 +180,7 @@ function mailNewContra($solNombre,$solMail,$usuario,$newContra){
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send())){
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailNewContra-$usuario");
 		print_r($mail->ErrorInfo);
 		$regreso=0;}
 	else
@@ -202,10 +211,11 @@ function mailEnvioContra($solNombre,$solMail,$usuario,$contra){
 	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
 	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
 
-	$mail->Subject    = utf8_decode("Cuenta de acceso al sistema de solicitud única de servicios");
+	$mail->Subject    = utf8_decode("Cuenta de acceso al sistema de solicitud única de servicios.");
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send())){
+		errorConsulta($_SESSION['idUsuario'], $mail->ErrorInfo, "mailEnvioContra-$usuario");
 		print_r($mail->ErrorInfo);
 		$regreso=0;}
 	else

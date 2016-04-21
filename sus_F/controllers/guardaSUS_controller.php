@@ -6,7 +6,7 @@ require("inc/herramientas.inc.php");
 $consecutivo = maxEnAnio('consecutivo','fechaSolicitud','servicioSUS')+1;
 $folio = "$consecutivo/".date('Y');
 
-echo $servicio = $_POST['servicio'];
+$servicio = $_POST['servicio'];
 
 if ( !empty($_POST['nomSol']) ) {
 	$nomSol = $_POST['nomSol'];
@@ -32,9 +32,9 @@ if ( $servicio == 13 || $servicio==23 || $servicio == 36 || $servicio == 69 ) {
 } else {
 	$otro = NULL;
 }
-echo $servicio;
+//echo $servicio;
 $tabla = 'servicioSUS (folio,consecutivo,idTipoServicio,otro,descripcion,detalle,fechaSolicitud,nomSolicitante,idUSolicitante,estatus)';
-echo $valores = "'".$folio."',".$consecutivo.",".$servicio.",'".$otro."','".$desc."','".$detalle."',now(),'".$nomSol."',".$_SESSION['idUsuario'].",1";
+$valores = "'".$folio."',".$consecutivo.",".$servicio.",'".$otro."','".$desc."','".$detalle."',now(),'".$nomSol."',".$_SESSION['idUsuario'].",1";
 $insertar = insertar($tabla,$valores);
 
 if ( $insertar[0] == 1 ){
