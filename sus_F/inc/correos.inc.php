@@ -22,7 +22,8 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
 	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada por el área correspondiente. 
-	<br> Para continuar con el trámite se le solicita imprima el formato y requisite  las firmas correspondientes.Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
+	<br> Se le solicita imprimir el formato, recabar las firmas correspondientes y entregarlo en Servicios Generales para continuar con su trámite.
+	<br> Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 //	print "globales: $GLOBALS[hostM]";
 //	print_r ($GLOBALS);
@@ -38,7 +39,7 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
 	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
 
-	$mail->Subject    = utf8_decode("Confirmación de verificación de solicitud de servicios");
+	$mail->Subject    = utf8_decode("Confirmación de verificación de solicitud de servicios.");
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send())){
@@ -58,7 +59,8 @@ function mailTerminacion($solNombre,$solMail,$folioM){
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
 	<p>En atención a su solicitud con folio ".$folioM." le informamos que el área de Servicios Generales la ha dado por concluida. </br>
-	<br>Favor de verificar dicha actividad para posteriormente ingresar al sistema y evaluar el servicio otrorgado.</p>
+	<br>Favor de verificar dicha actividad para posteriormente ingresar al sistema y evaluar el servicio otrorgado a más tardar en dos días posteriores al servicio otorgado.</p>
+			 
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 
 	$mail = new PHPMailer();
@@ -72,7 +74,7 @@ function mailTerminacion($solNombre,$solMail,$folioM){
 	$mail->SetFrom($mail->Username.'@'.$mail->Host, 'Servicios generales, IIBI');
 	$mail->AddAddress($solMail,$solNombre); //Dirección y nombre del remitente.
 
-	$mail->Subject    = utf8_decode("Conclusión del servicio solicitado");
+	$mail->Subject    = utf8_decode("Conclusión del servicio solicitado.");
 	$mail->MsgHTML(utf8_decode($mensaje));
 
 	if(!($mail->Send()))
@@ -89,7 +91,7 @@ function mailCancelacion($solNombre,$solMail,$folioM){
 
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>Le informamos que su solicitud con folio ".$folioM." ha sido cancelada. Por favor comuníquese al 562-30374 para mayor información.</p>
+	<p>Le informamos que su solicitud con folio ".$folioM." fue cancelada. Por favor comuníquese al 562-30374 para mayor información.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 
 	$mail = new PHPMailer();
@@ -150,7 +152,7 @@ function mailNewContra($solNombre,$solMail,$usuario,$newContra){
 
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>En atención a su solicitud de cambio de contraseña, se ha enviado automáticamente este correo con sus nuevas credenciales.
+	<p>En atención a su solicitud de cambio de contraseña, se le envían sus nuevas credenciales.
 	<br> USUARIO: ".$usuario."
 	<br> CONTRASEÑA: ".$newContra."
 	<br>Le recordamos que puede acceder al sistema en la siguiente dirección electrónica mediante el portal de este Instituto.</p>";
@@ -184,13 +186,11 @@ function mailEnvioContra($solNombre,$solMail,$usuario,$contra){
 
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>Por este medio se le informa que se ha dado de alta como usuario del Sistema de solicitud única de servicios del IIBI.
+	<p>Por este medio se le informa su alta de usuario al Sistema de solicitud única de servicios del IIBI.
 	<br> Podrá ingresar al sistema mediante la dirección electrónica http://132.248.242.11/sus/ dispuesta en el catálogo de servicios de la Secretaría Administrativa utilizando las siguientes credenciales.</p>
 	<p> USUARIO: ".$usuario."
 	<br> CONTRASEÑA: ".$contra."</p>
-	<p>".$GLOBALS['jefeServicios']."
-	<br>Servicios generales<br>Secretaría Administrativa, IIBI.</p>";
-
+	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
 
