@@ -110,6 +110,12 @@ Flight::route('/sus/subir-documento/', function() {
 	require_once 'controllers/estadosSUS/subirDocumento_controller.php';
 });
 
+Flight::route('/sus/busca_archivo_sus/', function() {
+	require_once 'controllers/estadosSUS/buscar_sus_controller.php';
+});
+	
+
+
 /*reportes*/
 Flight::route('/reportes/infoMes/', function() {
 	Flight::render('reportes/infoMes');

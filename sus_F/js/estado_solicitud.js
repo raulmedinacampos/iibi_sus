@@ -301,7 +301,6 @@ function inicializar() {
 			});
 			
 			/* Fin definición de botones */
-			
 			$(".btn-pdf").click(function(e) {
 				e.preventDefault();
 				
@@ -310,6 +309,8 @@ function inicializar() {
 				$("#hNuevaSolicitud").val(folio);
 				$("#formPDF").submit();
 			});
+			
+			
 		}
 	);
 }
@@ -615,11 +616,19 @@ function buscar() {
 				
 				$(".btn-pdf").click(function(e) {
 					e.preventDefault();
-					
 					var folio = $(this).data('folio');
 					
-					$("#hNuevaSolicitud").val(folio);
-					$("#formPDF").submit();
+					$.post(
+							'sus/busca_archivo_sus',
+							{'folio': folio},
+							
+							function(data) {
+								if(data!=0)
+									window.open(data,'_blank');
+								else{ //no se encuentra registro
+									alert("Error en la recuperación del archivo");}
+							}
+						);
 				});
 			}
 		);
