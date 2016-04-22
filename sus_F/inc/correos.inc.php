@@ -21,9 +21,9 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada. 
-	<br> Se le solicita imprimir el formato, recabar las firmas correspondientes y entregarlo en Servicios Generales para continuar con su trámite.
-	<br> Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
+	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada.</p> 
+	<p>Para continuar con su trámite, deberá entrar al sistema e ir al apartado <li>Estado de solicitudes</li> y descrargar el formato, recabar las firmas correspondientes y entregarlo en Servicios Generales. 
+	</br> Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 //	print "globales: $GLOBALS[hostM]";
 //	print_r ($GLOBALS);

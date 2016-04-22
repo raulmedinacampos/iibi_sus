@@ -36,7 +36,7 @@ if($error=!0){
 	
 	if($subida==1){
 		$maxID=maximo("idArchivoDigital", "archivoDigital")+1;
-		$valores = $maxID.",'".$folio."','SUS','".$nombreDoc."','".$ruta."',0,3,".$_SESSION['idUsuario'].",now(),1";
+		$valores = $maxID.",'".$folio."','SUS','".$nombreDoc."','/_".date('Y')."/',0,3,".$_SESSION['idUsuario'].",now(),1";
 		$insertar = insertar('archivoDigital', $valores);}	
 }//del if error
 echo $subida;
