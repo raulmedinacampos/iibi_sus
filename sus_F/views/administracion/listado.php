@@ -3,6 +3,7 @@
 <script src="js/listado_usuarios.js" type="text/javascript"></script>
 
 <h3>Listado de usuarios</h3>
+<p>A continuación se muestra la lista de usuarios autorizados en el sistema. Para ajustar los datos del usuario, permisos o darlo de baja, de click en los íconos situados a la extrema derecha.</p>
 <?php
 if ( mysqli_num_rows($seleccion[1]) > 0 ) {
 ?>

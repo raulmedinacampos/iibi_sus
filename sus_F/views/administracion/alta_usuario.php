@@ -1,7 +1,9 @@
 <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="js/alta_usuario.js" type="text/javascript"></script>
 
-<h5>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h5>
+<h3>Alta de usuarios del sistema</h3>
+<p>Utilice este formulario para agregar nuevos usuarios al sistema de solicitud única de servicio considerando que, 
+para ser usuario, es necesario que dicha persona esté registrada como trabajador de la dependencia.</p>
 
 <form method="post" id="formUsuario" name="formUsuario" class="form-horizontal" action="">
 	<div class="form-group">

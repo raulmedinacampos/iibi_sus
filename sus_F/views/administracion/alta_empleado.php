@@ -4,7 +4,9 @@
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
 <script src="js/alta_empleado.js" type="text/javascript"></script>
 
-<h4>Escriba los datos del nuevo empleado</h4>
+
+<h3>Alta de empleados</h3>
+<p>Para dar de alta a un nuevo trabajador de la dependencia, escriba su nombre en los campos correspondientes. Si la persona ya está registrada, el sistema le mostrará sus datos.</p>
 
 <form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
 	<div class="panel panel-primary">
