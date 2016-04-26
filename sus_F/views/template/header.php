@@ -93,14 +93,16 @@
 			<li><a href="#">Ayuda</a>
 				<ul class="cbp-tm-submenu"><?php
 				$normatividad = "";
-				
+				$man="";
 				if ( $_SESSION['tipoUsuario'] == 1 ) {
-					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';}
+					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';
+					$man="manSUS_usu.pdf";}
 				
 				else{
-					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';}?>
+					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';
+					$man="manSUS_adm.pdf";}?>
 					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
-					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li><?php
+					<li><a href="http://132.248.242.11/sus/<?php echo $man; ?>" class="cbp-tm-icon-archive" target="_blank">Manual de usuario</a></li><?php
 					if ( $_SESSION['tipoUsuario'] != 6 ) {?>
 					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos de usuario</a></li> 
 					<li><a href="#" class="cambiar"  target="_self">Cambiar contraseña</a></li><?php }?>
