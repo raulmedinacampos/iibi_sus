@@ -139,6 +139,7 @@ function inicializar() {
 				contenido += '<option value="Falta de presupuesto">Falta de presupuesto</option>';
 				contenido += '<option value="Falta de personal">Falta de personal</option>';
 				contenido += '<option value="Inconsistencia al llenar solicitud">Inconsistencia al llenar solicitud</option>';
+				contenido += '<option value="Solicitud fuera de tiempo">Solicitud fuera de tiempo</option>';
 				contenido += '</select>';
 				contenido += '</div>';  //.form-group
 				contenido += '</form>';
@@ -593,9 +594,7 @@ function buscar() {
 				            			{'folio': folio},
 				            			function(d) {
 				            				if ( d == "") {
-				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
-				            				}
-				            				
+				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';}
 				            				data.submit();
 				            			}
 				            		);
@@ -626,7 +625,13 @@ function buscar() {
 								if(data!=0)
 									window.open(data,'_blank');
 								else{ //no se encuentra registro
-									alert("Error en la recuperación del archivo");}
+									$('#myModal .modal-title').html('Recuperar archivo');
+									$('#myModal .modal-body').html("Error en la recuperación del archivo</br>Consulte al administrador.");
+									$('#myModal .modal-footer .btn-primary').css("display","none");
+									$("#myModal .modal-footer .btn-default").html("Aceptar");
+									$('#myModal').modal('show');								
+								
+								}
 							}
 						);
 				});
