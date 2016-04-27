@@ -4,8 +4,10 @@ require './inc/phpmailer/PHPMailerAutoload.php';
 global $hostM, $puertoM,$usuM,$contraM,$jefeServicios;
 $puertoM = "587";
 $hostM = "iibi.unam.mx";
-$usuM ="dafne";			//nombre de la cuenta que manda el correo
-$contraM="d4fn3b4r";	//contraseña de la cuenta que manda el correo
+$usuM ="jefeser";			//nombre de la cuenta que manda el correo
+//$usuM ="dafne";			//nombre de la cuenta que manda el correo
+$contraM="Fs6eRcj9";	//contraseña de la cuenta que manda el correo
+//$contraM="d4fn3b4r";	//contraseña de la cuenta que manda el correo
 $jefeServicios = "Lic. Lucero Urbina Hernández"; // cambiar esto por una consulta a la base que de el nombre
 
 /*Funcion mailValidacion
@@ -21,9 +23,9 @@ function mailValidacion($solNombre,$solMail,$folioM){
 	
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
-	<p>En atención a su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada.</p> 
-	<p>Para continuar con su trámite, deberá entrar al sistema e ir al apartado <li>Estado de solicitudes</li> y descrargar el formato, recabar las firmas correspondientes y entregarlo en Servicios Generales. 
-	</br> Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
+	<p>En atención a su solicitud de servicios con número de folio ".$folioM." le informamos que fue confirmada.</p> 
+	<p>Para continuar con el trámite, descargue el formato de la solicitud desde el Sistema Solicitud Única de Servicios, la cual se encuentra en el apartado Estado de solicitudes con la leyenda \"Verificada\". Imprímala, recabe las firmas correspondientes y entréguela en Servicios Generales de la Secretaría Administrativa del IIBI.
+	</br>Podrá consultar el estado del trámite en el sistema de Solicitud Única de Servicio.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
 //	print "globales: $GLOBALS[hostM]";
 //	print_r ($GLOBALS);
@@ -192,14 +194,18 @@ function mailNewContra($solNombre,$solMail,$usuario,$newContra){
 }
 
 function mailEnvioContra($solNombre,$solMail,$usuario,$contra){
-
+//	<br> Podrá ingresar al sistema mediante la dirección electrónica http://132.248.242.11/sus/ dispuesta en el catálogo de servicios de la Secretaría Administrativa utilizando las siguientes credenciales.</p>
+//  <p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.</p>";
 	$nombre 	= htmlspecialchars($solNombre);
 	$mensaje	=  "<p>$nombre</p>
 	<p>Por este medio se le informa su alta de usuario al Sistema de solicitud única de servicios del IIBI.
-	<br> Podrá ingresar al sistema mediante la dirección electrónica http://132.248.242.11/sus/ dispuesta en el catálogo de servicios de la Secretaría Administrativa utilizando las siguientes credenciales.</p>
+	<br> Podrá ingresar al sistema mediante la dirección electrónica http://132.248.242.11/sus/ utilizando las siguientes credenciales.</p>
 	<p> USUARIO: ".$usuario."
 	<br> CONTRASEÑA: ".$contra."</p>
-	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+			
+	<p>Además, puede desgargar el manual de usuario en la siguiente liga http://132.248.242.11/sus/manSUS_usu.pdf</p>
+	<p>Agradeceremos sus comentarios y dudas a los correos dafne@iibi.unam.mx y rebeca@iibi.unam.mx</p>";
+			
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
 
