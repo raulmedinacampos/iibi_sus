@@ -235,6 +235,11 @@ Flight::route('/administracion/duracion-de-servicios/', function() {
 	require_once 'controllers/administracion/duracion_servicios_controller.php';
 });
 
+Flight::route('/administracion/actualizacion-de-duracion/', function() {
+	require_once 'controllers/administracion/actualizaDuracion_controller.php';
+});
+	
+
 Flight::route('/administracion/firmas-autorizadas/', function() {
 	require_once 'controllers/administracion/firmas_autorizadas_controller.php';
 });

@@ -1,7 +1,7 @@
 <script src="js/duracion_servicios.js" type="text/javascript"></script>
 
 <h3>Actualización de duración de servicios</h3>
-<p>A continuación se muestran la duración máxima en días que se requiere para llevar a cabo un servicio.</br>
+<p>A continuación se muestran la duración máxima en días que se requiere para llevar a cabo un servicio.
 Para modifcarlas, es necesario cambiar el valor dentro de la casilla correspondiente y dar click en el botón "Actualizar" 
 situado en la parte inferior de esta página.</p> 
 
