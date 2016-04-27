@@ -4,6 +4,12 @@ $conexion = conectar();
 
 /*IMPORTANTE LA COMPARACION DEL WHERE NO ES SENSITIVA, ES DECIR IGNORA MAYÚSCULAS Y MINÚSCULAS*/
 
+
+/*errorConsulta no guarda el usuario que hace la consulta, solo guarda "1"
+ * 
+ * verificar si se puede usar $_SESSION['idUsuario'] en todos los casos
+ * */
+
 $ERROR = "[]<br>Ocurrió un error, favor de comunicarse con el administrador del sistema.";
 $err_update = "[]<br>No se realizó alguna actualización. Favor de comunicarse con el administrador.";
 $err_select = "[]<br>No se encontraron coincidencias.";
