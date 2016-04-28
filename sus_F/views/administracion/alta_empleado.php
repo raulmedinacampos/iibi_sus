@@ -148,12 +148,12 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Correo del puesto</label>
 				<div class="col-sm-4">
-					<input id="correoInst" name="correoPuesto" class="form-control" />
+					<input id="correoPuesto" name="correoPuesto" class="form-control" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoInstConf" name="correoPuestoConf" class="form-control"  />
+					<input id="correoPuestoConf" name="correoPuestoConf" class="form-control"  />
 				</div>
 			</div>
 			

@@ -95,13 +95,31 @@ function buscarEmpleado() {
 }
 
 function validar() {
+	$.validator.addMethod( "pattern", function( value, element, param ) {
+		if ( this.optional( element ) ) {
+			return true;
+		}
+		if ( typeof param === "string" ) {
+			param = new RegExp( "^(?:" + param + ")$" );
+		}
+		return param.test( value );
+	}, "Formato inválido" );
+	
 	$("#formEmpleado").validate({
 		rules: {
 			nombre: {
-				required: true
+				required: true,
+				pattern: /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ\s]+$/i
 			},
 			apPaterno: {
-				required: true
+				required: true,
+				pattern: /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ\s]+$/i
+			},
+			apMaterno: {
+				pattern: /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ\s]+$/i
+			},
+			telefono: {
+				pattern: /^[\d\-\s]+$/
 			},
 			correo: {
 				email: true
@@ -115,8 +133,21 @@ function validar() {
 			puesto: {
 				required: true
 			},
+			numTrabajador: {
+				number: true
+			},
+			numCuenta: {
+				number: true
+			},
 			telefonoOf: {
-				required: true
+				required: true,
+				pattern: /^[\d\-\s]+$/
+			},
+			correoPuesto: {
+				email: true
+			},
+			correoPuestoConf: {
+				equalTo: "#correoPuesto"
 			},
 			correoInst: {
 				required: true,
@@ -128,6 +159,7 @@ function validar() {
 		},
 		messages: {
 			correoConf: "El correo no coincide",
+			correoPuestoConf: "El correo no coincide",
 			correoInstConf: {
 				equalTo: "El correo no coincide"
 			}
