@@ -17,9 +17,11 @@
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
 				<input type="text" id="administrativo" name="administrativo" class="form-control typeahead" />
+				<input type="hidden" id="hdn_id" name="hdn_id" />
 			</div>
 			<div class="col-sm-2">
 				<button id="btnAdministrativo" name="btnAdministrativo" class="btn btn-primary">Actualizar</button>
+				
 			</div>
 		</div>
 	</div>
@@ -37,6 +39,7 @@
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
 				<input type="text" id="serviciosGenerales" name="serviciosGenerales" class="form-control typeahead" />
+				<input type="hidden" id="hdn_id" name="hdn_id" />				
 			</div>
 			<div class="col-sm-2">
 				<button id="btnServiciosGenerales" name="btnServiciosGenerales" class="btn btn-primary">Actualizar</button>
