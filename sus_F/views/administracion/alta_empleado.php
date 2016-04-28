@@ -4,9 +4,7 @@
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
 <script src="js/alta_empleado.js" type="text/javascript"></script>
 
-
-<h3>Alta de empleados</h3>
-<p>Para dar de alta a un nuevo trabajador de la dependencia, escriba su nombre en los campos correspondientes. Si la persona ya está registrada, el sistema le mostrará sus datos.</p>
+<h4>Escriba los datos del nuevo empleado</h4>
 
 <form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
 	<div class="panel panel-primary">
@@ -47,7 +45,7 @@
 				</div>
 			</div>
 			
-<!-- 			<div class="form-group datos-adicionales">
+			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Teléfono</label>
 				<div class="col-sm-4">
 					<input id="telefono" name="telefono" class="form-control" />
@@ -81,7 +79,7 @@
 				<div class="col-sm-4">
 					<input id="curp" name="curp" class="form-control" />
 				</div>
-			</div>-->
+			</div>
 		</div>
 	</div>
 	
@@ -148,12 +146,12 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Correo del puesto</label>
 				<div class="col-sm-4">
-					<input id="correoPuesto" name="correoPuesto" class="form-control" />
+					<input id="correoInst" name="correoPuesto" class="form-control" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoPuestoConf" name="correoPuestoConf" class="form-control"  />
+					<input id="correoInstConf" name="correoPuestoConf" class="form-control"  />
 				</div>
 			</div>
 			

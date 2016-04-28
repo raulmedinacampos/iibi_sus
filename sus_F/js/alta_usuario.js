@@ -32,41 +32,22 @@ function autocompletar() {
 	}); 
 }
 
-function validar() {
-	$("#formUsuario").validate({
-		rules: {
-			trabajador: {
-				required: true
-			},
-			autoriza: {
-				required: true
-			},
-			grupo: {
-				required: true
-			}
-		}
-	});
-}
-
 function guardar() {
 	$("#btnGuardar").click(function(e) {
 		e.preventDefault();
 		
-		if ( $("#formUsuario").valid() ) {
-			$.post(
+		$.post(
 				'administracion/guarda-usuario',
 				$("#formUsuario").serialize(),
 				function(data) {
-					$("#miDiv").load("administracion/lista-de-usuarios");
+					
 				}
-			);
-		}
+		);
 	});
 }
 
 $(function() {
 	inicializar();
 	autocompletar();
-	validar();
 	guardar();
 })
