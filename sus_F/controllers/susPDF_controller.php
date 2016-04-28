@@ -4,7 +4,7 @@ session_start();
 
 $folio= (isset($_POST['hNuevaSolicitud'])) ? addslashes($_POST['hNuevaSolicitud']) : "";
 
-$columnas="idUSolicitante,nomSolicitante,idTipoServicio,descripcion, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fechaS, left(idTipoServicio,1) as tipo";
+$columnas="*, DATE_FORMAT(fechaSolicitud,'%d / %m / %Y') as fechaS,DATE_FORMAT(fechaLiberacion,'%d / %m / %Y') as fechaLib, DATE_FORMAT(fechaCompromiso,'%d / %m / %Y') as fechaComp, left(idTipoServicio,1) as tipo";
 $solicitud=seleccionar($columnas,"servicioSUS","folio = '".$folio."'");
 
 $empleado = seleccionar('*','empleado,usuarioSUS',"empleado.idEmpleado=usuarioSUS.idEmpleado and usuarioSUS.idUsuario=".$solicitud['idUSolicitante']);
@@ -19,14 +19,28 @@ $area = seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea
 $area = $area['area'];
 
 
+$jefeServicios = "Lic. Lucero Urbina Hdz.";
+$secAdmin = "Lic. Amanda Gerogina <br>González Robles Sánchez";
+$jefePto = "Lic. José Antonio Aguilar Villalpando";
+
+
 $nomUsuario = $solicitud['nomSolicitante'];
 $fechaS = $solicitud['fechaS'];
 $grupoServicio = $solicitud['tipo'];
 $servicio = $solicitud['idTipoServicio'];
 $descripcion = $solicitud['descripcion'];
+$fechaComp = $solicitud['fechaComp'];
+$fechaLib = $solicitud['fechaLib'];
+$evaluacion= $solicitud['evaluacion'];
+$telefono = $empleado['telOficina'];
+
+
 $left = 0;
+$left2 = 0; //palomita evaluacion
+
 $top = -20;
 $top2 = -20;
+$top3 = -20;
 
 if($grupoServicio==1) //diversos
 	$left = 155;
@@ -82,7 +96,6 @@ if($servicio==53){//local carga
 if($servicio==54){//foraneo carga
 	$top = 368;	$top2 = 401;}
 	
-
 if($servicio==61||$servicio==65)//albañilería y electricidad
 	$top = 351;
 if($servicio==62||$servicio==66)//carpintería
@@ -95,7 +108,21 @@ if($servicio==64||$servicio==69)//cerrajería y otro
 if($servicio==71)//vigilancia
 	$top = 380;
 
-$telefono = "123 456 78";
+	
+if($evaluacion=="E"){
+	$top3 = 654; $left2=139;}
+	
+if($evaluacion=="B"){
+	$top3 = 654; $left2=219;}
+
+if($evaluacion=="R"){
+	$top3 = 654; $left2=307;}
+
+if($evaluacion=="M"){
+	$top3 = 654; $left2=383;}
+	
+	
+	
 $header = "";
 $footer = "";
 $html = "";
@@ -131,6 +158,7 @@ $html .= '<div style="clear:both;"></div>';
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<div style="position:absolute; top:'.$top2.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
+$html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
@@ -378,11 +406,11 @@ $html .= '<div class="descripcion">'.$descripcion.'</div>';
 $html .= '<br />';
 
 $html .= '<div class="columna-3">';
-$html .= '<p>FECHA COMPROMISO DE ENTREGA:</p>';
-$html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO:</p>';
+$html .= '<p>FECHA COMPROMISO DE ENTREGA: '.$fechaComp.'</p>';
+$html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO: '.$fechaLib.'</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';
-$html .= '<p class="nombre">Lic. Lucero Urbina Hdz.<br />RESPONSABLE DE SERVICIOS</p>';
+$html .= '<p class="nombre">'.$jefeServicios.'<br />RESPONSABLE DE SERVICIOS</p>';
 $html .= '</div>';  //.firma1
 
 $html .= '<div class="firma firma2">';
@@ -397,12 +425,12 @@ $html .= '<p class="margen-izquierdo">COSTO:</p>';
 $html .= '<p class="margen-izquierdo">CON CARGO A:</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. SUFICIENCIA PRESUPUESTAL</p>';
-$html .= '<p class="nombre">NOMBRE Y FIRMA<br />RESPONSABLE DEL PRESUPUESTO</p>';
+$html .= '<p class="nombre">'.$jefePto.'<br />RESPONSABLE DEL PRESUPUESTO</p>';
 $html .= '</div>';  //.firma1
 
 $html .= '<div class="firma firma2">';
 $html .= '<p>AUTORIZÓ</p>';
-$html .= '<p class="nombre">NOMBRE Y FIRMA<br />SECRETARIO O JEFE DE UNIDAD</p>';
+$html .= '<p class="nombre">'.$secAdmin.'<br />SECRETARIO O JEFE DE UNIDAD</p>';
 $html .= '</div>';  //.firma2
 $html .= '</div>';  //.columna-4
 

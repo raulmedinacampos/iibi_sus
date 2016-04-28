@@ -139,6 +139,7 @@ function inicializar() {
 				contenido += '<option value="Falta de presupuesto">Falta de presupuesto</option>';
 				contenido += '<option value="Falta de personal">Falta de personal</option>';
 				contenido += '<option value="Inconsistencia al llenar solicitud">Inconsistencia al llenar solicitud</option>';
+				contenido += '<option value="Solicitud fuera de tiempo">Solicitud fuera de tiempo</option>';
 				contenido += '</select>';
 				contenido += '</div>';  //.form-group
 				contenido += '</form>';
@@ -301,7 +302,6 @@ function inicializar() {
 			});
 			
 			/* Fin definición de botones */
-			
 			$(".btn-pdf").click(function(e) {
 				e.preventDefault();
 				
@@ -310,6 +310,8 @@ function inicializar() {
 				$("#hNuevaSolicitud").val(folio);
 				$("#formPDF").submit();
 			});
+			
+			
 		}
 	);
 }
@@ -548,7 +550,7 @@ function buscar() {
 					
 					var contenido = '<form id="formArchivar" name="formArchivar" enctype="multipart/form-data" method="post" action="sus/subir-documento">';
 					contenido += '<p>Favor de subir el documento digital.<br />';
-					contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 100 kB</strong></p>';
+					contenido += 'Es importante que esté en <strong>formato PDF</strong> y tenga un <strong>peso máximo de 3 MB</strong></p>';
 					contenido += '<div class="form-group">';
 					contenido += '<label>Documento digital</label>';
 					contenido += '<input type="file" id="documento" name="documento" />';
@@ -592,9 +594,7 @@ function buscar() {
 				            			{'folio': folio},
 				            			function(d) {
 				            				if ( d == "") {
-				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';
-				            				}
-				            				
+				            					mensaje = '<p>Ocurrió un error. Intenta de nuevo en unos momentos</p>';}
 				            				data.submit();
 				            			}
 				            		);
@@ -615,11 +615,25 @@ function buscar() {
 				
 				$(".btn-pdf").click(function(e) {
 					e.preventDefault();
-					
 					var folio = $(this).data('folio');
 					
-					$("#hNuevaSolicitud").val(folio);
-					$("#formPDF").submit();
+					$.post(
+							'sus/busca_archivo_sus',
+							{'folio': folio},
+							
+							function(data) {
+								if(data!=0)
+									window.open(data,'_blank');
+								else{ //no se encuentra registro
+									$('#myModal .modal-title').html('Recuperar archivo');
+									$('#myModal .modal-body').html("Error en la recuperación del archivo</br>Consulte al administrador.");
+									$('#myModal .modal-footer .btn-primary').css("display","none");
+									$("#myModal .modal-footer .btn-default").html("Aceptar");
+									$('#myModal').modal('show');								
+								
+								}
+							}
+						);
 				});
 			}
 		);

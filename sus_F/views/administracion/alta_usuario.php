@@ -1,7 +1,9 @@
 <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="js/alta_usuario.js" type="text/javascript"></script>
 
-<h5>Para ser usuario del sistema es necesario que la persona esté registrada como trabajador de la dependencia</h5>
+<h3>Alta de usuarios del sistema</h3>
+<p>Utilice este formulario para agregar nuevos usuarios al sistema de solicitud única de servicio considerando que, 
+para ser usuario, es necesario que dicha persona esté registrada como trabajador de la dependencia.</p>
 
 <form method="post" id="formUsuario" name="formUsuario" class="form-horizontal" action="">
 	<div class="form-group">
@@ -16,26 +18,25 @@
 		</div>
 	</div>
 	
-	<div class="form-group">
-		<div class="col-sm-3">
+<!-- 	<div class="form-group">
+		<div class="col-sm-4">
 			<label>Usuario</label>
 			<input type="text" id="usuario" name="usuario" class="form-control" />
 		</div>
 	</div>
-		
-	<div class="form-group">
-		<div class="col-sm-3">
-			<label>Persona que autoriza</label>
+-->	
+ 	<div class="form-group">
+		<div class="col-sm-4">
+			<label>Responsable de área en la que labora</label>
 			<select id="autoriza" name="autoriza" class="form-control">
 				<option value="">Seleccione</option>
-				<option value="0">***El mismo usuario autoriza***</option><?php
+				<option value="0">***El mismo usuario ***</option><?php
 				while ( $row = mysqli_fetch_array($autoriza[1]) ) { ?>
 				<option value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']?></option>
 				<?php }?>
 			</select>
 		</div>
 	</div>
-
 
 
 	<div class="form-group">
@@ -54,7 +55,7 @@
 		</div>
 	</div>
 	
-	<p class="nota">La contraseña se generará automáticamente y se enviará al correo institucional del usuario junto con su nombre de usuario.</p>
+	<p class="nota">El nombre de usuario y la contraseña se generarán automáticamente y se enviarán al correo institucional del usuario.</p>
 	
 	<div class="form-group">
 		<div class="col-sm-12">

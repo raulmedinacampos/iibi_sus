@@ -110,6 +110,12 @@ Flight::route('/sus/subir-documento/', function() {
 	require_once 'controllers/estadosSUS/subirDocumento_controller.php';
 });
 
+Flight::route('/sus/busca_archivo_sus/', function() {
+	require_once 'controllers/estadosSUS/buscar_sus_controller.php';
+});
+	
+
+
 /*reportes*/
 Flight::route('/reportes/infoMes/', function() {
 	Flight::render('reportes/infoMes');
@@ -173,6 +179,10 @@ Flight::route('/administracion/lista-de-usuarios/', function() {
 Flight::route('/listado-empleados/', function() {
 	require_once 'controllers/lista_empleados_controller.php';
 });
+
+Flight::route('/listado-firmas/', function() {
+	require_once 'controllers/lista_firmas_controller.php';
+});
 	
 Flight::route('/administracion/editar-empleado/', function() {
 	require_once 'controllers/administracion/editar_empleado_controller.php';
@@ -225,12 +235,20 @@ Flight::route('/administracion/duracion-de-servicios/', function() {
 	require_once 'controllers/administracion/duracion_servicios_controller.php';
 });
 
+Flight::route('/administracion/actualizacion-de-duracion/', function() {
+	require_once 'controllers/administracion/actualizaDuracion_controller.php';
+});
+	
+
 Flight::route('/administracion/firmas-autorizadas/', function() {
 	require_once 'controllers/administracion/firmas_autorizadas_controller.php';
 });
 
 /*Ayuda*/
 
+Flight::route('/ayuda/cambiar-contra/', function() {
+	require_once 'controllers/ayuda/cambiarContra_controller.php';
+});
 
 /*Salir*/
 Flight::route('/salir/', function() {

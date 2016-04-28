@@ -139,7 +139,15 @@ $infoMes = array(
 		'idElabora' => $seleccion['idElabora'],
 		'idEnterado' => $seleccion['idEnterado']);
 else $infoMes= array('fecha' => '', 'obsGrales' => '','idElabora' => '','idEnterado'=>'');
- 
+
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secretario'";
+$secretario = seleccionar("*", "empleado,puesto", $condicion);
+$nomSA = $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'];
+
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
+$sGenerales = seleccionar("*", "empleado,puesto", $condicion);
+$nomSG =$sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'];
+
 
 $header = "";
 $footer = "";
@@ -290,13 +298,13 @@ $html .= '<p><strong>OBSERVACIONES:</strong><br>'.$infoMes['obsGrales'].'</p>';
 
 $html .= '<div class="firma firma1">';
 $html .= '<p>ELABORÓ</p>';
-$html .= '<p class="nombre">LIC. LUCERO URBINA HERNÁNDEZ</p>';
+$html .= '<p class="nombre">'.$nomSG.'</p>';
 $html .= '<p>RESPONSABLE SERVICIOS GENERALES</p>';
 $html .= '</div>';
 
 $html .= '<div class="firma firma2">';
 $html .= '<p>ENTERADO</p>';
-$html .= '<p class="nombre">LIC. AMANDA G. GONZÁLEZ ROBLES SÁNCHEZ</p>';
+$html .= '<p class="nombre">'.$nomSA.'</p>';
 $html .= '<p>SERCRETARIO O JEFE DE UNIDAD<br />ADMINISTRATIVA</p>';
 $html .= '</div>';
 

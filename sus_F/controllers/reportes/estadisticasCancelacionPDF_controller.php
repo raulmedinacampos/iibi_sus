@@ -25,6 +25,7 @@ $fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$m
 $cUsuario=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Cancelada por el usuario" and '.$fecha); 
 $cPresup=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Falta de presupuesto" and '.$fecha); 
 $cPersonal=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Falta de personal" and '.$fecha);
+$cTiempo=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Solicitud fuera de tiempo" and '.$fecha);
 $cLlenado=seleccionar('count(folio)','servicioSUS','estatus = 9 and motivo = "Inconsistencia al llenar solicitud" and '.$fecha);
 
 $header = "";
@@ -47,7 +48,7 @@ $html .= '<br />';
 
 $html .= '<div class="contenedor">';
 $html .= '<p class="titulos">';
-$html .= '<span class="titulo2">Estadísticos de cancelación de </br>solicitudes por justificación</span>';
+$html .= '<span class="titulo2">Cancelación de solicitudes por justificación</span>';
 $html .= '</p>';
 
 $html .= '<br />';
@@ -70,6 +71,10 @@ $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Falta de personal</td>';
 $html .= '<td>'.$cPersonal[0].'</td>';
+$html .= '</tr>';
+$html .= '<tr>';
+$html .= '<td class="izq">Solicitud fuera de tiempo</td>';
+$html .= '<td>'.$cTiempo[0].'</td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="izq">Inconsistencia al llenar la solicitud</td>';

@@ -1,3 +1,4 @@
+<script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="js/firmas_autorizadas.js" type="text/javascript"></script>
 
 <h4>Actualización de firmas autorizadas, Secretaría Administrativa</h4>
@@ -8,14 +9,14 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
-				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="<?echo $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'] ?>"/>
+				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="<?php echo $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'] ?>"/>
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
-				<input type="text" id="administrativo" name="administrativo" class="form-control" />
+				<input type="text" id="administrativo" name="administrativo" class="form-control typeahead" />
 			</div>
 			<div class="col-sm-2">
 				<button id="btnAdministrativo" name="btnAdministrativo" class="btn btn-primary">Actualizar</button>
@@ -28,14 +29,14 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
-				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="<?echo $sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'] ?>" />
+				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="<?php echo $sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'] ?>" />
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
-				<input type="text" id="serviciosGenerales" name="serviciosGenerales" class="form-control" />
+				<input type="text" id="serviciosGenerales" name="serviciosGenerales" class="form-control typeahead" />
 			</div>
 			<div class="col-sm-2">
 				<button id="btnServiciosGenerales" name="btnServiciosGenerales" class="btn btn-primary">Actualizar</button>

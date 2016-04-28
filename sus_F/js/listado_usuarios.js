@@ -27,7 +27,7 @@ function inicializar() {
 			function(data) {
 				var datos = jQuery.parseJSON(data);
 				var contenido = "";
-				contenido += '<p>Selecciona el nuevo grupo al que pertenecerá el usuario</p>';
+				contenido += '<p>Seleccione el nuevo grupo al que pertenecerá el usuario</p>';
 				contenido += '<select id="grupo" name="grupo" class="form-control">';
 				contenido += '<option value="">Seleccione</option>';
 				
@@ -67,7 +67,7 @@ function inicializar() {
 		var id = $(this).data("id");
 		
 		$(".modal-header .modal-title").html("Eliminar usuario");
-		$(".modal-body").html("¿Estás seguro de querer eliminar este usuario?");
+		$(".modal-body").html("¿Está seguro de eliminar este usuario?");
 		$(".modal-footer .btn-default").html("Cancelar");
 		$('#myModal .modal-footer .btn-default').css("display", "inline");
 		$("#myModal").modal('show');
@@ -80,7 +80,7 @@ function inicializar() {
 				{'id': id},
 				function(data) {
 					$("#myModal").modal('hide');
-					
+					alert("Usuario eliminado.");
 					$("#miDiv").load("administracion/lista-de-usuarios");
 				}
 			);

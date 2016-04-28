@@ -26,6 +26,8 @@
 	<script src="js/jqueryvalidation.js"></script>
 	<script src="js/validarIndex.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/cambiar_contrasenia.js" type="text/javascript"></script>
+ 
 	<?php
 	if (isset ( $js )) {
 		foreach ( $js as $val ) {
@@ -60,21 +62,24 @@
 	?>
 	<div class="menu">
 		<ul id="cbp-tm-menu" class="cbp-tm-menu"><?php 
-		if ( $_SESSION['tipoUsuario'] != 6) {?>
+			if ( $_SESSION['tipoUsuario'] != 6) {?>
 			<li><a href="sus" target="myDiv">Solicitud Única de Servicios</a></li><?php }?>
 		
 		
 			<li><a href="estadoSUS" target="myDiv">Estado de solicitudes</a></li><?php 
-			if ( $_SESSION['tipoUsuario'] == 3 OR $_SESSION['tipoUsuario']==5) {?>
+			if ( $_SESSION['tipoUsuario'] != 1) {?>
 			<li><a href="#">Reportes</a>
-				<ul class="cbp-tm-submenu">
-					<li><a href="reportes/infoMes" target="myDiv">Informe mensual</a></li>
+				<ul class="cbp-tm-submenu"><?php 
+					if ( $_SESSION['tipoUsuario'] == 3 OR $_SESSION['tipoUsuario']==5) {?>
+					<li><a href="reportes/infoMes" target="myDiv">Informe mensual</a></li><?php }?>
 					<li><a href="reportes/mantenimientos-realizados" target="_self">Mantenimientos realizados</a></li>
 					<li><a href="reportes/servicios-electricos" target="_self">Servicios eléctricos</a></li>
 					<li><a href="reportes/servicios-con-duraciones" target="_self">Servicios en tiempo</a></li>
 					<li><a href="reportes/estadisticas-de-cancelacion" target="_self">Cancelaciones</a></li>
 				</ul>
-			</li>
+			</li><?php }
+			
+			if ( $_SESSION['tipoUsuario'] == 3 OR $_SESSION['tipoUsuario']==5) {?>
 			<li><a href="#">Administración</a>
 				<ul class="cbp-tm-submenu">
 					<li><a href="administracion/lista-de-usuarios" class="cbp-tm-icon-archive" target="_self">Lista de usuarios</a></li>
@@ -83,26 +88,24 @@
 					<li><a href="administracion/duracion-de-servicios" target="_self">Duración de servicios</a></li>
 					<li><a href="administracion/firmas-autorizadas" target="_self">Firmas autorizadas</a></li>
 				</ul>
-			</li>
-			<?php }?>
+			</li><?php }?>
 			
 			<li><a href="#">Ayuda</a>
-				<ul class="cbp-tm-submenu">
-				<?php
+				<ul class="cbp-tm-submenu"><?php
 				$normatividad = "";
-				
+				$man="";
 				if ( $_SESSION['tipoUsuario'] == 1 ) {
 					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';
-				}
+					$man="manSUS_usu.pdf";}
 				
-				if ( $_SESSION['tipoUsuario'] == 3 ) {
+				else{
 					$normatividad = 'http://www.sgc.unam.mx/Servicios%20Generales/Forms/AllItems.aspx';
-				}
-				?>
+					$man="manSUS_adm.pdf";}?>
 					<li><a href="<?php echo $normatividad; ?>" class="cbp-tm-icon-archive" target="_blank">Normatividad</a></li>
-					<li><a href="#" class="cbp-tm-icon-archive" target="_self">Manual de usuario</a></li>
-					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos personales</a></li>
-					<li><a href="contraCambiar.php" class="cbp-tm-icon-key" target="i_frame">Cambiar contraseña</a></li>
+					<li><a href="http://132.248.242.11/sus/<?php echo $man; ?>" class="cbp-tm-icon-archive" target="_blank">Manual de usuario</a></li><?php
+					if ( $_SESSION['tipoUsuario'] != 6 ) {?>
+					<li><a href="administracion/editar-empleado" class="cbp-tm-icon-users" target="_self">Datos de usuario</a></li> 
+					<li><a href="#" class="cambiar"  target="_self">Cambiar contraseña</a></li><?php }?>
 				</ul>
 			</li>
 			<li><a href="salir">Salir</a></li>

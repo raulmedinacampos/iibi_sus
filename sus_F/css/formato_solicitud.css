@@ -12,13 +12,9 @@
 }
 	
 .nota p {
-	display: inline-block;
-	padding: 3px 8px;
-	background-color: #FF9900;
 	font-size: 12px;
     font-weight: bold;
-    border-radius: 4px;
-    color: #FFFFFF;
+    color: #FF6600;
 }
 
 .panel {

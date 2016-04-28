@@ -1,8 +1,6 @@
 <?php
 
-
 $d11	= (isset($_POST['11'])) ? addslashes($_POST['11']) : "1";
-$d12 	= (isset($_POST['12'])) ? addslashes($_POST['12']) : "1";
 $d21	= (isset($_POST['21'])) ? addslashes($_POST['21']) : "1";
 $d22	= (isset($_POST['22'])) ? addslashes($_POST['22']) : "1";
 $d31	= (isset($_POST['31'])) ? addslashes($_POST['31']) : "1";
@@ -28,7 +26,7 @@ $d68	= (isset($_POST['68'])) ? addslashes($_POST['68']) : "1";
 $d71	= (isset($_POST['71'])) ? addslashes($_POST['71']) : "1";
 
 $servicios = array (
-		array($d11,'11'),	array($d12,'12'),
+		array($d11,'11'),	
 		array($d21,'21'),	array($d22,'22'),
 		array($d31,'31'),	array($d32,'32'),	array($d33,'33'),	array($d34,'34'),	array($d35,'35'),
 		array($d41,'41'),	array($d42,'42'),	array($d43,'43'),
@@ -37,10 +35,14 @@ $servicios = array (
 		array($d65,'65'),	array($d66,'66'),	array($d67,'67'),	array($d68,'68'),
 		array($d71,'71'));
 
-
 $longitud = count($servicios);
+$actualizacion=0;
+
 for($i=0; $i<$longitud; $i++){
-	$actualizar = actualizar('cTipoServicio','duracionEstimada='.$servicios[$i][0],'idTipoServicio='.$servicios[$i][1] );
-	if ( $actualizar[0] == 0 )
-		echo $actualizar[1];}
+	$actualizar = actualizar('cTipoServicio','duracionEstimada="'.$servicios[$i][0].'"','idTipoServicio="'.$servicios[$i][1].'"');
+	if ($actualizar[0] == 1)
+		$actualizacion++;
+}
+
+echo $actualizacion;
 ?>

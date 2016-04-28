@@ -27,12 +27,12 @@ if ( !empty($_POST['detalle']) ) {
 	$detalle = "";
 }
 
-if ( $servicio == 13 || $servicio == 36 || $servicio == 69 ) {
-	$otro = $_POST['otro'];
+if ( $servicio == 13 || $servicio==23 || $servicio == 36 || $servicio == 69 ) {
+	$otro = $_POST['txt_otro'];
 } else {
 	$otro = NULL;
 }
-
+//echo $servicio;
 $tabla = 'servicioSUS (folio,consecutivo,idTipoServicio,otro,descripcion,detalle,fechaSolicitud,nomSolicitante,idUSolicitante,estatus)';
 $valores = "'".$folio."',".$consecutivo.",".$servicio.",'".$otro."','".$desc."','".$detalle."',now(),'".$nomSol."',".$_SESSION['idUsuario'].",1";
 $insertar = insertar($tabla,$valores);

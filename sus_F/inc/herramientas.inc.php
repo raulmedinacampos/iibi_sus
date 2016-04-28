@@ -6,8 +6,8 @@ Genera una clave aleatoria de 8 caracteres.
 No necesita parámetros. Regresa la clave generada.*/
 
 
-function generarClave($longitud =8){ 
-	$cadena="[^A-Z0-9]"; 
+function generarClave($longitud =6){ 
+	$cadena="[^a-z2-9]"; 
 	return substr(eregi_replace($cadena, "", md5(rand())) . 
 	eregi_replace($cadena, "", md5(rand())) . 
 	eregi_replace($cadena, "", md5(rand())), 
@@ -20,9 +20,39 @@ function generarClave($longitud =8){
  */
 	
 function generarUsuario($nombre,$ap1,$ap2){
-	return strtoupper(substr($nombre, 0, 1).$ap1.substr($ap2, 0, 1));
+	$nombre=quitaEspeciales($nombre);
+	$ap1=quitaEspeciales($ap1);
+	$ap2=quitaEspeciales($ap2);
+	return strtolower(substr($nombre, 0, 1).$ap1.substr($ap2, 0, 1));
 }
 	
+
+/*Funcion quitaEspeciales
+ * 
+ * Quita los caracteres especiales de una cadena
+ * con iconv 
+ * preg_replace quita los giones y comillas puestas por la transliteracion de iconv
+ * También quita espacios.
+ */
+
+function quitaEspeciales($str){
+	$str = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+	return $str = preg_replace("/[^A-Za-z0-9]/", '', $str);
+}
+
+/*Funcion quitaEspeciales
+ *
+ * Quita los caracteres especiales de una cadena
+ * con iconv
+ * preg_replace quita los giones y comillas puestas por la transliteracion de iconv
+ * También quita espacios.
+ */
+
+function normaArchivo($str){
+	$str = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+	return $str = preg_replace("/[^A-Za-z0-9.]/", '', $str);
+}
+
 	
 /*Funcion normaliza fecha para base de datos
 

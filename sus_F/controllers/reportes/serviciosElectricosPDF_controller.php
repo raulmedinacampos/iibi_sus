@@ -61,7 +61,9 @@ $html .= '</tr>';
 $fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";
 $datos = seleccionarTodo("folio,DATE_FORMAT(fechaLiberacion,'%d/%m/%Y') as fechaL ,descripcion,motivo","servicioSUS","idTipoServicio = 65 AND ". $fecha);
 
-if ( isset($datos[1]) && mysqli_num_rows( $datos[1]) > 0 ) {
+//if (isset($datos[1]) && mysqli_num_rows( $datos[1]) > 0 ) {
+if ($datos[0]==1) {
+	
 	while ( $row = mysqli_fetch_array($datos[1]) ) {
 		$html .= '<tr>';
 		$html .= '<td>'.$row['folio'].'</td>';

@@ -9,7 +9,8 @@ $respuesta['datos'] = "";
 $empleado = seleccionarTodoSM("*","empleado","nombre like '%$nombre%' and apellidoP like '%$apPaterno%' and apellidoM like '%$apMaterno%'
 		and estatus = 1 ORDER BY apellidoP, apellidoM");
 
-if ( isset($empleado[1]) && mysqli_num_rows($empleado[1]) > 0 ) {
+//if ( isset($empleado[1]) && mysqli_num_rows($empleado[1]) > 0 ) {
+if ( $empleado[0]==1) {
 	$respuesta['encontrado'] = 1;
 	while ( $row = mysqli_fetch_array($empleado[1]) ) {
 		$respuesta['datos'] .= '<div class="radio"><label><input type="radio" id="rdb_'.$row['idEmpleado'].'" name="rdbUsuario" data-id="'.$row['idEmpleado'].'" />';
@@ -21,6 +22,8 @@ if ( isset($empleado[1]) && mysqli_num_rows($empleado[1]) > 0 ) {
 		$respuesta['datos'] .= '</div>';
 	}
 }
+else
+	$respuesta['encontrado'] = 0;
 
 echo json_encode($respuesta);
 ?>

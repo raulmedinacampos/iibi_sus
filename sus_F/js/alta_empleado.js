@@ -145,11 +145,11 @@ function guardar() {
 				$("#formEmpleado").serialize(), 
 				function(data) {
 					if ( data == "1" ) {
-						$("#miDiv").load("administracion/lista-de-usuarios");
+						$("#miDiv").load("administracion/alta-de-usuario");
 					}
 					
 					else {
-						$("#myModal .modal-body").html("Ocurió un problema, favor de comunicarse con el administrador");
+						$("#myModal .modal-body").html("-Ocurió un problema, favor de comunicarse con el administrador");
 						$("#myModal .modal-footer .btn-default").css("display", "inline");
 						$("#myModal .modal-footer .btn-primary").css("display", "none");
 						
