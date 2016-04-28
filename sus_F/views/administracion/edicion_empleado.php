@@ -28,19 +28,19 @@
 				
 				<label class="col-sm-2 control-label">Nombre(s)</label>
 				<div class="col-sm-4">
-					<input id="nombre" name="nombre" class="form-control" value="<?php echo $empleado['nombre']; ?>" />
+					<input id="nombre" name="nombre" class="form-control" value="<?php echo $empleado['nombre']; ?>" readonly="readonly" />
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Apellido paterno</label>
 				<div class="col-sm-4">
-					<input id="apPaterno" name="apPaterno" class="form-control" value="<?php echo $empleado['apellidoP']; ?>" />
+					<input id="apPaterno" name="apPaterno" class="form-control" value="<?php echo $empleado['apellidoP']; ?>" readonly="readonly" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Apellido materno</label>
 				<div class="col-sm-4">
-					<input id="apMaterno" name="apMaterno" class="form-control" value="<?php echo $empleado['apellidoM']; ?>" />
+					<input id="apMaterno" name="apMaterno" class="form-control" value="<?php echo $empleado['apellidoM']; ?>" readonly="readonly" />
 				</div>
 			</div>
 			
@@ -145,12 +145,12 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Correo del puesto</label>
 				<div class="col-sm-4">
-					<input id="correoInst" name="correoPuesto" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
+					<input id="correoPuesto" name="correoPuesto" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoInstConf" name="correoPuestoConf" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
+					<input id="correoPuestoConf" name="correoPuestoConf" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
 				</div>
 			</div>
 

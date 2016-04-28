@@ -159,6 +159,9 @@ function validar() {
 			descripcion: {
 				required: true,
 				maxlength: 250
+			},
+			txt_otro: {
+				required: true
 			}
 		},
 		messages: {
@@ -167,7 +170,8 @@ function validar() {
 			descripcion: {
 				required: "Este campo es requerido",
 				maxlength: "La descripción es muy larga, favor de resumirla"
-			}
+			},
+			txt_otro: "Este campo es requerido"
 		}
 	});
 }
