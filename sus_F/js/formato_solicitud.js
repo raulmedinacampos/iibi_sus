@@ -8,7 +8,7 @@ function agregarOtro() {
 			if ( $('#txt_otro_diversos').length == 0 ) {
 				var div = $(this).parents(".radio");
 				var txt = '<div class="txt-otro-d col-sm-12">';
-				txt += '<input id="txt_otro_diversos" name="txt_otro_diversos" class="form-control" placeholder="Describe el servicio" />';
+				txt += '<input id="txt_otro" name="txt_otro" class="form-control" placeholder="Describe el servicio" />';
 				txt += '</div>';
 				div.after(txt);
 			}
@@ -16,11 +16,23 @@ function agregarOtro() {
 			$('.txt-otro-d').remove();
 		}
 		
+		if ( $(this).prop("id") == "rdb_mensajeria_otro" ) {
+			if ( $('#txt_otro_mensajeria').length == 0 ) {
+				var div = $(this).parents(".radio");
+				var txt = '<div class="txt-otro-msg col-sm-12">';
+				txt += '<input id="txt_otro" name="txt_otro" class="form-control" placeholder="Describe el servicio" />';
+				txt += '</div>';
+				div.after(txt);
+			}
+		} else {
+			$('.txt-otro-msg').remove();
+		}
+		
 		if ( $(this).prop("id") == "rdb_mto_otro" ) {
 			if ( $('#txt_otro_mto').length == 0 ) {
 				var div = $(this).parents(".radio");
 				var txt = '<div class="txt-otro-m col-sm-12">';
-				txt += '<input id="txt_otro_mto" name="txt_otro_mto" class="form-control" placeholder="Describe el servicio" />';
+				txt += '<input id="txt_otro" name="txt_otro" class="form-control" placeholder="Describe el servicio" />';
 				txt += '</div>';
 				div.after(txt);
 			}
@@ -32,7 +44,7 @@ function agregarOtro() {
 			if ( $('#txt_otro_servicio').length == 0 ) {
 				var div = $(this).parents(".radio");
 				var txt = '<div class="txt-otro-s col-sm-12">';
-				txt += '<input id="txt_otro_servicio" name="txt_otro_servicio" class="form-control" placeholder="Describe el servicio" />';
+				txt += '<input id="txt_otro" name="txt_otro" class="form-control" placeholder="Describe el servicio" />';
 				txt += '</div>';
 				div.after(txt);
 			}
@@ -147,6 +159,9 @@ function validar() {
 			descripcion: {
 				required: true,
 				maxlength: 250
+			},
+			txt_otro: {
+				required: true
 			}
 		},
 		messages: {
@@ -155,7 +170,8 @@ function validar() {
 			descripcion: {
 				required: "Este campo es requerido",
 				maxlength: "La descripción es muy larga, favor de resumirla"
-			}
+			},
+			txt_otro: "Este campo es requerido"
 		}
 	});
 }

@@ -104,6 +104,22 @@ function consultarInforme() {
 								$("#hTotalR").val(d.totalR);
 								$("#hTotalS").val(d.totalS);
 								
+								$("#numSerProgR").rules("add", {
+									number: true
+								});
+								
+								$("#numSerProgNR").rules("add", {
+									number: true
+								});
+								
+								$("#entradaBienes").rules("add", {
+									number: true
+								});
+								
+								$("#salidaBienes").rules("add", {
+									number: true
+								});
+								
 								$(".oculto").slideDown();
 							}
 						);
