@@ -5,7 +5,7 @@
 <p>Mediante este formulario podrá actualizar los nombres de las personas que aperecen en el formato de Solicitud Única de Servicios.
 Considere que, para hacer esta actualización, es necesario que la persona se encuentre dada de alta en la base de datos del sistema, y que
 al dar click en actualizar, estará dando de baja a la persona anterior en su cargo.</p>
-<form method="post" id="formFirmas" name="formFirmas" class="form-horizontal col-sm-8" action="">
+<form method="post" id="formFirmasSecre" name="formFirmasSecre" class="form-horizontal col-sm-8" action="">
 	<div class="row">
 		<h5 class="text-primary"><strong>Secretario Administrativo</strong></h5>
 		<div class="form-group">
@@ -27,7 +27,9 @@ al dar click en actualizar, estará dando de baja a la persona anterior en su ca
 			</div>
 		</div>
 	</div>
-	
+</form>
+
+<form method="post" id="formFirmasSG" name="formFirmasSG" class="form-horizontal col-sm-8" action="">
 	<div class="row">
 		<h5 class="text-primary"><strong>Jefe de Área de Servicios Generales</strong></h5>
 		<div class="form-group">
