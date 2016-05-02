@@ -5,21 +5,21 @@
 <p>Mediante este formulario podrá actualizar los nombres de las personas que aperecen en el formato de Solicitud Única de Servicios.
 Considere que, para hacer esta actualización, es necesario que la persona se encuentre dada de alta en la base de datos del sistema, y que
 al dar click en actualizar, estará dando de baja a la persona anterior en su cargo.</p>
-<form method="post" id="formFirmasSecre" name="formFirmasSecre" class="form-horizontal col-sm-8" action="">
+<form method="post" id="formFirmasSrio" name="formFirmasSrio" class="form-horizontal col-sm-8" action="">
 	<div class="row">
 		<h5 class="text-primary"><strong>Secretario Administrativo</strong></h5>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
 				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="<?php echo $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'] ?>"/>
-				<input type="hidden" id="idPuestoAnt" name="idPuestoAnt" value="<?php echo $secretario['idEmp']?>" />			</div>
+				<input type="hidden" id="id_strio_ant" name="id_strio_ant" value="<?php echo $secretario['idEmp']?>" /></div>
 		</div>
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
 				<input type="text" id="administrativo" name="administrativo" class="form-control typeahead" />
-				<input type="hidden" id="hdn_id" name="hdn_id" />
+				<input type="hidden" id="hdn_id_strio" name="hdn_id_strio" />
 			</div>
 			<div class="col-sm-2">
 				<button id="btnAdministrativo" name="btnAdministrativo" class="btn btn-primary">Actualizar</button>
@@ -27,16 +27,14 @@ al dar click en actualizar, estará dando de baja a la persona anterior en su ca
 			</div>
 		</div>
 	</div>
-</form>
-
-<form method="post" id="formFirmasSG" name="formFirmasSG" class="form-horizontal col-sm-8" action="">
+	
 	<div class="row">
 		<h5 class="text-primary"><strong>Jefe de Área de Servicios Generales</strong></h5>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
 				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="<?php echo $sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'] ?>" />
-				<input type="hidden" id="idPuestoAnt" name="idPuestoAnt" value="<?php echo $sGenerales['idEmp']?>" />
+				<input type="hidden" id="id_sg_ant" name="id_sg_ant" value="<?php echo $sGenerales['idEmp']?>" />
 			</div>
 		</div>
 		
@@ -44,7 +42,7 @@ al dar click en actualizar, estará dando de baja a la persona anterior en su ca
 			<label class="col-sm-2 control-label">Nuevo:</label>
 			<div class="col-sm-8">
 				<input type="text" id="serviciosGenerales" name="serviciosGenerales" class="form-control typeahead" />
-				<input type="hidden" id="hdn_id" name="hdn_id" />								
+				<input type="hidden" id="hdn_id_sg" name="hdn_id_sg" />								
 			</div>
 			<div class="col-sm-2">
 				<button id="btnServiciosGenerales" name="btnServiciosGenerales" class="btn btn-primary">Actualizar</button>
