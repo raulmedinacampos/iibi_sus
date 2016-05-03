@@ -244,6 +244,10 @@ Flight::route('/administracion/firmas-autorizadas/', function() {
 	require_once 'controllers/administracion/firmas_autorizadas_controller.php';
 });
 
+Flight::route('/administracion/actualiza-firmas/', function() {
+	require_once 'controllers/administracion/actualizaFirmas_controller.php';
+});
+	
 /*Ayuda*/
 
 Flight::route('/ayuda/cambiar-contra/', function() {
