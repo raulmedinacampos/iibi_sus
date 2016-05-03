@@ -1,11 +1,20 @@
 <?php
 
-$idPuestoAnt = (isset($_POST['idPuestoAnt'])) ? addslashes($_POST['idPuestoAnt']) : "";
-$idEmpleado = (isset($_POST['hdn_id'])) ? addslashes($_POST['hdn_id']) : "";
+$id_srio_ant = (isset($_POST['id_srio_ant'])) ? addslashes($_POST['id_srio_ant']) : "";
+$id_sg_ant = (isset($_POST['id_sg_ant'])) ? addslashes($_POST['id_sg_ant']) : "";
+
+$id_sg = (isset($_POST['hdn_id_sg'])) ? addslashes($_POST['hdn_id_sg']) : "";
+$id_srio = (isset($_POST['hdn_id_srio'])) ? addslashes($_POST['hdn_id_srio']) : "";
 
 
+if($id_srio_ant!=''){
+	$anterior = seleccionar('*', 'puesto', 'idPuesto='.$id_srio_ant);
+}
 
-$anterior = seleccionar('*', 'puesto', 'idPuesto='.$idPuestoAnt);
+if($id_sg_ant!=''){
+	$anterior = seleccionar('*', 'puesto', 'idPuesto='.$id_sg_ant);
+}
+
 $update= "fechaFin=now() and estatus=0 and fechaModif=now()";
  	
 $maxID=maximo("idPuesto", "puesto")+1;
@@ -18,3 +27,4 @@ if ( $trans[0] == 1 ) {
 	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";}
 
 ?>
+
