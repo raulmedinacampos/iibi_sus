@@ -77,7 +77,7 @@ function actualizar() {
 	$("#btnServiciosGenerales").click(function(e) {
 		e.preventDefault();
 		
-		var anterior = $("#serviciosGenerales").val();
+		var anterior = $("#id_sg_ant").val();
 		var nuevo = $("#hdn_id_sg").val();
 		
 		$.post(
