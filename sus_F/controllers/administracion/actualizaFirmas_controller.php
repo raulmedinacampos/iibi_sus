@@ -9,10 +9,14 @@ $id_srio = (isset($_POST['hdn_id_srio'])) ? addslashes($_POST['hdn_id_srio']) : 
 
 if($id_srio_ant!=''){
 	$anterior = seleccionar('*', 'puesto', 'idPuesto='.$id_srio_ant);
+	$idEmpleado = $id_srio;
+	$idPuestoAnt = $id_srio_ant;
 }
 
 if($id_sg_ant!=''){
 	$anterior = seleccionar('*', 'puesto', 'idPuesto='.$id_sg_ant);
+	$idEmpleado = $id_sg;
+	$idPuestoAnt= $id_sg_ant;
 }
 
 $update= "fechaFin=now() and estatus=0 and fechaModif=now()";
@@ -22,9 +26,10 @@ $insert = $maxID.",'".$anterior['puesto']."',".$idEmpleado.",".$anterior['idArea
 
 $trans = trNuevoSAC($update,$insert,$idPuestoAnt);
 
-if ( $trans[0] == 1 ) {
-} else {
-	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";}
+if ( $trans[0] == 1 )
+	echo "Se actualizó el nombre de la persona satisfactoriamente.";
+
+else
+	echo "Ocurió un problema, favor de comunicarse con el adminsitrador.";
 
 ?>
-
