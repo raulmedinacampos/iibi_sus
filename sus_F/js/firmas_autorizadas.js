@@ -55,23 +55,33 @@ function actualizar() {
 		var anterior = $("#id_strio_ant").val();
 		var nuevo = $("#hdn_id_strio").val();
 		
-		$.post(
-			'administracion/actualiza-firmas', 
-			{'id_srio_ant':anterior, 'hdn_id_srio':nuevo}, 
-			function(data) {
-				$(".modal-header .modal-title").html("Firmas autorizadas");
-				$(".modal-footer .btn-default").html("Cerrar");
-				$(".modal-footer .btn-primary").css("display", "none");
-				$(".modal-body").html(data);
-				$("#myModal").modal('show');
-				
-				$("#myModal .modal-footer .btn-default").click(function() {
-					$("#myModal").modal('hide');
-						
-					$("#miDiv").load("administracion/firmas-autorizadas");
-				});
+		$("#formFirmas").validate({
+			rules: {
+				hdn_id_srio: {
+					required: true
+				}
 			}
-		);
+		});
+		
+		if ( $("#formFirmas").valid() ) {
+			$.post(
+				'administracion/actualiza-firmas', 
+				{'id_srio_ant':anterior, 'hdn_id_srio':nuevo}, 
+				function(data) {
+					$(".modal-header .modal-title").html("Firmas autorizadas");
+					$(".modal-footer .btn-default").html("Cerrar");
+					$(".modal-footer .btn-primary").css("display", "none");
+					$(".modal-body").html(data);
+					$("#myModal").modal('show');
+					
+					$("#myModal .modal-footer .btn-default").click(function() {
+						$("#myModal").modal('hide');
+							
+						$("#miDiv").load("administracion/firmas-autorizadas");
+					});
+				}
+			);
+		}
 	});
 	
 	$("#btnServiciosGenerales").click(function(e) {
@@ -80,23 +90,33 @@ function actualizar() {
 		var anterior = $("#id_sg_ant").val();
 		var nuevo = $("#hdn_id_sg").val();
 		
-		$.post(
-			'administracion/actualiza-firmas', 
-			{'id_sg_ant':anterior, 'hdn_id_sg':nuevo}, 
-			function(data) {
-				$(".modal-header .modal-title").html("Firmas autorizadas");
-				$(".modal-footer .btn-default").html("Cerrar");
-				$(".modal-footer .btn-primary").css("display", "none");
-				$(".modal-body").html(data);
-				$("#myModal").modal('show');
-				
-				$("#myModal .modal-footer .btn-default").click(function() {
-					$("#myModal").modal('hide');
-						
-					$("#miDiv").load("administracion/firmas-autorizadas");
-				});
+		$("#formFirmas").validate({
+			rules: {
+				hdn_id_sg: {
+					required: true
+				}
 			}
-		);
+		});
+		
+		if ( $("#formFirmas").valid() ) {
+			$.post(
+				'administracion/actualiza-firmas', 
+				{'id_sg_ant':anterior, 'hdn_id_sg':nuevo}, 
+				function(data) {
+					$(".modal-header .modal-title").html("Firmas autorizadas");
+					$(".modal-footer .btn-default").html("Cerrar");
+					$(".modal-footer .btn-primary").css("display", "none");
+					$(".modal-body").html(data);
+					$("#myModal").modal('show');
+					
+					$("#myModal .modal-footer .btn-default").click(function() {
+						$("#myModal").modal('hide');
+							
+						$("#miDiv").load("administracion/firmas-autorizadas");
+					});
+				}
+			);
+		}
 	});
 	
 	$("#btnPersonal").click(function(e) {
