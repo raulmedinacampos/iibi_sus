@@ -48,6 +48,12 @@ function autocompletar() {
 	});
 }
 
+function validar() {
+	$("#formFirmas").validate({
+		ignore: ""
+	});
+}
+
 function actualizar() {
 	$("#btnAdministrativo").click(function(e) {
 		e.preventDefault();
@@ -55,15 +61,12 @@ function actualizar() {
 		var anterior = $("#id_strio_ant").val();
 		var nuevo = $("#hdn_id_strio").val();
 		
-		$("#formFirmas").validate({
-			rules: {
-				hdn_id_srio: {
-					required: true
-				}
-			}
+		$("#hdn_id_strio").rules("add", {
+			required: true
 		});
 		
 		if ( $("#formFirmas").valid() ) {
+			$('btnAdministrativo').off('click');
 			$.post(
 				'administracion/actualiza-firmas', 
 				{'id_srio_ant':anterior, 'hdn_id_srio':nuevo}, 
@@ -90,15 +93,12 @@ function actualizar() {
 		var anterior = $("#id_sg_ant").val();
 		var nuevo = $("#hdn_id_sg").val();
 		
-		$("#formFirmas").validate({
-			rules: {
-				hdn_id_sg: {
-					required: true
-				}
-			}
+		$("#hdn_id_sg").rules("add", {
+			required: true
 		});
 		
 		if ( $("#formFirmas").valid() ) {
+			$('btnServiciosGenerales	').off('click');
 			$.post(
 				'administracion/actualiza-firmas', 
 				{'id_sg_ant':anterior, 'hdn_id_sg':nuevo}, 
@@ -134,5 +134,6 @@ function actualizar() {
 
 $(function() {
 	autocompletar();
+	validar();
 	actualizar();
 });
