@@ -63,6 +63,8 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 	$datos_aux['estatus'] = $row['estatus'];
 	$datos_aux['idServicio']=$row['estado'];
 	//????????? esta línea de arriba está bien??? Por lo pronto parece funcionar
+	$datos_aux['acciones']="";
+	
 	
 	$datos_aux['otro']=$row['otro'];
 	$datos_aux['idTipoServicio']=$row['idTipoServicio'];
