@@ -23,11 +23,13 @@ $direccion="href = 'http://132.248.242.11/sus/'";
 function mailValidacion($solNombre,$solMail,$folioM){
 	
 	$nombre 	= htmlspecialchars($solNombre);
-	$mensaje	=  "<p>$nombre</p>
-	<p>En atención a su solicitud de servicios con número de folio ".$folioM." le informamos que fue confirmada.</p> 
+	$mensaje	=  "<p>$nombre</p>";
+	$mensaje   += "<p>En atención a su solicitud de servicios con número de folio ".$folioM." le informamos que fue confirmada.</p> 
 	<p>Para continuar con el trámite, descargue el formato de la solicitud desde el <a ".$GLOBALS['direccion'].">sistema de Solicitud Única de Servicios</a>, la cual se encuentra en el apartado Estado de solicitudes con la leyenda \"Verificada\". Imprímala, recabe las firmas correspondientes y entréguela en Servicios Generales de la Secretaría Administrativa del IIBI.
-	</br>Podrá consultar el estado del trámite en el <a ".$GLOBALS['direccion'].">sistema de Solicitud Única de Servicios</a>.</p> 
+	</br>Podrá consultar el estado del trámite en el <a ".$GLOBALS['direccion'].">sistema de Solicitud Única de Servicios</a>.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+	
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 //	print "globales: $GLOBALS[hostM]";
 //	print_r ($GLOBALS);
 	
@@ -66,6 +68,7 @@ function mailTerminacion($solNombre,$solMail,$folioM){
 	<br>Favor de verificar dicha actividad para posteriormente ingresar al <a ".$GLOBALS['direccion'].">sistema</a> y evaluar el servicio otrorgado a más tardar en dos días posteriores al servicio otorgado.</p>
 			 
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
@@ -99,6 +102,7 @@ function mailCancelacion($solNombre,$solMail,$folioM){
 	$mensaje	=  "<p>$nombre</p>
 	<p>Le informamos que su solicitud con folio ".$folioM." fue cancelada. Por favor comuníquese al 562-30374 para mayor información.</p>
   	<p>Atentamente</p></br>".$GLOBALS['jefeServicios']."</br>Servicios Generales<br>Secretaría Administrativa, IIBI.";
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
@@ -131,6 +135,7 @@ function mailNewSol($tipoServicio,$solicitante,$folio){
 	
 	<p>Se le informa que tiene una nueva solicitud de ".$tipoServicio." por parte de $solicitante con folio $folio.</p>
 	<p>Para ver los detalles del servicio por favor ingrese al <a ".$GLOBALS['direccion'].">sistema de Solicitud Única de Servicios.</a></p>";
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
@@ -170,6 +175,7 @@ function mailNewContra($solNombre,$solMail,$usuario,$newContra){
 	<br> USUARIO: ".$usuario."
 	<br> CONTRASEÑA: ".$newContra."
 	<br>Le recordamos que puede acceder al sistema dando clik <a ".$GLOBALS['direccion'].">aquí</a></p>";
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
@@ -208,7 +214,9 @@ function mailEnvioContra($solNombre,$solMail,$usuario,$contra){
 	<br> CONTRASEÑA: ".$contra."</p>
 			
 	<p>Además, puede desgargar el manual de usuario dando click <a ". $GLOBALS['direccion'].">/manSUS_usu.pdf>aquí</a></p>
-	<p>Agradeceremos sus comentarios y dudas a los correos dafne@iibi.unam.mx y rebeca@iibi.unam.mx</p>";
+	<p>Agradeceremos sus comentarios y dudas a los correos dafne@iibi.unam.mx y rebeca@iibi.unam.mx o a los teléfonos 5623 0366 o 5616 2182</p>";
+	
+	$mensaje += "<p><b>Por favor no responda a este correo, es meramente informativo.</b></p>";
 			
 	$mail = new PHPMailer();
 	$mail->IsSMTP();

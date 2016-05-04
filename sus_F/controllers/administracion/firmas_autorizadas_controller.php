@@ -2,10 +2,10 @@
 session_start();
 
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secretario'";
-$secretario = seleccionar("*, empleado.idEmpleado as idEmp ", "empleado,puesto", $condicion);
+$secretario = seleccionar("*, puesto.idPuesto as idPuesto ", "empleado,puesto", $condicion);
 
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
-$sGenerales = seleccionar("*, empleado.idEmpleado as idEmp", "empleado,puesto", $condicion);
+$sGenerales = seleccionar("*, puesto.idPuesto as idPuesto", "empleado,puesto", $condicion);
 
 /*$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=6 and puesto='Jefe de departamento'";
 $personal = seleccionar("*", "empleado,puesto", $condicion);

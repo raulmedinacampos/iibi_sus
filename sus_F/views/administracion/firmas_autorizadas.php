@@ -2,9 +2,9 @@
 <script src="js/firmas_autorizadas.js" type="text/javascript"></script>
 
 <h4>Actualización de firmas autorizadas, Secretaría Administrativa</h4>
-<p>Mediante este formulario podrá actualizar los nombres de las personas que aperecen en el formato de Solicitud Única de Servicios.
-Considere que, para hacer esta actualización, es necesario que la persona se encuentre dada de alta en la base de datos del sistema, y que
-al dar click en actualizar, estará dando de baja a la persona anterior en su cargo.</p>
+<p>Mediante este formulario podrá cambiar los nombres de las personas que aperecen en el formato de Solicitud Única de Servicios.
+Considere que, para hacerlo, es necesario que la persona se encuentre dada de alta en la base de datos del sistema, y que
+al dar click en <i>Actualizar</i>, estará dando de baja a la persona anterior en su cargo.</p>
 <form method="post" id="formFirmasSrio" name="formFirmasSrio" class="form-horizontal col-sm-8" action="">
 	<div class="row">
 		<h5 class="text-primary"><strong>Secretario Administrativo</strong></h5>
@@ -12,7 +12,7 @@ al dar click en actualizar, estará dando de baja a la persona anterior en su ca
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
 				<input type="text" id="actualAdministrativo" name="actualAdministrativo" class="form-control" readonly="readonly" value="<?php echo $secretario['gradoAcad']." ".$secretario['nombre']." ".$secretario['apellidoP']." ".$secretario['apellidoM'] ?>"/>
-				<input type="hidden" id="id_strio_ant" name="id_strio_ant" value="<?php echo $secretario['idEmp']?>" /></div>
+				<input type="hidden" id="id_strio_ant" name="id_strio_ant" value="<?php echo $secretario['idPuesto']?>" /></div>
 		</div>
 		
 		<div class="form-group">
@@ -34,7 +34,7 @@ al dar click en actualizar, estará dando de baja a la persona anterior en su ca
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">
 				<input type="text" id="actualServiciosGenerales" name="actualServiciosGenerales" class="form-control" readonly="readonly" value="<?php echo $sGenerales['gradoAcad']." ".$sGenerales['nombre']." ".$sGenerales['apellidoP']." ".$sGenerales['apellidoM'] ?>" />
-				<input type="hidden" id="id_sg_ant" name="id_sg_ant" value="<?php echo $sGenerales['idEmp']?>" />
+				<input type="hidden" id="id_sg_ant" name="id_sg_ant" value="<?php echo $sGenerales['idPuesto']?>" />
 			</div>
 		</div>
 		

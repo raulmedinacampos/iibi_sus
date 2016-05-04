@@ -395,34 +395,27 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 
 	
 	
-function trNuevoSAC($update,$insert,$idPuestoAnt){
+function trNuevoSAC($update,$insert){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	
 	$sql = "BEGIN;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	
-	$sql = "INSERT INTO puesto (
-			idPuesto,
-			puesto,
-			idEmpleado,
-			idArea,
-			correoPuesto,
-			fechaInicio,
-			fechaModif,
-			estatus)
-		VALUES (".$insert.",1)";
-	
+	$sql = "INSERT INTO puesto VALUES ($insert)";
+		
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	$newPuesto = mysqli_insert_id($GLOBALS['conexion']);
 	
 	if(($newPuesto=!0)&&($newPuesto=!NULL)){
-		$sql = "UPDATE puesto SET ".$update." WHERE idPuesto=".$idPuestoAnt;
+		$sql = "UPDATE puesto SET ".$update;
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+		//falta mysqli_affected_rows (); para saber que si se hizo una actualizacion en alguna linea porque si no hay error en la consulta manda true aunque no se actualice nada}
 	else{
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
 	
 	if ($resultado) {
+		
 		$sql = "COMMIT";
 		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);;
 		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}

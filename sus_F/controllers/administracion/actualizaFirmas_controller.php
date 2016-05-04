@@ -8,7 +8,7 @@ $id_srio = (isset($_POST['hdn_id_srio'])) ? addslashes($_POST['hdn_id_srio']) : 
 
 $hacerTrans=0;
 
-if($id_srio!=''&&$$id_srio_ant!=''){
+if($id_srio!=''&&$id_srio_ant!=''){
 	$anterior = seleccionar('*', 'puesto', 'idPuesto='.$id_srio_ant);
 	$idEmpleado = $id_srio;
 	$idPuestoAnt = $id_srio_ant;
@@ -22,12 +22,12 @@ elseif($id_sg!=''&&$id_sg_ant!=''){
 }
 
 if($hacerTrans==1){	
-	$update= "fechaFin=now() and estatus=0 and fechaModif=now()";
+	$update= "fechaFin=now(), estatus=0, fechaModif=now() WHERE idPuesto=".$idPuestoAnt;
 	
 	$maxID=maximo("idPuesto", "puesto")+1;
-	$insert = $maxID.",'".$anterior['puesto']."',".$idEmpleado.",".$anterior['idArea'].",".$anterior['correoPuesto'].",now(),NULL,now(),1";
+	$insert = $maxID.",'".$anterior['puesto']."','".$idEmpleado."','".$anterior['idArea']."','".$anterior['correoPuesto']."',now(),NULL,now(),1";
 	
-	$trans = trNuevoSAC($update,$insert,$idPuestoAnt);
+	$trans = trNuevoSAC($update,$insert);
 	
 	if ( $trans[0] == 1 )
 		echo "Se actualizó el nombre de la persona satisfactoriamente.";
