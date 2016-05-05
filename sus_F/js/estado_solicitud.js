@@ -302,6 +302,8 @@ function inicializar() {
 			});
 			
 			/* Fin definición de botones */
+			/* Función boton pdf no hace búsqueda de folio en base de datos porque por definición no hay archivo aun.
+			 * Solo hasta que se archiva la solicitud se sube el digital.*/
 			$(".btn-pdf").click(function(e) {
 				e.preventDefault();
 				
@@ -622,15 +624,18 @@ function buscar() {
 							{'folio': folio},
 							
 							function(data) {
-								if(data!=0)
-									window.open(data,'_blank');
-								else{ //no se encuentra registro
-									$('#myModal .modal-title').html('Recuperar archivo');
-									$('#myModal .modal-body').html("Error en la recuperación del archivo</br>Consulte al administrador.");
-									$('#myModal .modal-footer .btn-primary').css("display","none");
-									$("#myModal .modal-footer .btn-default").html("Aceptar");
-									$('#myModal').modal('show');								
-								
+								if(data==0){
+									$("#hNuevaSolicitud").val(folio);
+									$("#formPDF").submit();}
+								else{
+									if(data==-1){
+										$('#myModal .modal-title').html('Recuperar archivo');
+										$('#myModal .modal-body').html("Error en la recuperación del archivo</br>Consulte al administrador.");
+										$('#myModal .modal-footer .btn-primary').css("display","none");
+										$("#myModal .modal-footer .btn-default").html("Aceptar");
+										$('#myModal').modal('show');}								
+									else //si hay archivo
+										window.open(data,'_blank');
 								}
 							}
 						);

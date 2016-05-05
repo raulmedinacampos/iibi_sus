@@ -11,8 +11,8 @@ $estado = (isset($_POST['estado']))  ? addslashes($_POST['estado']) : '';
 $columnas = "folio, DATE_FORMAT(fechaSolicitud,'%d/%m/%Y') as fecha, idUSolicitante, 
 			servicio,cTipoServicio.idTipoServicio,otro, descripcion, cEstatusSUS.estatus, servicioSUS.estatus as estado";
 
-
 $tablas = "servicioSUS, cEstatusSUS, cTipoServicio";
+
 
 if ( $_SESSION['tipoUsuario'] == 1 ) //usuario normal 
 	$condicion= "idUSolicitante=".$_SESSION['idUsuario']." and servicioSUS.estatus<=11";
@@ -23,11 +23,15 @@ if ($_SESSION['tipoUsuario'] == 3|| $_SESSION['tipoUsuario'] == 5|| $_SESSION['t
 	else 
 		$condicion="1";
 
+
 if($estado!='')
 	$condicion 	.= " and servicioSUS.estatus = ".$estado;
 
+	
 if($fechaF==''&&$fechaI=='')
-	$condicion .= " and month(fechaSolicitud) = month(now())";
+	//$condicion .= " and month(fechaSolicitud) = month(now())";
+	$condicion .= " and 1 ";
+	
 	
 else{
 	
@@ -40,13 +44,14 @@ else{
 		$condicion 	.= " and date(fechaSolicitud) <= '".$fechaF."'";}
 }
 
+
 if ($tipo!='')
 	$condicion 	.= " and servicioSUS.idTipoServicio like '".$tipo."%' ";
 
 
 $condicion 		.= " and cEstatusSUS.idEstatusSUS = servicioSUS.estatus
 						  and servicioSUS.idTipoServicio = cTipoServicio.idTipoServicio
-						  order by consecutivo asc";
+						  order by consecutivo desc limit 0,15 ";
 
 $datos = seleccionarTodoSM($columnas,$tablas,$condicion);
 
