@@ -9,8 +9,7 @@
 <script type="text/javascript" src="js/estado_solicitud.js"></script>
 
 <h3>Estado de solicitudes</h3>
-<p>Inicialmente, se muestran las últimas 15 solicitudes realizadas 
-<?php //setlocale(LC_TIME, "es_MX"); echo strftime("%B");?>, si desea conocer el estado de otras solicitudes por favor use los filtros siguientes:</p>
+<p>Inicialmente, se muestran las últimas 15 solicitudes realizadas<?php //setlocale(LC_TIME, "es_MX"); echo strftime("%B");?>. Si desea conocer el estado de otras solicitudes por favor use los filtros siguientes:</p>
 
 <div class="panel panel-primary">
 	<div class="panel-heading">Filtros de búsqueda</div>
