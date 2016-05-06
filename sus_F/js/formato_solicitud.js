@@ -158,7 +158,7 @@ function validar() {
 			},
 			descripcion: {
 				required: true,
-				maxlength: 250
+				maxlength: 690
 			},
 			txt_otro: {
 				required: true
