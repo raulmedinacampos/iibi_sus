@@ -21,11 +21,11 @@ $err_select = "[]<br>No se encontraron coincidencias.";
 Guarda los errores que se generan mediante una $consulta.
 No regresa valores*/
 
-function errorConsulta($usuario, $error, $consulta){
+function errorConsulta($usuario, $error, $consulta,$sistema){
     //tabla error--> idError, usuario, error, fecha
 	$error=str_replace('"',"",$error);
 	$consulta=str_replace('"',"",$consulta);
-	$valores = 'NULL,'.$usuario.',"'.$error.'","'.$consulta.'",now()';
+	$valores = 'NULL,'.$_SESSION["idUsuario"].',"'.$error.'","'.$consulta.'",now(),"'.$sistema.'"';
 	$consulta="insert into error values (".$valores.")";
 	mysqli_query($GLOBALS['conexion'],$consulta);
 	if(mysqli_error($GLOBALS['conexion']))
