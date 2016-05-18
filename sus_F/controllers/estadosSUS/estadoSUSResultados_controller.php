@@ -80,6 +80,11 @@ while ( $row = mysqli_fetch_array($datos[1]) ) {
 			$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
 			break;
 			
+		case 310://Terminada
+			if($_SESSION['idUsuario']==$datos_aux['idUSolicitante'])
+				$datos_aux['acciones'] = '<input type="button" value="Evaluar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-evaluar">';//Evaluar(11)
+			break;
+		
 		case 31://Solicitada
 			$datos_aux['acciones'] = '<input type="button" value="Validar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-validar">'; //Validar(8)
 			$datos_aux['acciones'] .= '<input type="button" value="Cancelar" data-id="'.$row['folio'].'" class="btn btn-default btn-sm btn-cancelar">'; //Cancelar(9)
