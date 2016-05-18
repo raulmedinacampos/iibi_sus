@@ -1,7 +1,7 @@
 
 		<div class="pie">
 			<div class="derechos">
-				Hecho en México, todos los derechos reservados 2014. Esta página puede
+				Hecho en México, todos los derechos reservados 2016. Esta página puede
 				ser reproducida con fines no lucrativos, siempre y cuando no se
 				mutile, se cite la fuente completa y su dirección electrónica. De otra
 				forma, requiere permiso previo por escrito de la institución. <a
