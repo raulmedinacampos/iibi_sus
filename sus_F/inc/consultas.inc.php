@@ -89,7 +89,7 @@ function contar($columna, $tabla){
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
 		$regreso = $GLOBALS['ERROR'];
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");
 		//echo $regreso;
 		}
 	else{
@@ -123,7 +123,7 @@ function seleccionarSinMsj($columnas,$tablas,$condicion){
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
 		$regreso = 0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso = mysqli_fetch_array($respuesta);
@@ -142,7 +142,7 @@ function seleccionarSinMsj2($columnas,$tablas,$condicion){
 	if(mysqli_error($GLOBALS['conexion'])){
 	// si hubo errores en la consulta
 		$regreso = 0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0)
 			$regreso = mysqli_fetch_array($respuesta);
@@ -180,7 +180,7 @@ function seleccionarTodo($columnas,$tablas,$condicion){
 	// si hubo errores en la consulta
 		$regreso[0] = 0;
 		$regreso[1] = $GLOBALS['ERROR'];
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");
 		echo $regreso[1];
 	}
 	else{
@@ -203,7 +203,7 @@ function seleccionarTodoSM($columnas,$tablas,$condicion){
 	// si hubo errores en la consulta
 		$regreso[0] = 0;
 		$regreso[1] = 0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");
 	}
 	else{
 		if(mysqli_affected_rows($GLOBALS['conexion'])!=0){
@@ -243,7 +243,7 @@ function actualizar($tabla,$valores, $condicion){
 	else{
 		$regreso[0] = 0;
 		$regreso[1] = mysqli_error($GLOBALS['conexion']);
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");}
 	return $regreso;}
 
 	
@@ -266,7 +266,7 @@ function insertar($tabla,$valores){
 	else{
 		$regreso[0] = 0;
 		$regreso[1] = mysqli_error($GLOBALS['conexion']);
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");}
 	return $regreso;}
 	
 	
@@ -288,7 +288,7 @@ function borrar($tabla,$condicion){
 	// si hubo errores en la consulta
 		$regreso[0] = 0;
 		$regreso[1] = $GLOBALS['ERROR'];
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta);
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$consulta,"sus");
 		echo $regreso[1];}
 	else{
 		$regreso[0] = 1;
@@ -337,7 +337,7 @@ function iUsuario($valsEmpleado,$valsPuesto){
 		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,fechaInicio,estatus) values (".$newEmp.",".$valsPuesto.",1)";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
 	else{
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 			
 	if ($resultado) {
 		$sql = "COMMIT";
@@ -348,7 +348,7 @@ function iUsuario($valsEmpleado,$valsPuesto){
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[0]=0;
 		$regreso[1]=0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 	
 return $regreso;}
 
@@ -379,7 +379,7 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,correoPuesto,fechaInicio,estatus) values (".$temp.",".$valsPuesto.",1)";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
 	else{
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 				
 	if ($resultado) {
 		$sql = "COMMIT";
@@ -390,7 +390,7 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[0]=0;
 		$regreso[1]=0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 	return $regreso;}
 
 	
@@ -412,7 +412,7 @@ function trNuevoSAC($update,$insert){
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
 		//falta mysqli_affected_rows (); para saber que si se hizo una actualizacion en alguna linea porque si no hay error en la consulta manda true aunque no se actualice nada}
 	else{
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 	
 	if ($resultado) {
 		
@@ -424,7 +424,7 @@ function trNuevoSAC($update,$insert){
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[0]=0;
 		$regreso[1]=0;
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql);}
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
 return $regreso;}
 	
 
