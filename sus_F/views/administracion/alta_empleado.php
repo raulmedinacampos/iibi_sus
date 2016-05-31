@@ -126,7 +126,7 @@
 						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					</div>
 				</div>
-				
+<!-- 				
 				<label class="col-sm-2 control-label">Núm. trabajador</label>
 				<div class="col-sm-4">
 					<input id="numTrabajador" name="numTrabajador" class="form-control" />
@@ -138,7 +138,7 @@
 				<div class="col-sm-4">
 					<input id="numCuenta" name="numCuenta" class="form-control" />
 				</div>
-				
+-->				
 				<label class="col-sm-2 control-label obligatorio">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" />

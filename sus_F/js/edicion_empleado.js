@@ -29,9 +29,6 @@ function validar() {
 			numTrabajador: {
 				number: true
 			},
-			numCuenta: {
-				number: true
-			},
 			telefonoOf: {
 				required: true,
 				pattern: /^[\d\-\s]+$/

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
 
 <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
@@ -6,7 +6,7 @@
 
 <h4>Escriba o modifique los datos del empleado</h4>
 
-<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
+<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="" enctype="multipart/form-data" >
 	<div class="panel panel-primary">
 		<div class="panel-heading">Datos personales</div>
 		<div class="panel-body">
@@ -47,36 +47,36 @@
 <!-- 			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Teléfono</label>
 				<div class="col-sm-4">
-					<input id="telefono" name="telefono" class="form-control" value="<?php echo $empleado['telFijo']; ?>" />
+					<input id="telefono" name="telefono" class="form-control" value="<?php //echo $empleado['telFijo']; ?>" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Número celular</label>
 				<div class="col-sm-4">
-					<input id="celular" name="celular" class="form-control" value="<?php echo $empleado['telMovil']; ?>" />
+					<input id="celular" name="celular" class="form-control" value="<?php //echo $empleado['telMovil']; ?>" />
 				</div>
 			</div>
 			
 			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">Correo personal</label>
 				<div class="col-sm-4">
-					<input id="correo" name="correo" class="form-control" value="<?php echo $empleado['eMailPers']; ?>" />
+					<input id="correo" name="correo" class="form-control" value="<?php //echo $empleado['eMailPers']; ?>" />
 				</div>
 				
 				<label class="col-sm-2 control-label">Confirmar correo</label>
 				<div class="col-sm-4">
-					<input id="correoConf" name="correoConf" class="form-control" value="<?php echo $empleado['eMailPers']; ?>" />
+					<input id="correoConf" name="correoConf" class="form-control" value="<?php //echo $empleado['eMailPers']; ?>" />
 				</div>
 			</div>
 			
 			<div class="form-group datos-adicionales">
 				<label class="col-sm-2 control-label">RFC</label>
 				<div class="col-sm-4">
-					<input id="rfc" name="rfc" class="form-control" value="<?php echo $empleado['RFC']; ?>" />
+					<input id="rfc" name="rfc" class="form-control" value="<?php //echo $empleado['RFC']; ?>" />
 				</div>
 				
 				<label class="col-sm-2 control-label">CURP</label>
 				<div class="col-sm-4">
-					<input id="curp" name="curp" class="form-control" value="<?php echo $empleado['CURP']; ?>" />
+					<input id="curp" name="curp" class="form-control" value="<?php //echo $empleado['CURP']; ?>" />
 				</div>
 			</div>-->
 		</div>
@@ -123,19 +123,17 @@
 						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					</div>
 				</div>
-				
+<!-- 				
 				<label class="col-sm-2 control-label">Núm. trabajador</label>
 				<div class="col-sm-4">
-					<input id="numTrabajador" name="numTrabajador" class="form-control" value="<?php echo $empleado['noTrabajador']; ?>" />
+					<input id="numTrabajador" name="numTrabajador" class="form-control" value="<?php //echo $empleado['noTrabajador']; ?>" />
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Núm. cuenta</label>
-				<div class="col-sm-4">
-					<input id="numCuenta" name="numCuenta" class="form-control" value="<?php echo $empleado['noCuenta']; ?>" />
-				</div>
 				
+				
+-->				
 				<label class="col-sm-2 control-label">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" value="<?php echo $empleado['telOficina']; ?>" />
@@ -165,6 +163,21 @@
 					<input id="correoInstConf" name="correoInstConf" class="form-control" value="<?php echo $empleado['eMailOf']; ?>" />
 				</div>
 			</div>
+
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Rubrica</label>
+				<div class="col-sm-4">
+					<input id="rubrica" name="rubrica" class="form-control" value="<?php //echo $empleado['rubrica']; ?>" />
+				</div>
+				
+				<label class="col-sm-2 control-label">Cambiar rubrica</label>
+				<div class="col-sm-4">
+					<input type="file" id="rubrica" name="rubrica" class="form-control"/>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 	

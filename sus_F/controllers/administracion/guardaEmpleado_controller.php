@@ -13,7 +13,8 @@ $area = (isset($_POST['area'])) ? addslashes($_POST['area']) : "";
 $puesto = (isset($_POST['puesto'])) ? addslashes($_POST['puesto']) : "";
 $fechaEntrada = (isset($_POST['fechaEntrada'])) ? addslashes($_POST['fechaEntrada']) : "";
 $numTrabajador = (isset($_POST['numTrabajador'])) ? addslashes($_POST['numTrabajador']) : "";
-$numCuenta = (isset($_POST['numCuenta'])) ? addslashes($_POST['numCuenta']) : "";
+$idFirmaSUS= (isset($_POST['idFirmaSUS'])) ? addslashes($_POST['idFirmaSUS']) : "";
+
 $telOficina = (isset($_POST['telefonoOf'])) ? addslashes($_POST['telefonoOf']) : "";
 $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) : "";
 $correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
@@ -26,7 +27,7 @@ $valsEmpleado ='"'.$grado.'", "'.
 			$apMaterno.'","'.
 			$iniciales.'","'.
 			$numTrabajador.'","'.
-			$numCuenta.'","'.
+			$idFirmaSUS.'","'.
 			$telefono.'","'.
 			$celular.'","'.
 			$telOficina.'","'.

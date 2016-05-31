@@ -15,10 +15,59 @@ $area = (isset($_POST['area'])) ? addslashes($_POST['area']) : "";
 $puesto = (isset($_POST['puesto'])) ? addslashes($_POST['puesto']) : "";
 $fechaInicio = (isset($_POST['fechaEntrada'])) ? addslashes($_POST['fechaEntrada']) : "";
 $numTrabajador = (isset($_POST['numTrabajador'])) ? addslashes($_POST['numTrabajador']) : "";
-$numCuenta = (isset($_POST['numCuenta'])) ? addslashes($_POST['numCuenta']) : "";
+$idFirmaSUS = (isset($_POST['idFirmaSUS'])) ? addslashes($_POST['idFirmaSUS']) : "";
 $telOficina = (isset($_POST['telefonoOf'])) ? addslashes($_POST['telefonoOf']) : "";
 $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) : "";
 $correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
+$correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
+
+$rubrica = (isset($_POST['rubrica'])) ? addslashes($_POST['rubrica']) : "";
+$tipoPic = $_FILES['rubrica']['type'];
+$subida=0;
+$ruta = '/opt/csw/share/www/sus/firmas/';
+$nombrePic = $id.".".tipoPic;
+
+if (is_uploaded_file($_FILES['rubrica']["tmp_name"])){
+//se comprueba que haya subido un archivo	
+	if (!($tipoPic=="image/jpeg" || $tipoPic=="image/pjpeg" || $tipoPic=="image/png"))
+		 $subida=0;
+	else{
+		 
+		if (move_uploaded_file($_FILES['rubrica']['tmp_name'], $nombrePic))
+			//		echo "El archivo ha sido cargado correctamente.";
+			$subida=1;
+		else
+			//echo "Ocurrió algún error al subir el documento. No pudo guardarse.";
+			$subida=0;
+	}//else comprobación de tipo de archivo
+}//comprobación de archivo subido
+
+if($subida==1){
+	$maxID=maximo("idFirmaSUS", "cFirmaSUS")+1;
+	$valores = $maxID.",'".$id."','".$ruta."','".$nombreDoc."','/_".date('Y')."/',0,3,".$_SESSION['idUsuario'].",now(),1";
+	
+	$actualizar = actualizar($tabla, $valores, $condicion);
+	//$insertar = insertar('archivoDigital', $valores);}	
+}//del if error
+ 
+echo $subida;
+ 
+ 
+ 
+ 
+/******/
+
+
+
+
+
+
+
+
+
+
+
+
 
 $iniciales = strtoupper(substr($nombre, 0, 1).substr($apPaterno, 0, 1).substr($apMaterno, 0, 1));
 
@@ -29,7 +78,7 @@ $valsEmpleado =
 		apellidoM	= "'.$apMaterno.'",
 		iniciales 	= "'.$iniciales.'",
 		noTrabajador= "'.$numTrabajador.'",
-		noCuenta	= "'.$numCuenta.'",
+		idFirmaSUS		= "'.$idFirmaSUS.'",
 		telFijo		= "'.$telefono.'",
 		telMovil	= "'.$celular.'",
 		telOficina	= "'.$telOficina.'",
