@@ -81,7 +81,7 @@ function contar($columna, $tabla){
 			$seleccion=seleccionar("*","tabla",1);
 			echo "Seleccion:". $seleccion[0]." ".$seleccion[1];*/
 	 
- function seleccionar($columnas,$tablas,$condicion){
+ function seleccionar($columnas,$tablas,$condicion){ 
 	$consulta="select ".$columnas." from ".$tablas. " where ".$condicion;
 	//echo "<br>".$consulta;
 	
