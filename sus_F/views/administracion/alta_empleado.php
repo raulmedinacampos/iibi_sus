@@ -8,7 +8,7 @@
 <h3>Alta de empleados</h3>
 <p>Para dar de alta a un nuevo trabajador de la dependencia, escriba su nombre en los campos correspondientes. Si la persona ya está registrada, el sistema le mostrará sus datos.</p>
 
-<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="">
+<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="" enctype="multipart/form-data">
 	<div class="panel panel-primary">
 		<div class="panel-heading">Datos personales</div>
 		<div class="panel-body">
@@ -47,41 +47,7 @@
 				</div>
 			</div>
 			
-<!-- 			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">Teléfono</label>
-				<div class="col-sm-4">
-					<input id="telefono" name="telefono" class="form-control" />
-				</div>
-				
-				<label class="col-sm-2 control-label">Número celular</label>
-				<div class="col-sm-4">
-					<input id="celular" name="celular" class="form-control" />
-				</div>
-			</div>
-			
-			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">Correo personal</label>
-				<div class="col-sm-4">
-					<input id="correo" name="correo" class="form-control" />
-				</div>
-				
-				<label class="col-sm-2 control-label">Confirmar correo</label>
-				<div class="col-sm-4">
-					<input id="correoConf" name="correoConf" class="form-control" />
-				</div>
-			</div>
-			
-			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">RFC</label>
-				<div class="col-sm-4">
-					<input id="rfc" name="rfc" class="form-control" />
-				</div>
-				
-				<label class="col-sm-2 control-label">CURP</label>
-				<div class="col-sm-4">
-					<input id="curp" name="curp" class="form-control" />
-				</div>
-			</div>-->
+
 		</div>
 	</div>
 	
@@ -119,44 +85,13 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Fecha de entrada</label>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<input id="fechaEntrada" name="fechaEntrada" class="form-control datepicker" />
-						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-					</div>
-				</div>
-<!-- 				
-				<label class="col-sm-2 control-label">Núm. trabajador</label>
-				<div class="col-sm-4">
-					<input id="numTrabajador" name="numTrabajador" class="form-control" />
-				</div>
-			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Núm. cuenta</label>
-				<div class="col-sm-4">
-					<input id="numCuenta" name="numCuenta" class="form-control" />
-				</div>
--->				
 				<label class="col-sm-2 control-label obligatorio">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" />
 				</div>
 			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Correo del puesto</label>
-				<div class="col-sm-4">
-					<input id="correoPuesto" name="correoPuesto" class="form-control" />
-				</div>
 				
-				<label class="col-sm-2 control-label">Confirmar correo</label>
-				<div class="col-sm-4">
-					<input id="correoPuestoConf" name="correoPuestoConf" class="form-control"  />
-				</div>
-			</div>
-			
 			<div class="form-group">
 				<label class="col-sm-2 control-label obligatorio">Correo institucional</label>
 				<div class="col-sm-4">
@@ -168,6 +103,12 @@
 					<input id="correoInstConf" name="correoInstConf" class="form-control" />
 				</div>
 			</div>
+			
+			<div class="form-group">
+  				<label class="col-sm-1 control-label obligatorio">Rubrica</label>
+				<input type="file" id="firma" name="firma"/>
+			</div>
+
 		</div>
 	</div>
 	

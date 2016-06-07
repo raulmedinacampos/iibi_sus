@@ -1,46 +1,57 @@
 <?php
+session_start();
 
 $grado = (isset($_POST['grado'])) ? addslashes($_POST['grado']) : "";
 $nombre = (isset($_POST['nombre'])) ? addslashes($_POST['nombre']) : "";
 $apPaterno = (isset($_POST['apPaterno'])) ? addslashes($_POST['apPaterno']) : "";
 $apMaterno = (isset($_POST['apMaterno'])) ? addslashes($_POST['apMaterno']) : "";
-$telefono = (isset($_POST['telefono'])) ? addslashes($_POST['telefono']) : "";
-$celular = (isset($_POST['celular'])) ? addslashes($_POST['celular']) : "";
-$correo = (isset($_POST['correo'])) ? addslashes($_POST['correo']) : "";
-$rfc = (isset($_POST['rfc'])) ? addslashes($_POST['rfc']) : "";
-$curp = (isset($_POST['curp'])) ? addslashes($_POST['curp']) : "";
+
 $area = (isset($_POST['area'])) ? addslashes($_POST['area']) : "";
 $puesto = (isset($_POST['puesto'])) ? addslashes($_POST['puesto']) : "";
-$fechaEntrada = (isset($_POST['fechaEntrada'])) ? addslashes($_POST['fechaEntrada']) : "";
-$numTrabajador = (isset($_POST['numTrabajador'])) ? addslashes($_POST['numTrabajador']) : "";
-$idFirmaSUS= (isset($_POST['idFirmaSUS'])) ? addslashes($_POST['idFirmaSUS']) : "";
-
 $telOficina = (isset($_POST['telefonoOf'])) ? addslashes($_POST['telefonoOf']) : "";
 $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) : "";
-$correoPuesto = (isset($_POST['correoPuesto'])) ? addslashes($_POST['correoPuesto']) : "";
 
 $iniciales = strtoupper(substr($nombre, 0, 1).substr($apPaterno, 0, 1).substr($apMaterno, 0, 1));
+
+/*Para la rubrica*/
+$tipoPic = $_FILES['firma']['type'];
+$subida=0;
+//$tipoPic = "jpg";
+$ruta = '/opt/csw/share/www/sus/firmas/';
+$nombrePic = $ruta.$iniciales.".".$tipoPic;
+
+if (is_uploaded_file($_FILES['firma']["tmp_name"])){
+//se comprueba que haya subido un archivo
+
+	if (!($tipoPic=="image/jpeg" || $tipoPic=="image/pjpeg" || $tipoPic=="image/png"))
+		$subida=0;
+	else{
+	 		
+		if (move_uploaded_file($_FILES['firma']['tmp_name'], $nombrePic))
+	 		//		echo "El archivo ha sido cargado correctamente.";
+	 		$subida=1;
+ 		else
+ 			//echo "Ocurrió algún error al subir el documento. No pudo guardarse.";
+			$subida=0;
+	}//else comprobación de tipo de archivo
+}//comprobación de archivo subido
+
+if($subida==1)
+ 		
+$valsFirmaSUS ="'".$nombrePic."',".$_SESSION['idUsuario'];
+/*Fin para la rubrica*/
 
 $valsEmpleado ='"'.$grado.'", "'.
 			$nombre.'","'.
 			$apPaterno.'","'.
 			$apMaterno.'","'.
 			$iniciales.'","'.
-			$numTrabajador.'","'.
-			$idFirmaSUS.'","'.
-			$telefono.'","'.
-			$celular.'","'.
 			$telOficina.'","'.
-			$correo.'","'.
-			$correoInst.'","'.
-			$fechaEntrada.'","'.
-			$rfc.'","'.
-			$curp.'"';
+			$correoInst.'"';
 
-$valsPuesto = '"'.$puesto.'", '.$area.', "'.$correoPuesto.'","'.$fechaEntrada.'"';
-			
-$insertar = trInsertEmpleado($valsEmpleado, $valsPuesto);
+$valsPuesto = '"'.$puesto.'", '.$area;
+
+$insertar = trInsertEmpleado($valsEmpleado, $valsPuesto,$valsFirmaSUS);
 
 echo $insertar[0];
-
 ?>

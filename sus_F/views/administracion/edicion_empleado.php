@@ -44,41 +44,7 @@
 				</div>
 			</div>
 			
-<!-- 			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">Teléfono</label>
-				<div class="col-sm-4">
-					<input id="telefono" name="telefono" class="form-control" value="<?php //echo $empleado['telFijo']; ?>" />
-				</div>
-				
-				<label class="col-sm-2 control-label">Número celular</label>
-				<div class="col-sm-4">
-					<input id="celular" name="celular" class="form-control" value="<?php //echo $empleado['telMovil']; ?>" />
-				</div>
-			</div>
-			
-			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">Correo personal</label>
-				<div class="col-sm-4">
-					<input id="correo" name="correo" class="form-control" value="<?php //echo $empleado['eMailPers']; ?>" />
-				</div>
-				
-				<label class="col-sm-2 control-label">Confirmar correo</label>
-				<div class="col-sm-4">
-					<input id="correoConf" name="correoConf" class="form-control" value="<?php //echo $empleado['eMailPers']; ?>" />
-				</div>
-			</div>
-			
-			<div class="form-group datos-adicionales">
-				<label class="col-sm-2 control-label">RFC</label>
-				<div class="col-sm-4">
-					<input id="rfc" name="rfc" class="form-control" value="<?php //echo $empleado['RFC']; ?>" />
-				</div>
-				
-				<label class="col-sm-2 control-label">CURP</label>
-				<div class="col-sm-4">
-					<input id="curp" name="curp" class="form-control" value="<?php //echo $empleado['CURP']; ?>" />
-				</div>
-			</div>-->
+
 		</div>
 	</div>
 	
@@ -116,42 +82,12 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Fecha de inicio</label>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<input id="fechaEntrada" name="fechaEntrada" class="form-control datepicker" value="<?php echo $empleado['fechaInicio']; ?>" />
-						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-					</div>
-				</div>
-<!-- 				
-				<label class="col-sm-2 control-label">Núm. trabajador</label>
-				<div class="col-sm-4">
-					<input id="numTrabajador" name="numTrabajador" class="form-control" value="<?php //echo $empleado['noTrabajador']; ?>" />
-				</div>
-			</div>
-			
-			<div class="form-group">
-				
-				
--->				
 				<label class="col-sm-2 control-label">Teléfono oficina</label>
 				<div class="col-sm-4">
 					<input id="telefonoOf" name="telefonoOf" class="form-control" value="<?php echo $empleado['telOficina']; ?>" />
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Correo del puesto</label>
-				<div class="col-sm-4">
-					<input id="correoPuesto" name="correoPuesto" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
-				</div>
-				
-				<label class="col-sm-2 control-label">Confirmar correo</label>
-				<div class="col-sm-4">
-					<input id="correoPuestoConf" name="correoPuestoConf" class="form-control" value="<?php echo $empleado['correoPuesto']; ?>" />
-				</div>
-			</div>
-
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Correo institucional</label>
 				<div class="col-sm-4">
@@ -165,7 +101,8 @@
 			</div>
 
 
-			<div class="form-group">
+<!--
+ 			<div class="form-group">
 				<label class="col-sm-2 control-label">Rubrica</label>
 				<div class="col-sm-4">
 					<input id="rubrica" name="rubrica" class="form-control" value="<?php //echo $empleado['rubrica']; ?>" />
@@ -176,7 +113,7 @@
 					<input type="file" id="rubrica" name="rubrica" class="form-control"/>
 				</div>
 			</div>
-
+ -->
 
 		</div>
 	</div>

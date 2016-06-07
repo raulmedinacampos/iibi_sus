@@ -3,7 +3,7 @@ session_start();
 
 $folio = (isset($_POST['folio'])) ? addslashes($_POST['folio']) : "";
 
-$encontrado = seleccionar('count','servicioSUS',"folio='".$folio."' and estado=12");
+$encontrado = seleccionar('count(*)','servicioSUS',"folio='".$folio."' and estatus=12");
 if($encontrado==0)
 	echo 0; //no se ha archivado la solicitud por lo que no debe haber digital
 

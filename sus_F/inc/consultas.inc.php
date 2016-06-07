@@ -168,7 +168,7 @@ function seleccionarSinMsj2($columnas,$tablas,$condicion){
 			while($row=mysqli_fetch_array($seleccion[1])){
 				echo "<br>".$row[1];}	
 			
-			$seleccion=seleccionarTodo("folio,DATE_FORMAT(fechaSolicitud,'%d/%m/%Y'),estado","servicio","idSolicitante=1");
+			$seleccion=seleccionarTodo("folio,DATE_FORMAT(fechaSolicitud,'%d/%m/%Y'),estatus","servicio","idSolicitante=1");
 			while($row=mysqli_fetch_array($seleccion[1])){
 				echo "<br>00".$row['0']." ".$row['1']." ".$row['2'];}*/
 			
@@ -300,10 +300,7 @@ function borrar($tabla,$condicion){
 	return $regreso;}
 	
 	
-	
-	
-	
-function iUsuario($valsEmpleado,$valsPuesto){
+function iUsuario($valsEmpleado,$valsPuesto){  /*esta funcionando en algun lado?? si es así creo que hace falta quitar los campos segun el formulario de la vista*/
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 	
@@ -353,34 +350,49 @@ function iUsuario($valsEmpleado,$valsPuesto){
 return $regreso;}
 
 
-function trInsertEmpleado($valsEmpleado,$valsPuesto){
+function trInsertEmpleado($valsEmpleado,$valsPuesto,$valsFirmaSUS){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 
 	$sql = "BEGIN;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-
-	$sql = "INSERT INTO empleado (
-			gradoAcad, 		nombre,
-			apellidoP,		apellidoM,
-			iniciales,		noTrabajador,
-			idFirmaSUS,		telFijo,
-			telMovil,		telOficina,
-			eMailPers,		eMailOf,
-			fechaIngreso,	RFC,
-			CURP,			estatus)
-		VALUES (".$valsEmpleado.",1)";
-
-	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
-	$temp = $newEmp;
 	
-	if(($newEmp=!0)&&($newEmp=!NULL)){
-		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,correoPuesto,fechaInicio,estatus) values (".$temp.",".$valsPuesto.",1)";
-		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+	$sql = "INSERT INTO cFirmaSUS (ruta,usuModif,fechaAlta,estatus) 
+			VALUES (".$valsFirmaSUS.",now(),1)";
+	
+	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
+	$newFirma = mysqli_insert_id($GLOBALS['conexion']);
+	$temp = $newFirma;
+	
+	if(($newFirma=!0)&&($newFirma=!NULL)){
+		$sql = "INSERT INTO empleado (
+					gradoAcad, 	nombre,
+					apellidoP,	apellidoM,
+					iniciales,	telOficina,
+					eMailOf,		
+					idFirmaSUS,	estatus)
+
+				VALUES (".$valsEmpleado.",".$temp.",1)";
+
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);	
+		$newEmp = mysqli_insert_id($GLOBALS['conexion']);
+		$temp2 = $newEmp;
+		
+		if(($newEmp=!0)&&($newEmp=!NULL)){
+			$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,estatus) values (".$temp2.",".$valsPuesto.",1)";
+			$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+		else{
+			errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");
+			}//error en empleado insertado
+		
+	}//if newFirma insertada
+	
 	else{
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
-				
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");
+		//error en firma insertada
+		$resultado=false;}	
+		
+	/*Hacer inserción si todo correcto*/
 	if ($resultado) {
 		$sql = "COMMIT";
 		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);
