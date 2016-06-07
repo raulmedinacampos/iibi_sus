@@ -349,50 +349,33 @@ function iUsuario($valsEmpleado,$valsPuesto){  /*esta funcionando en algun lado?
 	
 return $regreso;}
 
-
-function trInsertEmpleado($valsEmpleado,$valsPuesto,$valsFirmaSUS){
+function trInsertEmpleado($valsEmpleado,$valsPuesto){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 
 	$sql = "BEGIN;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-	
-	$sql = "INSERT INTO cFirmaSUS (ruta,usuModif,fechaAlta,estatus) 
-			VALUES (".$valsFirmaSUS.",now(),1)";
-	
+
+	$sql = "INSERT INTO empleado (
+			gradoAcad, 		nombre,
+			apellidoP,		apellidoM,
+			iniciales,		firma,
+			telOficina,
+			eMailOf,		estatus)
+		VALUES (".$valsEmpleado.",1)";
+
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);
-	$newFirma = mysqli_insert_id($GLOBALS['conexion']);
-	$temp = $newFirma;
-	
-	if(($newFirma=!0)&&($newFirma=!NULL)){
-		$sql = "INSERT INTO empleado (
-					gradoAcad, 	nombre,
-					apellidoP,	apellidoM,
-					iniciales,	telOficina,
-					eMailOf,		
-					idFirmaSUS,	estatus)
+	$newEmp = mysqli_insert_id($GLOBALS['conexion']);
+	$temp = $newEmp;
 
-				VALUES (".$valsEmpleado.",".$temp.",1)";
-
-		$resultado=mysqli_query($GLOBALS['conexion'],$sql);	
-		$newEmp = mysqli_insert_id($GLOBALS['conexion']);
-		$temp2 = $newEmp;
-		
-		if(($newEmp=!0)&&($newEmp=!NULL)){
-			$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,estatus) values (".$temp2.",".$valsPuesto.",1)";
-			$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
-		else{
-			errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");
-			}//error en empleado insertado
-		
-	}//if newFirma insertada
+	if(($newEmp=!0)&&($newEmp=!NULL)){
+		$sql = "INSERT INTO puesto (idEmpleado,puesto,idArea,estatus) values (".$temp.",".$valsPuesto.",1)";
+		$resultado=mysqli_query($GLOBALS['conexion'],$sql);}
+		//faltaría la comprobación de que el insert puesto se hizo
 	
 	else{
-		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");
-		//error en firma insertada
-		$resultado=false;}	
-		
-	/*Hacer inserción si todo correcto*/
+		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
+
 	if ($resultado) {
 		$sql = "COMMIT";
 		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);
@@ -403,10 +386,8 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto,$valsFirmaSUS){
 		$regreso[0]=0;
 		$regreso[1]=0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
-	return $regreso;}
-
-	
-	
+		return $regreso;}
+		
 function trNuevoSAC($update,$insert){
 	$sql = "SET AUTOCOMMIT=0;";
 	$resultado=mysqli_query($GLOBALS['conexion'],$sql);

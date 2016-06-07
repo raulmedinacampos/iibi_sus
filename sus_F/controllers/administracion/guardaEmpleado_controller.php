@@ -13,13 +13,13 @@ $correoInst = (isset($_POST['correoInst'])) ? addslashes($_POST['correoInst']) :
 
 $iniciales = strtoupper(substr($nombre, 0, 1).substr($apPaterno, 0, 1).substr($apMaterno, 0, 1));
 
-/*Para la rubrica*/
-$tipoPic = $_FILES['firma']['type'];
+/*Para subir la rubrica*/
+//$tipoPic = $_FILES['firma']['type'];
 $subida=0;
-//$tipoPic = "jpg";
+$tipoPic = "jpg";
 $ruta = '/opt/csw/share/www/sus/firmas/';
 $nombrePic = $ruta.$iniciales.".".$tipoPic;
-
+/*
 if (is_uploaded_file($_FILES['firma']["tmp_name"])){
 //se comprueba que haya subido un archivo
 
@@ -35,23 +35,22 @@ if (is_uploaded_file($_FILES['firma']["tmp_name"])){
 			$subida=0;
 	}//else comprobación de tipo de archivo
 }//comprobación de archivo subido
-
-if($subida==1)
- 		
-$valsFirmaSUS ="'".$nombrePic."',".$_SESSION['idUsuario'];
-/*Fin para la rubrica*/
-
-$valsEmpleado ='"'.$grado.'", "'.
+/*Fin para subir la rubrica*/
+$subida=1;
+if($subida==1){
+	$valsEmpleado ='"'.$grado.'", "'.
 			$nombre.'","'.
 			$apPaterno.'","'.
 			$apMaterno.'","'.
 			$iniciales.'","'.
+			$nombrePic.'","'.
 			$telOficina.'","'.
 			$correoInst.'"';
 
-$valsPuesto = '"'.$puesto.'", '.$area;
+	$valsPuesto = '"'.$puesto.'", '.$area;
 
-$insertar = trInsertEmpleado($valsEmpleado, $valsPuesto,$valsFirmaSUS);
-
-echo $insertar[0];
+	$insertar = trInsertEmpleado($valsEmpleado, $valsPuesto);
+	echo $insertar[0];}
+else 
+	echo 0;
 ?>

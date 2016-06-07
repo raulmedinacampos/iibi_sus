@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
 
-<script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-<script src="js/bootstrap-datepicker.es.min.js" type="text/javascript"></script>
 <script src="js/alta_empleado.js" type="text/javascript"></script>
+<script src="js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+<script src="js/jquery.fileupload.js" type="text/javascript"></script>
 
 
 <h3>Alta de empleados</h3>
