@@ -16,7 +16,11 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label obligatorio">Nombre del usuario</label>
 		<div class="col-sm-4">
-			<input id="nomSol" name="nomSol" class="form-control" value="<?=$nomUsuario?>" />
+			<select id="nomSol" name="nomSol" class="form-control">
+				<option value="">Seleccione</option><?php
+					while ( $row = mysqli_fetch_array($nomUsuario[1]) ) {?>
+						<option value="<?php echo $row['idNomUsuario']; ?>"><?php echo $row['nombreUsuario']; ?></option><?php } ?>
+			</select>
 		</div>
 		
 		<label class="col-sm-1 control-label">Fecha solicitud</label>

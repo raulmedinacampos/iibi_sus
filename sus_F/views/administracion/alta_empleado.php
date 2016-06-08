@@ -1,14 +1,15 @@
-<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
-
-<script src="js/alta_empleado.js" type="text/javascript"></script>
 <script src="js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+<script src="js/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="js/jquery.iframe-transport.js" type="text/javascript"></script>
 <script src="js/jquery.fileupload.js" type="text/javascript"></script>
+<script src="js/alta_empleado.js" type="text/javascript"></script>
+
 
 
 <h3>Alta de empleados</h3>
 <p>Para dar de alta a un nuevo trabajador de la dependencia, escriba su nombre en los campos correspondientes. Si la persona ya está registrada, el sistema le mostrará sus datos.</p>
 
-<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="" enctype="multipart/form-data">
+<form method="post" id="formEmpleado" name="formEmpleado" class="form-horizontal" action="./administracion/subir-firma/" enctype="multipart/form-data">
 	<div class="panel panel-primary">
 		<div class="panel-heading">Datos personales</div>
 		<div class="panel-body">
@@ -104,9 +105,11 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
-  				<label class="col-sm-1 control-label obligatorio">Rubrica</label>
-				<input type="file" id="firma" name="firma"/>
+			<div class="form-group" >
+  				<label class="col-sm-2 control-label obligatorio ">Rubrica</label>
+  				<div class="col-sm-10">
+					<input class="filestyle" type="file" id="firma" name="firma"/>
+				</div>	
 			</div>
 
 		</div>

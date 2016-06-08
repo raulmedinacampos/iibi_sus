@@ -212,6 +212,10 @@ Flight::route('/administracion/guarda-empleado/', function() {
 	require_once 'controllers/administracion/guardaEmpleado_controller.php';
 });
 
+Flight::route('/administracion/subir-firma/', function() {
+	require_once 'controllers/administracion/subirFirma_controller.php';
+});
+	
 
 Flight::route('/administracion/buscar-empleado/', function() {
 	require_once 'controllers/administracion/buscarEmpleado_controller.php';

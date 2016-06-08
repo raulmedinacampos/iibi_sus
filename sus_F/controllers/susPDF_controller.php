@@ -33,7 +33,7 @@ $fechaComp = $solicitud['fechaComp'];
 $fechaLib = $solicitud['fechaLib'];
 $evaluacion= $solicitud['evaluacion'];
 $telefono = $empleado['telOficina'];
-
+$rubrica = $empleado['firma'];
 
 $left = 0;
 $left2 = 0; //palomita evaluacion
@@ -457,6 +457,7 @@ $html .= '</tr>';
 $html .= '</table>';
 $html .= '</td>';
 $html .= '<td class="centrado"><br /><br /><br /><br /></td>';
+//$html .= '<td class="centrado"><img src="'.$rubricaEmp.'" HEIGHT=50></td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="centrado">NOMBRE Y FIRMA</td>';

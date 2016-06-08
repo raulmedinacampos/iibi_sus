@@ -379,14 +379,19 @@ function trInsertEmpleado($valsEmpleado,$valsPuesto){
 	if ($resultado) {
 		$sql = "COMMIT";
 		$regreso[0] = mysqli_query($GLOBALS['conexion'],$sql);
-		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);}
+		$regreso[1] = mysqli_affected_rows($GLOBALS['conexion']);
+		
+		$seleccion = seleccionar('idEmpleado,iniciales','empleado','idEmpleado='.$temp);
+		$regreso[2] = array ($seleccion[0],$seleccion[1]);}
+		
 	else{
 		$sql = "ROLLBACK;";
 		$resultado=mysqli_query($GLOBALS['conexion'],$sql);
 		$regreso[0]=0;
 		$regreso[1]=0;
 		errorConsulta(1,mysqli_error($GLOBALS['conexion']),$sql,"sus");}
-		return $regreso;}
+		
+return $regreso;}
 		
 function trNuevoSAC($update,$insert){
 	$sql = "SET AUTOCOMMIT=0;";

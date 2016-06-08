@@ -164,23 +164,38 @@ function validar() {
 	});
 }
 
+//data.toSource();						
 function guardar() {
 	$("#btnGuardar").click(function(e) {
 		e.preventDefault();
+		
 		
 		if ( $("#formEmpleado").valid() ) {
 			$.post(
 				'administracion/guarda-empleado', 
 				$("#formEmpleado").serialize(), 
 				function(data) {
-					if ( data == "1" ) {
-						$("#miDiv").load("administracion/alta-de-usuario");
+					if ( data != "0" ) { 
+						$('#firma').fileupload({
+						  	formData: {'idEmpleado': data.idEmpleado,'iniciales':data.iniciales},
+	        				dataType: 'json',
+					        add: function (e, data) {
+					            data.context = $('#btnGuardar')
+					          	.click(function () {
+					            	var envio = "";
+			            			envio.push({'idEmpleado': data.idEmpleado,'iniciales':data.iniciales});
+			            			$('#myModal .modal-footer .btn-primary').off('click');
+			            			data.submit();});
+					        },
+					        always: function (e, data) {
+					        	$("#miDiv").load("administracion/alta-de-usuario");}
+						});	
 					}
-					
 					else {
 						$("#myModal .modal-body").html("-Ocurió un problema, favor de comunicarse con el administrador");
 						$("#myModal .modal-footer .btn-default").css("display", "inline");
 						$("#myModal .modal-footer .btn-primary").css("display", "none");
+						$("#firma").filestyle({buttonText: "Buscar archivo"});
 						
 						$("#myModal").modal('show');
 					}
