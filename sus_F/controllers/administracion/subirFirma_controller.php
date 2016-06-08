@@ -2,11 +2,12 @@
 session_start();
 
 $idEmpleado= (isset($_POST['idEmpleado'])) ? addslashes($_POST['idEmpleado']) : "";
+$iniciales= (isset($_POST['iniciales'])) ? addslashes($_POST['iniciales']) : "";
 
 //consulta para obtener las iniciales
 
 $subida=0;
-$tipoPic = $_FILES['firma']['type'];
+echo $tipoPic = $_FILES['firma']['type'];
 $ruta = '/opt/csw/share/www/sus/firmas/';
 $nombrePic = $ruta.$iniciales.".".$tipoPic;
 $firma = "firmas/".$iniciales.".".$tipoPic;

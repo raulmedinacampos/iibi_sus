@@ -18,13 +18,29 @@ $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$res
 $area = seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = empleado.idEmpleado and empleado.idEmpleado = '.$solicitud['idUSolicitante']);
 $area = $area['area'];
 
+$valores = 'concat(gradoAcad," ",nombre," ",apellidoP," ",apellidoM) as nombre, firma';
 
-$jefeServicios = "Lic. Lucero Urbina Hdz.";
-$secAdmin = "Lic. Amanda Gerogina <br>González Robles Sánchez";
-$jefePto = "Lic. José Antonio Aguilar Villalpando";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
+$jsg = seleccionar($valores,"empleado,puesto",$condicion);
+//falta la condicion de que sea jefe de servicios
+$jefeServicios = $jsg['nombre'];
+$firmaJS = $jsg['firma'];
 
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secretario'";
+$sa = seleccionar($valores,"empleado,puesto", $condicion);
+$secAdmin = $sa['nombre'];
+$firmaSA = $sa['firma'];
 
-$nomUsuario = $solicitud['nomSolicitante'];
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=8 and puesto='Jefe de Departamento'";
+$jpto = seleccionar($valores,"empleado,puesto", $condicion);
+//falta la condicion de que sea jefe de pto
+$jefePto = $jpto['nombre'];
+$firmaPto = $jpto['firma'];
+
+$usuServ = seleccionar('concat(gradoAcad," ",nombre," ",apellidoP," ",apellidoM) as nombre, firma',"empleado","idEmpleado=".$solicitud['nomSolicitante']); 
+$nomUsuario = $usuServ['nombre'];
+$firmaUsu = $usuServ['firma'];
+
 $fechaS = $solicitud['fechaS'];
 $grupoServicio = $solicitud['tipo'];
 $servicio = $solicitud['idTipoServicio'];
@@ -33,7 +49,6 @@ $fechaComp = $solicitud['fechaComp'];
 $fechaLib = $solicitud['fechaLib'];
 $evaluacion= $solicitud['evaluacion'];
 $telefono = $empleado['telOficina'];
-$rubrica = $empleado['firma'];
 
 $left = 0;
 $left2 = 0; //palomita evaluacion
@@ -410,6 +425,7 @@ $html .= '<p>FECHA COMPROMISO DE ENTREGA: '.$fechaComp.'</p>';
 $html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO: '.$fechaLib.'</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';
+//$html .= '<img src="'.$firmaJS.'" HEIGHT=40>';
 $html .= '<p class="nombre">'.$jefeServicios.'<br />RESPONSABLE DE SERVICIOS</p>';
 $html .= '</div>';  //.firma1
 
@@ -425,12 +441,12 @@ $html .= '<p class="margen-izquierdo">COSTO:</p>';
 $html .= '<p class="margen-izquierdo">CON CARGO A:</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. SUFICIENCIA PRESUPUESTAL</p>';
-$html .= '<p class="nombre">'.$jefePto.'<br />RESPONSABLE DEL PRESUPUESTO</p>';
+$html .= '<p class="nombre">'.$jefePto.'<br />JEFE DE PRESUPUESTO</p>';
 $html .= '</div>';  //.firma1
 
 $html .= '<div class="firma firma2">';
 $html .= '<p>AUTORIZÓ</p>';
-$html .= '<p class="nombre">'.$secAdmin.'<br />SECRETARIO O JEFE DE UNIDAD</p>';
+$html .= '<p class="nombre">'.$secAdmin.'<br />SECRETARIA ADMINISTRATIVA</p>';
 $html .= '</div>';  //.firma2
 $html .= '</div>';  //.columna-4
 
@@ -457,10 +473,11 @@ $html .= '</tr>';
 $html .= '</table>';
 $html .= '</td>';
 $html .= '<td class="centrado"><br /><br /><br /><br /></td>';
-//$html .= '<td class="centrado"><img src="'.$rubricaEmp.'" HEIGHT=50></td>';
+//$html .= '<td class="centrado"><img src="'.$firmaUsu.'" HEIGHT=50></td>';
+//$html .= '<td class="centrado"><img src="firmas/AA.png" HEIGHT=50></td>';
 $html .= '</tr>';
 $html .= '<tr>';
-$html .= '<td class="centrado">NOMBRE Y FIRMA</td>';
+$html .= '<td class="centrado">'.$nomUsuario.'</td>';
 $html .= '</tr>';
 $html .= '</table>';
 

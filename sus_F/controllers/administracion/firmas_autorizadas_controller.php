@@ -7,13 +7,13 @@ $secretario = seleccionar("*, puesto.idPuesto as idPuesto ", "empleado,puesto", 
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
 $sGenerales = seleccionar("*, puesto.idPuesto as idPuesto", "empleado,puesto", $condicion);
 
-/*$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=6 and puesto='Jefe de departamento'";
+/*$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=6 and puesto='Jefe de Departamento'";
 $personal = seleccionar("*", "empleado,puesto", $condicion);
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=8 and puesto='Jefe de departamento'";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=8 and puesto='Jefe de Departamento'";
 $presupuesto = seleccionar("*", "empleado,puesto", $condicion);
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=7 and puesto='Jefe de departamento'";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=7 and puesto='Jefe de Departamento'";
 $bienes = seleccionar("*", "empleado,puesto", $condicion);
 */
 
