@@ -11,7 +11,9 @@ if($empleado['idUsuAutoriza']!=0)
 else 
 	$responsable = seleccionar('*','empleado',"idEmpleado=".$solicitud['idUSolicitante']);
 
-$area = seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = empleado.idEmpleado and empleado.idEmpleado = '.$solicitud['idUSolicitante']);
+$condicion= 'cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = '.$solicitud['idUSolicitante'];
+$area = seleccionar('area','cArea,puesto,usuarioSUS',$condicion);
+
 $estado = seleccionar('estatus','cEstatusSUS','idEstatusSUS='.$solicitud['estatus']);
 
 $nomUsuario = ($empleado) ? $empleado['gradoAcad']." ".$empleado['nombre']." ".$empleado['apellidoP']." ".$empleado['apellidoM'] : "";

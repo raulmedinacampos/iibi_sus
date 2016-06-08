@@ -7,14 +7,16 @@ $iniciales= (isset($_POST['iniciales'])) ? addslashes($_POST['iniciales']) : "";
 //consulta para obtener las iniciales
 
 $subida=0;
-echo $tipoPic = $_FILES['firma']['type'];
+$tipoPic = substr ( $_FILES['firma']['type'], 6);
+//con substring quito "image/"
 $ruta = '/opt/csw/share/www/sus/firmas/';
 $nombrePic = $ruta.$iniciales.".".$tipoPic;
 $firma = "firmas/".$iniciales.".".$tipoPic;
+
 if (is_uploaded_file($_FILES['firma']["tmp_name"])){
  //se comprueba que haya subido un archivo
 
- if (!($tipoPic=="image/jpeg" || $tipoPic=="image/pjpeg" || $tipoPic=="image/png"))
+ if (!($tipoPic=="jpeg" || $tipoPic=="pjpeg" || $tipoPic=="png"))
  	$subida=0;
  	else{
 

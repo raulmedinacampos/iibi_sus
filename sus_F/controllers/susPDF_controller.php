@@ -15,14 +15,14 @@ else
 
 $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$responsable['apellidoP']." ".$responsable['apellidoM'];
 
-$area = seleccionar('area','cArea,puesto,empleado','cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = empleado.idEmpleado and empleado.idEmpleado = '.$solicitud['idUSolicitante']);
+$condicion= 'cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = '.$solicitud['idUSolicitante'];
+$area = seleccionar('area','cArea,puesto,usuarioSUS',$condicion);
 $area = $area['area'];
 
 $valores = 'concat(gradoAcad," ",nombre," ",apellidoP," ",apellidoM) as nombre, firma';
 
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
 $jsg = seleccionar($valores,"empleado,puesto",$condicion);
-//falta la condicion de que sea jefe de servicios
 $jefeServicios = $jsg['nombre'];
 $firmaJS = $jsg['firma'];
 
@@ -33,7 +33,6 @@ $firmaSA = $sa['firma'];
 
 $condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=8 and puesto='Jefe de Departamento'";
 $jpto = seleccionar($valores,"empleado,puesto", $condicion);
-//falta la condicion de que sea jefe de pto
 $jefePto = $jpto['nombre'];
 $firmaPto = $jpto['firma'];
 
@@ -49,14 +48,14 @@ $fechaComp = $solicitud['fechaComp'];
 $fechaLib = $solicitud['fechaLib'];
 $evaluacion= $solicitud['evaluacion'];
 $telefono = $empleado['telOficina'];
+$firmar=0;
 
 $left = 0;
-$left2 = 0; //palomita evaluacion
-
 $top = -20;
 $top2 = -20;
-$top3 = -20;
 
+//$top3 = 570; $left2=63;//firma sgenerales
+$top3 = -30; $left2=0;//firma sgenerales
 if($grupoServicio==1) //diversos
 	$left = 155;
 if($grupoServicio==2)//correspondencia
@@ -124,20 +123,6 @@ if($servicio==71)//vigilancia
 	$top = 380;
 
 	
-if($evaluacion=="E"){
-	$top3 = 654; $left2=139;}
-	
-if($evaluacion=="B"){
-	$top3 = 654; $left2=219;}
-
-if($evaluacion=="R"){
-	$top3 = 654; $left2=307;}
-
-if($evaluacion=="M"){
-	$top3 = 654; $left2=383;}
-	
-	
-	
 $header = "";
 $footer = "";
 $html = "";
@@ -173,7 +158,7 @@ $html .= '<div style="clear:both;"></div>';
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<div style="position:absolute; top:'.$top2.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
-$html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
+$html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="'.$firmaJS.'" alt="" style="height:30pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
@@ -451,7 +436,6 @@ $html .= '</div>';  //.firma2
 $html .= '</div>';  //.columna-4
 
 $html .= '<br />';
-
 $html .= '<table class="evaluacion">';
 $html .= '<tr>';
 $html .= '<th>CÓMO CALIFICARÍA EL SERVICIO RECIBIDO</th>';
@@ -462,19 +446,30 @@ $html .= '<td rowspan="2">';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td>EXCELENTE</td>';
-$html .= '<td class="casilla"></td>';
+$html .= '<td class="casilla">';
+	if($evaluacion=="E"){$html .= '<img src="images/palomita.png" alt="" style="width:14pt;" />';$firmar=1;}
+$html .= '</td>';
 $html .= '<td>BUENO</td>';
-$html .= '<td class="casilla"></td>';
+$html .= '<td class="casilla">';
+	if($evaluacion=="B"){$html .= '<img src="images/palomita.png" alt="" style="width:14pt;" />';$firmar=1;}
+$html .= '</td>';
 $html .= '<td>REGULAR</td>';
-$html .= '<td class="casilla"></td>';
+$html .= '<td class="casilla">';
+	if($evaluacion=="R"){$html .= '<img src="images/palomita.png" alt="" style="width:14pt;" />';$firmar=1;}
+$html .= '</td>';
 $html .= '<td>MALO</td>';
-$html .= '<td class="casilla"></td>';
+$html .= '<td class="casilla">';
+	if($evaluacion=="M"){$html .= '<img src="images/palomita.png" alt="" style="width:14pt;" />';$firmar=1;}
+$html .= '</td>';
 $html .= '</tr>';
 $html .= '</table>';
 $html .= '</td>';
-$html .= '<td class="centrado"><br /><br /><br /><br /></td>';
-//$html .= '<td class="centrado"><img src="'.$firmaUsu.'" HEIGHT=50></td>';
-//$html .= '<td class="centrado"><img src="firmas/AA.png" HEIGHT=50></td>';
+if($firmar==1)
+	//$html .= '<td class="centrado"><img src="'.$firmaUsu.'" HEIGHT=50></td>';
+	//	$html .= '<td class="centrado"><img src="firmas/AA.png" HEIGHT=50></td>';
+	$html .= '<td class="centrado"><br /><br /><br /><br /></td>';
+else
+	$html .= '<td class="centrado"><br /><br /><br /><br /></td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="centrado">'.$nomUsuario.'</td>';
