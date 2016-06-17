@@ -4,11 +4,11 @@ $msg = null;
 if( isset($_POST["phpmailer"]) ) {
 
   $nombre 	= htmlspecialchars("Dafne Abad");
-  $asunto 	= "Confirmación de validación de solicitud de servicios";
+  $asunto 	= "Confirmaciï¿½n de validaciï¿½n de solicitud de servicios";
   $folioM 	="3/2016";
   $mensaje	= "<p>.$nombre.</p>
-		   <p>En atención con su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada por el área correspondiente. Para continuar con el trámite se le solicita imprima el formato, requisite  las firmas correspondientes.Podrá consultar el estado de su solicitud en el sistema de Solicitud Única de Servicio.</p>
-  		   <p>Atentamente</p><br>Servicios Generales<br>Secretaría Administrativa, IIBI. 3:02";
+		   <p>En atenciï¿½n con su solicitud de servicios con folio ".$folioM." le informamos que ya fue verificada por el ï¿½rea correspondiente. Para continuar con el trï¿½mite se le solicita imprima el formato, requisite  las firmas correspondientes.Podrï¿½ consultar el estado de su solicitud en el sistema de Solicitud ï¿½nica de Servicio.</p>
+  		   <p>Atentamente</p><br>Secretarï¿½a Administrativa, IIBI. 3:02";
     
 //  require "./inc/phpmailer/class.phpmailer.php";
 //  require './inc/phpmailer/class.smtp.php';
@@ -40,10 +40,10 @@ if( isset($_POST["phpmailer"]) ) {
 
   
 //  $mail->SetFrom('dafne@gmail.com', 'Dafne en IIBI');
-//  $mail->AddAddress("dafne@iibi.unam.mx","Remitente"); //Dirección y nombre del remitente.
+//  $mail->AddAddress("dafne@iibi.unam.mx","Remitente"); //Direcciï¿½n y nombre del remitente.
 
   $mail->SetFrom('dafne@iibi.unam.mx', 'Dafne en IIBI');
-  $mail->AddAddress("dafne.abad@gmail.com","Remitente"); //Dirección y nombre del remitente.
+  $mail->AddAddress("dafne.abad@gmail.com","Remitente"); //Direcciï¿½n y nombre del remitente.
 
 
 

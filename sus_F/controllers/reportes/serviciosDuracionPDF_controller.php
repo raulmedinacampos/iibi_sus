@@ -31,7 +31,6 @@ $header .= '<tr>';
 $header .= '<td><img src="images/unam_pdf.jpg" alt="" width="55pt" /></td>';
 $header .= '<td><p><strong>Instituto de Investigaciones Bibliotecológicas y de la Información</strong></p>';
 $header .= '<p>Secretaría Administrativa</p>';
-$header .= '<p>Servicios Generales</p>';
 $header .= '<td><img src="images/iibi_pdf.png" alt="" width="50pt" /></td>';
 $header .= '</tr>';
 $header .= '</table>';

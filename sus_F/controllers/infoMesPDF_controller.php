@@ -159,7 +159,6 @@ $header .= '<tr>';
 $header .= '<td><img src="images/unam_pdf.jpg" alt="" width="55pt" /></td>';
 $header .= '<td><p><strong>UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</strong></p>';
 $header .= '<p>SECRETARÍAS Y UNIDADES ADMINISTRATIVAS</p>';
-$header .= '<p>SERVICIOS GENERALES</p>';
 $header .= '<p><strong>INFORME MENSUAL DE SERVICIOS</strong></p></td>';
 $header .= '<td><img src="images/iibi_pdf.png" alt="" width="50pt" /></td>';
 $header .= '</tr>';
@@ -299,7 +298,7 @@ $html .= '<p><strong>OBSERVACIONES:</strong><br>'.$infoMes['obsGrales'].'</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>ELABORÓ</p>';
 $html .= '<p class="nombre">'.$nomSG.'</p>';
-$html .= '<p>RESPONSABLE SERVICIOS GENERALES</p>';
+$html .= '<p>RESPONSABLE </p>';
 $html .= '</div>';
 
 $html .= '<div class="firma firma2">';

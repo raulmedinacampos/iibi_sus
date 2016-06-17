@@ -30,7 +30,6 @@ $header .= '<tr>';
 $header .= '<td><img src="images/unam_pdf.jpg" alt="" width="55pt" /></td>';
 $header .= '<td><p><strong>Instituto de Investigaciones Bibliotecológicas y de la Información</strong></p>';
 $header .= '<p>Secretaría Administrativa</p>';
-$header .= '<p>Servicios Generales</p>';
 $header .= '<td><img src="images/iibi_pdf.png" alt="" width="50pt" /></td>';
 $header .= '</tr>';
 $header .= '</table>';
@@ -55,7 +54,7 @@ $html .= '<tr>';
 $html .= '<th>Folio</th>';
 $html .= '<th>Fecha de liberación</th>';
 $html .= '<th>Descripción</th>';
-$html .= '<th>Observaciones de Servicios Generales</th>';
+$html .= '<th>Observaciones de la Secretaría Administrativa</th>';
 $html .= '</tr>';
 
 $fecha = "YEAR(fechaLiberacion) = '".$anio."' and MONTH(fechaLiberacion) = '".$mes."'";

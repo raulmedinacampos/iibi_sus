@@ -29,7 +29,7 @@ al dar click en <i>Actualizar</i>, estará dando de baja a la persona anterior e
 	</div>
 	
 	<div class="row">
-		<h5 class="text-primary"><strong>Jefe de Área de Servicios Generales</strong></h5>
+		<h5 class="text-primary"><strong>Resposable de las solicitudes de servicios</strong></h5>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Actual:</label>
 			<div class="col-sm-8">

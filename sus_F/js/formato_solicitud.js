@@ -69,7 +69,7 @@ function desplegarMensajes() {
 			instrucciones += '- La relación de documentos enviados.<br />';
 			instrucciones += ' - Fecha de envío.</p>';
 			instrucciones += '<p>Notas:<br />';
-			instrucciones += '(1) Una vez autorizada la solicitud será necesario llevar la documentación a enviar, debidamente requisitada, al área de Servicios Generales.<br />';
+			instrucciones += '(1) Una vez autorizada la solicitud será necesario llevar la documentación a enviar, debidamente requisitada, a la Secretaría Administrativa.<br />';
 			instrucciones += '(2) El servicio de mensajería urgente se realiza el día siguiente a la autorización de la solicitud.</p>';
 			break;
 		// Reproducción y engargolado
@@ -85,7 +85,7 @@ function desplegarMensajes() {
 			instrucciones = '<p><strong>Información adicional:</strong></p>';
 			instrucciones += '<p>- Número de documentos</p>';
 			instrucciones += '<p>Nota:<br />';
-			instrucciones += 'Una vez autorizada la solicitud será necesario llevar la documentación a procesar al área de Servicios Generales.</p>';
+			instrucciones += 'Una vez autorizada la solicitud será necesario llevar la documentación a procesar a la Secretaría Administrativa.</p>';
 			break;
 		// Vigilancia
 		case "rdb_7":

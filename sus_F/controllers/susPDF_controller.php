@@ -133,7 +133,7 @@ $header .= '<tr>';
 $header .= '<td><img src="images/unam_pdf.jpg" alt="" width="55pt" /></td>';
 $header .= '<td><p><strong>UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</strong></p>';
 $header .= '<p>INSTITUTO DE INVESTIGACIONES BIBLIOTECOLÓGICAS Y DE LA INFORMACIÓN</p>';
-$header .= '<p>SERVICIOS GENERALES</p>';
+$header .= '<p>SECRETARÍA ADMINISTRATIVA</p>';
 $header .= '<p><strong>SOLICITUD ÚNICA DE SERVICIOS</strong></p></td>';
 $header .= '<td><img src="images/iibi_pdf.png" alt="" width="50pt" /></td>';
 $header .= '</tr>';

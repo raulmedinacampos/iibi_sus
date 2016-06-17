@@ -186,13 +186,13 @@ if ($cambio[0] == 1)
 function solicitarSP($folio){
 $cambio = actualizar ('servicioSUS','estatus = 4 and fechaVerific=curdate() ','folio = "'.$folio.'"');
 if ($cambio[0] == 1)
-	echo "Solicitud verificada por Servicios generales, en espera de suficiencia presupuestal.";}
+	echo "Solicitud verificada por la Secretaría Administrativa, en espera de suficiencia presupuestal.";}
 	
 //cambiar a estado 5
 function noValidarSG($folio, $motivo){
 $cambio = actualizar ('servicioSUS','estatus = 5 and motivo="'.$motivo.'" and fechaVerific=curdate() ','folio = "'.$folio.'"');
 if ($cambio[0] == 1)
-	echo "Solicitud no verificada por Servicios generales.";}
+	echo "Solicitud no verificada por la Secretaría Administrativa.";}
 
 //cambiar a estado 6
 function conSuficiencia($folio){
