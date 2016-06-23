@@ -21,24 +21,24 @@ $area = $area['area'];
 
 $valores = 'concat(gradoAcad," ",nombre," ",apellidoP," ",apellidoM) as nombre, firma';
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=9 and puesto='Jefe de área'";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=44 and puesto='Asistente de procesos'";
 $jsg = seleccionar($valores,"empleado,puesto",$condicion);
 $jefeServicios = $jsg['nombre'];
-$firmaJS = $jsg['firma'];
+$firmaJS = 'firmas/'.$jsg['firma'];
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=5 and puesto='Secretario'";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=4 and puesto='Secretario'";
 $sa = seleccionar($valores,"empleado,puesto", $condicion);
 $secAdmin = $sa['nombre'];
-$firmaSA = $sa['firma'];
+$firmaSA = 'firmas/'.$sa['firma'];
 
-$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=8 and puesto='Jefe de Departamento'";
+$condicion ="empleado.idEmpleado = puesto.idEmpleado and puesto.estatus = 1 and idArea=43 and puesto='Jefe de Departamento'";
 $jpto = seleccionar($valores,"empleado,puesto", $condicion);
 $jefePto = $jpto['nombre'];
-$firmaPto = $jpto['firma'];
+$firmaPto = 'firmas/'.$jpto['firma'];
 
 $usuServ = seleccionar('concat(gradoAcad," ",nombre," ",apellidoP," ",apellidoM) as nombre, firma',"empleado","idEmpleado=".$solicitud['nomSolicitante']); 
 $nomUsuario = $usuServ['nombre'];
-$firmaUsu = $usuServ['firma'];
+$firmaUsu = 'firmas/'.$usuServ['firma'];
 
 $fechaS = $solicitud['fechaS'];
 $grupoServicio = $solicitud['tipo'];
@@ -54,8 +54,8 @@ $left = 0;
 $top = -20;
 $top2 = -20;
 
-//$top3 = 570; $left2=63;//firma sgenerales
-$top3 = -30; $left2=0;//firma sgenerales
+$top3 = 558; $left2=63;//firma sgenerales
+//$top3 = -30; $left2=0;//firma sgenerales
 if($grupoServicio==1) //diversos
 	$left = 155;
 if($grupoServicio==2)//correspondencia
@@ -158,7 +158,7 @@ $html .= '<div style="clear:both;"></div>';
 $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<div style="position:absolute; top:'.$top2.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
-$html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="'.$firmaJS.'" alt="" style="height:30pt;" /></div>';
+$html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="'.$firmaJS.'" alt="" style="height:27pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
@@ -409,8 +409,7 @@ $html .= '<div class="columna-3">';
 $html .= '<p>FECHA COMPROMISO DE ENTREGA: '.$fechaComp.'</p>';
 $html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO: '.$fechaLib.'</p>';
 $html .= '<div class="firma firma1">';
-$html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';
-//$html .= '<img src="'.$firmaJS.'" HEIGHT=40>';
+$html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';//la firma se pone con la línea 161
 $html .= '<p class="nombre">'.$jefeServicios.'<br />RESPONSABLE DE SERVICIOS</p>';
 $html .= '</div>';  //.firma1
 
@@ -465,9 +464,7 @@ $html .= '</tr>';
 $html .= '</table>';
 $html .= '</td>';
 if($firmar==1)
-	//$html .= '<td class="centrado"><img src="'.$firmaUsu.'" HEIGHT=50></td>';
-	//	$html .= '<td class="centrado"><img src="firmas/AA.png" HEIGHT=50></td>';
-	$html .= '<td class="centrado"><br /><br /><br /><br /></td>';
+	$html .= '<td class="centrado"><img src="'.$firmaUsu.'" HEIGHT=43></td>';
 else
 	$html .= '<td class="centrado"><br /><br /><br /><br /></td>';
 $html .= '</tr>';
