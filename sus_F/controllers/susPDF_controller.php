@@ -14,6 +14,7 @@ else
 	$responsable = seleccionar('*','empleado',"idEmpleado=".$solicitud['idUSolicitante']);
 
 $nomResponsable =  $responsable['gradoAcad']." ".$responsable['nombre']." ".$responsable['apellidoP']." ".$responsable['apellidoM'];
+$firmaResp='firmas/'.$responsable['firma'];
 
 $condicion= 'cArea.idArea = puesto.idArea and puesto.estatus = 1 and puesto.idEmpleado = usuarioSUS.idEmpleado and usuarioSUS.idUsuario = '.$solicitud['idUSolicitante'];
 $area = seleccionar('area','cArea,puesto,usuarioSUS',$condicion);
@@ -55,7 +56,9 @@ $top = -20;
 $top2 = -20;
 
 $top3 = 558; $left2=63;//firma sgenerales
-//$top3 = -30; $left2=0;//firma sgenerales
+
+$top4 = 110; $right4=240;//firma responsable
+
 if($grupoServicio==1) //diversos
 	$left = 155;
 if($grupoServicio==2)//correspondencia
@@ -159,6 +162,7 @@ $html .= '<p class="subtitulo">TIPO DE SERVICIO</p>';
 $html .= '<div style="position:absolute; top:'.$top.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<div style="position:absolute; top:'.$top2.'pt; left:'.$left.'pt;"><img src="images/palomita.png" alt="" style="width:16pt;" /></div>';
 $html .= '<div style="position:absolute; top:'.$top3.'pt; left:'.$left2.'pt;"><img src="'.$firmaJS.'" alt="" style="height:27pt;" /></div>';
+$html .= '<div style="position:absolute; top:'.$top4.'pt; right:'.$right4.'pt;"><img src="'.$firmaResp.'" alt="" style="width:50pt;" /></div>';
 $html .= '<table>';
 $html .= '<tr>';
 $html .= '<td class="sin-borde" width="24%">';
@@ -410,7 +414,8 @@ $html .= '<p>FECHA COMPROMISO DE ENTREGA: '.$fechaComp.'</p>';
 $html .= '<p class="fecha-liberacion">FECHA DE LIBERACIÓN DEL SERVICIO: '.$fechaLib.'</p>';
 $html .= '<div class="firma firma1">';
 $html .= '<p>VO. BO. DE CONFIRMACIÓN DE REQUISITOS</p>';//la firma se pone con la línea 161
-$html .= '<p class="nombre">'.$jefeServicios.'<br />RESPONSABLE DE SERVICIOS</p>';
+$html .= '<p class="nombre">&nbsp;<br />RESPONSABLE DE SERVICIOS</p>';
+//$html .= '<p class="nombre">'.$jefeServicios.'<br />RESPONSABLE DE SERVICIOS</p>';
 $html .= '</div>';  //.firma1
 
 $html .= '<div class="firma firma2">';
