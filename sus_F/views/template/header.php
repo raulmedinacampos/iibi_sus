@@ -86,7 +86,7 @@
 					<li><a href="administracion/alta-de-empleado" class="cbp-tm-icon-archive" target="_self">Alta de empleado</a></li>
 					<li><a href="administracion/alta-de-usuario" class="cbp-tm-icon-archive" target="_self">Alta de usuario</a></li>
 					<li><a href="administracion/duracion-de-servicios" target="_self">Duración de servicios</a></li>
-					<li><a href="administracion/firmas-autorizadas" target="_self">Firmas autorizadas</a></li>
+					<li><a href="administracion/firmas-autorizadas" target="_self">Sría. Administrativa</a></li>
 				</ul>
 			</li><?php }?>
 			

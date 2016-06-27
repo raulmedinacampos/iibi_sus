@@ -1,7 +1,7 @@
 <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="js/firmas_autorizadas.js" type="text/javascript"></script>
 
-<h4>Actualización de firmas autorizadas, Secretaría Administrativa</h4>
+<h4>Secretaría Administrativa</h4>
 <p>Mediante este formulario podrá cambiar los nombres de las personas que aperecen en el formato de Solicitud Única de Servicios.
 Considere que, para hacerlo, es necesario que la persona se encuentre dada de alta en la base de datos del sistema, y que
 al dar click en <i>Actualizar</i>, estará dando de baja a la persona anterior en su cargo.</p>
