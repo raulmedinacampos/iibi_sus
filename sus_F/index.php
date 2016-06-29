@@ -25,7 +25,19 @@ Flight::route('POST /verifica/', function() {
 		$contrasenia = (isset($_POST['contrasenia'])) ? addslashes($_POST['contrasenia']) : "";
 		
 		$usuario=seleccionarSinMsj("*","usuarioSUS","usuario='".$usuario."' and contrasenia='".$contrasenia."'");
-	
+		
+		/*
+		 * Tipo usuario
+		 * 1: 	usuario de sistema			1
+		 * 2:	Personal					0	 
+		 * 3:   servicios generales			1
+		 * 4:	Presupuesto					0	
+		 * 5:	Secretaría administrativa	1
+		 * 6:	Auditor						0
+		 * 7:	Administrador				0
+		 * 8:	Investigador
+		 *  
+		 * */	
 		if ( is_array($usuario) && $usuario[0] != null ) {
 				
 			$_SESSION['tipoUsuario'] = $usuario['tipoUsuario']; 
@@ -37,7 +49,7 @@ Flight::route('POST /verifica/', function() {
 			else
 				$_SESSION['idUAutoriza']=$usuario['idUsuAutoriza'];
 			
-			if ( $_SESSION['tipoUsuario'] == 1 ) {
+			if ( $_SESSION['tipoUsuario'] == 1) {
 				Flight::redirect('principal');
 			} else {
 				Flight::redirect('principal');

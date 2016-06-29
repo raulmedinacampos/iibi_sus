@@ -120,7 +120,7 @@
 	
 	<div class="form-group text-right datos-adicionales">
 		<div class="col-sm-12">
-			<button id="btnCancelar" name="btnCancelar" class="btn btn-default" onclick="window.history.back();">Cancelar</button>
+			<button id="btnCancelar" name="btnCancelar" class="btn btn-default" onclick="window.location = 'principal'">Cancelar</button>
 			<button id="btnGuardar" name="btnGuardar" class="btn btn-primary">Actualizar</button>
 		</div>
 	</div>

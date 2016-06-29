@@ -67,7 +67,7 @@
 		
 		
 			<li><a href="estadoSUS" target="myDiv">Estado de solicitudes</a></li><?php 
-			if ( $_SESSION['tipoUsuario'] != 1) {?>
+			if ( $_SESSION['tipoUsuario'] != 1 && $_SESSION['tipoUsuario'] != 8) {?>
 			<li><a href="#">Reportes</a>
 				<ul class="cbp-tm-submenu"><?php 
 					if ( $_SESSION['tipoUsuario'] == 3 OR $_SESSION['tipoUsuario']==5) {?>
@@ -94,7 +94,7 @@
 				<ul class="cbp-tm-submenu"><?php
 				$normatividad = "";
 				$man="";
-				if ( $_SESSION['tipoUsuario'] == 1 ) {
+				if ( $_SESSION['tipoUsuario'] == 1 ||$_SESSION['tipoUsuario'] == 8) {
 					$normatividad = 'http://132.248.242.11/catServicios/catalogo.php';
 					$man="manSUS_usu.pdf";}
 				
